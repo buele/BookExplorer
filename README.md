@@ -2,4 +2,13 @@
 FreebaseBookSpider is a wrapper to explore the Google Freebase graph, in the book domain for ios.
 
 ## Project status
-In progress...
+In progress.
+
+> To show status of project in [kanban board](https://trello.com/b/JI2pa4oW)
+
+
+## License
+
+**FreebaseBookSpider** is licensed under [MIT license](http://opensource.org/licenses/MIT). So you can do whatever you want to with it, enjoy!
+
+----
