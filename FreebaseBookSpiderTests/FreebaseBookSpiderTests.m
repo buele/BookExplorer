@@ -3,7 +3,6 @@
 //  FreebaseBookSpiderTests
 //
 //  Created by Raffaele Bua on 28/03/14.
-//  Copyright (c) 2014 Buele. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
