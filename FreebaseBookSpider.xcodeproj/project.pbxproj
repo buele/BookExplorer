@@ -1,0 +1,476 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5682E38218E5D5B200522958 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5682E38118E5D5B200522958 /* Foundation.framework */; };
+		5682E38418E5D5B200522958 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5682E38318E5D5B200522958 /* CoreGraphics.framework */; };
+		5682E38618E5D5B200522958 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5682E38518E5D5B200522958 /* UIKit.framework */; };
+		5682E38C18E5D5B200522958 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5682E38A18E5D5B200522958 /* InfoPlist.strings */; };
+		5682E38E18E5D5B200522958 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5682E38D18E5D5B200522958 /* main.m */; };
+		5682E39218E5D5B200522958 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5682E39118E5D5B200522958 /* AppDelegate.m */; };
+		5682E39418E5D5B200522958 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5682E39318E5D5B200522958 /* Images.xcassets */; };
+		5682E39B18E5D5B300522958 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5682E39A18E5D5B300522958 /* XCTest.framework */; };
+		5682E39C18E5D5B300522958 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5682E38118E5D5B200522958 /* Foundation.framework */; };
+		5682E39D18E5D5B300522958 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5682E38518E5D5B200522958 /* UIKit.framework */; };
+		5682E3A518E5D5B300522958 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5682E3A318E5D5B300522958 /* InfoPlist.strings */; };
+		5682E3A718E5D5B300522958 /* FreebaseBookSpiderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5682E3A618E5D5B300522958 /* FreebaseBookSpiderTests.m */; };
+		5682E3B218E5D5D500522958 /* BookSpider.m in Sources */ = {isa = PBXBuildFile; fileRef = 5682E3B118E5D5D500522958 /* BookSpider.m */; };
+		5682E3B518E5D80000522958 /* freebase_urls.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5682E3B418E5D80000522958 /* freebase_urls.plist */; };
+		5682E3B718E5DB5400522958 /* mql_queries.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5682E3B618E5DB5400522958 /* mql_queries.plist */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5682E39E18E5D5B300522958 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5682E37618E5D5B200522958 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5682E37D18E5D5B200522958;
+			remoteInfo = FreebaseBookSpider;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5682E37E18E5D5B200522958 /* FreebaseBookSpider.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FreebaseBookSpider.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5682E38118E5D5B200522958 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		5682E38318E5D5B200522958 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		5682E38518E5D5B200522958 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		5682E38918E5D5B200522958 /* FreebaseBookSpider-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FreebaseBookSpider-Info.plist"; sourceTree = "<group>"; };
+		5682E38B18E5D5B200522958 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5682E38D18E5D5B200522958 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5682E38F18E5D5B200522958 /* FreebaseBookSpider-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FreebaseBookSpider-Prefix.pch"; sourceTree = "<group>"; };
+		5682E39018E5D5B200522958 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		5682E39118E5D5B200522958 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		5682E39318E5D5B200522958 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		5682E39918E5D5B300522958 /* FreebaseBookSpiderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FreebaseBookSpiderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5682E39A18E5D5B300522958 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		5682E3A218E5D5B300522958 /* FreebaseBookSpiderTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FreebaseBookSpiderTests-Info.plist"; sourceTree = "<group>"; };
+		5682E3A418E5D5B300522958 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5682E3A618E5D5B300522958 /* FreebaseBookSpiderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FreebaseBookSpiderTests.m; sourceTree = "<group>"; };
+		5682E3B018E5D5D500522958 /* BookSpider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookSpider.h; sourceTree = "<group>"; };
+		5682E3B118E5D5D500522958 /* BookSpider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookSpider.m; sourceTree = "<group>"; };
+		5682E3B418E5D80000522958 /* freebase_urls.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = freebase_urls.plist; sourceTree = "<group>"; };
+		5682E3B618E5DB5400522958 /* mql_queries.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = mql_queries.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5682E37B18E5D5B200522958 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5682E38418E5D5B200522958 /* CoreGraphics.framework in Frameworks */,
+				5682E38618E5D5B200522958 /* UIKit.framework in Frameworks */,
+				5682E38218E5D5B200522958 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5682E39618E5D5B200522958 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5682E39B18E5D5B300522958 /* XCTest.framework in Frameworks */,
+				5682E39D18E5D5B300522958 /* UIKit.framework in Frameworks */,
+				5682E39C18E5D5B300522958 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5682E37518E5D5B200522958 = {
+			isa = PBXGroup;
+			children = (
+				5682E3B318E5D7E600522958 /* Resources */,
+				5682E38718E5D5B200522958 /* FreebaseBookSpider */,
+				5682E3A018E5D5B300522958 /* FreebaseBookSpiderTests */,
+				5682E38018E5D5B200522958 /* Frameworks */,
+				5682E37F18E5D5B200522958 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5682E37F18E5D5B200522958 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5682E37E18E5D5B200522958 /* FreebaseBookSpider.app */,
+				5682E39918E5D5B300522958 /* FreebaseBookSpiderTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5682E38018E5D5B200522958 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5682E38118E5D5B200522958 /* Foundation.framework */,
+				5682E38318E5D5B200522958 /* CoreGraphics.framework */,
+				5682E38518E5D5B200522958 /* UIKit.framework */,
+				5682E39A18E5D5B300522958 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5682E38718E5D5B200522958 /* FreebaseBookSpider */ = {
+			isa = PBXGroup;
+			children = (
+				5682E39018E5D5B200522958 /* AppDelegate.h */,
+				5682E39118E5D5B200522958 /* AppDelegate.m */,
+				5682E39318E5D5B200522958 /* Images.xcassets */,
+				5682E38818E5D5B200522958 /* Supporting Files */,
+				5682E3B018E5D5D500522958 /* BookSpider.h */,
+				5682E3B118E5D5D500522958 /* BookSpider.m */,
+			);
+			path = FreebaseBookSpider;
+			sourceTree = "<group>";
+		};
+		5682E38818E5D5B200522958 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5682E38918E5D5B200522958 /* FreebaseBookSpider-Info.plist */,
+				5682E38A18E5D5B200522958 /* InfoPlist.strings */,
+				5682E38D18E5D5B200522958 /* main.m */,
+				5682E38F18E5D5B200522958 /* FreebaseBookSpider-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5682E3A018E5D5B300522958 /* FreebaseBookSpiderTests */ = {
+			isa = PBXGroup;
+			children = (
+				5682E3A618E5D5B300522958 /* FreebaseBookSpiderTests.m */,
+				5682E3A118E5D5B300522958 /* Supporting Files */,
+			);
+			path = FreebaseBookSpiderTests;
+			sourceTree = "<group>";
+		};
+		5682E3A118E5D5B300522958 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5682E3A218E5D5B300522958 /* FreebaseBookSpiderTests-Info.plist */,
+				5682E3A318E5D5B300522958 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5682E3B318E5D7E600522958 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5682E3B418E5D80000522958 /* freebase_urls.plist */,
+				5682E3B618E5DB5400522958 /* mql_queries.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5682E37D18E5D5B200522958 /* FreebaseBookSpider */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5682E3AA18E5D5B300522958 /* Build configuration list for PBXNativeTarget "FreebaseBookSpider" */;
+			buildPhases = (
+				5682E37A18E5D5B200522958 /* Sources */,
+				5682E37B18E5D5B200522958 /* Frameworks */,
+				5682E37C18E5D5B200522958 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FreebaseBookSpider;
+			productName = FreebaseBookSpider;
+			productReference = 5682E37E18E5D5B200522958 /* FreebaseBookSpider.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5682E39818E5D5B200522958 /* FreebaseBookSpiderTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5682E3AD18E5D5B300522958 /* Build configuration list for PBXNativeTarget "FreebaseBookSpiderTests" */;
+			buildPhases = (
+				5682E39518E5D5B200522958 /* Sources */,
+				5682E39618E5D5B200522958 /* Frameworks */,
+				5682E39718E5D5B200522958 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5682E39F18E5D5B300522958 /* PBXTargetDependency */,
+			);
+			name = FreebaseBookSpiderTests;
+			productName = FreebaseBookSpiderTests;
+			productReference = 5682E39918E5D5B300522958 /* FreebaseBookSpiderTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5682E37618E5D5B200522958 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = Buele;
+				TargetAttributes = {
+					5682E39818E5D5B200522958 = {
+						TestTargetID = 5682E37D18E5D5B200522958;
+					};
+				};
+			};
+			buildConfigurationList = 5682E37918E5D5B200522958 /* Build configuration list for PBXProject "FreebaseBookSpider" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 5682E37518E5D5B200522958;
+			productRefGroup = 5682E37F18E5D5B200522958 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5682E37D18E5D5B200522958 /* FreebaseBookSpider */,
+				5682E39818E5D5B200522958 /* FreebaseBookSpiderTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5682E37C18E5D5B200522958 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5682E38C18E5D5B200522958 /* InfoPlist.strings in Resources */,
+				5682E3B518E5D80000522958 /* freebase_urls.plist in Resources */,
+				5682E3B718E5DB5400522958 /* mql_queries.plist in Resources */,
+				5682E39418E5D5B200522958 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5682E39718E5D5B200522958 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5682E3A518E5D5B300522958 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5682E37A18E5D5B200522958 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5682E39218E5D5B200522958 /* AppDelegate.m in Sources */,
+				5682E38E18E5D5B200522958 /* main.m in Sources */,
+				5682E3B218E5D5D500522958 /* BookSpider.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5682E39518E5D5B200522958 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5682E3A718E5D5B300522958 /* FreebaseBookSpiderTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5682E39F18E5D5B300522958 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5682E37D18E5D5B200522958 /* FreebaseBookSpider */;
+			targetProxy = 5682E39E18E5D5B300522958 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		5682E38A18E5D5B200522958 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5682E38B18E5D5B200522958 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		5682E3A318E5D5B300522958 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5682E3A418E5D5B300522958 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5682E3A818E5D5B300522958 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5682E3A918E5D5B300522958 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5682E3AB18E5D5B300522958 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FreebaseBookSpider/FreebaseBookSpider-Prefix.pch";
+				INFOPLIST_FILE = "FreebaseBookSpider/FreebaseBookSpider-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		5682E3AC18E5D5B300522958 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FreebaseBookSpider/FreebaseBookSpider-Prefix.pch";
+				INFOPLIST_FILE = "FreebaseBookSpider/FreebaseBookSpider-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		5682E3AE18E5D5B300522958 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/FreebaseBookSpider.app/FreebaseBookSpider";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FreebaseBookSpider/FreebaseBookSpider-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "FreebaseBookSpiderTests/FreebaseBookSpiderTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		5682E3AF18E5D5B300522958 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/FreebaseBookSpider.app/FreebaseBookSpider";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FreebaseBookSpider/FreebaseBookSpider-Prefix.pch";
+				INFOPLIST_FILE = "FreebaseBookSpiderTests/FreebaseBookSpiderTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5682E37918E5D5B200522958 /* Build configuration list for PBXProject "FreebaseBookSpider" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5682E3A818E5D5B300522958 /* Debug */,
+				5682E3A918E5D5B300522958 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5682E3AA18E5D5B300522958 /* Build configuration list for PBXNativeTarget "FreebaseBookSpider" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5682E3AB18E5D5B300522958 /* Debug */,
+				5682E3AC18E5D5B300522958 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		5682E3AD18E5D5B300522958 /* Build configuration list for PBXNativeTarget "FreebaseBookSpiderTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5682E3AE18E5D5B300522958 /* Debug */,
+				5682E3AF18E5D5B300522958 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5682E37618E5D5B200522958 /* Project object */;
+}

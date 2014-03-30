@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>get_book_type_all_properties</key>
+	<string>[{&quot;id&quot;: &quot;/book/book&quot;,&quot;type&quot;: &quot;/type/type&quot;,&quot;properties&quot;: []}]</string>
+	<key>get_book_domain_all_types</key>
+	<string>[{&quot;id&quot;: null,&quot;name&quot;: null,&quot;type&quot;: &quot;/type/type&quot;,&quot;domain&quot;: &quot;/book&quot;}]</string>
+</dict>
+</plist>
