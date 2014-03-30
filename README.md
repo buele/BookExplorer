@@ -1,5 +1,5 @@
 # Freebase api wrapper for book domain
-**FreebaseBookSpider** is a wrapper to explore the Google Freebase graph in the book domain with iOS.
+**FreebaseBookSpider** is a wrapper to explore [Google Freebase](http://www.freebase.com/) [graph](http://www.google.com/insidesearch/features/search/knowledge.html) in the book domain with iOS.	
 
 ## Project status
 In progress.
