@@ -6,6 +6,8 @@ In progress.
 
 > To show status of project in [kanban board](https://trello.com/b/JI2pa4oW)
 
+## Documentation
+[Functional specifications](https://docs.google.com/document/d/1l_KD0vKlm6Af7rx1NIp9JfiuOaxOMONaBaxjXq49eUU/edit)
 
 ## License
 
