@@ -4,7 +4,7 @@
 ## Project status
 In progress.
 
-> To show status of project go to [看板 board](https://trello.com/b/JI2pa4oW)
+> To show status of project go to [kanban board](https://trello.com/b/JI2pa4oW)
 
 ## Documentation
 [Functional specifications](https://docs.google.com/document/d/1l_KD0vKlm6Af7rx1NIp9JfiuOaxOMONaBaxjXq49eUU/edit)
