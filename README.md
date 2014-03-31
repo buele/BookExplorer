@@ -14,3 +14,6 @@ In progress.
 **FreebaseBookSpider** is licensed under [MIT license](http://opensource.org/licenses/MIT). So you can do whatever you want to with it, enjoy!
 
 ----
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/buele/freebasebookspider/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
