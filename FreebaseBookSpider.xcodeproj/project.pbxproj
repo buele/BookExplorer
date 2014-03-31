@@ -22,6 +22,7 @@
 		5682E3B218E5D5D500522958 /* BookSpider.m in Sources */ = {isa = PBXBuildFile; fileRef = 5682E3B118E5D5D500522958 /* BookSpider.m */; };
 		5682E3B518E5D80000522958 /* freebase_urls.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5682E3B418E5D80000522958 /* freebase_urls.plist */; };
 		5682E3B718E5DB5400522958 /* mql_queries.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5682E3B618E5DB5400522958 /* mql_queries.plist */; };
+		5695893318E8F72500CBC336 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5695893218E8F72500CBC336 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		5682E3B118E5D5D500522958 /* BookSpider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookSpider.m; sourceTree = "<group>"; };
 		5682E3B418E5D80000522958 /* freebase_urls.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = freebase_urls.plist; sourceTree = "<group>"; };
 		5682E3B618E5DB5400522958 /* mql_queries.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = mql_queries.plist; sourceTree = "<group>"; };
+		5695893218E8F72500CBC336 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 		5682E38718E5D5B200522958 /* FreebaseBookSpider */ = {
 			isa = PBXGroup;
 			children = (
+				5695893218E8F72500CBC336 /* README.md */,
 				5682E39018E5D5B200522958 /* AppDelegate.h */,
 				5682E39118E5D5B200522958 /* AppDelegate.m */,
 				5682E39318E5D5B200522958 /* Images.xcassets */,
@@ -240,6 +243,7 @@
 			files = (
 				5682E38C18E5D5B200522958 /* InfoPlist.strings in Resources */,
 				5682E3B518E5D80000522958 /* freebase_urls.plist in Resources */,
+				5695893318E8F72500CBC336 /* README.md in Resources */,
 				5682E3B718E5DB5400522958 /* mql_queries.plist in Resources */,
 				5682E39418E5D5B200522958 /* Images.xcassets in Resources */,
 			);
@@ -461,6 +465,7 @@
 				5682E3AC18E5D5B300522958 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5682E3AD18E5D5B300522958 /* Build configuration list for PBXNativeTarget "FreebaseBookSpiderTests" */ = {
 			isa = XCConfigurationList;
@@ -469,6 +474,7 @@
 				5682E3AF18E5D5B300522958 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
