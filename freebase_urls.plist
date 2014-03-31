@@ -6,5 +6,7 @@
 	<string>/mqlread</string>
 	<key>api_base_url</key>
 	<string>https://www.googleapis.com/freebase/v1</string>
+	<key>api_version</key>
+	<string>v1</string>
 </dict>
 </plist>

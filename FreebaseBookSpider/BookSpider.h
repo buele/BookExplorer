@@ -34,6 +34,7 @@
     NSDictionary * freebaseUrls;
     NSDictionary * mqlQueries;
     
+    
 }
 
 -(id)init;

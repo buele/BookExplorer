@@ -34,6 +34,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
+    
     //BookSpider
     BookSpider * bookSpider = [[BookSpider alloc] init];
     
