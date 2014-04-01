@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		565F691C18EAF8A2004C9EF5 /* FBSApiOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 565F691B18EAF8A2004C9EF5 /* FBSApiOperation.m */; };
 		5682E38218E5D5B200522958 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5682E38118E5D5B200522958 /* Foundation.framework */; };
 		5682E38418E5D5B200522958 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5682E38318E5D5B200522958 /* CoreGraphics.framework */; };
 		5682E38618E5D5B200522958 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5682E38518E5D5B200522958 /* UIKit.framework */; };
@@ -23,6 +24,8 @@
 		5682E3B518E5D80000522958 /* freebase_urls.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5682E3B418E5D80000522958 /* freebase_urls.plist */; };
 		5682E3B718E5DB5400522958 /* mql_queries.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5682E3B618E5DB5400522958 /* mql_queries.plist */; };
 		5695893318E8F72500CBC336 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5695893218E8F72500CBC336 /* README.md */; };
+		5695893618E96DD800CBC336 /* FreebaseBookDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = 5695893518E96DD800CBC336 /* FreebaseBookDomain.m */; };
+		5695893918E9773300CBC336 /* FBSApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5695893818E9773300CBC336 /* FBSApiManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		565F691A18EAF8A2004C9EF5 /* FBSApiOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBSApiOperation.h; sourceTree = "<group>"; };
+		565F691B18EAF8A2004C9EF5 /* FBSApiOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBSApiOperation.m; sourceTree = "<group>"; };
+		565F691D18EB3C2E004C9EF5 /* FBSApiActions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FBSApiActions.h; sourceTree = "<group>"; };
 		5682E37E18E5D5B200522958 /* FreebaseBookSpider.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FreebaseBookSpider.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5682E38118E5D5B200522958 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5682E38318E5D5B200522958 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -57,6 +63,10 @@
 		5682E3B418E5D80000522958 /* freebase_urls.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = freebase_urls.plist; sourceTree = "<group>"; };
 		5682E3B618E5DB5400522958 /* mql_queries.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = mql_queries.plist; sourceTree = "<group>"; };
 		5695893218E8F72500CBC336 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
+		5695893418E96DD800CBC336 /* FreebaseBookDomain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FreebaseBookDomain.h; sourceTree = "<group>"; };
+		5695893518E96DD800CBC336 /* FreebaseBookDomain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FreebaseBookDomain.m; sourceTree = "<group>"; };
+		5695893718E9773300CBC336 /* FBSApiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBSApiManager.h; sourceTree = "<group>"; };
+		5695893818E9773300CBC336 /* FBSApiManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBSApiManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +127,7 @@
 		5682E38718E5D5B200522958 /* FreebaseBookSpider */ = {
 			isa = PBXGroup;
 			children = (
+				5695893A18E97B9000CBC336 /* FBSApiManager */,
 				5695893218E8F72500CBC336 /* README.md */,
 				5682E39018E5D5B200522958 /* AppDelegate.h */,
 				5682E39118E5D5B200522958 /* AppDelegate.m */,
@@ -124,6 +135,8 @@
 				5682E38818E5D5B200522958 /* Supporting Files */,
 				5682E3B018E5D5D500522958 /* BookSpider.h */,
 				5682E3B118E5D5D500522958 /* BookSpider.m */,
+				5695893418E96DD800CBC336 /* FreebaseBookDomain.h */,
+				5695893518E96DD800CBC336 /* FreebaseBookDomain.m */,
 			);
 			path = FreebaseBookSpider;
 			sourceTree = "<group>";
@@ -164,6 +177,18 @@
 				5682E3B618E5DB5400522958 /* mql_queries.plist */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		5695893A18E97B9000CBC336 /* FBSApiManager */ = {
+			isa = PBXGroup;
+			children = (
+				5695893718E9773300CBC336 /* FBSApiManager.h */,
+				5695893818E9773300CBC336 /* FBSApiManager.m */,
+				565F691A18EAF8A2004C9EF5 /* FBSApiOperation.h */,
+				565F691B18EAF8A2004C9EF5 /* FBSApiOperation.m */,
+				565F691D18EB3C2E004C9EF5 /* FBSApiActions.h */,
+			);
+			name = FBSApiManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,9 +289,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5695893918E9773300CBC336 /* FBSApiManager.m in Sources */,
 				5682E39218E5D5B200522958 /* AppDelegate.m in Sources */,
 				5682E38E18E5D5B200522958 /* main.m in Sources */,
+				565F691C18EAF8A2004C9EF5 /* FBSApiOperation.m in Sources */,
 				5682E3B218E5D5D500522958 /* BookSpider.m in Sources */,
+				5695893618E96DD800CBC336 /* FreebaseBookDomain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

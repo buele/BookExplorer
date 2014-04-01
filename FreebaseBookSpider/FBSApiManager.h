@@ -1,12 +1,12 @@
 //
-//  FreeBaseBookSpider.h
+//  HttpManager.h
 //  FreebaseBookSpider
 //
-//  Created by Raffaele Bua on 28/03/14.
-
+//  Created by Raffaele Bua on 31/03/14.
+//
 /*****************************************************************************
  The MIT License (MIT)
-
+ 
  
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -28,23 +28,23 @@
  *****************************************************************************/
 
 #import <Foundation/Foundation.h>
-#import "FBSApiManager.h"
+#import "FBSApiOperation.h"
+#import "FBSApiActions.h"
 
-@interface BookSpider : NSObject<FBSApiManagerDelegate>
-{
-    NSDictionary * freebaseUrls;
-    NSDictionary * mqlQueries;
-    NSMutableData * bookTypesData;
-    NSURLConnection * bookTypesConnection;
-    
-    
-}
+
+@protocol FBSApiManagerDelegate
 - (void) bookDomainTypesDidReceived:(NSDictionary*)types;
--(void)manageBookDomainTypes:(NSDictionary *)types;
--(id)init;
--(NSDictionary* )getFreebaseBaseUrls;
--(void)getBookDomainTypes;
--(NSDictionary* )getMQLQueries;
--(NSString*) getBaseUrl;
--(NSString* )getRunMqlQueryUrl;
+@end
+
+
+@interface FBSApiManager : NSObject {
+    NSOperationQueue * queue;
+}
+
++ (FBSApiManager *) getSharedInstance;
+
+-(void)requestBookDomainTypesForDelegate:(id)delegate;
+
+@property(nonatomic)id<FBSApiManagerDelegate>_delegate;
+
 @end

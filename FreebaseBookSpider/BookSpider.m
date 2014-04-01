@@ -28,7 +28,7 @@
  *****************************************************************************/
 
 
-
+#import "FBSApiManager.h"
 #import "BookSpider.h"
 
 @implementation BookSpider
@@ -37,13 +37,27 @@
 {
     self = [super init];
     if (self) {
+        bookTypesData = [[NSMutableData alloc] init];
         freebaseUrls = [self getFreebaseBaseUrls];
         mqlQueries = [self getMQLQueries];
-        NSString * allTypesOfBookDomainUrl = [self getAllTypesOfBookDomainUrl];
-        NSLog(@"url: %@", [self encodeUrl:allTypesOfBookDomainUrl]);
+        // NSString * allTypesOfBookDomainUrl = [self getAllTypesOfBookDomainUrl];
+        // NSLog(@"url: %@", [self encodeUrl:allTypesOfBookDomainUrl]);
+        
+        
+        [[FBSApiManager getSharedInstance] requestBookDomainTypesForDelegate:self]; //!!! DONE
+        
     }
     
     return self;
+}
+
+- (void) bookDomainTypesDidReceived:(NSDictionary*)types{
+    NSLog(@"bette giru: %@",types);
+}
+
+-(void)manageBookDomainTypes:(NSDictionary *)types
+{
+    NSLog(@"%@",types);
 }
 
 -(NSString * )getAllTypesOfBookDomainUrl
@@ -85,10 +99,16 @@
     return [[NSDictionary alloc] initWithContentsOfFile:path];
 }
 
--(NSArray *)getBookDomainTypes
+-(void)getBookDomainTypes
 {
-    return nil;
-    
+
 }
+
+- (void)connection:(NSURLConnection *)conn didReceiveData:(NSData *)data
+{
+    [bookTypesData appendData:data];
+}
+
+
 
 @end
