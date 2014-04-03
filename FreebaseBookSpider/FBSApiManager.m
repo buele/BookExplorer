@@ -39,11 +39,17 @@ static FBSApiManager *sharedSingleton_ = nil;
     if(self){
         queue = [[NSOperationQueue alloc] init];
         resources = [[FBSResources alloc]init];
+        pendingRequests = [[NSMutableArray alloc]init];
         [self requestBookDomainTypes];
         self.typesReady = false;
-        pendingRequests = [[NSMutableArray alloc]init];
     }
     return self;
+}
+
+#pragma mark utities
+-(NSURL * )generateEntitiesByKeywordUrlByTypes:(NSDictionary *)types
+{
+    return nil;
 }
 
 #pragma mark FBSApiManagerDelegate protocol implementation
@@ -55,12 +61,10 @@ static FBSApiManager *sharedSingleton_ = nil;
 #pragma mark requests managers
 -(void)sendRequestOperation:(NSDictionary*)parameters
 {
-    if(self.typesReady){
-        FBSApiOperation * op = [[FBSApiOperation alloc]initWithUrl:[parameters objectForKey:@"url"]  andDelegate:self forAction: [[parameters objectForKey:@"action"]intValue ]  andTarget:[parameters objectForKey:@"target"]];
-        [queue addOperation:op];
-    }else{
+    if(self.typesReady)
+        [queue addOperation:[[FBSApiOperation alloc]initWithUrl:[parameters objectForKey:@"url"]  andDelegate:self forAction: [[parameters objectForKey:@"action"]intValue ]  andTarget:[parameters objectForKey:@"target"]]];
+    else
         [pendingRequests addObject:parameters];
-    }
 }
 
 -(void)sendRequestOfAction:(FBSApiAction)action  withUrl:(NSURL*)url forTarget:(id)target
@@ -108,7 +112,7 @@ static FBSApiManager *sharedSingleton_ = nil;
 -(void)manageBookDomainTypes:(NSDictionary *)types
 {
     bookDomainTypes = types;
-    //manage your types here
+    getEntitiesByKeywordUrl = [self generateEntitiesByKeywordUrlByTypes:types] ;
     NSLog(@"manageBookDomainTypes()");
     self.typesReady = true;
     [self dispatchPendingRequestes];

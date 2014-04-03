@@ -38,24 +38,21 @@
 @end
 
 @interface FBSApiManager : NSObject {
-
     NSOperationQueue * queue;
     FBSResources* resources;
-    
     NSURL *  getAutocompleteSuggestionsByKeywordUrl;
     NSURL *  getEntitiesByKeywordUrl;
     NSURL *  getEntityByEntityIdUrl;
     NSDictionary * bookDomainTypes;
     NSMutableArray * pendingRequests;
-
 }
-
-+ (FBSApiManager *) getSharedInstance;
-
--(void)requestBookDomainTypes;
--(void)getEntitiesByKeyword:(NSString*)keyword forDelegate:(id)delegate;
 
 @property(nonatomic)id<FBSApiManagerDelegate>_delegate;
 @property(atomic)BOOL typesReady;
++ (FBSApiManager *) getSharedInstance;
+
+#pragma mark main protocol
+-(void)getEntitiesByKeyword:(NSString*)keyword forDelegate:(id)delegate;
+
 
 @end
