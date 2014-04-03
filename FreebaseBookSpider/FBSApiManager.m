@@ -112,7 +112,7 @@ static FBSApiManager *sharedSingleton_ = nil;
 -(void)manageBookDomainTypes:(NSDictionary *)types
 {
     bookDomainTypes = types;
-    getEntitiesByKeywordUrl = [self generateEntitiesByKeywordUrlByTypes:types] ;
+    getEntitiesByKeywordUrl = [self generateEntitiesByKeywordUrlByTypes:types];
     NSLog(@"manageBookDomainTypes()");
     self.typesReady = true;
     [self dispatchPendingRequestes];
