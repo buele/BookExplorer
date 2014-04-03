@@ -46,6 +46,13 @@ static FBSApiManager *sharedSingleton_ = nil;
     return self;
 }
 
+#pragma mark FBSApiManagerDelegate protocol implementation
+-(void)getEntitiesByKeyword:(NSString*)keyword forDelegate:(id)delegate
+{
+    [self sendRequestOfAction:FBSApiActionRequestEntitiesByKeyword withUrl:[NSURL URLWithString:@"http://www.google.it"] forTarget:delegate];
+}
+
+#pragma mark requests managers
 -(void)sendRequestOperation:(NSDictionary*)parameters
 {
     if(self.typesReady){
@@ -62,14 +69,8 @@ static FBSApiManager *sharedSingleton_ = nil;
     [queue addOperation:sendOperation];
 }
 
--(void)getEntitiesByKeyword:(NSString*)keyword forDelegate:(id)delegate
-{
-    [self sendRequestOfAction:FBSApiActionRequestEntitiesByKeyword withUrl:[NSURL URLWithString:@"http://www.google.it"] forTarget:delegate];
-}
-
 -(void)requestBookDomainTypes
 {
-    
     FBSApiOperation * op = [[FBSApiOperation alloc]initWithUrl:[resources getAllTypesOfBookDomainUrl]  andDelegate:self forAction:  FBSApiActionRequestBookDomainTypes andTarget:[NSNull null]];
     [queue addOperation:op];
 }
@@ -78,18 +79,17 @@ static FBSApiManager *sharedSingleton_ = nil;
 {
     for(NSDictionary *parameters in pendingRequests)
         [queue addOperation:[[NSInvocationOperation alloc] initWithTarget:self selector:@selector(sendRequestOperation:) object:parameters]];
+    pendingRequests = nil; //remove pending requestes
 }
 
--(void)manageBookDomainTypes:(NSDictionary *)types
-{
-    bookDomainTypes = types;
-    //manage your types here
-    NSLog(@"manageBookDomainTypes()");
-    self.typesReady = true;
-    [self dispatchPendingRequestes];
-    
+#pragma mark static method
++ (FBSApiManager *) getSharedInstance {
+    if (sharedSingleton_ == nil) {
+        sharedSingleton_ = [[FBSApiManager alloc] init]; }
+    return sharedSingleton_;
 }
 
+#pragma mark switch types of requestes
 - (void) responseDidReceived:(NSDictionary*)response forAction:(FBSApiAction)action ofTarget:(id)target
 {
     switch(action){
@@ -97,7 +97,7 @@ static FBSApiManager *sharedSingleton_ = nil;
             [self manageBookDomainTypes:response];
             break;
         case FBSApiActionRequestEntitiesByKeyword:
-            [target entitiesByKeywordDidReceived:response];            
+            [target entitiesByKeywordDidReceived:response];
             break;
         case FBSApiActionTEST:
             break;
@@ -106,11 +106,16 @@ static FBSApiManager *sharedSingleton_ = nil;
     }
 }
 
-+ (FBSApiManager *) getSharedInstance {
-    if (sharedSingleton_ == nil) {
-        sharedSingleton_ = [[FBSApiManager alloc] init]; }
-    return sharedSingleton_;
+#pragma mark response managers
+-(void)manageBookDomainTypes:(NSDictionary *)types
+{
+    bookDomainTypes = types;
+    //manage your types here
+    NSLog(@"manageBookDomainTypes()");
+    self.typesReady = true;
+    [self dispatchPendingRequestes];
 }
+
 
 @end
 
