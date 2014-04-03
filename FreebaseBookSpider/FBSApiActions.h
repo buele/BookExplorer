@@ -13,7 +13,6 @@ typedef enum{
     FBSApiActionNoOperation,
     FBSApiActionRequestBookDomainTypes,
     FBSApiActionRequestEntitiesByKeyword,
-    FBSApiActionTEST
 }FBSApiAction;
 
 #endif

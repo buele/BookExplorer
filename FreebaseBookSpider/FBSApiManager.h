@@ -37,7 +37,6 @@
 -(void)entitiesByKeywordDidReceived:(NSDictionary*)entities;
 @end
 
-
 @interface FBSApiManager : NSObject {
 
     NSOperationQueue * queue;

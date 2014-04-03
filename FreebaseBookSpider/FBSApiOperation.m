@@ -61,7 +61,6 @@
                                                      delegate:self
                                              startImmediately:NO];
     }
-    
     return self;
 }
 

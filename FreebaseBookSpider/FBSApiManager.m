@@ -99,8 +99,6 @@ static FBSApiManager *sharedSingleton_ = nil;
         case FBSApiActionRequestEntitiesByKeyword:
             [target entitiesByKeywordDidReceived:response];
             break;
-        case FBSApiActionTEST:
-            break;
         default:
             break;
     }
@@ -115,7 +113,6 @@ static FBSApiManager *sharedSingleton_ = nil;
     self.typesReady = true;
     [self dispatchPendingRequestes];
 }
-
 
 @end
 
