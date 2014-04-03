@@ -74,17 +74,20 @@ static FBSApiManager *sharedSingleton_ = nil;
     [queue addOperation:op];
 }
 
+-(void)dispatchPendingRequestes
+{
+    for(NSDictionary *parameters in pendingRequests)
+        [queue addOperation:[[NSInvocationOperation alloc] initWithTarget:self selector:@selector(sendRequestOperation:) object:parameters]];
+}
+
 -(void)manageBookDomainTypes:(NSDictionary *)types
 {
     bookDomainTypes = types;
     //manage your types here
     NSLog(@"manageBookDomainTypes()");
     self.typesReady = true;
-    for (NSDictionary *parameters in pendingRequests){
-      
-        NSOperation * sendOperation = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(sendRequestOperation:) object:parameters];
-        [queue addOperation:sendOperation];
-    }
+    [self dispatchPendingRequestes];
+    
 }
 
 - (void) responseDidReceived:(NSDictionary*)response forAction:(FBSApiAction)action ofTarget:(id)target
