@@ -69,10 +69,6 @@ static FBSApiManager *sharedSingleton_ = nil;
 
 -(void)requestBookDomainTypes
 {
-    for (int i = 1; i <= 10000000; i++) {
-        int value = [test intValue];
-        test = [NSNumber numberWithInt:value + 1];
-    };
     
     FBSApiOperation * op = [[FBSApiOperation alloc]initWithUrl:[resources getAllTypesOfBookDomainUrl]  andDelegate:self forAction:  FBSApiActionRequestBookDomainTypes andTarget:[NSNull null]];
     [queue addOperation:op];

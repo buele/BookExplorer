@@ -39,7 +39,7 @@
 
 
 @interface FBSApiManager : NSObject {
-    NSNumber * test;
+
     NSOperationQueue * queue;
     FBSResources* resources;
     
