@@ -37,46 +37,74 @@ static FBSApiManager *sharedSingleton_ = nil;
 {
     self = [super init];
     if(self){
-        [self createQueue];
-        
+        queue = [[NSOperationQueue alloc] init];
+        resources = [[FBSResources alloc]init];
+        [self requestBookDomainTypes];
+        self.typesReady = false;
+        pendingRequests = [[NSMutableArray alloc]init];
     }
     return self;
 }
 
--(void)createQueue
+-(void)sendRequestOperation:(NSDictionary*)parameters
 {
-    queue = [[NSOperationQueue alloc] init];
-}
-
--(id)initWithDelegate:(id<FBSApiManagerDelegate>)delegate
-{
-    self = [super init];
-    if(self){
-        [self createQueue];
-        [self set_delegate:delegate];
+    if(self.typesReady){
+        FBSApiOperation * op = [[FBSApiOperation alloc]initWithUrl:[parameters objectForKey:@"url"]  andDelegate:self forAction: [[parameters objectForKey:@"action"]intValue ]  andTarget:[parameters objectForKey:@"target"]];
+        [queue addOperation:op];
+    }else{
+        [pendingRequests addObject:parameters];
     }
-    return self;
 }
 
-
-
--(void)requestBookDomainTypesForDelegate:(id)delegate
+-(void)sendRequestOfAction:(FBSApiAction)action  withUrl:(NSURL*)url forTarget:(id)target
 {
-    NSURL * url = [NSURL URLWithString:@"https://www.googleapis.com/freebase/v1/mqlread?query=%5B%7B%22id%22:%20null,%22name%22:%20null,%22type%22:%20%22/type/type%22,%22domain%22:%20%22/book%22%7D%5D"];
-    FBSApiOperation * op = [[FBSApiOperation alloc]initWithUrl:url andDelegate:self forAction:FBSApiActionRequestBookDomainTypes andTarget:delegate];
+    NSOperation * sendOperation = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(sendRequestOperation:) object:[[NSDictionary alloc] initWithObjectsAndKeys:  url,@"url" , target,@"target" ,  [NSNumber numberWithInt:action], @"action" , nil ]];
+    [queue addOperation:sendOperation];
+}
+
+-(void)getEntitiesByKeyword:(NSString*)keyword forDelegate:(id)delegate
+{
+    [self sendRequestOfAction:FBSApiActionRequestEntitiesByKeyword withUrl:[NSURL URLWithString:@"http://www.google.it"] forTarget:delegate];
+}
+
+-(void)requestBookDomainTypes
+{
+    for (int i = 1; i <= 10000000; i++) {
+        int value = [test intValue];
+        test = [NSNumber numberWithInt:value + 1];
+    };
+    
+    FBSApiOperation * op = [[FBSApiOperation alloc]initWithUrl:[resources getAllTypesOfBookDomainUrl]  andDelegate:self forAction:  FBSApiActionRequestBookDomainTypes andTarget:[NSNull null]];
     [queue addOperation:op];
 }
 
-- (void) responseDidReceived:(NSDictionary*)json forAction:(FBSApiAction)action ofTarget:(id)target
+-(void)manageBookDomainTypes:(NSDictionary *)types
+{
+    bookDomainTypes = types;
+    //manage your types here
+    NSLog(@"manageBookDomainTypes()");
+    self.typesReady = true;
+    for (NSDictionary *parameters in pendingRequests){
+      
+        NSOperation * sendOperation = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(sendRequestOperation:) object:parameters];
+        [queue addOperation:sendOperation];
+    }
+}
+
+- (void) responseDidReceived:(NSDictionary*)response forAction:(FBSApiAction)action ofTarget:(id)target
 {
     switch(action){
         case FBSApiActionRequestBookDomainTypes:
-            [target  bookDomainTypesDidReceived:json];
+            [self manageBookDomainTypes:response];
+            break;
+        case FBSApiActionRequestEntitiesByKeyword:
+            [target entitiesByKeywordDidReceived:response];            
+            break;
+        case FBSApiActionTEST:
             break;
         default:
             break;
     }
-    
 }
 
 + (FBSApiManager *) getSharedInstance {

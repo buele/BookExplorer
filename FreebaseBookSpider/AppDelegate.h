@@ -3,7 +3,6 @@
 //  FreebaseBookSpider
 //
 //  Created by Raffaele Bua on 28/03/14.
-
 /*****************************************************************************
  The MIT License (MIT)
  

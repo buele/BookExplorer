@@ -1,9 +1,8 @@
 //
-//  FreebaseBookDomain.m
+//  UrlRepository.h
 //  FreebaseBookSpider
 //
-//  Created by Raffaele Bua on 31/03/14.
-//
+//  Created by Raffaele Bua on 03/04/14.
 /*****************************************************************************
  The MIT License (MIT)
  
@@ -27,8 +26,23 @@
  THE SOFTWARE.
  *****************************************************************************/
 
-#import "FreebaseBookDomain.h"
+#import <Foundation/Foundation.h>
 
-@implementation FreebaseBookDomain
+@interface FBSResources : NSObject
+{
+    NSDictionary * freebaseUrls;
+    NSDictionary * mqlQueries;
+}
+
+-(void)loadResources;
+
+#pragma mark query parameters
+-(NSDictionary* )getFreebaseBaseUrls;
+-(NSDictionary* )getMQLQueries;
+
+#pragma mark urls
+-(NSString*) getBaseUrl;
+-(NSString* )getRunMqlQueryUrl;
+-(NSURL * )getAllTypesOfBookDomainUrl;
 
 @end

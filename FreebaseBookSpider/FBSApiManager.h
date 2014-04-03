@@ -30,21 +30,33 @@
 #import <Foundation/Foundation.h>
 #import "FBSApiOperation.h"
 #import "FBSApiActions.h"
+#import "FBSResources.h"
 
 
 @protocol FBSApiManagerDelegate
-- (void) bookDomainTypesDidReceived:(NSDictionary*)types;
+-(void)entitiesByKeywordDidReceived:(NSDictionary*)entities;
 @end
 
 
 @interface FBSApiManager : NSObject {
+    NSNumber * test;
     NSOperationQueue * queue;
+    FBSResources* resources;
+    
+    NSURL *  getAutocompleteSuggestionsByKeywordUrl;
+    NSURL *  getEntitiesByKeywordUrl;
+    NSURL *  getEntityByEntityIdUrl;
+    NSDictionary * bookDomainTypes;
+    NSMutableArray * pendingRequests;
+
 }
 
 + (FBSApiManager *) getSharedInstance;
 
--(void)requestBookDomainTypesForDelegate:(id)delegate;
+-(void)requestBookDomainTypes;
+-(void)getEntitiesByKeyword:(NSString*)keyword forDelegate:(id)delegate;
 
 @property(nonatomic)id<FBSApiManagerDelegate>_delegate;
+@property(atomic)BOOL typesReady;
 
 @end

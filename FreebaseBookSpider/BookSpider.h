@@ -32,19 +32,18 @@
 
 @interface BookSpider : NSObject<FBSApiManagerDelegate>
 {
-    NSDictionary * freebaseUrls;
-    NSDictionary * mqlQueries;
     NSMutableData * bookTypesData;
     NSURLConnection * bookTypesConnection;
-    
-    
 }
-- (void) bookDomainTypesDidReceived:(NSDictionary*)types;
--(void)manageBookDomainTypes:(NSDictionary *)types;
+
 -(id)init;
--(NSDictionary* )getFreebaseBaseUrls;
--(void)getBookDomainTypes;
--(NSDictionary* )getMQLQueries;
--(NSString*) getBaseUrl;
--(NSString* )getRunMqlQueryUrl;
+#pragma mark FBSApiManagerDelegate
+//-(void) bookDomainTypesDidReceived:(NSDictionary*)types;
+
+#pragma mark main interface
+-(NSArray *)getAutocompleteSuggestionsByKeyword:(NSString * ) keyword;
+-(NSArray *)getEntitiesByKeyword: (NSString * ) keyword;
+-(NSDictionary *)getEntityByEntityId:(NSString * ) entityId;
+
+
 @end

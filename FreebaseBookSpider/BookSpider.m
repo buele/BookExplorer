@@ -38,71 +38,54 @@
     self = [super init];
     if (self) {
         bookTypesData = [[NSMutableData alloc] init];
-        freebaseUrls = [self getFreebaseBaseUrls];
-        mqlQueries = [self getMQLQueries];
-        // NSString * allTypesOfBookDomainUrl = [self getAllTypesOfBookDomainUrl];
-        // NSLog(@"url: %@", [self encodeUrl:allTypesOfBookDomainUrl]);
         
+        [[FBSApiManager getSharedInstance] getEntitiesByKeyword:@"hello" forDelegate:self];
+        [[FBSApiManager getSharedInstance] getEntitiesByKeyword:@"hello" forDelegate:self];
+ 
         
-        [[FBSApiManager getSharedInstance] requestBookDomainTypesForDelegate:self]; //!!! DONE
         
     }
     
     return self;
 }
 
-- (void) bookDomainTypesDidReceived:(NSDictionary*)types{
-    NSLog(@"bette giru: %@",types);
-}
-
--(void)manageBookDomainTypes:(NSDictionary *)types
+-(void)entitiesByKeywordDidReceived:(NSDictionary*)entities
 {
-    NSLog(@"%@",types);
+    NSLog(@"testReceived()");
 }
 
--(NSString * )getAllTypesOfBookDomainUrl
+#pragma mark FBSApiManagerDelegate protocol
+-(NSArray *)getAutocompleteSuggestionsByKeyword:(NSString * ) keyword
 {
-    NSString * allTypesOfBookDomainQuery = [mqlQueries objectForKey:@"get_book_domain_all_types"];
-    
-    return [NSString stringWithFormat:@"%@?query=%@",[self getRunMqlQueryUrl],allTypesOfBookDomainQuery];
+    return nil;
 }
 
--(NSString* )encodeUrl:(NSString*)url
+-(NSArray *)getEntitiesByKeyword: (NSString * ) keyword
 {
-    return [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    return nil;
 }
 
--(NSString* )getRunMqlQueryUrl
+-(NSDictionary *)getEntityByEntityId:(NSString * ) entityId
 {
-    return [NSString stringWithFormat:@"%@%@",
-           [self getBaseUrl],
-           [freebaseUrls objectForKey:@"run_query_url"]];
-}
-
--(NSDictionary* )getFreebaseBaseUrls
-{
-    NSString* path =  [[NSBundle mainBundle] pathForResource:@"freebase_urls" ofType:@"plist"];
-    return [[NSDictionary alloc] initWithContentsOfFile:path];
+    return nil;
 }
 
 
--(NSString*) getBaseUrl
-{
-    return [freebaseUrls objectForKey:@"api_base_url"];
-}
 
 
--(NSDictionary* )getMQLQueries
-{
-    NSString* path =  [[NSBundle mainBundle] pathForResource:@"mql_queries" ofType:@"plist"];
-    
-    return [[NSDictionary alloc] initWithContentsOfFile:path];
-}
 
--(void)getBookDomainTypes
-{
 
-}
+
+
+
+
+
+
+
+
+
+
+
 
 - (void)connection:(NSURLConnection *)conn didReceiveData:(NSData *)data
 {
