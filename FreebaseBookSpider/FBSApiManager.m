@@ -46,11 +46,7 @@ static FBSApiManager *sharedSingleton_ = nil;
     return self;
 }
 
-#pragma mark utities
--(NSURL * )generateEntitiesByKeywordUrlByTypes:(NSDictionary *)types
-{
-    return nil;
-}
+
 
 #pragma mark FBSApiManagerDelegate protocol implementation
 -(void)getEntitiesByKeyword:(NSString*)keyword forDelegate:(id)delegate
@@ -112,7 +108,7 @@ static FBSApiManager *sharedSingleton_ = nil;
 -(void)manageBookDomainTypes:(NSDictionary *)types
 {
     bookDomainTypes = types;
-    getEntitiesByKeywordUrl = [self generateEntitiesByKeywordUrlByTypes:types];
+    [resources generateEntitiesByKeywordUrlByTypes:types];
     NSLog(@"manageBookDomainTypes()");
     self.typesReady = true;
     [self dispatchPendingRequestes];

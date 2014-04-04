@@ -8,5 +8,7 @@
 	<string>https://www.googleapis.com/freebase/v1</string>
 	<key>api_version</key>
 	<string>v1</string>
+	<key>entities_by_keyword_parameters</key>
+	<string>&amp;spell=always&amp;exact=false&amp;prefixed=true</string>
 </dict>
 </plist>

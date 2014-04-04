@@ -32,6 +32,7 @@
 {
     NSDictionary * freebaseUrls;
     NSDictionary * mqlQueries;
+    NSString * entitiesByKeywordBaseUrl;
 }
 
 -(void)loadResources;
@@ -43,6 +44,9 @@
 #pragma mark urls
 -(NSString*) getBaseUrl;
 -(NSString* )getRunMqlQueryUrl;
+
+#pragma mark main protocol
 -(NSURL * )getAllTypesOfBookDomainUrl;
+-(void)generateEntitiesByKeywordUrlByTypes:(NSDictionary *)types;
 
 @end

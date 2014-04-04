@@ -76,6 +76,11 @@
     return [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 }
 
+-(NSString* )getEntitiesByKeywordParameters
+{
+    return  [freebaseUrls objectForKey:@"entities_by_keyword_parameters"];
+}
+
 #pragma mark main protocol
 -(NSURL *)getAllTypesOfBookDomainUrl
 {
@@ -84,6 +89,20 @@
     NSURL* url =  [[NSURL alloc ]initWithString:[self encodeUrl:allTypesOfBookDomainQueryString]];
     return url;
 }
+
+-(void)generateEntitiesByKeywordUrlByTypes:(NSDictionary *)types
+{
+    NSString * typesFilter = @"(all+type%3A%2Fbook%2Fbook)";
+    entitiesByKeywordBaseUrl =  [NSString stringWithFormat:@"%@/search?filter=%@%@&query=",[self getBaseUrl],typesFilter,[self getEntitiesByKeywordParameters]] ;
+}
+
+
+
+-(NSURL *)getBookEntitiesUrlByKeyword:(NSString * )keyword 
+{
+    return  [[NSURL alloc ]initWithString:[NSString stringWithFormat:@"%@%@", entitiesByKeywordBaseUrl,keyword]] ;
+}
+
 
 
 @end
