@@ -51,12 +51,13 @@ static FBSApiManager *sharedSingleton_ = nil;
 #pragma mark FBSApiManagerDelegate protocol implementation
 -(void)getEntitiesByKeyword:(NSString*)keyword forDelegate:(id)delegate
 {
-    [self sendRequestOfAction:FBSApiActionRequestEntitiesByKeyword withUrl:[NSURL URLWithString:@"http://www.google.it"] forTarget:delegate];
+    [self sendRequestOfAction:FBSApiActionRequestEntitiesByKeyword withUrl:[resources getBookEntitiesUrlByKeyword:keyword] forTarget:delegate];
 }
 
 #pragma mark requests managers
 -(void)sendRequestOperation:(NSDictionary*)parameters
 {
+    NSLog(@"---- debugging sendRequestOperation-> url:%@",[[parameters objectForKey:@"url"] absoluteString ]);
     if(self.typesReady)
         [queue addOperation:[[FBSApiOperation alloc]initWithUrl:[parameters objectForKey:@"url"]  andDelegate:self forAction: [[parameters objectForKey:@"action"]intValue ]  andTarget:[parameters objectForKey:@"target"]]];
     else
@@ -65,6 +66,7 @@ static FBSApiManager *sharedSingleton_ = nil;
 
 -(void)sendRequestOfAction:(FBSApiAction)action  withUrl:(NSURL*)url forTarget:(id)target
 {
+    NSLog(@"request url: %@", url);
     NSOperation * sendOperation = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(sendRequestOperation:) object:[[NSDictionary alloc] initWithObjectsAndKeys:  url,@"url" , target,@"target" ,  [NSNumber numberWithInt:action], @"action" , nil ]];
     [queue addOperation:sendOperation];
 }
@@ -77,8 +79,17 @@ static FBSApiManager *sharedSingleton_ = nil;
 
 -(void)dispatchPendingRequestes
 {
-    for(NSDictionary *parameters in pendingRequests)
-        [queue addOperation:[[NSInvocationOperation alloc] initWithTarget:self selector:@selector(sendRequestOperation:) object:parameters]];
+    for(NSDictionary *parameters in pendingRequests){
+        NSDictionary * filteredParameters ;
+        switch([[parameters objectForKey:@"action"] intValue]){
+            case FBSApiActionRequestEntitiesByKeyword:
+                filteredParameters =[[NSDictionary alloc] initWithObjectsAndKeys:  [resources getBookEntitiesUrlByKeyword:[[parameters objectForKey:@"url"] absoluteString]],@"url" , [parameters objectForKey:@"target"],@"target" ,  [parameters objectForKey:@"action"], @"action" , nil ];
+                break;
+            default:
+                break;
+        }
+        [queue addOperation:[[NSInvocationOperation alloc] initWithTarget:self selector:@selector(sendRequestOperation:) object:filteredParameters]];
+    }
     pendingRequests = nil; //remove pending requestes
 }
 

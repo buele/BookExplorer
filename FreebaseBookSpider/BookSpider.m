@@ -39,8 +39,8 @@
     if (self) {
         bookTypesData = [[NSMutableData alloc] init];
         
-        [[FBSApiManager getSharedInstance] getEntitiesByKeyword:@"hello" forDelegate:self];
-        [[FBSApiManager getSharedInstance] getEntitiesByKeyword:@"hello" forDelegate:self];
+        [[FBSApiManager getSharedInstance] getEntitiesByKeyword:@"orwell" forDelegate:self];
+      //  [[FBSApiManager getSharedInstance] getEntitiesByKeyword:@"pasolini" forDelegate:self];
  
         
         
@@ -51,7 +51,7 @@
 
 -(void)entitiesByKeywordDidReceived:(NSDictionary*)entities
 {
-    NSLog(@"testReceived()");
+    NSLog(@"testReceived() entities: %@", entities);
 }
 
 #pragma mark FBSApiManagerDelegate protocol

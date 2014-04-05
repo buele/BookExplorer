@@ -86,23 +86,25 @@
 {
     NSString * allTypesOfBookDomainMQLQuery = [mqlQueries objectForKey:@"get_book_domain_all_types"];
     NSString * allTypesOfBookDomainQueryString = [NSString stringWithFormat:@"%@?query=%@",[self getRunMqlQueryUrl],allTypesOfBookDomainMQLQuery];
-    NSURL* url =  [[NSURL alloc ]initWithString:[self encodeUrl:allTypesOfBookDomainQueryString]];
-    return url;
+    return [[NSURL alloc ]initWithString:[self encodeUrl:allTypesOfBookDomainQueryString]];
 }
 
 -(void)generateEntitiesByKeywordUrlByTypes:(NSDictionary *)types
 {
-    NSString * typesFilter = @"(all+type%3A%2Fbook%2Fbook)";
-    entitiesByKeywordBaseUrl =  [NSString stringWithFormat:@"%@/search?filter=%@%@&query=",[self getBaseUrl],typesFilter,[self getEntitiesByKeywordParameters]] ;
+    NSMutableString* typesFilter = [[NSMutableString alloc ]initWithString:@"(any"];
+    for (NSDictionary* item in [types objectForKey:@"result"]){
+        [typesFilter appendString:[NSString stringWithFormat:@"+type:%@",[item objectForKey:@"id"]]];
+    }
+    [typesFilter appendString:@")"];
+    NSLog(@"typesFilter: %@",typesFilter);
+    entitiesByKeywordBaseUrl =  [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@/search?filter=%@%@&query=",[self getBaseUrl],[self encodeUrl:typesFilter],[self getEntitiesByKeywordParameters]] ];
 }
-
-
 
 -(NSURL *)getBookEntitiesUrlByKeyword:(NSString * )keyword 
 {
-    return  [[NSURL alloc ]initWithString:[NSString stringWithFormat:@"%@%@", entitiesByKeywordBaseUrl,keyword]] ;
+    return (entitiesByKeywordBaseUrl)?
+        [[NSURL alloc]initWithString:[NSString stringWithFormat:@"%@%@", entitiesByKeywordBaseUrl,keyword]]:
+        [[NSURL alloc]initWithString:keyword];
 }
-
-
 
 @end

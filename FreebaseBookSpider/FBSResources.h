@@ -48,5 +48,6 @@
 #pragma mark main protocol
 -(NSURL * )getAllTypesOfBookDomainUrl;
 -(void)generateEntitiesByKeywordUrlByTypes:(NSDictionary *)types;
+-(NSURL *)getBookEntitiesUrlByKeyword:(NSString * )keyword;
 
 @end
