@@ -35,6 +35,11 @@
 {
     
     
+    // testing localization
+
+    
+    
+    //------//
     //BookSpider
     BookSpider * bookSpider = [[BookSpider alloc] init];
 

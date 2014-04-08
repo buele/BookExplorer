@@ -1,8 +1,9 @@
 //
-//  HttpManager.h
+//  FBSApiActions.h
 //  FreebaseBookSpider
 //
-//  Created by Raffaele Bua on 31/03/14.
+//  Created by Raffaele Bua on 01/04/14.
+//  Copyright (c) 2014 Buele. All rights reserved.
 //
 /*****************************************************************************
  The MIT License (MIT)
@@ -27,32 +28,13 @@
  THE SOFTWARE.
  *****************************************************************************/
 
-#import <Foundation/Foundation.h>
-#import "FBSApiOperation.h"
-#import "FBSApiActions.h"
-#import "FBSResources.h"
+#ifndef FreebaseBookSpider_FBSApiActions_h
+#define FreebaseBookSpider_FBSApiActions_h
 
+typedef enum{
+    FBSApiActionNoOperation,
+    FBSApiActionRequestBookDomainTypes,
+    FBSApiActionRequestEntitiesByKeyword,
+}FBSApiAction;
 
-@protocol FBSApiManagerDelegate
--(void)entitiesByKeywordDidReceived:(NSDictionary*)entities;
-@end
-
-@interface FBSApiManager : NSObject {
-    NSOperationQueue * queue;
-    FBSResources* resources;
-    NSURL *  getAutocompleteSuggestionsByKeywordUrl;
-    NSURL *  getEntitiesByKeywordUrl;
-    NSURL *  getEntityByEntityIdUrl;
-    NSDictionary * bookDomainTypes;
-    NSMutableArray * pendingRequests;
-}
-
-@property(nonatomic)id<FBSApiManagerDelegate>_delegate;
-@property(atomic)BOOL typesReady;
-+ (FBSApiManager *) getSharedInstance;
-
-#pragma mark main protocol
--(void)getEntitiesByKeyword:(NSString*)keyword forDelegate:(id)delegate;
-
-
-@end
+#endif

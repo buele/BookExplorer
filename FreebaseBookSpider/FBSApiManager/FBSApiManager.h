@@ -1,9 +1,9 @@
 //
-//  BookSpider.m
-//  Freebase interface object to look topics about books
+//  HttpManager.h
+//  FreebaseBookSpider
 //
-//  Created by Raffaele Bua on 28/03/14.
-
+//  Created by Raffaele Bua on 31/03/14.
+//
 /*****************************************************************************
  The MIT License (MIT)
  
@@ -27,42 +27,29 @@
  THE SOFTWARE.
  *****************************************************************************/
 
+#import <Foundation/Foundation.h>
+#import "FBSApiOperation.h"
+#import "FBSApiActions.h"
+#import "FBSResources.h"
 
-#import "FBSApiManager.h"
-#import "BookSpider.h"
 
-@implementation BookSpider
+@protocol FBSApiManagerDelegate
+-(void)entitiesByKeywordDidReceived:(NSDictionary*)entities;
+@end
 
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        bookTypesData = [[NSMutableData alloc] init];
-        [[FBSApiManager getSharedInstance] getEntitiesByKeyword:nil forDelegate:self];
-        [[FBSApiManager getSharedInstance] getEntitiesByKeyword:@"la fattoria degli animali" forDelegate:self];
-    }
-    
-    return self;
+@interface FBSApiManager : NSObject {
+    NSOperationQueue * queue;
+    FBSResources* resources;
+    NSDictionary * bookDomainTypes;
+    NSMutableArray * pendingRequests;
 }
 
--(void)entitiesByKeywordDidReceived:(NSDictionary*)entities
-{
-    NSLog(@"testReceived() entities: %@", entities);
-}
+@property(nonatomic)id<FBSApiManagerDelegate>_delegate;
+@property(atomic)BOOL typesReady;
++ (FBSApiManager *) getSharedInstance;
 
-#pragma mark FBSApiManagerDelegate protocol
--(NSArray *)getAutocompleteSuggestionsByKeyword:(NSString * ) keyword
-{
-    return nil;
-}
-
-
-
-
-
-
-
-
+#pragma mark main protocol
+-(void)getEntitiesByKeyword:(NSString*)keyword forDelegate:(id)delegate;
 
 
 @end

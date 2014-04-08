@@ -29,22 +29,23 @@
 #import "FBSApiOperation.h"
 
 @implementation FBSApiOperation
+static NSString *  IS_FINISHED_KVO_KEY  = @"isFinished";
+static NSString *  IS_EXECUTING_KVO_KEY = @"isExecuting";
+
 
 - (void)start {
-
     if ([self isCancelled]){
-        [self willChangeValueForKey:@"isFinished"];
+        [self willChangeValueForKey:IS_FINISHED_KVO_KEY];
         finished = YES;
-        [self didChangeValueForKey:@"isFinished"];
+        [self didChangeValueForKey:IS_FINISHED_KVO_KEY];
         return;
     }
-    
-    [self willChangeValueForKey:@"isExecuting"];
+    [self willChangeValueForKey:IS_EXECUTING_KVO_KEY];
     executing = YES;
     [_connection scheduleInRunLoop:[NSRunLoop mainRunLoop]
                            forMode:NSDefaultRunLoopMode];
     [_connection start];
-    [self didChangeValueForKey:@"isExecuting"];
+    [self didChangeValueForKey:IS_EXECUTING_KVO_KEY];
 }
 
 -(id)initWithUrl:(NSURL * )url andDelegate:(id)delegate forAction:(FBSApiAction)action andTarget:(id)target
@@ -76,24 +77,28 @@
                                                           options:kNilOptions
                                                             error:&error] ;
 
-    [self willChangeValueForKey:@"isFinished"];
-    [self willChangeValueForKey:@"isExecuting"];
+    [self willChangeValueForKey:IS_FINISHED_KVO_KEY];
+    [self willChangeValueForKey:IS_EXECUTING_KVO_KEY];
     executing = NO;
     finished = YES;
+    if(error)  NSLog(@"%@", error);
     [_delegate responseDidReceived:json forAction:_action ofTarget:_target];
-    [self didChangeValueForKey:@"isExecuting"];
-    [self didChangeValueForKey:@"isFinished"];
+    [self didChangeValueForKey:IS_FINISHED_KVO_KEY];
+    [self didChangeValueForKey:IS_EXECUTING_KVO_KEY];
 }
 
-- (BOOL)isConcurrent {
+- (BOOL)isConcurrent
+{
     return NO;
 }
 
-- (BOOL)isExecuting {
+- (BOOL)isExecuting
+{
     return executing;
 }
 
-- (BOOL)isFinished {
+- (BOOL)isFinished
+{
     return finished;
 }
 

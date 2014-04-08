@@ -37,13 +37,11 @@
 }
 
 -(id)init;
-#pragma mark FBSApiManagerDelegate
-//-(void) bookDomainTypesDidReceived:(NSDictionary*)types;
 
 #pragma mark main interface
 -(NSArray *)getAutocompleteSuggestionsByKeyword:(NSString * ) keyword;
 -(NSArray *)getEntitiesByKeyword: (NSString * ) keyword;
--(NSDictionary *)getEntityByEntityId:(NSString * ) entityId;
+
 
 
 @end
