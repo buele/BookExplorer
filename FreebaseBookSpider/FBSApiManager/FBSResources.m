@@ -39,18 +39,23 @@ static NSString *  FREEBASE_RUN_QUERY_URL_KEY                   = @"run_query_ur
 static NSString *  FREEBASE_ENTITIES_BY_KEYWORD_PARAMETERS_KEY  = @"entities_by_keyword_parameters";
 static NSString *  FREEBASE_LANGUAGE_PARAMETER_KEY              = @"lang";
 static NSString *  FREEBASE_QUERY_PARAMETER_KEY                 = @"query";
-static NSString *  FREEBASE_MQL_QUERIES_BOOK_DOMAIN_TYPES_KEY   = @"get_book_domain_all_types";
-static NSString *  FREEBASE_RESULT_RESPONSE_KEY                 = @"result";
-static NSString *  FREEBASE_TYPE_FILTER_ITEM_KEY                = @"type";
-static NSString *  FREEBASE_RESULT_ITEM_ID_KEY                  = @"id";
 
 
 -(id)init
 {
     self = [super init];
-    if(self)
+    if(self){
         [self loadResources];
+        [self initUrls];
+    }
     return self;
+}
+
+
+-(void) initUrls
+{
+    static NSString *  FREEBASE_SEARCH_PARAMETER_KEY = @"search";
+    entitiesByKeywordBaseUrl = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@/%@?%@&%@=",[self getBaseUrl],FREEBASE_SEARCH_PARAMETER_KEY, [self getEntitiesByKeywordParameters],FREEBASE_QUERY_PARAMETER_KEY] ];
 }
 
 -(void)loadResources
@@ -98,33 +103,15 @@ static NSString *  FREEBASE_RESULT_ITEM_ID_KEY                  = @"id";
 -(NSString* )getLanguageParameter
 {
     return [NSString stringWithFormat: @"&%@=%@",FREEBASE_LANGUAGE_PARAMETER_KEY,[[NSLocale preferredLanguages] objectAtIndex:0]];
-
 }
 
 #pragma mark main protocol
--(NSURL *)getAllTypesOfBookDomainUrl
-{
-    NSString * allTypesOfBookDomainQueryString = [NSString stringWithFormat:@"%@?%@=%@",[self getRunMqlQueryUrl],FREEBASE_QUERY_PARAMETER_KEY,[mqlQueries objectForKey:FREEBASE_MQL_QUERIES_BOOK_DOMAIN_TYPES_KEY]];
-    return [[NSURL alloc ]initWithString:[self encodeUrl:allTypesOfBookDomainQueryString]];
-}
-
--(void)generateEntitiesByKeywordUrlByTypes:(NSDictionary *)types
-{
-    static NSString *  FREEBASE_START_FILTER_REQUEST_STRING = @"(any";
-    static NSString *  FREEBASE_END_FILTER_REQUEST_STRING   = @")";
-    static NSString *  FREEBASE_SEARCH_PARAMETER_KEY        = @"search";
-    static NSString *  FREEBASE_FILTER_PARAMETER_KEY        = @"filter";
-    
-    NSMutableString* typesFilter = [[NSMutableString alloc ]initWithString:FREEBASE_START_FILTER_REQUEST_STRING];
-    for (NSDictionary* item in [types objectForKey:FREEBASE_RESULT_RESPONSE_KEY])
-        [typesFilter appendString:[NSString stringWithFormat:@"+%@:%@",FREEBASE_TYPE_FILTER_ITEM_KEY, [item objectForKey:FREEBASE_RESULT_ITEM_ID_KEY]]];
-    [typesFilter appendString:FREEBASE_END_FILTER_REQUEST_STRING];
-    entitiesByKeywordBaseUrl =  [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@/%@?%@=%@%@&%@=",[self getBaseUrl],FREEBASE_SEARCH_PARAMETER_KEY, FREEBASE_FILTER_PARAMETER_KEY,[self encodeUrl:typesFilter],[self getEntitiesByKeywordParameters],FREEBASE_QUERY_PARAMETER_KEY] ];
-}
-
 -(NSURL *)getBookEntitiesUrlByKeyword:(NSString * )keyword 
 {
     NSString * keywordValue = [self encodeUrl:[keyword stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
+    
+    NSLog(@"%@%@",entitiesByKeywordBaseUrl, keywordValue);
+    
     return (entitiesByKeywordBaseUrl)?
         [[NSURL alloc]initWithString:[NSString stringWithFormat:@"%@%@",
                                       entitiesByKeywordBaseUrl,

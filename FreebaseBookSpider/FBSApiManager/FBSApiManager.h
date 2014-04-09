@@ -40,12 +40,9 @@
 @interface FBSApiManager : NSObject {
     NSOperationQueue * queue;
     FBSResources* resources;
-    NSDictionary * bookDomainTypes;
-    NSMutableArray * pendingRequests;
 }
 
 @property(nonatomic)id<FBSApiManagerDelegate>_delegate;
-@property(atomic)BOOL typesReady;
 + (FBSApiManager *) getSharedInstance;
 
 #pragma mark main protocol

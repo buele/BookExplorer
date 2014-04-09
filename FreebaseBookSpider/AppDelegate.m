@@ -35,12 +35,7 @@
 {
     
     
-    // testing localization
 
-    
-    
-    //------//
-    //BookSpider
     BookSpider * bookSpider = [[BookSpider alloc] init];
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];

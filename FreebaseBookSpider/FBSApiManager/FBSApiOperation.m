@@ -75,8 +75,7 @@ static NSString *  IS_EXECUTING_KVO_KEY = @"isExecuting";
     NSError* error;
     NSDictionary * json = [NSJSONSerialization JSONObjectWithData:buffer
                                                           options:kNilOptions
-                                                            error:&error] ;
-
+                                                            error:&error];
     [self willChangeValueForKey:IS_FINISHED_KVO_KEY];
     [self willChangeValueForKey:IS_EXECUTING_KVO_KEY];
     executing = NO;

@@ -44,9 +44,6 @@ static NSString *  RESULT_RESPONSE_KEY      = @"result";
     if(self){
         queue = [[NSOperationQueue alloc] init];
         resources = [[FBSResources alloc]init];
-        pendingRequests = [[NSMutableArray alloc]init];
-        [self requestBookDomainTypes];
-        self.typesReady = false;
     }
     return self;
 }
@@ -56,17 +53,10 @@ static NSString *  RESULT_RESPONSE_KEY      = @"result";
 {
     if(!delegate) return;
     if(keyword){
-        if(self.typesReady){
-            if(resources)
-                [self sendRequestWithUrl:[resources getBookEntitiesUrlByKeyword:keyword]  andAction:FBSApiActionRequestEntitiesByKeyword andTarget:delegate];
-            else
-                [delegate entitiesByKeywordDidReceived:nil];
-        }
-        else
-            [pendingRequests addObject:[[NSDictionary alloc] initWithObjectsAndKeys:[NSNumber numberWithInt:FBSApiActionRequestEntitiesByKeyword] , ACTION_DICTIONARY_KEY , keyword, KEYWORD_DICTIONARY_KEY, delegate, ACTION_TARGET_KEY, nil ]];
-    }else{
+        if(resources) [self sendRequestWithUrl:[resources getBookEntitiesUrlByKeyword:keyword]  andAction:FBSApiActionRequestEntitiesByKeyword andTarget:delegate];
+        else [delegate entitiesByKeywordDidReceived:nil];
+    }else
         [delegate entitiesByKeywordDidReceived:nil];
-    }
 }
 
 #pragma mark requests managers
@@ -74,40 +64,6 @@ static NSString *  RESULT_RESPONSE_KEY      = @"result";
 {
     if(url && action && target && queue)
         [queue addOperation:[[FBSApiOperation alloc]initWithUrl:url  andDelegate:self forAction:action  andTarget:target]];
-}
-
--(void)requestBookDomainTypes
-{
-    if(resources && queue){
-        FBSApiOperation * op = [[FBSApiOperation alloc]initWithUrl:[resources getAllTypesOfBookDomainUrl]  andDelegate:self forAction:  FBSApiActionRequestBookDomainTypes andTarget:[NSNull null]];
-        [queue addOperation:op];
-    }
-}
-
--(void)dispatchPendingRequestes
-{
-    if(pendingRequests && [pendingRequests count] > 0 && resources){
-        NSString* keyword = nil;
-        id target = nil;
-        FBSApiAction action = 0;
-        
-        for(NSDictionary *pendingRequest in pendingRequests){
-            action  = [[pendingRequest objectForKey:ACTION_DICTIONARY_KEY] intValue];
-            switch(action){
-                case FBSApiActionRequestEntitiesByKeyword:
-                    keyword = [pendingRequest objectForKey:KEYWORD_DICTIONARY_KEY];
-                    target  = [pendingRequest objectForKey:ACTION_TARGET_KEY];
-                    if(target){
-                        if(keyword) [self sendRequestWithUrl:[resources getBookEntitiesUrlByKeyword:keyword ] andAction:action  andTarget:target];
-                        else [target entitiesByKeywordDidReceived:nil];
-                    }
-                break;
-                default:
-                break;
-            }
-        }
-        pendingRequests = nil; //remove pending requestes
-    }
 }
 
 #pragma mark static method
@@ -121,26 +77,12 @@ static NSString *  RESULT_RESPONSE_KEY      = @"result";
 - (void) responseDidReceived:(NSDictionary*)response forAction:(FBSApiAction)action ofTarget:(id)target
 {
     switch(action){
-        case FBSApiActionRequestBookDomainTypes:
-            [self manageBookDomainTypes:response];
-            break;
         case FBSApiActionRequestEntitiesByKeyword:
             if(target && response)
                 [target entitiesByKeywordDidReceived:[response objectForKey:RESULT_RESPONSE_KEY]];
             break;
         default:
             break;
-    }
-}
-
-#pragma mark response managers
--(void)manageBookDomainTypes:(NSDictionary *)types
-{
-    if(resources && types && [types count]> 0){
-        bookDomainTypes = types;
-        [resources generateEntitiesByKeywordUrlByTypes:types];
-        self.typesReady = true;
-        [self dispatchPendingRequestes];
     }
 }
 

@@ -39,7 +39,7 @@
     if (self) {
         bookTypesData = [[NSMutableData alloc] init];
         [[FBSApiManager getSharedInstance] getEntitiesByKeyword:nil forDelegate:self];
-        [[FBSApiManager getSharedInstance] getEntitiesByKeyword:@"la fattoria degli animali" forDelegate:self];
+        [[FBSApiManager getSharedInstance] getEntitiesByKeyword:@"Orwell" forDelegate:self];
     }
     
     return self;
