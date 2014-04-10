@@ -33,7 +33,9 @@
 
 typedef enum{
     FBSApiActionNoOperation,
-    FBSApiActionRequestEntitiesByKeyword,
+    FBSApiActionRequestNodesByKeyword,
+    FBSApiActionRequestNodePropertiesById,
+    FBSApiActionRequestImageById
 }FBSApiAction;
 
 #endif

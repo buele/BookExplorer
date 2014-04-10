@@ -38,16 +38,26 @@
     self = [super init];
     if (self) {
         bookTypesData = [[NSMutableData alloc] init];
-        [[FBSApiManager getSharedInstance] getEntitiesByKeyword:nil forDelegate:self];
-        [[FBSApiManager getSharedInstance] getEntitiesByKeyword:@"Orwell" forDelegate:self];
+        [[FBSApiManager getSharedInstance] getNodesByKeyword:nil forDelegate:self];
+        [[FBSApiManager getSharedInstance] getNodesByKeyword:@"Nineteen eighty-four" forDelegate:self];
     }
     
     return self;
 }
 
--(void)entitiesByKeywordDidReceived:(NSDictionary*)entities
+-(void)nodesByKeywordDidReceived:(NSArray*)nodes
 {
-    NSLog(@"testReceived() entities: %@", entities);
+    if ([nodes count] !=0) {
+        NSDictionary * node = [nodes objectAtIndex:0];
+        NSString * nodeId = [node objectForKey:@"id"];
+        NSLog(@"Node id: %@",nodeId);
+        [[FBSApiManager getSharedInstance] getNodePropertiesById:nodeId forDelegate:self];
+    }
+}
+
+-(void)nodePropertiesByIdDidReceived:(NSDictionary*)properties
+{
+    NSLog(@"Properties: %@", properties);
 }
 
 #pragma mark FBSApiManagerDelegate protocol
@@ -55,6 +65,8 @@
 {
     return nil;
 }
+
+
 
 
 

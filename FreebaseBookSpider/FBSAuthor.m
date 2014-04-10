@@ -1,8 +1,8 @@
 //
-//  UrlRepository.h
+//  FBSAuthor.m
 //  FreebaseBookSpider
 //
-//  Created by Raffaele Bua on 03/04/14.
+//  Created by Raffaele Bua on 10/04/14.
 /*****************************************************************************
  The MIT License (MIT)
  
@@ -26,31 +26,8 @@
  THE SOFTWARE.
  *****************************************************************************/
 
-#import <Foundation/Foundation.h>
+#import "FBSAuthor.h"
 
-@interface FBSResources : NSObject
-{
-    NSDictionary * freebaseUrls;
-    NSDictionary * mqlQueries;
-    NSString * nodesByKeywordBaseUrl;
-    NSString * nodePropertiesByIdBaseUrl;
-    NSString * imageBaseUrl;
-}
-
--(void)loadResources;
-
-#pragma mark query parameters
--(NSDictionary* )getFreebaseBaseUrls;
--(NSDictionary* )getMQLQueries;
-
-#pragma mark urls
--(NSString*) getBaseUrl;
--(NSString* )getRunMqlQueryUrl;
-
-#pragma mark main protocol
--(NSURL *)getBookNodesUrlByKeyword:(NSString * )keyword;
--(NSURL *)getNodePropertiesUrlById:(NSString * )nodeId;
--(NSURL *)getImageUrlById:(NSString * )imageId;
-
+@implementation FBSAuthor
 
 @end

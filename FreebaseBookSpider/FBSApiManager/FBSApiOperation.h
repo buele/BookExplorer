@@ -30,7 +30,8 @@
 #import "FBSApiActions.h"
 
 @protocol FBSApiOperatorDelegate
-- (void) responseDidReceived:(NSDictionary*)json forAction:(FBSApiAction)action ofTarget:(id)target;
+//- (void) responseDidReceived:(NSDictionary*)json forAction:(FBSApiAction)action ofTarget:(id)target;
+- (void) responseDidReceived:(NSData*)response forAction:(FBSApiAction)action ofTarget:(id)target;
 @end
 
 @interface FBSApiOperation : NSOperation

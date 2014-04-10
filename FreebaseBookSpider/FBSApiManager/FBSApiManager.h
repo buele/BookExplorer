@@ -34,7 +34,9 @@
 
 
 @protocol FBSApiManagerDelegate
--(void)entitiesByKeywordDidReceived:(NSDictionary*)entities;
+-(void)nodesByKeywordDidReceived:(NSArray*)nodes;
+-(void)nodePropertiesByIdDidReceived:(NSDictionary*)properties;
+-(void)imageByIdDidReceived:(UIImage*)image;
 @end
 
 @interface FBSApiManager : NSObject {
@@ -46,7 +48,8 @@
 + (FBSApiManager *) getSharedInstance;
 
 #pragma mark main protocol
--(void)getEntitiesByKeyword:(NSString*)keyword forDelegate:(id)delegate;
-
+-(void)getNodesByKeyword:(NSString*)keyword forDelegate:(id)delegate;
+-(void)getNodePropertiesById:(NSString*)nodeId forDelegate:(id)delegate;
+-(void)getImageById:(NSString*)imageId forDelegate:(id)delegate;
 
 @end

@@ -49,15 +49,47 @@ static NSString *  RESULT_RESPONSE_KEY      = @"result";
 }
 
 #pragma mark FBSApiManagerDelegate protocol implementation
--(void)getEntitiesByKeyword:(NSString*)keyword forDelegate:(id)delegate
+-(void)getNodesByKeyword:(NSString*)keyword forDelegate:(id)delegate
 {
     if(!delegate) return;
-    if(keyword){
-        if(resources) [self sendRequestWithUrl:[resources getBookEntitiesUrlByKeyword:keyword]  andAction:FBSApiActionRequestEntitiesByKeyword andTarget:delegate];
-        else [delegate entitiesByKeywordDidReceived:nil];
+    if(keyword && [keyword length] != 0){
+        if(resources) [self sendRequestWithUrl:[resources getBookNodesUrlByKeyword:keyword]  andAction:FBSApiActionRequestNodesByKeyword andTarget:delegate];
+        else [delegate nodesByKeywordDidReceived:nil];
     }else
-        [delegate entitiesByKeywordDidReceived:nil];
+        [delegate nodesByKeywordDidReceived:nil];
 }
+
+-(void)getNodePropertiesById:(NSString*)nodeId forDelegate:(id)delegate
+{
+    if(!delegate) return;
+    if(nodeId && [nodeId length] != 0){
+        if(resources) [self sendRequestWithUrl:[resources getNodePropertiesUrlById:nodeId]  andAction:FBSApiActionRequestNodePropertiesById andTarget:delegate];
+        else [delegate nodePropertiesByIdDidReceived:nil];
+    }else
+        [delegate nodePropertiesByIdDidReceived:nil];
+}
+
+-(void)getImageById:(NSString*)imageId forDelegate:(id)delegate
+{
+    if(!delegate) return;
+    if(imageId && [imageId length] != 0){
+        if(resources) [self sendRequestWithUrl:[resources getImageUrlById:imageId]  andAction:FBSApiActionRequestImageById andTarget:delegate];
+        else [delegate imageByIdDidReceived:nil];
+    }else
+        [delegate imageByIdDidReceived:nil];
+}
+
+#pragma mark utilities
+-(NSDictionary *)dataToJson:(NSData *)data
+{
+    NSError* error;
+    NSDictionary * json = [NSJSONSerialization JSONObjectWithData:data
+                                                          options:kNilOptions
+                                                            error:&error];
+    if(error)  NSLog(@"%@", error);
+    return json;
+}
+
 
 #pragma mark requests managers
 -(void)sendRequestWithUrl:(NSURL* )url andAction:(FBSApiAction)action andTarget:(id)target
@@ -68,22 +100,28 @@ static NSString *  RESULT_RESPONSE_KEY      = @"result";
 
 #pragma mark static method
 + (FBSApiManager *) getSharedInstance {
-    if (sharedSingleton_ == nil) {
-        sharedSingleton_ = [[FBSApiManager alloc] init]; }
+    if (sharedSingleton_ == nil) 
+        sharedSingleton_ = [[FBSApiManager alloc] init];
     return sharedSingleton_;
 }
 
 #pragma mark switch types of requestes
-- (void) responseDidReceived:(NSDictionary*)response forAction:(FBSApiAction)action ofTarget:(id)target
+- (void) responseDidReceived:(NSData*)response forAction:(FBSApiAction)action ofTarget:(id)target
 {
-    switch(action){
-        case FBSApiActionRequestEntitiesByKeyword:
-            if(target && response)
-                [target entitiesByKeywordDidReceived:[response objectForKey:RESULT_RESPONSE_KEY]];
+    if(target && response)
+        switch(action){
+            case FBSApiActionRequestNodesByKeyword:
+                [target nodesByKeywordDidReceived:[[self dataToJson:response] objectForKey:RESULT_RESPONSE_KEY]];
+                break;
+            case FBSApiActionRequestNodePropertiesById:
+                [target nodePropertiesByIdDidReceived:[self dataToJson:response]];
+                break;
+            case FBSApiActionRequestImageById:
+                [target imageByIdDidReceived:[UIImage imageWithData:response]];
+                break;
+            default:
             break;
-        default:
-            break;
-    }
+        }
 }
 
 @end

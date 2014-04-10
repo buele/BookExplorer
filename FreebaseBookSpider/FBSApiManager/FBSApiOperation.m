@@ -72,16 +72,11 @@ static NSString *  IS_EXECUTING_KVO_KEY = @"isExecuting";
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)conn
 {
-    NSError* error;
-    NSDictionary * json = [NSJSONSerialization JSONObjectWithData:buffer
-                                                          options:kNilOptions
-                                                            error:&error];
     [self willChangeValueForKey:IS_FINISHED_KVO_KEY];
     [self willChangeValueForKey:IS_EXECUTING_KVO_KEY];
     executing = NO;
     finished = YES;
-    if(error)  NSLog(@"%@", error);
-    [_delegate responseDidReceived:json forAction:_action ofTarget:_target];
+    [_delegate responseDidReceived:buffer forAction:_action ofTarget:_target];
     [self didChangeValueForKey:IS_FINISHED_KVO_KEY];
     [self didChangeValueForKey:IS_EXECUTING_KVO_KEY];
 }
