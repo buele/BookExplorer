@@ -1,8 +1,9 @@
 //
-//  FBSApiOperation.h
+//  FBSPropertyValue.h
 //  FreebaseBookSpider
 //
-//  Created by Raffaele Bua on 01/04/14.
+//  Created by Raffaele Bua on 11/04/14.
+
 /*****************************************************************************
  The MIT License (MIT)
  
@@ -27,27 +28,11 @@
  *****************************************************************************/
 
 #import <Foundation/Foundation.h>
-#import "FBSApiActions.h"
 
-@protocol FBSApiOperatorDelegate
-//- (void) responseDidReceived:(NSDictionary*)json forAction:(FBSApiAction)action ofTarget:(id)target;
-- (void) responseDidReceived:(NSData*)response forAction:(FBSApiAction)action ofTarget:(id)target  forKey:(NSString *)key;
+@interface FBSPropertyValue : NSObject
+@property(nonatomic)NSString * propertyId;
+@property(nonatomic)NSString * lang;
+@property(nonatomic)NSString * text;
+
+-(id)initWithId:(NSString *)aPropertyId andLang:(NSString *)aLang andText:(NSString *)aText;
 @end
-
-@interface FBSApiOperation : NSOperation
-{
-    BOOL executing;
-    BOOL finished;
-    NSMutableData * buffer;
-    NSURLConnection * connection;
-    FBSApiAction action;
-    NSString * key;
-    id<FBSApiOperatorDelegate>delegtae;
-    id target;
-}
-
--(id)initWithUrl:(NSURL * )aUrl andDelegate:(id)aDelegate forAction:(FBSApiAction)anAction andTarget:(id)aTarget forKey:(NSString *)aKey;
-
-
-@end
-

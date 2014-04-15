@@ -38,26 +38,33 @@
     self = [super init];
     if (self) {
         bookTypesData = [[NSMutableData alloc] init];
-        [[FBSApiManager getSharedInstance] getNodesByKeyword:nil forDelegate:self];
-        [[FBSApiManager getSharedInstance] getNodesByKeyword:@"Nineteen eighty-four" forDelegate:self];
+        [[FBSApiManager getSharedInstance] getNodesByKeyword:nil andForDelegate:self];
+        [[FBSApiManager getSharedInstance] getNodesByKeyword:@"Nineteen eighty-four" andForDelegate:self];
     }
     
     return self;
 }
 
--(void)nodesByKeywordDidReceived:(NSArray*)nodes
+-(void)nodesByKeywordDidReceived:(NSArray*)nodes forKey:(NSString *)key
 {
+    NSLog(@"nodesByKeywordDidReceived, for key: %@", key);
+    NSLog(@"nodesByKeywordDidReceived, nodes: %@", nodes );
     if ([nodes count] !=0) {
         NSDictionary * node = [nodes objectAtIndex:0];
         NSString * nodeId = [node objectForKey:@"id"];
         NSLog(@"Node id: %@",nodeId);
-        [[FBSApiManager getSharedInstance] getNodePropertiesById:nodeId forDelegate:self];
+        [[FBSApiManager getSharedInstance] getNodePropertiesById:nodeId andForDelegate:self];
     }
 }
 
--(void)nodePropertiesByIdDidReceived:(NSDictionary*)properties
+-(void)nodePropertiesByIdDidReceived:(NSDictionary*)response forKey:(NSString *)key
 {
-    NSLog(@"Properties: %@", properties);
+    NSLog(@"nodePropertiesByIdDidReceived, for key: %@", key);
+    static NSString *  FREEBASE_PROPERTY_KEY = @"property";
+    NSDictionary* properties = [response objectForKey:FREEBASE_PROPERTY_KEY];
+    NSLog(@"properties: %@", properties);
+    NSLog(@"author: %@", [[[[ properties objectForKey:@"/book/written_work/author"]         objectForKey:@"values"] objectAtIndex:0] objectForKey:@"text"]);
+    NSLog(@"date: %@",   [[[[ properties objectForKey:@"/book/written_work/copyright_date"] objectForKey:@"values"] objectAtIndex:0] objectForKey:@"text"]);
 }
 
 #pragma mark FBSApiManagerDelegate protocol
@@ -65,14 +72,6 @@
 {
     return nil;
 }
-
-
-
-
-
-
-
-
 
 
 

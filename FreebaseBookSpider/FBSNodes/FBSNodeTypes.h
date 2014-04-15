@@ -1,8 +1,10 @@
 //
-//  FBSApiOperation.h
+//  FBSApiActions.h
 //  FreebaseBookSpider
 //
 //  Created by Raffaele Bua on 01/04/14.
+//  Copyright (c) 2014 Buele. All rights reserved.
+//
 /*****************************************************************************
  The MIT License (MIT)
  
@@ -26,28 +28,12 @@
  THE SOFTWARE.
  *****************************************************************************/
 
-#import <Foundation/Foundation.h>
-#import "FBSApiActions.h"
+#ifndef FreebaseBookSpider_FBSNodeTypes_h
+#define FreebaseBookSpider_FBSNodeTypes_h
 
-@protocol FBSApiOperatorDelegate
-//- (void) responseDidReceived:(NSDictionary*)json forAction:(FBSApiAction)action ofTarget:(id)target;
-- (void) responseDidReceived:(NSData*)response forAction:(FBSApiAction)action ofTarget:(id)target  forKey:(NSString *)key;
-@end
+typedef enum{
+    FBSNodeBookType,
+    FBSNodeAuthorType
+}FBSNodeTypes;
 
-@interface FBSApiOperation : NSOperation
-{
-    BOOL executing;
-    BOOL finished;
-    NSMutableData * buffer;
-    NSURLConnection * connection;
-    FBSApiAction action;
-    NSString * key;
-    id<FBSApiOperatorDelegate>delegtae;
-    id target;
-}
-
--(id)initWithUrl:(NSURL * )aUrl andDelegate:(id)aDelegate forAction:(FBSApiAction)anAction andTarget:(id)aTarget forKey:(NSString *)aKey;
-
-
-@end
-
+#endif

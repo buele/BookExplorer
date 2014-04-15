@@ -42,23 +42,24 @@ static NSString *  IS_EXECUTING_KVO_KEY = @"isExecuting";
     }
     [self willChangeValueForKey:IS_EXECUTING_KVO_KEY];
     executing = YES;
-    [_connection scheduleInRunLoop:[NSRunLoop mainRunLoop]
+    [connection scheduleInRunLoop:[NSRunLoop mainRunLoop]
                            forMode:NSDefaultRunLoopMode];
-    [_connection start];
+    [connection start];
     [self didChangeValueForKey:IS_EXECUTING_KVO_KEY];
 }
 
--(id)initWithUrl:(NSURL * )url andDelegate:(id)delegate forAction:(FBSApiAction)action andTarget:(id)target
+-(id)initWithUrl:(NSURL * )aUrl andDelegate:(id)aDelegate forAction:(FBSApiAction)anAction andTarget:(id)aTarget forKey:(NSString *)aKey
 {
     self = [super init];
     if (self){
+        key = aKey;
         executing = NO;
         finished = NO;
-        _action = action;
+        action = anAction;
         buffer = [[NSMutableData alloc] init];
-        _delegate = delegate;
-        _target = target;
-        _connection =[[NSURLConnection alloc] initWithRequest:[NSURLRequest requestWithURL:url]
+        delegtae = aDelegate;
+        target = aTarget;
+        connection =[[NSURLConnection alloc] initWithRequest:[NSURLRequest requestWithURL:aUrl]
                                                      delegate:self
                                              startImmediately:NO];
     }
@@ -76,7 +77,7 @@ static NSString *  IS_EXECUTING_KVO_KEY = @"isExecuting";
     [self willChangeValueForKey:IS_EXECUTING_KVO_KEY];
     executing = NO;
     finished = YES;
-    [_delegate responseDidReceived:buffer forAction:_action ofTarget:_target];
+    [delegtae responseDidReceived:buffer forAction:action ofTarget:target forKey:key];
     [self didChangeValueForKey:IS_FINISHED_KVO_KEY];
     [self didChangeValueForKey:IS_EXECUTING_KVO_KEY];
 }

@@ -1,8 +1,9 @@
 //
-//  FBSApiOperation.h
+//  FBSAuthorNode.h
 //  FreebaseBookSpider
 //
-//  Created by Raffaele Bua on 01/04/14.
+//  Created by Raffaele Bua on 11/04/14.
+
 /*****************************************************************************
  The MIT License (MIT)
  
@@ -26,28 +27,29 @@
  THE SOFTWARE.
  *****************************************************************************/
 
-#import <Foundation/Foundation.h>
-#import "FBSApiActions.h"
+#import "FBSNode.h"
 
-@protocol FBSApiOperatorDelegate
-//- (void) responseDidReceived:(NSDictionary*)json forAction:(FBSApiAction)action ofTarget:(id)target;
-- (void) responseDidReceived:(NSData*)response forAction:(FBSApiAction)action ofTarget:(id)target  forKey:(NSString *)key;
+@interface FBSAuthorNode : FBSNode
+
+@property(nonatomic)NSDate   * dateOfBirth;
+@property(nonatomic)NSString * placeOfBirth;
+@property(nonatomic)NSArray  * nationality;
+@property(nonatomic)NSString * gender;
+@property(nonatomic)NSArray  * profession;
+@property(nonatomic)NSArray  * religion;
+@property(nonatomic)NSArray  * parents;
+@property(nonatomic)NSArray  * children;
+@property(nonatomic)NSArray  * spouseS;
+@property(nonatomic)NSArray  * employmentHistory;
+@property(nonatomic)NSArray  * education;
+@property(nonatomic)NSArray  * quotations;
+@property(nonatomic)NSArray  * placesLived;
+@property(nonatomic)NSArray  * languages;
+@property(nonatomic)NSDate   * dateOfDeath;
+@property(nonatomic)NSString * placeOfDeath;
+@property(nonatomic)NSString * causeOfDeath;
+@property(nonatomic)NSArray  * worksWritten;
+@property(nonatomic)NSArray  * influencedBy;
+@property(nonatomic)NSArray  * influenced;
+
 @end
-
-@interface FBSApiOperation : NSOperation
-{
-    BOOL executing;
-    BOOL finished;
-    NSMutableData * buffer;
-    NSURLConnection * connection;
-    FBSApiAction action;
-    NSString * key;
-    id<FBSApiOperatorDelegate>delegtae;
-    id target;
-}
-
--(id)initWithUrl:(NSURL * )aUrl andDelegate:(id)aDelegate forAction:(FBSApiAction)anAction andTarget:(id)aTarget forKey:(NSString *)aKey;
-
-
-@end
-

@@ -1,8 +1,9 @@
 //
-//  FBSAuthor.m
+//  FBSAuthorNodeGenerator.m
 //  FreebaseBookSpider
 //
-//  Created by Raffaele Bua on 10/04/14.
+//  Created by Raffaele Bua on 11/04/14.
+
 /*****************************************************************************
  The MIT License (MIT)
  
@@ -26,10 +27,10 @@
  THE SOFTWARE.
  *****************************************************************************/
 
-#import "FBSAuthor.h"
+#import "FBSAuthorNodeGenerator.h"
+#import "FBSAuthorNode.h"
 
-@implementation FBSAuthor
-
+@implementation FBSAuthorNodeGenerator
 static NSString * FB_DESCRIPTION_KEY        = @"/common/topic/description";
 static NSString * FB_IMAGE_KEY              = @"/common/topic/image";
 static NSString * FB_DATE_OF_BIRTH_KEY      = @"/people/person/date_of_birth";
@@ -53,45 +54,34 @@ static NSString * FB_WORKS_WRITTEN_KEY      = @"/book/author/works_written";
 static NSString * FB_INFLUENCED_BY_KEY      = @"/influence/influence_node/influenced_by";
 static NSString * FB_INFLUENCED_KEY         = @"/influence/influence_node/influenced";
 
--(id)initWithId:(NSString* )id andName:(NSString *)name andProperties:(NSDictionary *)properties
-{
-    
-    self = [super init];
-    if(self){
-        self.id = id;
-        self.name = name;
-        [self initProperties:properties];
-    }
-    return self;
-    
-}
 
--(void)initProperties:(NSDictionary *)properties
+-(void) nodeWithId:(NSString *)aNodeId andName:(NSString *)aName andProperties:(NSDictionary *)properties toDelegate:(id)aDelegate
 {
-    self.id                 = [properties objectForKey:FB_DESCRIPTION_KEY];
-    self.name               = [properties objectForKey:FB_IMAGE_KEY];
-    self.description        = [properties objectForKey:FB_DATE_OF_BIRTH_KEY];
-    self.image              = [properties objectForKey:FB_PLACE_OF_BIRTH_KEY];
-    self.dateOfBirth        = [properties objectForKey:FB_NATIONALITY_KEY];
-    self.placeOfBirth       = [properties objectForKey:FB_GENDER_KEY];
-    self.nationality        = [properties objectForKey:FB_PROFESSION_KEY];
-    self.gender             = [properties objectForKey:FB_GENDER_KEY];
-    self.profession         = [properties objectForKey:FB_PROFESSION_KEY];
-    self.religion           = [properties objectForKey:FB_REGION_KEY];
-    self.parents            = [properties objectForKey:FB_PARENTS_KEY];
-    self.children           = [properties objectForKey:FB_CHILDREN_KEY];
-    self.spouseS            = [properties objectForKey:FB_SPOUSES_KEY];
-    self.employmentHistory  = [properties objectForKey:FB_EMPLOYMENT_HISTORY_KEY];
-    self.education          = [properties objectForKey:FB_EDUCATION_KEY];
-    self.quotations         = [properties objectForKey:FB_QUOTATIONS_KEY];
-    self.placesLived        = [properties objectForKey:FB_PLACES_LIVED_KEY];
-    self.languages          = [properties objectForKey:FB_LANGUAGES_KEY];
-    self.dateOfDeath        = [properties objectForKey:FB_DATE_OF_DEATH_KEY];
-    self.placeOfDeath       = [properties objectForKey:FB_PLACE_OF_DEATH_KEY];
-    self.causeOfDeath       = [properties objectForKey:FB_CAUSE_OF_DEATH_KEY];
-    self.worksWritten       = [properties objectForKey:FB_WORKS_WRITTEN_KEY];
-    self.influencedBy       = [properties objectForKey:FB_INFLUENCED_BY_KEY];
-    self.influenced         = [properties objectForKey:FB_INFLUENCED_KEY];
+    FBSAuthorNode * author = [[FBSAuthorNode alloc] init];
+    author.nodeId             = aNodeId;
+    author.name               = aName;
+    author.description        = [properties objectForKey:FB_DESCRIPTION_KEY];
+    author.dateOfBirth        = [properties objectForKey:FB_DATE_OF_BIRTH_KEY];
+    author.placeOfBirth       = [properties objectForKey:FB_PLACE_OF_BIRTH_KEY];
+    author.nationality        = [properties objectForKey:FB_NATIONALITY_KEY];
+    author.gender             = [properties objectForKey:FB_GENDER_KEY];
+    author.profession         = [properties objectForKey:FB_PROFESSION_KEY];
+    author.religion           = [properties objectForKey:FB_REGION_KEY];
+    author.parents            = [properties objectForKey:FB_PARENTS_KEY];
+    author.children           = [properties objectForKey:FB_CHILDREN_KEY];
+    author.spouseS            = [properties objectForKey:FB_SPOUSES_KEY];
+    author.employmentHistory  = [properties objectForKey:FB_EMPLOYMENT_HISTORY_KEY];
+    author.education          = [properties objectForKey:FB_EDUCATION_KEY];
+    author.quotations         = [properties objectForKey:FB_QUOTATIONS_KEY];
+    author.placesLived        = [properties objectForKey:FB_PLACES_LIVED_KEY];
+    author.languages          = [properties objectForKey:FB_LANGUAGES_KEY];
+    author.dateOfDeath        = [properties objectForKey:FB_DATE_OF_DEATH_KEY];
+    author.placeOfDeath       = [properties objectForKey:FB_PLACE_OF_DEATH_KEY];
+    author.causeOfDeath       = [properties objectForKey:FB_CAUSE_OF_DEATH_KEY];
+    author.worksWritten       = [properties objectForKey:FB_WORKS_WRITTEN_KEY];
+    author.influencedBy       = [properties objectForKey:FB_INFLUENCED_BY_KEY];
+    author.influenced         = [properties objectForKey:FB_INFLUENCED_KEY];
+    [self  requestImageWithId:[properties objectForKey:FB_IMAGE_KEY] forNode:author forTarget:aDelegate];
 }
 
 @end

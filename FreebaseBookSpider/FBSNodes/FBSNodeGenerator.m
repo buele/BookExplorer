@@ -1,8 +1,9 @@
 //
-//  FBSApiOperation.h
+//  FBSNodeGenerator.m
 //  FreebaseBookSpider
 //
-//  Created by Raffaele Bua on 01/04/14.
+//  Created by Raffaele Bua on 11/04/14.
+
 /*****************************************************************************
  The MIT License (MIT)
  
@@ -26,28 +27,35 @@
  THE SOFTWARE.
  *****************************************************************************/
 
-#import <Foundation/Foundation.h>
-#import "FBSApiActions.h"
+#import "FBSNodeGenerator.h"
+#import "FBSPendingImageRequest.h"
+#import "../FBSApiManager/FBSApiManager.h"
 
-@protocol FBSApiOperatorDelegate
-//- (void) responseDidReceived:(NSDictionary*)json forAction:(FBSApiAction)action ofTarget:(id)target;
-- (void) responseDidReceived:(NSData*)response forAction:(FBSApiAction)action ofTarget:(id)target  forKey:(NSString *)key;
-@end
+@implementation FBSNodeGenerator
 
-@interface FBSApiOperation : NSOperation
+-(id)init
 {
-    BOOL executing;
-    BOOL finished;
-    NSMutableData * buffer;
-    NSURLConnection * connection;
-    FBSApiAction action;
-    NSString * key;
-    id<FBSApiOperatorDelegate>delegtae;
-    id target;
+    self = [super init];
+    if(self){
+        pendingImageRequests = [[NSMutableArray alloc]init];
+    }
+    return self;
 }
 
--(id)initWithUrl:(NSURL * )aUrl andDelegate:(id)aDelegate forAction:(FBSApiAction)anAction andTarget:(id)aTarget forKey:(NSString *)aKey;
+-(void)requestImageWithId:(NSString *)anImageId forNode:(FBSNode *)aNode forTarget:(id)aTarget
+{
+    FBSPendingImageRequest * pendingRequest = [[FBSPendingImageRequest alloc]initWithNode:aNode andTarget:aTarget];
+    [pendingImageRequests addObject:pendingRequest];
+    [[FBSApiManager getSharedInstance] getImageById:anImageId andForDelegate:self forRequestId:[NSNumber numberWithInt:[pendingImageRequests count] -1]];
+}
 
+-(void)imageByIdDidReceived:(UIImage*)image forKey:(NSNumber *)requestIndex
+{
+    FBSPendingImageRequest * pendingRequest = [pendingImageRequests objectAtIndex:[requestIndex intValue]];
+    pendingRequest.node.image = image;
+    [pendingImageRequests removeObjectAtIndex:[requestIndex intValue]];
+    [pendingRequest.target nodeDidGenerated:pendingRequest.node withId:pendingRequest.node.nodeId];
+
+}
 
 @end
-

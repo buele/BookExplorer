@@ -30,7 +30,7 @@
 
 #import "FBSApiOperation.h"
 #import "FBSApiManager.h"
-
+#import "../FBSNodes/FBSPendingImageRequest.h"
 @implementation FBSApiManager
 static FBSApiManager *sharedSingleton_      = nil;
 static NSString *  ACTION_DICTIONARY_KEY    = @"action";
@@ -49,34 +49,35 @@ static NSString *  RESULT_RESPONSE_KEY      = @"result";
 }
 
 #pragma mark FBSApiManagerDelegate protocol implementation
--(void)getNodesByKeyword:(NSString*)keyword forDelegate:(id)delegate
+//-(void)getNodesByKeyword:(NSString*)aKeyword andForDelegate:(id)aDelegate;
+-(void)getNodesByKeyword:(NSString*)aKeyword andForDelegate:(id)aDelegate
 {
-    if(!delegate) return;
-    if(keyword && [keyword length] != 0){
-        if(resources) [self sendRequestWithUrl:[resources getBookNodesUrlByKeyword:keyword]  andAction:FBSApiActionRequestNodesByKeyword andTarget:delegate];
-        else [delegate nodesByKeywordDidReceived:nil];
+    if(!aDelegate) return;
+    if(aKeyword && [aKeyword length] != 0){
+        if(resources) [self sendRequestWithUrl:[resources getBookNodesUrlByKeyword:aKeyword]  andAction:FBSApiActionRequestNodesByKeyword andTarget:aDelegate forKey:aKeyword];
+        else [aDelegate nodesByKeywordDidReceived:nil forKey:aKeyword];
     }else
-        [delegate nodesByKeywordDidReceived:nil];
+        [aDelegate nodesByKeywordDidReceived:nil forKey:aKeyword];
 }
 
--(void)getNodePropertiesById:(NSString*)nodeId forDelegate:(id)delegate
+-(void)getNodePropertiesById:(NSString*)aNodeId andForDelegate:(id)aDelegate
 {
-    if(!delegate) return;
-    if(nodeId && [nodeId length] != 0){
-        if(resources) [self sendRequestWithUrl:[resources getNodePropertiesUrlById:nodeId]  andAction:FBSApiActionRequestNodePropertiesById andTarget:delegate];
-        else [delegate nodePropertiesByIdDidReceived:nil];
+    if(!aDelegate) return;
+    if(aNodeId && [aNodeId length] != 0){
+        if(resources) [self sendRequestWithUrl:[resources getNodePropertiesUrlById:aNodeId]  andAction:FBSApiActionRequestNodePropertiesById andTarget:aDelegate forKey:aNodeId];
+        else [aDelegate nodePropertiesByIdDidReceived:nil forKey:aNodeId];
     }else
-        [delegate nodePropertiesByIdDidReceived:nil];
+        [aDelegate nodePropertiesByIdDidReceived:nil forKey:aNodeId];
 }
 
--(void)getImageById:(NSString*)imageId forDelegate:(id)delegate
+-(void)getImageById:(NSString*)anImageId andForDelegate:(id)aDelegate forRequestId:(NSNumber *)aRequestId;
 {
-    if(!delegate) return;
-    if(imageId && [imageId length] != 0){
-        if(resources) [self sendRequestWithUrl:[resources getImageUrlById:imageId]  andAction:FBSApiActionRequestImageById andTarget:delegate];
-        else [delegate imageByIdDidReceived:nil];
+    if(!aDelegate) return;
+    if(anImageId && [anImageId length] != 0){
+        if(resources) [self sendRequestWithUrl:[resources getImageUrlById:anImageId]  andAction:FBSApiActionRequestImageById andTarget:aDelegate forKey:[aRequestId stringValue]];
+        else [aDelegate imageByIdDidReceived:nil forKey:aRequestId];
     }else
-        [delegate imageByIdDidReceived:nil];
+        [aDelegate imageByIdDidReceived:nil forKey:aRequestId];
 }
 
 #pragma mark utilities
@@ -92,10 +93,10 @@ static NSString *  RESULT_RESPONSE_KEY      = @"result";
 
 
 #pragma mark requests managers
--(void)sendRequestWithUrl:(NSURL* )url andAction:(FBSApiAction)action andTarget:(id)target
+-(void)sendRequestWithUrl:(NSURL* )url andAction:(FBSApiAction)action andTarget:(id)target forKey:(NSString *)key
 {
     if(url && action && target && queue)
-        [queue addOperation:[[FBSApiOperation alloc]initWithUrl:url  andDelegate:self forAction:action  andTarget:target]];
+        [queue addOperation:[[FBSApiOperation alloc]initWithUrl:url  andDelegate:self forAction:action  andTarget:target forKey:key]];
 }
 
 #pragma mark static method
@@ -106,18 +107,18 @@ static NSString *  RESULT_RESPONSE_KEY      = @"result";
 }
 
 #pragma mark switch types of requestes
-- (void) responseDidReceived:(NSData*)response forAction:(FBSApiAction)action ofTarget:(id)target
+- (void) responseDidReceived:(NSData*)response forAction:(FBSApiAction)action ofTarget:(id)target forKey:(NSString *)key
 {
     if(target && response)
         switch(action){
             case FBSApiActionRequestNodesByKeyword:
-                [target nodesByKeywordDidReceived:[[self dataToJson:response] objectForKey:RESULT_RESPONSE_KEY]];
+                [target nodesByKeywordDidReceived:[[self dataToJson:response] objectForKey:RESULT_RESPONSE_KEY] forKey:key];
                 break;
             case FBSApiActionRequestNodePropertiesById:
-                [target nodePropertiesByIdDidReceived:[self dataToJson:response]];
+                [target nodePropertiesByIdDidReceived:[self dataToJson:response] forKey:key];
                 break;
             case FBSApiActionRequestImageById:
-                [target imageByIdDidReceived:[UIImage imageWithData:response]];
+                [target imageByIdDidReceived:[UIImage imageWithData:response] forKey:[NSNumber numberWithInt:[key intValue]]];
                 break;
             default:
             break;

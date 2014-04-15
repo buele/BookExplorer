@@ -1,8 +1,9 @@
 //
-//  FBSApiOperation.h
+//  FBSPendingImageRequest.m
 //  FreebaseBookSpider
 //
-//  Created by Raffaele Bua on 01/04/14.
+//  Created by Raffaele Bua on 13/04/14.
+
 /*****************************************************************************
  The MIT License (MIT)
  
@@ -26,28 +27,18 @@
  THE SOFTWARE.
  *****************************************************************************/
 
-#import <Foundation/Foundation.h>
-#import "FBSApiActions.h"
+#import "FBSPendingImageRequest.h"
 
-@protocol FBSApiOperatorDelegate
-//- (void) responseDidReceived:(NSDictionary*)json forAction:(FBSApiAction)action ofTarget:(id)target;
-- (void) responseDidReceived:(NSData*)response forAction:(FBSApiAction)action ofTarget:(id)target  forKey:(NSString *)key;
-@end
+@implementation FBSPendingImageRequest
 
-@interface FBSApiOperation : NSOperation
+
+-(id)initWithNode:(FBSNode *)aNode andTarget:(id)aTarget;
 {
-    BOOL executing;
-    BOOL finished;
-    NSMutableData * buffer;
-    NSURLConnection * connection;
-    FBSApiAction action;
-    NSString * key;
-    id<FBSApiOperatorDelegate>delegtae;
-    id target;
+    self = [super init];
+    if(self){
+        self.node = aNode;
+        self.target = aTarget;
+    }
+    return self;
 }
-
--(id)initWithUrl:(NSURL * )aUrl andDelegate:(id)aDelegate forAction:(FBSApiAction)anAction andTarget:(id)aTarget forKey:(NSString *)aKey;
-
-
 @end
-

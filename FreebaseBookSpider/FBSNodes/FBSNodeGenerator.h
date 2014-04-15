@@ -1,8 +1,9 @@
 //
-//  FBSApiOperation.h
+//  FBSNodeGenerator.h
 //  FreebaseBookSpider
 //
-//  Created by Raffaele Bua on 01/04/14.
+//  Created by Raffaele Bua on 11/04/14.
+
 /*****************************************************************************
  The MIT License (MIT)
  
@@ -27,27 +28,17 @@
  *****************************************************************************/
 
 #import <Foundation/Foundation.h>
-#import "FBSApiActions.h"
-
-@protocol FBSApiOperatorDelegate
-//- (void) responseDidReceived:(NSDictionary*)json forAction:(FBSApiAction)action ofTarget:(id)target;
-- (void) responseDidReceived:(NSData*)response forAction:(FBSApiAction)action ofTarget:(id)target  forKey:(NSString *)key;
+#import "FBSNode.h"
+@protocol FBSNodeGeneratorDelegate
+-(void)nodeDidGenerated:(FBSNode *)aNode withId:(NSString *)aNodeId;
 @end
 
-@interface FBSApiOperation : NSOperation
+@interface FBSNodeGenerator : NSObject
 {
-    BOOL executing;
-    BOOL finished;
-    NSMutableData * buffer;
-    NSURLConnection * connection;
-    FBSApiAction action;
-    NSString * key;
-    id<FBSApiOperatorDelegate>delegtae;
-    id target;
+    NSMutableArray* pendingImageRequests;
 }
 
--(id)initWithUrl:(NSURL * )aUrl andDelegate:(id)aDelegate forAction:(FBSApiAction)anAction andTarget:(id)aTarget forKey:(NSString *)aKey;
-
-
+-(void)nodeWithId:(NSString *)aNodeId andWithName:(NSString* )name andForDelegate:(id)delegate;
+-(void) nodeWithId:(NSString *)aNodeId andName:(NSString *)aName andProperties:(NSDictionary *)properties toDelegate:(id)delegate;
+-(void)requestImageWithId:(NSString *)anImageId forNode:(FBSNode *)aNode forTarget:(id)aTarget;
 @end
-

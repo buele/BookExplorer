@@ -1,8 +1,9 @@
 //
-//  FBSApiOperation.h
+//  FBSNode.m
 //  FreebaseBookSpider
 //
-//  Created by Raffaele Bua on 01/04/14.
+//  Created by Raffaele Bua on 11/04/14.
+
 /*****************************************************************************
  The MIT License (MIT)
  
@@ -26,28 +27,25 @@
  THE SOFTWARE.
  *****************************************************************************/
 
-#import <Foundation/Foundation.h>
-#import "FBSApiActions.h"
+#import "FBSNode.h"
 
-@protocol FBSApiOperatorDelegate
-//- (void) responseDidReceived:(NSDictionary*)json forAction:(FBSApiAction)action ofTarget:(id)target;
-- (void) responseDidReceived:(NSData*)response forAction:(FBSApiAction)action ofTarget:(id)target  forKey:(NSString *)key;
-@end
+@implementation FBSNode
+@synthesize nodeId;
+@synthesize name;
+@synthesize alias;
+@synthesize description;
+@synthesize image;
 
-@interface FBSApiOperation : NSOperation
+-(id)initWithId:(NSString *)aNodeId andName:(NSString *)aName andAlias:(NSString *)anAlias andDescription:(NSString *)aDescription andImage:(UIImage  *)anImage
 {
-    BOOL executing;
-    BOOL finished;
-    NSMutableData * buffer;
-    NSURLConnection * connection;
-    FBSApiAction action;
-    NSString * key;
-    id<FBSApiOperatorDelegate>delegtae;
-    id target;
+    self = [super init];
+    if(self){
+        self.nodeId = aNodeId;
+        self.name = aName;
+        self.alias = anAlias;
+        self.description = aDescription;
+        self.image = anImage;
+    }
+    return self;
 }
-
--(id)initWithUrl:(NSURL * )aUrl andDelegate:(id)aDelegate forAction:(FBSApiAction)anAction andTarget:(id)aTarget forKey:(NSString *)aKey;
-
-
 @end
-

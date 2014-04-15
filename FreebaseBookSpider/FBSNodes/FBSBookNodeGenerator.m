@@ -1,8 +1,9 @@
 //
-//  FBSBook.m
+//  FBSBookNodeGenerator.m
 //  FreebaseBookSpider
 //
-//  Created by Raffaele Bua on 10/04/14.
+//  Created by Raffaele Bua on 11/04/14.
+
 /*****************************************************************************
  The MIT License (MIT)
  
@@ -26,11 +27,10 @@
  THE SOFTWARE.
  *****************************************************************************/
 
-#import "FBSBook.h"
+#import "FBSBookNodeGenerator.h"
+#import "FBSBookNode.h"
 
-@implementation FBSBook
-
-
+@implementation FBSBookNodeGenerator
 
 static NSString * FB_ALIAS_KEY                      = @"/common/topic/alias";
 static NSString * FB_DESCRIPTION_KEY                = @"/common/topic/description";
@@ -50,36 +50,31 @@ static NSString * FB_NEXT_IN_SERIES_KEY             = @"/book/written_work/next_
 static NSString * FB_INFLUENCED_BY_KEY              = @"/influence/influence_node/influenced_by";
 static NSString * FB_INFLUENCED_KEY                 = @"/influence/influence_node/influenced";
 
--(id)initWithId:(NSString* )id andName:(NSString *)name andProperties:(NSDictionary *)properties
+
+
+-(void) nodeWithId:(NSString *)aNodeId andName:(NSString *)aName andProperties:(NSDictionary *)properties toDelegate:(id)delegate
 {
-    self = [super init];
-    if(self){
-        self.id = id;
-        self.name = name;
-        [self initProperties:properties];
-    }
-    return self;
+    FBSBookNode * book = [[FBSBookNode alloc] init];
+    book.nodeId = aNodeId;    
+    book.alias                      = [properties objectForKey:FB_ALIAS_KEY];
+    book.description                = [properties objectForKey:FB_DESCRIPTION_KEY];
+    book.genre                      = [properties objectForKey:FB_GENRE_KEY];
+    book.characters                 = [properties objectForKey:FB_CHARACTERS_KEY];
+    book.quotations                 = [properties objectForKey:FB_QUOTATIONS_KEY];
+    book.author                     = [properties objectForKey:FB_AUTHOR_KEY];
+    book.dateWritten                = [properties objectForKey:FB_DATE_WRITTEN_KEY];
+    book.copyrightDate              = [properties objectForKey:FB_COPYRIGHT_DATE_KEY];
+    book.dateOfFirstPubblication    = [properties objectForKey:FB_DATE_OF_FIRST_PUBBLICATION_KEY];
+    book.subjects                   = [properties objectForKey:FB_SUBJECTS_KEY];
+    book.originalLanguage           = [properties objectForKey:FB_ORIGINAL_LANGUAGE_KEY];
+    book.previousInSeries           = [properties objectForKey:FB_PREVIOUS_IN_SERIES_KEY];
+    book.isfdbId                    = [properties objectForKey:FB_ISFDB_ID_KEY];
+    book.nextInSeries               = [properties objectForKey:FB_NEXT_IN_SERIES_KEY];
+    book.influencedBy               = [properties objectForKey:FB_INFLUENCED_BY_KEY];
+    book.influenced                 = [properties objectForKey:FB_INFLUENCED_KEY];
+    [self  requestImageWithId:[properties objectForKey:FB_IMAGE_KEY] forNode:book forTarget:delegate];
 }
 
--(void)initProperties:(NSDictionary *)properties
-{
-    self.alias                      = [properties objectForKey:FB_ALIAS_KEY];
-    self.description                = [properties objectForKey:FB_DESCRIPTION_KEY];
-    self.imageId                    = [properties objectForKey:FB_IMAGE_KEY];
-    self.genre                      = [properties objectForKey:FB_GENRE_KEY];
-    self.characters                 = [properties objectForKey:FB_CHARACTERS_KEY];
-    self.quotations                 = [properties objectForKey:FB_QUOTATIONS_KEY];
-    self.author                     = [properties objectForKey:FB_AUTHOR_KEY];
-    self.dateWritten                = [properties objectForKey:FB_DATE_WRITTEN_KEY];
-    self.copyrightDate              = [properties objectForKey:FB_COPYRIGHT_DATE_KEY];
-    self.dateOfFirstPubblication    = [properties objectForKey:FB_DATE_OF_FIRST_PUBBLICATION_KEY];
-    self.subjects                   = [properties objectForKey:FB_SUBJECTS_KEY];
-    self.originalLanguage           = [properties objectForKey:FB_ORIGINAL_LANGUAGE_KEY];
-    self.previousInSeries           = [properties objectForKey:FB_PREVIOUS_IN_SERIES_KEY];
-    self.isfdbId                    = [properties objectForKey:FB_ISFDB_ID_KEY];
-    self.nextInSeries               = [properties objectForKey:FB_NEXT_IN_SERIES_KEY];
-    self.influencedBy               = [properties objectForKey:FB_INFLUENCED_BY_KEY];
-    self.influenced                 = [properties objectForKey:FB_INFLUENCED_KEY];
-}
+
 
 @end

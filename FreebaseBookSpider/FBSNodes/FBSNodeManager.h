@@ -1,8 +1,9 @@
 //
-//  FBSApiOperation.h
+//  FBSNodeManager.h
 //  FreebaseBookSpider
 //
-//  Created by Raffaele Bua on 01/04/14.
+//  Created by Raffaele Bua on 14/04/14.
+
 /*****************************************************************************
  The MIT License (MIT)
  
@@ -27,27 +28,17 @@
  *****************************************************************************/
 
 #import <Foundation/Foundation.h>
-#import "FBSApiActions.h"
+#import "FBSNode.h"
 
-@protocol FBSApiOperatorDelegate
-//- (void) responseDidReceived:(NSDictionary*)json forAction:(FBSApiAction)action ofTarget:(id)target;
-- (void) responseDidReceived:(NSData*)response forAction:(FBSApiAction)action ofTarget:(id)target  forKey:(NSString *)key;
+@protocol FBSNodeManagerDelegate
+-(void)nodeDidGenerated:(FBSNode *)node withId:(NSString *)nodeId;
 @end
 
-@interface FBSApiOperation : NSOperation
+@interface FBSNodeManager : NSObject
 {
-    BOOL executing;
-    BOOL finished;
-    NSMutableData * buffer;
-    NSURLConnection * connection;
-    FBSApiAction action;
-    NSString * key;
-    id<FBSApiOperatorDelegate>delegtae;
-    id target;
+    NSMutableDictionary * pendingNodeRequests;
+    
 }
-
--(id)initWithUrl:(NSURL * )aUrl andDelegate:(id)aDelegate forAction:(FBSApiAction)anAction andTarget:(id)aTarget forKey:(NSString *)aKey;
-
+-(void)nodeWithId:(NSString *)aNodeId andWithName:(NSString *)name forDelegate:(id)delegate;
 
 @end
-

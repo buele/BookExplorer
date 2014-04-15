@@ -1,8 +1,9 @@
 //
-//  FBSApiOperation.h
+//  FBSBookNode.m
 //  FreebaseBookSpider
 //
-//  Created by Raffaele Bua on 01/04/14.
+//  Created by Raffaele Bua on 11/04/14.
+
 /*****************************************************************************
  The MIT License (MIT)
  
@@ -26,28 +27,21 @@
  THE SOFTWARE.
  *****************************************************************************/
 
-#import <Foundation/Foundation.h>
-#import "FBSApiActions.h"
+#import "FBSBookNode.h"
 
-@protocol FBSApiOperatorDelegate
-//- (void) responseDidReceived:(NSDictionary*)json forAction:(FBSApiAction)action ofTarget:(id)target;
-- (void) responseDidReceived:(NSData*)response forAction:(FBSApiAction)action ofTarget:(id)target  forKey:(NSString *)key;
+@implementation FBSBookNode
+@synthesize genre;
+@synthesize characters;
+@synthesize quotations;
+@synthesize author;
+@synthesize dateWritten;
+@synthesize copyrightDate;
+@synthesize dateOfFirstPubblication;
+@synthesize subjects;
+@synthesize originalLanguage;
+@synthesize previousInSeries;
+@synthesize isfdbId;
+@synthesize nextInSeries;
+@synthesize influencedBy;
+@synthesize influenced;
 @end
-
-@interface FBSApiOperation : NSOperation
-{
-    BOOL executing;
-    BOOL finished;
-    NSMutableData * buffer;
-    NSURLConnection * connection;
-    FBSApiAction action;
-    NSString * key;
-    id<FBSApiOperatorDelegate>delegtae;
-    id target;
-}
-
--(id)initWithUrl:(NSURL * )aUrl andDelegate:(id)aDelegate forAction:(FBSApiAction)anAction andTarget:(id)aTarget forKey:(NSString *)aKey;
-
-
-@end
-

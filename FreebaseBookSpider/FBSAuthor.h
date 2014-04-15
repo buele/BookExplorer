@@ -36,7 +36,7 @@
 @property(nonatomic)UIImage  * image;               // /common/topic/image
 @property(nonatomic)NSDate   * dateOfBirth;         // /people/person/date_of_birth
 @property(nonatomic)NSString * placeOfBirth;        // /people/person/place_of_birth
-@property(nonatomic)NSString * nationality;         // /people/person/nationality
+@property(nonatomic)NSArray  * nationality;         // /people/person/nationality
 @property(nonatomic)NSString * gender;              // /people/person/gender
 @property(nonatomic)NSArray  * profession;          // /people/person/profession
 @property(nonatomic)NSArray  * religion;            // /people/person/religion
@@ -55,6 +55,6 @@
 @property(nonatomic)NSArray  * influencedBy;        // /influence/influence_node/influenced_by
 @property(nonatomic)NSArray  * influenced;          // /influence/influence_node/influenced
 
-
+-(id)initWithId:(NSString* )id andName:(NSString *)name andProperties:(NSDictionary *)properties;
 
 @end
