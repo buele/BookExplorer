@@ -29,6 +29,7 @@
 
 #import "FBSBookNodeGenerator.h"
 #import "FBSBookNode.h"
+#import "FBSProperty.h"
 
 @implementation FBSBookNodeGenerator
 
@@ -74,22 +75,22 @@ static NSString * FB_INFLUENCED_LABEL                   = @"influenced";
     FBSBookNode * book = [[FBSBookNode alloc] init];
     book.type = FBSNodeBookType;
     book.nodeId = aNodeId;    
-    book.alias                      = [properties objectForKey:FB_ALIAS_KEY];
-    book.description                = [properties objectForKey:FB_DESCRIPTION_KEY];
-    book.genre                      = [properties objectForKey:FB_GENRE_KEY];
-    book.characters                 = [properties objectForKey:FB_CHARACTERS_KEY];
-    book.quotations                 = [properties objectForKey:FB_QUOTATIONS_KEY];
-    book.author                     = [properties objectForKey:FB_AUTHOR_KEY];
-    book.dateWritten                = [properties objectForKey:FB_DATE_WRITTEN_KEY];
-    book.copyrightDate              = [properties objectForKey:FB_COPYRIGHT_DATE_KEY];
-    book.dateOfFirstPubblication    = [properties objectForKey:FB_DATE_OF_FIRST_PUBBLICATION_KEY];
-    book.subjects                   = [properties objectForKey:FB_SUBJECTS_KEY];
-    book.originalLanguage           = [properties objectForKey:FB_ORIGINAL_LANGUAGE_KEY];
-    book.previousInSeries           = [properties objectForKey:FB_PREVIOUS_IN_SERIES_KEY];
-    book.isfdbId                    = [properties objectForKey:FB_ISFDB_ID_KEY];
-    book.nextInSeries               = [properties objectForKey:FB_NEXT_IN_SERIES_KEY];
-    book.influencedBy               = [properties objectForKey:FB_INFLUENCED_BY_KEY];
-    book.influenced                 = [properties objectForKey:FB_INFLUENCED_KEY];
+    book.alias  = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_ALIAS_KEY] label:FB_ALIAS_LABEL];
+    book.description = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_DESCRIPTION_KEY] label:FB_DESCRIPTION_LABEL];
+    book.genre = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_GENRE_KEY] label:FB_GENRE_LABEL];
+    book.characters = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_CHARACTERS_KEY] label:FB_CHARACTERS_LABEL];
+    book.quotations = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_QUOTATIONS_KEY] label:FB_QUOTATIONS_LABEL];
+    book.author  = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_AUTHOR_KEY] label:FB_AUTHOR_LABEL];
+    book.dateWritten = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_DATE_WRITTEN_KEY] label:FB_DATE_WRITTEN_LABEL];
+    book.copyrightDate = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_COPYRIGHT_DATE_KEY] label:FB_COPYRIGHT_DATE_LABEL];
+    book.dateOfFirstPubblication = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_DATE_OF_FIRST_PUBBLICATION_KEY] label:FB_DATE_OF_FIRST_PUBBLICATION_LABEL];
+    book.subjects = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_SUBJECTS_KEY] label:FB_SUBJECTS_LABEL];
+    book.originalLanguage = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_ORIGINAL_LANGUAGE_KEY] label:FB_ORIGINAL_LANGUAGE_KEY];
+    book.previousInSeries = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_PREVIOUS_IN_SERIES_KEY] label:FB_PREVIOUS_IN_SERIES_KEY];
+    book.isfdbId = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_ISFDB_ID_KEY] label:FB_ISFDB_ID_LABEL];
+    book.nextInSeries = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_NEXT_IN_SERIES_KEY] label:FB_NEXT_IN_SERIES_LABEL];
+    book.influencedBy = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_INFLUENCED_BY_KEY] label:FB_INFLUENCED_BY_LABEL];
+    book.influenced = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_INFLUENCED_KEY] label:FB_INFLUENCED_LABEL];
     [self  requestImageWithId:[properties objectForKey:FB_IMAGE_KEY] forNode:book toTarget:delegate];
 }
 

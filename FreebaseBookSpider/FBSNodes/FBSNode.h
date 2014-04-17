@@ -29,14 +29,15 @@
 
 #import <Foundation/Foundation.h>
 #import "FBSNodeTypes.h"
+#import "FBSProperty.h"
 
 @interface FBSNode : NSObject
 
-@property(nonatomic)NSString * nodeId;
-@property(nonatomic)NSString * name;
-@property(nonatomic)NSString * alias;
-@property(nonatomic)NSString * description;
-@property(nonatomic)UIImage  * image;
+@property(nonatomic)NSString    * nodeId;
+@property(nonatomic)NSString    * name;
+@property(nonatomic)FBSProperty * alias;
+@property(nonatomic)FBSProperty * description;
+@property(nonatomic)UIImage     * image;
 @property(nonatomic)FBSNodeTypes type;
 
 
