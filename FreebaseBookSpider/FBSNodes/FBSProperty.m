@@ -1,8 +1,8 @@
 //
-//  FBSAuthorNode.h
+//  FBSProperty.m
 //  FreebaseBookSpider
 //
-//  Created by Raffaele Bua on 11/04/14.
+//  Created by Raffaele Bua on 17/04/14.
 
 /*****************************************************************************
  The MIT License (MIT)
@@ -27,29 +27,31 @@
  THE SOFTWARE.
  *****************************************************************************/
 
-#import "FBSNode.h"
+#import "FBSProperty.h"
+#import "FBSPropertyValue.h"
 
-@interface FBSAuthorNode : FBSNode
+@implementation FBSProperty
+@synthesize label;
+@synthesize values;
 
-@property(nonatomic)NSDate   * dateOfBirth;
-@property(nonatomic)NSString * placeOfBirth;
-@property(nonatomic)NSArray  * nationality;
-@property(nonatomic)NSString * gender;
-@property(nonatomic)NSArray  * profession;
-@property(nonatomic)NSArray  * religion;
-@property(nonatomic)NSArray  * parents;
-@property(nonatomic)NSArray  * children;
-@property(nonatomic)NSArray  * spouseS;
-@property(nonatomic)NSArray  * employmentHistory;
-@property(nonatomic)NSArray  * education;
-@property(nonatomic)NSArray  * quotations;
-@property(nonatomic)NSArray  * placesLived;
-@property(nonatomic)NSArray  * languages;
-@property(nonatomic)NSDate   * dateOfDeath;
-@property(nonatomic)NSString * placeOfDeath;
-@property(nonatomic)NSString * causeOfDeath;
-@property(nonatomic)NSArray  * worksWritten;
-@property(nonatomic)NSArray  * influencedBy;
-@property(nonatomic)NSArray  * influenced;
-
+-(id)initWithFreebaseProperty:(NSDictionary *)aProperty label:(NSString *)aLabel
+{
+    static NSString * VALUES_KEY = @"values";
+    static NSString * FBPROPERTY_ID_KEY = @"id";
+    static NSString * FBPROPERTY_LANG_KEY = @"lang";
+    static NSString * FBPROPERTY_TEXT_KEY = @"text";
+    
+    self = [super init];
+    
+    if(self){
+        self.label = aLabel;
+        values = [[NSMutableArray alloc] init];
+        for (NSDictionary * item in [aProperty objectForKey:VALUES_KEY]) {
+            FBSPropertyValue * value = [[FBSPropertyValue alloc] initWithId:[item objectForKey:FBPROPERTY_ID_KEY] lang:[item objectForKey:FBPROPERTY_LANG_KEY] text:[item objectForKey:FBPROPERTY_TEXT_KEY]];
+            [values addObject:value];
+        }
+    }
+    
+    return self;
+}
 @end

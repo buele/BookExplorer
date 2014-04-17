@@ -28,20 +28,21 @@
  *****************************************************************************/
 
 #import "FBSNode.h"
+#import "FBSProperty.h"
 
 @interface FBSBookNode : FBSNode
-@property(nonatomic)NSArray  * genre;
-@property(nonatomic)NSArray  * characters;
-@property(nonatomic)NSArray  * quotations;
-@property(nonatomic)NSArray  * author;
-@property(nonatomic)NSDate   * dateWritten;
-@property(nonatomic)NSDate   * copyrightDate;
-@property(nonatomic)NSDate   * dateOfFirstPubblication;
-@property(nonatomic)NSArray  * subjects;
-@property(nonatomic)NSArray  * originalLanguage;
-@property(nonatomic)NSArray  * previousInSeries;
-@property(nonatomic)NSArray  * isfdbId;
-@property(nonatomic)NSArray  * nextInSeries;
-@property(nonatomic)NSArray  * influencedBy;
-@property(nonatomic)NSArray  * influenced;
+@property(nonatomic)FBSProperty  * genre;
+@property(nonatomic)FBSProperty  * characters;
+@property(nonatomic)FBSProperty  * quotations;
+@property(nonatomic)FBSProperty  * author;
+@property(nonatomic)FBSProperty  * dateWritten;
+@property(nonatomic)FBSProperty  * copyrightDate;
+@property(nonatomic)FBSProperty  * dateOfFirstPubblication;
+@property(nonatomic)FBSProperty  * subjects;
+@property(nonatomic)FBSProperty  * originalLanguage;
+@property(nonatomic)FBSProperty  * previousInSeries;
+@property(nonatomic)FBSProperty  * isfdbId;
+@property(nonatomic)FBSProperty  * nextInSeries;
+@property(nonatomic)FBSProperty  * influencedBy;
+@property(nonatomic)FBSProperty  * influenced;
 @end

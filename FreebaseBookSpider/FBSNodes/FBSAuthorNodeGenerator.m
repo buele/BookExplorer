@@ -55,9 +55,10 @@ static NSString * FB_INFLUENCED_BY_KEY      = @"/influence/influence_node/influe
 static NSString * FB_INFLUENCED_KEY         = @"/influence/influence_node/influenced";
 
 
--(void) nodeWithId:(NSString *)aNodeId andName:(NSString *)aName andProperties:(NSDictionary *)properties toDelegate:(id)aDelegate
+-(void) nodeWithId:(NSString *)aNodeId name:(NSString *)aName properties:(NSDictionary *)properties toDelegate:(id)delegate
 {
     FBSAuthorNode * author = [[FBSAuthorNode alloc] init];
+    author.type = FBSNodeAuthorType;
     author.nodeId             = aNodeId;
     author.name               = aName;
     author.description        = [properties objectForKey:FB_DESCRIPTION_KEY];
@@ -81,7 +82,7 @@ static NSString * FB_INFLUENCED_KEY         = @"/influence/influence_node/influe
     author.worksWritten       = [properties objectForKey:FB_WORKS_WRITTEN_KEY];
     author.influencedBy       = [properties objectForKey:FB_INFLUENCED_BY_KEY];
     author.influenced         = [properties objectForKey:FB_INFLUENCED_KEY];
-    [self  requestImageWithId:[properties objectForKey:FB_IMAGE_KEY] forNode:author forTarget:aDelegate];
+    [self  requestImageWithId:[properties objectForKey:FB_IMAGE_KEY] forNode:author toTarget:delegate];
 }
 
 @end

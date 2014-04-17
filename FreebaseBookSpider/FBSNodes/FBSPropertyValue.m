@@ -34,7 +34,7 @@
 @synthesize lang;
 @synthesize text;
 
--(id)initWithId:(NSString *)aPropertyId andLang:(NSString *)aLang andText:(NSString *)aText
+-(id)initWithId:(NSString *)aPropertyId lang:(NSString *)aLang text:(NSString *)aText
 {
     self = [super init];
     if(self){

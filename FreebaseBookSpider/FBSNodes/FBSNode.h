@@ -37,7 +37,11 @@
 @property(nonatomic)NSString * alias;
 @property(nonatomic)NSString * description;
 @property(nonatomic)UIImage  * image;
-@property(nonatomic)FBSNodeTypes nodeType;
+@property(nonatomic)FBSNodeTypes type;
 
--(id)initWithId:(NSString *)aNodeId andName:(NSString *)aName andAlias:(NSString *)anAlias andDescription:(NSString *)aDescription andImage:(UIImage  *)anImage;
+
+
+-(id)initWithId:(NSString *)aNodeId name:(NSString *)aName alias:(NSString *)anAlias description:(NSString *)aDescription image:(UIImage  *)anImage;
+-(NSArray *)summary;
+-(NSArray *)details;
 @end

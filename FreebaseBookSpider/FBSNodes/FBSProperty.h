@@ -1,8 +1,8 @@
 //
-//  FBSAuthorNode.m
+//  FBSProperty.h
 //  FreebaseBookSpider
 //
-//  Created by Raffaele Bua on 11/04/14.
+//  Created by Raffaele Bua on 17/04/14.
 
 /*****************************************************************************
  The MIT License (MIT)
@@ -27,39 +27,11 @@
  THE SOFTWARE.
  *****************************************************************************/
 
-#import "FBSAuthorNode.h"
-#import "FBSPropertyValue.h"
-#import "FBSProperty.h"
+#import <Foundation/Foundation.h>
 
-@implementation FBSAuthorNode
-@synthesize dateOfBirth;
-@synthesize placeOfBirth;
-@synthesize nationality;
-@synthesize gender;
-@synthesize profession;
-@synthesize religion;
-@synthesize parents;
-@synthesize children;
-@synthesize spouseS;
-@synthesize employmentHistory;
-@synthesize education;
-@synthesize quotations;
-@synthesize placesLived;
-@synthesize languages;
-@synthesize dateOfDeath;
-@synthesize placeOfDeath;
-@synthesize causeOfDeath;
-@synthesize worksWritten;
-@synthesize influencedBy;
-@synthesize influenced;
+@interface FBSProperty : NSObject
+@property(nonatomic)NSString * label;
+@property(nonatomic)NSMutableArray * values; //(FBSPropertyValue)
 
--(NSArray * )summary
-{
-    return nil;
-}
-
--(NSArray *)details
-{
-    return nil;
-}
+-(id)initWithFreebaseProperty:(NSDictionary *)aProperty label:(NSString *)aLabel;
 @end

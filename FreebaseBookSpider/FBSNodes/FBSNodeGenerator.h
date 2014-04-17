@@ -38,7 +38,7 @@
     NSMutableArray* pendingImageRequests;
 }
 
--(void)nodeWithId:(NSString *)aNodeId andWithName:(NSString* )name andForDelegate:(id)delegate;
--(void) nodeWithId:(NSString *)aNodeId andName:(NSString *)aName andProperties:(NSDictionary *)properties toDelegate:(id)delegate;
--(void)requestImageWithId:(NSString *)anImageId forNode:(FBSNode *)aNode forTarget:(id)aTarget;
+
+-(void) nodeWithId:(NSString *)aNodeId name:(NSString *)aName properties:(NSDictionary *)properties toDelegate:(id)delegate;
+-(void)requestImageWithId:(NSString *)anImageId forNode:(FBSNode *)aNode toTarget:(id)aTarget;
 @end

@@ -55,7 +55,7 @@
 {
     FBSPedingNodeRequest * pendingRequest = [pendingNodeRequests objectForKey:key];
     FBSBookNodeGenerator * bookGenerator = [[FBSBookNodeGenerator alloc] init];
-    [bookGenerator nodeWithId:pendingRequest.nodeId andName:pendingRequest.nodeName andProperties:properties toDelegate:self];
+    [bookGenerator nodeWithId:pendingRequest.nodeId name:pendingRequest.nodeName properties:properties toDelegate:self];
     
 }
 

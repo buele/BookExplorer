@@ -32,29 +32,47 @@
 
 @implementation FBSBookNodeGenerator
 
-static NSString * FB_ALIAS_KEY                      = @"/common/topic/alias";
-static NSString * FB_DESCRIPTION_KEY                = @"/common/topic/description";
-static NSString * FB_IMAGE_KEY                      = @"/common/topic/image";
-static NSString * FB_GENRE_KEY                      = @"/book/book/genre";
-static NSString * FB_CHARACTERS_KEY                 = @"/book/book/characters";
-static NSString * FB_QUOTATIONS_KEY                 = @"/media_common/quotation_source/quotations";
-static NSString * FB_AUTHOR_KEY                     = @"/book/written_work/author";
-static NSString * FB_DATE_WRITTEN_KEY               = @"/book/written_work/date_written";
-static NSString * FB_COPYRIGHT_DATE_KEY             = @"/book/written_work/copyright_date";
-static NSString * FB_DATE_OF_FIRST_PUBBLICATION_KEY = @"/book/written_work/date_of_first_pubblication";
-static NSString * FB_SUBJECTS_KEY                   = @"/book/written_work/subjects";
-static NSString * FB_ORIGINAL_LANGUAGE_KEY          = @"/book/written_work/original_language";
-static NSString * FB_PREVIOUS_IN_SERIES_KEY         = @"/book/written_work/previous_in_series";
-static NSString * FB_ISFDB_ID_KEY                   = @"/book/written_work/isfdb_id";
-static NSString * FB_NEXT_IN_SERIES_KEY             = @"/book/written_work/next_in_series";
-static NSString * FB_INFLUENCED_BY_KEY              = @"/influence/influence_node/influenced_by";
-static NSString * FB_INFLUENCED_KEY                 = @"/influence/influence_node/influenced";
+static NSString * FB_ALIAS_KEY                          = @"/common/topic/alias";
+static NSString * FB_ALIAS_LABEL                        = @"alias";
+static NSString * FB_DESCRIPTION_KEY                    = @"/common/topic/description";
+static NSString * FB_DESCRIPTION_LABEL                  = @"description";
+static NSString * FB_IMAGE_KEY                          = @"/common/topic/image";
+static NSString * FB_IMAGE_LABEL                        = @"image";
+static NSString * FB_GENRE_KEY                          = @"/book/book/genre";
+static NSString * FB_GENRE_LABEL                        = @"genre";
+static NSString * FB_CHARACTERS_KEY                     = @"/book/book/characters";
+static NSString * FB_CHARACTERS_LABEL                   = @"characters";
+static NSString * FB_QUOTATIONS_KEY                     = @"/media_common/quotation_source/quotations";
+static NSString * FB_QUOTATIONS_LABEL                   = @"quotations";
+static NSString * FB_AUTHOR_KEY                         = @"/book/written_work/author";
+static NSString * FB_AUTHOR_LABEL                       = @"author";
+static NSString * FB_DATE_WRITTEN_KEY                   = @"/book/written_work/date_written";
+static NSString * FB_DATE_WRITTEN_LABEL                 = @"date_written";
+static NSString * FB_COPYRIGHT_DATE_KEY                 = @"/book/written_work/copyright_date";
+static NSString * FB_COPYRIGHT_DATE_LABEL               = @"copyright_date";
+static NSString * FB_DATE_OF_FIRST_PUBBLICATION_KEY     = @"/book/written_work/date_of_first_pubblication";
+static NSString * FB_DATE_OF_FIRST_PUBBLICATION_LABEL   = @"date_of_first_pubblication";
+static NSString * FB_SUBJECTS_KEY                       = @"/book/written_work/subjects";
+static NSString * FB_SUBJECTS_LABEL                     = @"subjects";
+static NSString * FB_ORIGINAL_LANGUAGE_KEY              = @"/book/written_work/original_language";
+static NSString * FB_ORIGINAL_LANGUAGE_LABEL            = @"original_language";
+static NSString * FB_PREVIOUS_IN_SERIES_KEY             = @"/book/written_work/previous_in_series";
+static NSString * FB_PREVIOUS_IN_SERIES_LABEL        	= @"previous_in_series";
+static NSString * FB_ISFDB_ID_KEY                   	= @"/book/written_work/isfdb_id";
+static NSString * FB_ISFDB_ID_LABEL                   	= @"isfdb_id";
+static NSString * FB_NEXT_IN_SERIES_KEY             	= @"/book/written_work/next_in_series";
+static NSString * FB_NEXT_IN_SERIES_LABEL               = @"next_in_series";
+static NSString * FB_INFLUENCED_BY_KEY                  = @"/influence/influence_node/influenced_by";
+static NSString * FB_INFLUENCED_BY_LABEL              	= @"influenced_by";
+static NSString * FB_INFLUENCED_KEY                     = @"/influence/influence_node/influenced";
+static NSString * FB_INFLUENCED_LABEL                   = @"influenced";
 
 
 
--(void) nodeWithId:(NSString *)aNodeId andName:(NSString *)aName andProperties:(NSDictionary *)properties toDelegate:(id)delegate
+-(void) nodeWithId:(NSString *)aNodeId name:(NSString *)aName properties:(NSDictionary *)properties toDelegate:(id)delegate
 {
     FBSBookNode * book = [[FBSBookNode alloc] init];
+    book.type = FBSNodeBookType;
     book.nodeId = aNodeId;    
     book.alias                      = [properties objectForKey:FB_ALIAS_KEY];
     book.description                = [properties objectForKey:FB_DESCRIPTION_KEY];
@@ -72,7 +90,7 @@ static NSString * FB_INFLUENCED_KEY                 = @"/influence/influence_nod
     book.nextInSeries               = [properties objectForKey:FB_NEXT_IN_SERIES_KEY];
     book.influencedBy               = [properties objectForKey:FB_INFLUENCED_BY_KEY];
     book.influenced                 = [properties objectForKey:FB_INFLUENCED_KEY];
-    [self  requestImageWithId:[properties objectForKey:FB_IMAGE_KEY] forNode:book forTarget:delegate];
+    [self  requestImageWithId:[properties objectForKey:FB_IMAGE_KEY] forNode:book toTarget:delegate];
 }
 
 

@@ -35,6 +35,7 @@
 		56C3D55D18F8054C00A05BC4 /* FBSBookNodeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C3D55C18F8054C00A05BC4 /* FBSBookNodeGenerator.m */; };
 		56C3D56018F805A900A05BC4 /* FBSAuthorNodeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C3D55F18F805A900A05BC4 /* FBSAuthorNodeGenerator.m */; };
 		56C3D56318F8081700A05BC4 /* FBSPropertyValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C3D56218F8081700A05BC4 /* FBSPropertyValue.m */; };
+		56CE273B19004BD700635489 /* FBSProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 56CE273A19004BD700635489 /* FBSProperty.m */; };
 		56D384F618FCA7570006C1D8 /* FBSPedingNodeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D384F518FCA7570006C1D8 /* FBSPedingNodeRequest.m */; };
 		56D5B3A418F6DECF009F14C7 /* FBSAuthor.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D5B3A318F6DECF009F14C7 /* FBSAuthor.m */; };
 		56D5B3A718F724F3009F14C7 /* FBSBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D5B3A618F724F3009F14C7 /* FBSBook.m */; };
@@ -97,6 +98,8 @@
 		56C3D55F18F805A900A05BC4 /* FBSAuthorNodeGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBSAuthorNodeGenerator.m; path = FBSNodes/FBSAuthorNodeGenerator.m; sourceTree = "<group>"; };
 		56C3D56118F8081700A05BC4 /* FBSPropertyValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBSPropertyValue.h; path = FBSNodes/FBSPropertyValue.h; sourceTree = "<group>"; };
 		56C3D56218F8081700A05BC4 /* FBSPropertyValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBSPropertyValue.m; path = FBSNodes/FBSPropertyValue.m; sourceTree = "<group>"; };
+		56CE273919004BD700635489 /* FBSProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBSProperty.h; path = FBSNodes/FBSProperty.h; sourceTree = "<group>"; };
+		56CE273A19004BD700635489 /* FBSProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBSProperty.m; path = FBSNodes/FBSProperty.m; sourceTree = "<group>"; };
 		56D384F318FC9D900006C1D8 /* FBSNodeTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FBSNodeTypes.h; path = FBSNodes/FBSNodeTypes.h; sourceTree = "<group>"; };
 		56D384F418FCA7570006C1D8 /* FBSPedingNodeRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBSPedingNodeRequest.h; path = FBSNodes/FBSPedingNodeRequest.h; sourceTree = "<group>"; };
 		56D384F518FCA7570006C1D8 /* FBSPedingNodeRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBSPedingNodeRequest.m; path = FBSNodes/FBSPedingNodeRequest.m; sourceTree = "<group>"; };
@@ -257,6 +260,8 @@
 				5630304B18FC2B73000699E9 /* FBSNodeManager.h */,
 				5630304C18FC2B73000699E9 /* FBSNodeManager.m */,
 				56D384F318FC9D900006C1D8 /* FBSNodeTypes.h */,
+				56CE273919004BD700635489 /* FBSProperty.h */,
+				56CE273A19004BD700635489 /* FBSProperty.m */,
 			);
 			name = FBSNodes;
 			sourceTree = "<group>";
@@ -377,6 +382,7 @@
 				56C3D54E18F803DC00A05BC4 /* FBSNode.m in Sources */,
 				56C3D55718F804DA00A05BC4 /* FBSBookNode.m in Sources */,
 				5630304A18FAF430000699E9 /* FBSPendingImageRequest.m in Sources */,
+				56CE273B19004BD700635489 /* FBSProperty.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

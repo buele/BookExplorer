@@ -44,4 +44,14 @@
 @synthesize nextInSeries;
 @synthesize influencedBy;
 @synthesize influenced;
+
+-(NSArray *)summary
+{
+    return nil;
+}
+
+-(NSArray *)details
+{
+    return nil;
+}
 @end
