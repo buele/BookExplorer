@@ -91,7 +91,12 @@ static NSString * FB_INFLUENCED_LABEL                   = @"influenced";
     book.nextInSeries = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_NEXT_IN_SERIES_KEY] label:FB_NEXT_IN_SERIES_LABEL];
     book.influencedBy = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_INFLUENCED_BY_KEY] label:FB_INFLUENCED_BY_LABEL];
     book.influenced = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_INFLUENCED_KEY] label:FB_INFLUENCED_LABEL];
-    [self  requestImageWithId:[properties objectForKey:FB_IMAGE_KEY] forNode:book toTarget:delegate];
+    
+    if([properties objectForKey:FB_IMAGE_KEY])
+        [self  requestImageWithId:[properties objectForKey:FB_IMAGE_KEY] forNode:book toTarget:delegate];
+    else
+        [delegate nodeDidGenerated:book withId:aNodeId];
+    //[self  requestImageWithId:[properties objectForKey:FB_IMAGE_KEY] forNode:book toTarget:delegate];
 }
 
 

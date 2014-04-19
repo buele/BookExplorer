@@ -30,6 +30,7 @@
 
 #import "FBSApiManager.h"
 #import "BookSpider.h"
+#import "FBSNodes/FBSNodeManager.h"
 
 @implementation BookSpider
 
@@ -38,8 +39,9 @@
     self = [super init];
     if (self) {
         bookTypesData = [[NSMutableData alloc] init];
-        [[FBSApiManager getSharedInstance] getNodesByKeyword:nil andForDelegate:self];
-        [[FBSApiManager getSharedInstance] getNodesByKeyword:@"Nineteen eighty-four" andForDelegate:self];
+        //[[FBSApiManager getSharedInstance] getNodesByKeyword:nil andForDelegate:self];
+        //[[FBSApiManager getSharedInstance] getNodesByKeyword:@"Nineteen eighty-four" andForDelegate:self];
+        [self nodeManagerTest];
     }
     
     return self;
@@ -47,25 +49,42 @@
 
 -(void)nodesByKeywordDidReceived:(NSArray*)nodes forKey:(NSString *)key
 {
-    NSLog(@"nodesByKeywordDidReceived, for key: %@", key);
-    NSLog(@"nodesByKeywordDidReceived, nodes: %@", nodes );
+    //NSLog(@"nodesByKeywordDidReceived, for key: %@", key);
+    //NSLog(@"nodesByKeywordDidReceived, nodes: %@", nodes );
     if ([nodes count] !=0) {
         NSDictionary * node = [nodes objectAtIndex:0];
         NSString * nodeId = [node objectForKey:@"id"];
-        NSLog(@"Node id: %@",nodeId);
+        NSLog(@"---->Node: %@",node);
         [[FBSApiManager getSharedInstance] getNodePropertiesById:nodeId andForDelegate:self];
     }
 }
 
 -(void)nodePropertiesByIdDidReceived:(NSDictionary*)response forKey:(NSString *)key
 {
-    NSLog(@"nodePropertiesByIdDidReceived, for key: %@", key);
+    //NSLog(@"nodePropertiesByIdDidReceived, for key: %@", key);
     static NSString *  FREEBASE_PROPERTY_KEY = @"property";
-    NSDictionary* properties = [response objectForKey:FREEBASE_PROPERTY_KEY];
-    NSLog(@"properties: %@", properties);
-    NSLog(@"author: %@", [[[[ properties objectForKey:@"/book/written_work/author"]         objectForKey:@"values"] objectAtIndex:0] objectForKey:@"text"]);
-    NSLog(@"date: %@",   [[[[ properties objectForKey:@"/book/written_work/copyright_date"] objectForKey:@"values"] objectAtIndex:0] objectForKey:@"text"]);
+    //NSDictionary* properties = [response objectForKey:FREEBASE_PROPERTY_KEY];
+   // NSLog(@"properties: %@", properties);
+    //NSLog(@"author: %@", [[[[ properties objectForKey:@"/book/written_work/author"]         objectForKey:@"values"] objectAtIndex:0] objectForKey:@"text"]);
+   // NSLog(@"date: %@",   [[[[ properties objectForKey:@"/book/written_work/copyright_date"] objectForKey:@"values"] objectAtIndex:0] objectForKey:@"text"]);
 }
+
+//--- node manager test ---//
+
+-(void)nodeManagerTest
+{
+    FBSNodeManager * nodeManager = [[FBSNodeManager alloc] init];
+    [nodeManager nodeWithId:@"/en/nineteen_eighty-four" andWithName:@"Nineteen Eighty-Four" forDelegate:self];
+}
+
+-(void)nodeDidGenerated:(FBSNode *)node withId:(NSString *)nodeId
+{
+    NSLog(@"test node: %@", node);
+}
+
+//-------------------------//
+
+
 
 #pragma mark FBSApiManagerDelegate protocol
 -(NSArray *)getAutocompleteSuggestionsByKeyword:(NSString * ) keyword

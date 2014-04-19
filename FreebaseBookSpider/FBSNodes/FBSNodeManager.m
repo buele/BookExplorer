@@ -36,7 +36,14 @@
 @implementation FBSNodeManager
 
 
-
+-(id)init
+{
+    self = [super init];
+    if(self){
+        pendingNodeRequests = [[NSMutableDictionary alloc]init];
+    }
+    return self;
+}
 
 -(void)nodeWithId:(NSString *)aNodeId andWithName:(NSString *)aNodeName forDelegate:(id)delegate
 {
@@ -48,7 +55,9 @@
 
 -(void)generateNodeAuthorWithProperties:(NSDictionary *)properties forKey:(NSString *)key
 {
-    
+    FBSPedingNodeRequest * pendingRequest = [pendingNodeRequests objectForKey:key];
+    FBSAuthorNodeGenerator * authorGenerator = [[FBSAuthorNodeGenerator alloc] init];
+    [authorGenerator nodeWithId:pendingRequest.nodeId name:pendingRequest.nodeName properties:properties toDelegate:self];
 }
 
 -(void)generateNodeBookWithProperties:(NSDictionary *)properties forKey:(NSString *)key
@@ -90,7 +99,9 @@
     for (NSString * key in bookProperties)if([properties objectForKey:key]) bookPropertiesCounter++;
     for (NSString * key in authorProperties)if([properties objectForKey:key]) authorPropertiesCounter++;
     
-    return (bookPropertiesCounter > authorPropertiesCounter)?FBSNodeBookType:FBSNodeAuthorType;
+    //return (bookPropertiesCounter > authorPropertiesCounter)?FBSNodeBookType:FBSNodeAuthorType;
+    //test
+    return FBSNodeBookType;
 }
 
 @end

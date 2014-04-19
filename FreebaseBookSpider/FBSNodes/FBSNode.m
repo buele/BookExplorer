@@ -36,14 +36,12 @@
 @synthesize description;
 @synthesize image;
 
--(id)initWithId:(NSString *)aNodeId name:(NSString *)aName alias:(NSString *)anAlias description:(NSString *)aDescription image:(UIImage  *)anImage
+-(id)initWithId:(NSString *)aNodeId name:(NSString *)aName  image:(UIImage  *)anImage
 {
     self = [super init];
     if(self){
         self.nodeId = aNodeId;
         self.name = aName;
-        self.alias = anAlias;
-        self.description = aDescription;
         self.image = anImage;
     }
     return self;
