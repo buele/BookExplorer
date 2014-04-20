@@ -69,7 +69,6 @@
    // NSLog(@"date: %@",   [[[[ properties objectForKey:@"/book/written_work/copyright_date"] objectForKey:@"values"] objectAtIndex:0] objectForKey:@"text"]);
 }
 
-//--- node manager test ---//
 
 -(void)nodeManagerTest
 {
@@ -82,7 +81,7 @@
     NSLog(@"test node: %@", node);
 }
 
-//-------------------------//
+
 
 
 

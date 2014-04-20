@@ -99,9 +99,9 @@
     for (NSString * key in bookProperties)if([properties objectForKey:key]) bookPropertiesCounter++;
     for (NSString * key in authorProperties)if([properties objectForKey:key]) authorPropertiesCounter++;
     
-    //return (bookPropertiesCounter > authorPropertiesCounter)?FBSNodeBookType:FBSNodeAuthorType;
-    //test
-    return FBSNodeBookType;
+    return (bookPropertiesCounter > authorPropertiesCounter)?FBSNodeBookType:FBSNodeAuthorType;
+
+
 }
 
 @end

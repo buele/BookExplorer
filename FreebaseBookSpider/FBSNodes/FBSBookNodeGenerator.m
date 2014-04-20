@@ -72,6 +72,7 @@ static NSString * FB_INFLUENCED_LABEL                   = @"influenced";
 
 -(void) nodeWithId:(NSString *)aNodeId name:(NSString *)aName properties:(NSDictionary *)properties toDelegate:(id)delegate
 {
+
     FBSBookNode * book = [[FBSBookNode alloc] init];
     book.type = FBSNodeBookType;
     book.nodeId = aNodeId;    

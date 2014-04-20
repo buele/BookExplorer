@@ -115,7 +115,7 @@ static NSString *  RESULT_RESPONSE_KEY      = @"result";
                 [target nodesByKeywordDidReceived:[[self dataToJson:response] objectForKey:RESULT_RESPONSE_KEY] forKey:key];
                 break;
             case FBSApiActionRequestNodePropertiesById:
-                [target nodePropertiesByIdDidReceived:[self dataToJson:response] forKey:key];
+                [target nodePropertiesByIdDidReceived:[[self dataToJson:response] objectForKey:@"property"] forKey:key];
                 break;
             case FBSApiActionRequestImageById:
                 [target imageByIdDidReceived:[UIImage imageWithData:response] forKey:[NSNumber numberWithInt:[key intValue]]];
