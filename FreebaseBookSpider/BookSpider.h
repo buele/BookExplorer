@@ -29,18 +29,19 @@
 
 #import <Foundation/Foundation.h>
 #import "FBSApiManager.h"
+#import "FBSNodeManager.h"
 
-@interface BookSpider : NSObject<FBSApiManagerDelegate>
+@interface BookSpider : NSObject
 {
-    NSMutableData * bookTypesData;
-    NSURLConnection * bookTypesConnection;
+    FBSNodeManager * nodeManager;
 }
 
 -(id)init;
 
 #pragma mark main interface
--(NSArray *)getAutocompleteSuggestionsByKeyword:(NSString * ) keyword;
--(NSArray *)getEntitiesByKeyword: (NSString * ) keyword;
+-(void)getAutocompleteSuggestionsByKeyword:(NSString * ) aKeyword;
+-(void)getEntitiesByKeyword: (NSString * ) aKeyword;
+-(void)getEntityById:(NSString * ) anId withName:(NSString *)aName;
 
 
 

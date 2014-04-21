@@ -29,6 +29,7 @@
 
 #import "FBSAuthorNodeGenerator.h"
 #import "FBSAuthorNode.h"
+#import "FBSPropertyValue.h"
 
 @implementation FBSAuthorNodeGenerator
 static NSString * FB_DESCRIPTION_KEY          = @"/common/topic/description";
@@ -105,8 +106,12 @@ static NSString * FB_INFLUENCED_LABEL         = @"influenced";
     author.influencedBy       = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_INFLUENCED_BY_KEY] label:FB_INFLUENCED_BY_LABEL];
     author.influenced         = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_INFLUENCED_KEY] label:FB_INFLUENCED_LABEL];
     
-    if([properties objectForKey:FB_IMAGE_KEY])
-        [self  requestImageWithId:[properties objectForKey:FB_IMAGE_KEY] forNode:author toTarget:delegate];
+    FBSProperty * imageProperty = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_IMAGE_KEY] label:FB_IMAGE_LABEL];
+    
+    if(imageProperty){
+        FBSPropertyValue * value = [imageProperty.values objectAtIndex:0];
+        [self  requestImageWithId:value.propertyId forNode:author toTarget:delegate];
+    }
     else
         [delegate nodeDidGenerated:author withId:aNodeId];
 }

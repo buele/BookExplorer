@@ -71,8 +71,10 @@
 -(void)nodeDidGenerated:(FBSNode *)theNewNode withId:newNodeId
 {
     FBSPedingNodeRequest * pendingRequest = [pendingNodeRequests objectForKey:newNodeId];
-    [pendingRequest.target nodeDidGenerated:theNewNode withId:newNodeId];
     [pendingNodeRequests removeObjectForKey:newNodeId];
+    theNewNode.name = pendingRequest.nodeName;
+    [pendingRequest.target nodeDidGenerated:theNewNode withId:newNodeId];
+    
 }
 
 -(void)nodePropertiesByIdDidReceived:(NSDictionary*)properties forKey:(NSString *)key

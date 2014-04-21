@@ -30,6 +30,7 @@
 #import "FBSBookNodeGenerator.h"
 #import "FBSBookNode.h"
 #import "FBSProperty.h"
+#import "FBSPropertyValue.h"
 
 @implementation FBSBookNodeGenerator
 
@@ -92,12 +93,16 @@ static NSString * FB_INFLUENCED_LABEL                   = @"influenced";
     book.nextInSeries = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_NEXT_IN_SERIES_KEY] label:FB_NEXT_IN_SERIES_LABEL];
     book.influencedBy = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_INFLUENCED_BY_KEY] label:FB_INFLUENCED_BY_LABEL];
     book.influenced = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_INFLUENCED_KEY] label:FB_INFLUENCED_LABEL];
+
     
-    if([properties objectForKey:FB_IMAGE_KEY])
-        [self  requestImageWithId:[properties objectForKey:FB_IMAGE_KEY] forNode:book toTarget:delegate];
+    FBSProperty * imageProperty = [properties objectForKey:FB_IMAGE_KEY];
+    
+    if(imageProperty){
+        FBSPropertyValue * value = [imageProperty.values objectAtIndex:0];
+        [self  requestImageWithId:value.propertyId forNode:book toTarget:delegate];
+    }
     else
         [delegate nodeDidGenerated:book withId:aNodeId];
-    //[self  requestImageWithId:[properties objectForKey:FB_IMAGE_KEY] forNode:book toTarget:delegate];
 }
 
 
