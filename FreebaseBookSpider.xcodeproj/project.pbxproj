@@ -37,8 +37,6 @@
 		56C3D56318F8081700A05BC4 /* FBSPropertyValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C3D56218F8081700A05BC4 /* FBSPropertyValue.m */; };
 		56CE273B19004BD700635489 /* FBSProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 56CE273A19004BD700635489 /* FBSProperty.m */; };
 		56D384F618FCA7570006C1D8 /* FBSPedingNodeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D384F518FCA7570006C1D8 /* FBSPedingNodeRequest.m */; };
-		56D5B3A418F6DECF009F14C7 /* FBSAuthor.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D5B3A318F6DECF009F14C7 /* FBSAuthor.m */; };
-		56D5B3A718F724F3009F14C7 /* FBSBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D5B3A618F724F3009F14C7 /* FBSBook.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,10 +101,6 @@
 		56D384F318FC9D900006C1D8 /* FBSNodeTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FBSNodeTypes.h; path = FBSNodes/FBSNodeTypes.h; sourceTree = "<group>"; };
 		56D384F418FCA7570006C1D8 /* FBSPedingNodeRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBSPedingNodeRequest.h; path = FBSNodes/FBSPedingNodeRequest.h; sourceTree = "<group>"; };
 		56D384F518FCA7570006C1D8 /* FBSPedingNodeRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBSPedingNodeRequest.m; path = FBSNodes/FBSPedingNodeRequest.m; sourceTree = "<group>"; };
-		56D5B3A218F6DECF009F14C7 /* FBSAuthor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBSAuthor.h; sourceTree = "<group>"; };
-		56D5B3A318F6DECF009F14C7 /* FBSAuthor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBSAuthor.m; sourceTree = "<group>"; };
-		56D5B3A518F724F3009F14C7 /* FBSBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBSBook.h; sourceTree = "<group>"; };
-		56D5B3A618F724F3009F14C7 /* FBSBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBSBook.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,10 +170,6 @@
 				5682E38818E5D5B200522958 /* Supporting Files */,
 				5682E3B018E5D5D500522958 /* BookSpider.h */,
 				5682E3B118E5D5D500522958 /* BookSpider.m */,
-				56D5B3A218F6DECF009F14C7 /* FBSAuthor.h */,
-				56D5B3A318F6DECF009F14C7 /* FBSAuthor.m */,
-				56D5B3A518F724F3009F14C7 /* FBSBook.h */,
-				56D5B3A618F724F3009F14C7 /* FBSBook.m */,
 			);
 			path = FreebaseBookSpider;
 			sourceTree = "<group>";
@@ -365,8 +355,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				56B06A0118F2DFD700F2C508 /* FBSResources.m in Sources */,
-				56D5B3A418F6DECF009F14C7 /* FBSAuthor.m in Sources */,
-				56D5B3A718F724F3009F14C7 /* FBSBook.m in Sources */,
 				5682E39218E5D5B200522958 /* AppDelegate.m in Sources */,
 				56D384F618FCA7570006C1D8 /* FBSPedingNodeRequest.m in Sources */,
 				56C3D55418F804C700A05BC4 /* FBSAuthorNode.m in Sources */,
