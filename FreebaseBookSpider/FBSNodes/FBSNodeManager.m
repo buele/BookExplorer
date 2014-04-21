@@ -68,7 +68,7 @@
     
 }
 
--(void)nodeDidGenerated:(FBSNode *)theNewNode withId:newNodeId
+-(void)nodeDidGenerated:(FBSTopic *)theNewNode withId:newNodeId
 {
     FBSPedingNodeRequest * pendingRequest = [pendingNodeRequests objectForKey:newNodeId];
     [pendingNodeRequests removeObjectForKey:newNodeId];

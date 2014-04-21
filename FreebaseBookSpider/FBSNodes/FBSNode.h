@@ -2,7 +2,7 @@
 //  FBSNode.h
 //  FreebaseBookSpider
 //
-//  Created by Raffaele Bua on 11/04/14.
+//  Created by Raffaele Bua on 21/04/14.
 
 /*****************************************************************************
  The MIT License (MIT)
@@ -28,20 +28,7 @@
  *****************************************************************************/
 
 #import <Foundation/Foundation.h>
-#import "FBSNodeTypes.h"
-#import "FBSProperty.h"
 
 @interface FBSNode : NSObject
 
-@property(nonatomic)NSString    * nodeId;
-@property(nonatomic)NSString    * name;
-@property(nonatomic)FBSProperty * alias;
-@property(nonatomic)FBSProperty * description;
-@property(nonatomic)UIImage     * image;
-@property(nonatomic)FBSNodeTypes type;
-
-
--(id)initWithId:(NSString *)aNodeId name:(NSString *)aName  image:(UIImage  *)anImage;
--(NSArray *)summary;
--(NSArray *)details;
 @end

@@ -42,7 +42,7 @@
     return self;
 }
 
--(void)requestImageWithId:(NSString *)anImageId forNode:(FBSNode *)aNode toTarget:(id)aTarget
+-(void)requestImageWithId:(NSString *)anImageId forNode:(FBSTopic *)aNode toTarget:(id)aTarget
 {
     FBSPendingImageRequest * pendingRequest = [[FBSPendingImageRequest alloc]initWithNode:aNode andTarget:aTarget];
     [pendingImageRequests addObject:pendingRequest];

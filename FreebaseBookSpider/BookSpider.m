@@ -41,18 +41,20 @@
         nodeManager = [[FBSNodeManager alloc] init];
 
         //test 1 book
-        [self getEntityById:@"/en/nineteen_eighty-four" withName:@"Nineteen Eighty-Four"];
+        //[self getEntityById:@"/en/nineteen_eighty-four" withName:@"Nineteen Eighty-Four"];
         // test 2 author
-        [self getEntityById:@"/m/034bs" withName:@"George Orwell"];
+        //[self getEntityById:@"/m/034bs" withName:@"George Orwell"];
+        // test 2 author
+        //[self getEntityById:@"/m/09b6zr" withName:@"George W. Bush"];
         //test 3 entities by keyword
-        [self getEntitiesByKeyword: @"George"];
+        [self getEntitiesByKeyword: @"George or"];
     }
     
     return self;
 }
 
 
--(void)nodeDidGenerated:(FBSNode *)node withId:(NSString *)nodeId
+-(void)nodeDidGenerated:(FBSTopic *)node withId:(NSString *)nodeId
 {
     NSLog(@"test node" );
 }

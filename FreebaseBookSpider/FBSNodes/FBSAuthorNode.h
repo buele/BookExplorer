@@ -27,10 +27,10 @@
  THE SOFTWARE.
  *****************************************************************************/
 
-#import "FBSNode.h"
+#import "FBSTopic.h"
 #import "FBSProperty.h"
 
-@interface FBSAuthorNode : FBSNode
+@interface FBSAuthorNode : FBSTopic
 
 @property(nonatomic)FBSProperty  * dateOfBirth;
 @property(nonatomic)FBSProperty  * placeOfBirth;

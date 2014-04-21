@@ -28,10 +28,10 @@
  *****************************************************************************/
 
 #import <Foundation/Foundation.h>
-#import "FBSNode.h"
+#import "FBSTopic.h"
 
 @protocol FBSNodeManagerDelegate
--(void)nodeDidGenerated:(FBSNode *)node withId:(NSString *)nodeId;
+-(void)nodeDidGenerated:(FBSTopic *)node withId:(NSString *)nodeId;
 @end
 
 @interface FBSNodeManager : NSObject

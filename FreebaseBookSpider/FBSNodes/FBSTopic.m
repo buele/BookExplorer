@@ -2,7 +2,7 @@
 //  FBSNode.m
 //  FreebaseBookSpider
 //
-//  Created by Raffaele Bua on 21/04/14.
+//  Created by Raffaele Bua on 11/04/14.
 
 /*****************************************************************************
  The MIT License (MIT)
@@ -27,8 +27,23 @@
  THE SOFTWARE.
  *****************************************************************************/
 
-#import "FBSNode.h"
+#import "FBSTopic.h"
 
-@implementation FBSNode
+@implementation FBSTopic
+@synthesize nodeId;
+@synthesize name;
+@synthesize alias;
+@synthesize description;
+@synthesize image;
 
+-(id)initWithId:(NSString *)aNodeId name:(NSString *)aName  image:(UIImage  *)anImage
+{
+    self = [super init];
+    if(self){
+        self.nodeId = aNodeId;
+        self.name = aName;
+        self.image = anImage;
+    }
+    return self;
+}
 @end

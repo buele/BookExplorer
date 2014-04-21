@@ -28,9 +28,9 @@
  *****************************************************************************/
 
 #import <Foundation/Foundation.h>
-#import "FBSNode.h"
+#import "FBSTopic.h"
 @protocol FBSNodeGeneratorDelegate
--(void)nodeDidGenerated:(FBSNode *)aNode withId:(NSString *)aNodeId;
+-(void)nodeDidGenerated:(FBSTopic *)aNode withId:(NSString *)aNodeId;
 @end
 
 @interface FBSNodeGenerator : NSObject
@@ -40,5 +40,5 @@
 
 
 -(void) nodeWithId:(NSString *)aNodeId name:(NSString *)aName properties:(NSDictionary *)properties toDelegate:(id)delegate;
--(void)requestImageWithId:(NSString *)anImageId forNode:(FBSNode *)aNode toTarget:(id)aTarget;
+-(void)requestImageWithId:(NSString *)anImageId forNode:(FBSTopic *)aNode toTarget:(id)aTarget;
 @end

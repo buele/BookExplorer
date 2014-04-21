@@ -27,10 +27,10 @@
  THE SOFTWARE.
  *****************************************************************************/
 
-#import "FBSNode.h"
+#import "FBSTopic.h"
 #import "FBSProperty.h"
 
-@interface FBSBookNode : FBSNode
+@interface FBSBookNode : FBSTopic
 @property(nonatomic)FBSProperty  * genre;
 @property(nonatomic)FBSProperty  * characters;
 @property(nonatomic)FBSProperty  * quotations;

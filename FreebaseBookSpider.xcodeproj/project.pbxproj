@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5630304A18FAF430000699E9 /* FBSPendingImageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5630304918FAF430000699E9 /* FBSPendingImageRequest.m */; };
 		5630304D18FC2B73000699E9 /* FBSNodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5630304C18FC2B73000699E9 /* FBSNodeManager.m */; };
+		566A4E7119055A3600400136 /* FBSNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 566A4E7019055A3600400136 /* FBSNode.m */; };
 		5682E38218E5D5B200522958 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5682E38118E5D5B200522958 /* Foundation.framework */; };
 		5682E38418E5D5B200522958 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5682E38318E5D5B200522958 /* CoreGraphics.framework */; };
 		5682E38618E5D5B200522958 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5682E38518E5D5B200522958 /* UIKit.framework */; };
@@ -28,7 +29,7 @@
 		56B069FF18F2DFD700F2C508 /* FBSApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B069FA18F2DFD700F2C508 /* FBSApiManager.m */; };
 		56B06A0018F2DFD700F2C508 /* FBSApiOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B069FC18F2DFD700F2C508 /* FBSApiOperation.m */; };
 		56B06A0118F2DFD700F2C508 /* FBSResources.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B069FE18F2DFD700F2C508 /* FBSResources.m */; };
-		56C3D54E18F803DC00A05BC4 /* FBSNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C3D54D18F803DC00A05BC4 /* FBSNode.m */; };
+		56C3D54E18F803DC00A05BC4 /* FBSTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C3D54D18F803DC00A05BC4 /* FBSTopic.m */; };
 		56C3D55418F804C700A05BC4 /* FBSAuthorNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C3D55318F804C700A05BC4 /* FBSAuthorNode.m */; };
 		56C3D55718F804DA00A05BC4 /* FBSBookNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C3D55618F804DA00A05BC4 /* FBSBookNode.m */; };
 		56C3D55A18F8052700A05BC4 /* FBSNodeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C3D55918F8052700A05BC4 /* FBSNodeGenerator.m */; };
@@ -54,6 +55,8 @@
 		5630304918FAF430000699E9 /* FBSPendingImageRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBSPendingImageRequest.m; path = FBSNodes/FBSPendingImageRequest.m; sourceTree = "<group>"; };
 		5630304B18FC2B73000699E9 /* FBSNodeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBSNodeManager.h; path = FBSNodes/FBSNodeManager.h; sourceTree = "<group>"; };
 		5630304C18FC2B73000699E9 /* FBSNodeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBSNodeManager.m; path = FBSNodes/FBSNodeManager.m; sourceTree = "<group>"; };
+		566A4E6F19055A3600400136 /* FBSNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBSNode.h; path = FBSNodes/FBSNode.h; sourceTree = "<group>"; };
+		566A4E7019055A3600400136 /* FBSNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBSNode.m; path = FBSNodes/FBSNode.m; sourceTree = "<group>"; };
 		5682E37E18E5D5B200522958 /* FreebaseBookSpider.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FreebaseBookSpider.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5682E38118E5D5B200522958 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5682E38318E5D5B200522958 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -82,8 +85,8 @@
 		56B069FC18F2DFD700F2C508 /* FBSApiOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBSApiOperation.m; sourceTree = "<group>"; };
 		56B069FD18F2DFD700F2C508 /* FBSResources.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBSResources.h; sourceTree = "<group>"; };
 		56B069FE18F2DFD700F2C508 /* FBSResources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBSResources.m; sourceTree = "<group>"; };
-		56C3D54C18F803DC00A05BC4 /* FBSNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBSNode.h; path = FBSNodes/FBSNode.h; sourceTree = "<group>"; };
-		56C3D54D18F803DC00A05BC4 /* FBSNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBSNode.m; path = FBSNodes/FBSNode.m; sourceTree = "<group>"; };
+		56C3D54C18F803DC00A05BC4 /* FBSTopic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBSTopic.h; path = FBSNodes/FBSTopic.h; sourceTree = "<group>"; };
+		56C3D54D18F803DC00A05BC4 /* FBSTopic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBSTopic.m; path = FBSNodes/FBSTopic.m; sourceTree = "<group>"; };
 		56C3D55218F804C700A05BC4 /* FBSAuthorNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBSAuthorNode.h; path = FBSNodes/FBSAuthorNode.h; sourceTree = "<group>"; };
 		56C3D55318F804C700A05BC4 /* FBSAuthorNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBSAuthorNode.m; path = FBSNodes/FBSAuthorNode.m; sourceTree = "<group>"; };
 		56C3D55518F804DA00A05BC4 /* FBSBookNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBSBookNode.h; path = FBSNodes/FBSBookNode.h; sourceTree = "<group>"; };
@@ -229,8 +232,10 @@
 		56C3D54818F8038C00A05BC4 /* FBSNodes */ = {
 			isa = PBXGroup;
 			children = (
-				56C3D54C18F803DC00A05BC4 /* FBSNode.h */,
-				56C3D54D18F803DC00A05BC4 /* FBSNode.m */,
+				566A4E6F19055A3600400136 /* FBSNode.h */,
+				566A4E7019055A3600400136 /* FBSNode.m */,
+				56C3D54C18F803DC00A05BC4 /* FBSTopic.h */,
+				56C3D54D18F803DC00A05BC4 /* FBSTopic.m */,
 				56C3D55218F804C700A05BC4 /* FBSAuthorNode.h */,
 				56C3D55318F804C700A05BC4 /* FBSAuthorNode.m */,
 				56C3D55518F804DA00A05BC4 /* FBSBookNode.h */,
@@ -367,10 +372,11 @@
 				56C3D56018F805A900A05BC4 /* FBSAuthorNodeGenerator.m in Sources */,
 				5682E3B218E5D5D500522958 /* BookSpider.m in Sources */,
 				5630304D18FC2B73000699E9 /* FBSNodeManager.m in Sources */,
-				56C3D54E18F803DC00A05BC4 /* FBSNode.m in Sources */,
+				56C3D54E18F803DC00A05BC4 /* FBSTopic.m in Sources */,
 				56C3D55718F804DA00A05BC4 /* FBSBookNode.m in Sources */,
 				5630304A18FAF430000699E9 /* FBSPendingImageRequest.m in Sources */,
 				56CE273B19004BD700635489 /* FBSProperty.m in Sources */,
+				566A4E7119055A3600400136 /* FBSNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
