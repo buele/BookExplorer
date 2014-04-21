@@ -44,6 +44,8 @@
         [self getEntityById:@"/en/nineteen_eighty-four" withName:@"Nineteen Eighty-Four"];
         // test 2 author
         [self getEntityById:@"/m/034bs" withName:@"George Orwell"];
+        //test 3 entities by keyword
+        [self getEntitiesByKeyword: @"George"];
     }
     
     return self;
@@ -55,15 +57,21 @@
     NSLog(@"test node" );
 }
 
+-(void)nodesByKeywordDidReceived:(NSArray*)nodes forKey:(NSString *)key
+{
+    NSLog(@"nodes: %@",nodes);
+}
 
 #pragma mark FBSApiManagerDelegate protocol
 -(void)getAutocompleteSuggestionsByKeyword:(NSString * ) aKeyword
 {
-    
+    //TODO: design/develop get autocomplete suggestions by keyword feature classes
 }
 -(void)getEntitiesByKeyword: (NSString * ) aKeyword
 {
+    //TODO: design/develop get entities by keyword feature classes
     
+    [[FBSApiManager getSharedInstance] getNodesByKeyword:aKeyword andForDelegate:self];
 }
 -(void)getEntityById:(NSString * ) anId withName:(NSString *)aName{
     [nodeManager nodeWithId:anId andWithName:aName forDelegate:self];

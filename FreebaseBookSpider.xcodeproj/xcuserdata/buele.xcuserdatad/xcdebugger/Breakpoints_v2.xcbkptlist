@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FreebaseBookSpider/BookSpider.m"
-            timestampString = "419730766.37451"
+            timestampString = "419732672.112704"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "-nodeDidGenerated:withId:"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "-nodesByKeywordDidReceived:forKey:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
