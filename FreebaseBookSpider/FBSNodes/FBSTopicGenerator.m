@@ -1,8 +1,8 @@
 //
-//  FBSNodeManager.h
+//  FBSNodeGenerator.m
 //  FreebaseBookSpider
 //
-//  Created by Raffaele Bua on 14/04/14.
+//  Created by Raffaele Bua on 11/04/14.
 
 /*****************************************************************************
  The MIT License (MIT)
@@ -27,19 +27,35 @@
  THE SOFTWARE.
  *****************************************************************************/
 
-#import <Foundation/Foundation.h>
-#import "FBSTopic.h"
+#import "FBSTopicGenerator.h"
+#import "FBSPendingImageRequest.h"
+#import "../FBSApiManager/FBSApiManager.h"
 
-@protocol FBSNodeManagerDelegate
--(void)nodeDidGenerated:(FBSTopic *)node withId:(NSString *)nodeId;
-@end
+@implementation FBSTopicGenerator
 
-@interface FBSNodeManager : NSObject
+-(id)init
 {
-    NSMutableDictionary * pendingNodeRequests;
-    
+    self = [super init];
+    if(self){
+        pendingImageRequests = [[NSMutableArray alloc]init];
+    }
+    return self;
 }
--(void)nodeWithId:(NSString *)aNodeId andWithName:(NSString *)name forDelegate:(id)delegate;
--(void)nodesWithKeyword:(NSString *)keyword forDelegate:(id)delegate;
+
+-(void)requestImageWithId:(NSString *)anImageId forNode:(FBSTopic *)aNode toTarget:(id)aTarget
+{
+    FBSPendingImageRequest * pendingRequest = [[FBSPendingImageRequest alloc]initWithNode:aNode andTarget:aTarget];
+    [pendingImageRequests addObject:pendingRequest];
+    [[FBSApiManager getSharedInstance] getImageById:anImageId andForDelegate:self forRequestId:[NSNumber numberWithInt:[pendingImageRequests count] -1]];
+}
+
+-(void)imageByIdDidReceived:(UIImage*)image forKey:(NSNumber *)requestIndex
+{
+    FBSPendingImageRequest * pendingRequest = [pendingImageRequests objectAtIndex:[requestIndex intValue]];
+    pendingRequest.node.image = image;
+    [pendingImageRequests removeObjectAtIndex:[requestIndex intValue]];
+    [pendingRequest.target nodeDidGenerated:pendingRequest.node withId:pendingRequest.node.nodeId];
+
+}
 
 @end

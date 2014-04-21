@@ -1,8 +1,8 @@
 //
-//  FBSNodeManager.h
+//  FBSBookNode.h
 //  FreebaseBookSpider
 //
-//  Created by Raffaele Bua on 14/04/14.
+//  Created by Raffaele Bua on 11/04/14.
 
 /*****************************************************************************
  The MIT License (MIT)
@@ -27,19 +27,22 @@
  THE SOFTWARE.
  *****************************************************************************/
 
-#import <Foundation/Foundation.h>
 #import "FBSTopic.h"
+#import "FBSProperty.h"
 
-@protocol FBSNodeManagerDelegate
--(void)nodeDidGenerated:(FBSTopic *)node withId:(NSString *)nodeId;
-@end
-
-@interface FBSNodeManager : NSObject
-{
-    NSMutableDictionary * pendingNodeRequests;
-    
-}
--(void)nodeWithId:(NSString *)aNodeId andWithName:(NSString *)name forDelegate:(id)delegate;
--(void)nodesWithKeyword:(NSString *)keyword forDelegate:(id)delegate;
-
+@interface FBSBookTopic : FBSTopic
+@property(nonatomic)FBSProperty  * genre;
+@property(nonatomic)FBSProperty  * characters;
+@property(nonatomic)FBSProperty  * quotations;
+@property(nonatomic)FBSProperty  * author;
+@property(nonatomic)FBSProperty  * dateWritten;
+@property(nonatomic)FBSProperty  * copyrightDate;
+@property(nonatomic)FBSProperty  * dateOfFirstPubblication;
+@property(nonatomic)FBSProperty  * subjects;
+@property(nonatomic)FBSProperty  * originalLanguage;
+@property(nonatomic)FBSProperty  * previousInSeries;
+@property(nonatomic)FBSProperty  * isfdbId;
+@property(nonatomic)FBSProperty  * nextInSeries;
+@property(nonatomic)FBSProperty  * influencedBy;
+@property(nonatomic)FBSProperty  * influenced;
 @end

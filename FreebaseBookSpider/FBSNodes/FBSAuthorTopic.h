@@ -1,8 +1,8 @@
 //
-//  FBSNodeManager.h
+//  FBSAuthorNode.h
 //  FreebaseBookSpider
 //
-//  Created by Raffaele Bua on 14/04/14.
+//  Created by Raffaele Bua on 11/04/14.
 
 /*****************************************************************************
  The MIT License (MIT)
@@ -27,19 +27,30 @@
  THE SOFTWARE.
  *****************************************************************************/
 
-#import <Foundation/Foundation.h>
 #import "FBSTopic.h"
+#import "FBSProperty.h"
 
-@protocol FBSNodeManagerDelegate
--(void)nodeDidGenerated:(FBSTopic *)node withId:(NSString *)nodeId;
-@end
+@interface FBSAuthorTopic : FBSTopic
 
-@interface FBSNodeManager : NSObject
-{
-    NSMutableDictionary * pendingNodeRequests;
-    
-}
--(void)nodeWithId:(NSString *)aNodeId andWithName:(NSString *)name forDelegate:(id)delegate;
--(void)nodesWithKeyword:(NSString *)keyword forDelegate:(id)delegate;
+@property(nonatomic)FBSProperty  * dateOfBirth;
+@property(nonatomic)FBSProperty  * placeOfBirth;
+@property(nonatomic)FBSProperty  * nationality;
+@property(nonatomic)FBSProperty  * gender;
+@property(nonatomic)FBSProperty  * profession;
+@property(nonatomic)FBSProperty  * religion;
+@property(nonatomic)FBSProperty  * parents;
+@property(nonatomic)FBSProperty  * children;
+@property(nonatomic)FBSProperty  * spouseS;
+@property(nonatomic)FBSProperty  * employmentHistory;
+@property(nonatomic)FBSProperty  * education;
+@property(nonatomic)FBSProperty  * quotations;
+@property(nonatomic)FBSProperty  * placesLived;
+@property(nonatomic)FBSProperty  * languages;
+@property(nonatomic)FBSProperty  * dateOfDeath;
+@property(nonatomic)FBSProperty  * placeOfDeath;
+@property(nonatomic)FBSProperty  * causeOfDeath;
+@property(nonatomic)FBSProperty  * worksWritten;
+@property(nonatomic)FBSProperty  * influencedBy;
+@property(nonatomic)FBSProperty  * influenced;
 
 @end

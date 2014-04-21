@@ -1,8 +1,8 @@
 //
-//  FBSNodeManager.h
+//  FBSNodeGenerator.h
 //  FreebaseBookSpider
 //
-//  Created by Raffaele Bua on 14/04/14.
+//  Created by Raffaele Bua on 11/04/14.
 
 /*****************************************************************************
  The MIT License (MIT)
@@ -29,17 +29,16 @@
 
 #import <Foundation/Foundation.h>
 #import "FBSTopic.h"
-
-@protocol FBSNodeManagerDelegate
--(void)nodeDidGenerated:(FBSTopic *)node withId:(NSString *)nodeId;
+@protocol FBSNodeGeneratorDelegate
+-(void)nodeDidGenerated:(FBSTopic *)aNode withId:(NSString *)aNodeId;
 @end
 
-@interface FBSNodeManager : NSObject
+@interface FBSTopicGenerator : NSObject
 {
-    NSMutableDictionary * pendingNodeRequests;
-    
+    NSMutableArray* pendingImageRequests;
 }
--(void)nodeWithId:(NSString *)aNodeId andWithName:(NSString *)name forDelegate:(id)delegate;
--(void)nodesWithKeyword:(NSString *)keyword forDelegate:(id)delegate;
 
+
+-(void) topicWithId:(NSString *)aNodeId name:(NSString *)aName properties:(NSDictionary *)properties toDelegate:(id)delegate;
+-(void)requestImageWithId:(NSString *)anImageId forNode:(FBSTopic *)aNode toTarget:(id)aTarget;
 @end

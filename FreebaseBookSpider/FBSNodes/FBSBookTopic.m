@@ -1,8 +1,8 @@
 //
-//  FBSNodeManager.h
+//  FBSBookNode.m
 //  FreebaseBookSpider
 //
-//  Created by Raffaele Bua on 14/04/14.
+//  Created by Raffaele Bua on 11/04/14.
 
 /*****************************************************************************
  The MIT License (MIT)
@@ -27,19 +27,31 @@
  THE SOFTWARE.
  *****************************************************************************/
 
-#import <Foundation/Foundation.h>
-#import "FBSTopic.h"
+#import "FBSBookTopic.h"
 
-@protocol FBSNodeManagerDelegate
--(void)nodeDidGenerated:(FBSTopic *)node withId:(NSString *)nodeId;
-@end
+@implementation FBSBookTopic
+@synthesize genre;
+@synthesize characters;
+@synthesize quotations;
+@synthesize author;
+@synthesize dateWritten;
+@synthesize copyrightDate;
+@synthesize dateOfFirstPubblication;
+@synthesize subjects;
+@synthesize originalLanguage;
+@synthesize previousInSeries;
+@synthesize isfdbId;
+@synthesize nextInSeries;
+@synthesize influencedBy;
+@synthesize influenced;
 
-@interface FBSNodeManager : NSObject
+-(NSArray *)summary
 {
-    NSMutableDictionary * pendingNodeRequests;
-    
+    return nil;
 }
--(void)nodeWithId:(NSString *)aNodeId andWithName:(NSString *)name forDelegate:(id)delegate;
--(void)nodesWithKeyword:(NSString *)keyword forDelegate:(id)delegate;
 
+-(NSArray *)details
+{
+    return nil;
+}
 @end

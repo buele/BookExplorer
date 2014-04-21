@@ -30,11 +30,11 @@
 #import <Foundation/Foundation.h>
 #import "FBSNodeTypes.h"
 #import "FBSProperty.h"
+#import "FBSNode.h"
 
-@interface FBSTopic : NSObject
+@interface FBSTopic : FBSNode
 
-@property(nonatomic)NSString    * nodeId;
-@property(nonatomic)NSString    * name;
+
 @property(nonatomic)FBSProperty * alias;
 @property(nonatomic)FBSProperty * description;
 @property(nonatomic)UIImage     * image;

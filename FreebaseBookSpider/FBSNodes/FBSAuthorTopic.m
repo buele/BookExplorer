@@ -1,8 +1,8 @@
 //
-//  FBSNodeManager.h
+//  FBSAuthorNode.m
 //  FreebaseBookSpider
 //
-//  Created by Raffaele Bua on 14/04/14.
+//  Created by Raffaele Bua on 11/04/14.
 
 /*****************************************************************************
  The MIT License (MIT)
@@ -27,19 +27,39 @@
  THE SOFTWARE.
  *****************************************************************************/
 
-#import <Foundation/Foundation.h>
-#import "FBSTopic.h"
+#import "FBSAuthorTopic.h"
+#import "FBSPropertyValue.h"
+#import "FBSProperty.h"
 
-@protocol FBSNodeManagerDelegate
--(void)nodeDidGenerated:(FBSTopic *)node withId:(NSString *)nodeId;
-@end
+@implementation FBSAuthorTopic
+@synthesize dateOfBirth;
+@synthesize placeOfBirth;
+@synthesize nationality;
+@synthesize gender;
+@synthesize profession;
+@synthesize religion;
+@synthesize parents;
+@synthesize children;
+@synthesize spouseS;
+@synthesize employmentHistory;
+@synthesize education;
+@synthesize quotations;
+@synthesize placesLived;
+@synthesize languages;
+@synthesize dateOfDeath;
+@synthesize placeOfDeath;
+@synthesize causeOfDeath;
+@synthesize worksWritten;
+@synthesize influencedBy;
+@synthesize influenced;
 
-@interface FBSNodeManager : NSObject
+-(NSArray * )summary
 {
-    NSMutableDictionary * pendingNodeRequests;
-    
+    return nil;
 }
--(void)nodeWithId:(NSString *)aNodeId andWithName:(NSString *)name forDelegate:(id)delegate;
--(void)nodesWithKeyword:(NSString *)keyword forDelegate:(id)delegate;
 
+-(NSArray *)details
+{
+    return nil;
+}
 @end

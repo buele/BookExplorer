@@ -45,7 +45,7 @@
         // test 2 author
         //[self getEntityById:@"/m/034bs" withName:@"George Orwell"];
         // test 2 author
-        //[self getEntityById:@"/m/09b6zr" withName:@"George W. Bush"];
+        [self getEntityById:@"/m/09b6zr" withName:@"George W. Bush"];
         //test 3 entities by keyword
         [self getEntitiesByKeyword: @"George or"];
     }

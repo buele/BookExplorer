@@ -28,8 +28,8 @@
  *****************************************************************************/
 
 #import "FBSNodeManager.h"
-#import "FBSBookNodeGenerator.h"
-#import "FBSAuthorNodeGenerator.h"
+#import "FBSBookTopicGenerator.h"
+#import "FBSAuthorTopicGenerator.h"
 #import "../FBSApiManager/FBSApiManager.h"
 #import "FBSNodeTypes.h"
 #import "FBSPedingNodeRequest.h"
@@ -56,15 +56,15 @@
 -(void)generateNodeAuthorWithProperties:(NSDictionary *)properties forKey:(NSString *)key
 {
     FBSPedingNodeRequest * pendingRequest = [pendingNodeRequests objectForKey:key];
-    FBSAuthorNodeGenerator * authorGenerator = [[FBSAuthorNodeGenerator alloc] init];
-    [authorGenerator nodeWithId:pendingRequest.nodeId name:pendingRequest.nodeName properties:properties toDelegate:self];
+    FBSAuthorTopicGenerator * authorGenerator = [[FBSAuthorTopicGenerator alloc] init];
+    [authorGenerator topicWithId:pendingRequest.nodeId name:pendingRequest.nodeName properties:properties toDelegate:self];
 }
 
 -(void)generateNodeBookWithProperties:(NSDictionary *)properties forKey:(NSString *)key
 {
     FBSPedingNodeRequest * pendingRequest = [pendingNodeRequests objectForKey:key];
-    FBSBookNodeGenerator * bookGenerator = [[FBSBookNodeGenerator alloc] init];
-    [bookGenerator nodeWithId:pendingRequest.nodeId name:pendingRequest.nodeName properties:properties toDelegate:self];
+    FBSBookTopicGenerator * bookGenerator = [[FBSBookTopicGenerator alloc] init];
+    [bookGenerator topicWithId:pendingRequest.nodeId name:pendingRequest.nodeName properties:properties toDelegate:self];
     
 }
 
