@@ -38,10 +38,10 @@
 @property(nonatomic)FBSProperty * alias;
 @property(nonatomic)FBSProperty * description;
 @property(nonatomic)UIImage     * image;
-@property(nonatomic)FBSNodeTypes type;
+@property(nonatomic)FBSNodeTypes  type;
 
 
--(id)initWithId:(NSString *)aNodeId name:(NSString *)aName  image:(UIImage  *)anImage;
+-(id)initWithId:(NSString *)aTopicId name:(NSString *)aName  image:(UIImage  *)anImage;
 -(NSArray *)summary;
 -(NSArray *)details;
 @end

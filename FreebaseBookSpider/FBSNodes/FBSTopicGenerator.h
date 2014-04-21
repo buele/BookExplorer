@@ -30,7 +30,7 @@
 #import <Foundation/Foundation.h>
 #import "FBSTopic.h"
 @protocol FBSNodeGeneratorDelegate
--(void)nodeDidGenerated:(FBSTopic *)aNode withId:(NSString *)aNodeId;
+-(void)topicDidGenerated:(FBSTopic *)aNode withId:(NSString *)aNodeId;
 @end
 
 @interface FBSTopicGenerator : NSObject
@@ -39,6 +39,6 @@
 }
 
 
--(void) topicWithId:(NSString *)aNodeId name:(NSString *)aName properties:(NSDictionary *)properties toDelegate:(id)delegate;
--(void)requestImageWithId:(NSString *)anImageId forNode:(FBSTopic *)aNode toTarget:(id)aTarget;
+-(void) topicWithId:(NSString *)aTopicId name:(NSString *)aName properties:(NSDictionary *)properties toDelegate:(id)delegate;
+-(void)requestImageWithId:(NSString *)anImageId forTopic:(FBSTopic *)aTopic toTarget:(id)aTarget;
 @end

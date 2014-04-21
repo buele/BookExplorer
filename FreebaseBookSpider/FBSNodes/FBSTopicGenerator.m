@@ -42,9 +42,9 @@
     return self;
 }
 
--(void)requestImageWithId:(NSString *)anImageId forNode:(FBSTopic *)aNode toTarget:(id)aTarget
+-(void)requestImageWithId:(NSString *)anImageId forTopic:(FBSTopic *)aTopic toTarget:(id)aTarget
 {
-    FBSPendingImageRequest * pendingRequest = [[FBSPendingImageRequest alloc]initWithNode:aNode andTarget:aTarget];
+    FBSPendingImageRequest * pendingRequest = [[FBSPendingImageRequest alloc]initWithNode:aTopic andTarget:aTarget];
     [pendingImageRequests addObject:pendingRequest];
     [[FBSApiManager getSharedInstance] getImageById:anImageId andForDelegate:self forRequestId:[NSNumber numberWithInt:[pendingImageRequests count] -1]];
 }
@@ -54,7 +54,7 @@
     FBSPendingImageRequest * pendingRequest = [pendingImageRequests objectAtIndex:[requestIndex intValue]];
     pendingRequest.node.image = image;
     [pendingImageRequests removeObjectAtIndex:[requestIndex intValue]];
-    [pendingRequest.target nodeDidGenerated:pendingRequest.node withId:pendingRequest.node.nodeId];
+    [pendingRequest.target topicDidGenerated:pendingRequest.node withId:pendingRequest.node.nodeId];
 
 }
 

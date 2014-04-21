@@ -30,19 +30,19 @@
 #import "FBSTopic.h"
 
 @implementation FBSTopic
-@synthesize nodeId;
-@synthesize name;
 @synthesize alias;
 @synthesize description;
 @synthesize image;
+@synthesize type;
 
--(id)initWithId:(NSString *)aNodeId name:(NSString *)aName  image:(UIImage  *)anImage
+
+-(id)initWithId:(NSString *)aTopicId name:(NSString *)aName  image:(UIImage  *)anImage
 {
     self = [super init];
     if(self){
-        self.nodeId = aNodeId;
-        self.name = aName;
-        self.image = anImage;
+        self.nodeId = aTopicId;
+        self.name   = aName;
+        self.image  = anImage;
     }
     return self;
 }

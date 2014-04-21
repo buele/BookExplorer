@@ -65,7 +65,6 @@
     FBSPedingNodeRequest * pendingRequest = [pendingNodeRequests objectForKey:key];
     FBSBookTopicGenerator * bookGenerator = [[FBSBookTopicGenerator alloc] init];
     [bookGenerator topicWithId:pendingRequest.nodeId name:pendingRequest.nodeName properties:properties toDelegate:self];
-    
 }
 
 -(void)nodeDidGenerated:(FBSTopic *)theNewNode withId:newNodeId
@@ -73,8 +72,7 @@
     FBSPedingNodeRequest * pendingRequest = [pendingNodeRequests objectForKey:newNodeId];
     [pendingNodeRequests removeObjectForKey:newNodeId];
     theNewNode.name = pendingRequest.nodeName;
-    [pendingRequest.target nodeDidGenerated:theNewNode withId:newNodeId];
-    
+    [pendingRequest.target topicDidGenerated:theNewNode withId:newNodeId];
 }
 
 -(void)nodePropertiesByIdDidReceived:(NSDictionary*)properties forKey:(NSString *)key
@@ -96,14 +94,13 @@
 {
     int bookPropertiesCounter   = 0;
     int authorPropertiesCounter = 0;
-    NSArray *bookProperties = @[@"/book/book/genre", @"/book/book/characters",@"/media_common/quotation_source/quotations",@"/book/written_work/author",@"/book/written_work/date_written",@"/book/written_work/copyright_date",@"/book/written_work/date_of_first_pubblication",@"/book/written_work/subjects",@"/book/written_work/original_language",@"/book/written_work/previous_in_series",@"/book/written_work/isfdb_id",@"/book/written_work/next_in_series",@"/influence/influence_node/influenced_by",@"/influence/influence_node/influenced"];
-    NSArray *authorProperties = @[@"/common/topic/description", @"/common/topic/image",@"/people/person/date_of_birth",@"/people/person/place_of_birth",@"/people/person/nationality",@"/people/person/gender",@"/people/person/profession",@"/people/person/religion", @"/people/person/parents", @"/people/person/children", @"/people/person/spouse_s",@"/people/person/employment_history",@"/people/person/education",@"/people/person/quotations",@"/people/person/places_lived",@"/people/person/languages",@"/people/deceased_person/date_of_death",@"/people/deceased_person/place_of_death",@"/people/deceased_person/cause_of_death",@"/book/author/works_written",@"/influence/influence_node/influenced_by",@"/influence/influence_node/influenced"];
+    NSArray * bookProperties = @[@"/book/book/genre", @"/book/book/characters",@"/media_common/quotation_source/quotations",@"/book/written_work/author",@"/book/written_work/date_written",@"/book/written_work/copyright_date",@"/book/written_work/date_of_first_pubblication",@"/book/written_work/subjects",@"/book/written_work/original_language",@"/book/written_work/previous_in_series",@"/book/written_work/isfdb_id",@"/book/written_work/next_in_series",@"/influence/influence_node/influenced_by",@"/influence/influence_node/influenced"];
+    
+    NSArray * authorProperties = @[@"/common/topic/description", @"/common/topic/image",@"/people/person/date_of_birth",@"/people/person/place_of_birth",@"/people/person/nationality",@"/people/person/gender",@"/people/person/profession",@"/people/person/religion", @"/people/person/parents", @"/people/person/children", @"/people/person/spouse_s",@"/people/person/employment_history",@"/people/person/education",@"/people/person/quotations",@"/people/person/places_lived",@"/people/person/languages",@"/people/deceased_person/date_of_death",@"/people/deceased_person/place_of_death",@"/people/deceased_person/cause_of_death",@"/book/author/works_written",@"/influence/influence_node/influenced_by",@"/influence/influence_node/influenced"];
     for (NSString * key in bookProperties)if([properties objectForKey:key]) bookPropertiesCounter++;
     for (NSString * key in authorProperties)if([properties objectForKey:key]) authorPropertiesCounter++;
     
     return (bookPropertiesCounter > authorPropertiesCounter)?FBSNodeBookType:FBSNodeAuthorType;
-
-
 }
 
 @end

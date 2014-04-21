@@ -54,7 +54,7 @@
 }
 
 
--(void)nodeDidGenerated:(FBSTopic *)node withId:(NSString *)nodeId
+-(void)topicDidGenerated:(FBSTopic *)node withId:(NSString *)nodeId
 {
     NSLog(@"test node" );
 }

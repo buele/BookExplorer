@@ -30,5 +30,11 @@
 #import "FBSNode.h"
 
 @implementation FBSNode
+@synthesize nodeId;
+@synthesize lang;
+@synthesize mid;
+@synthesize name;
+@synthesize notableId;
+@synthesize notableName;
 
 @end

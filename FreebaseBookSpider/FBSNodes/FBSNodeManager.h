@@ -40,6 +40,7 @@
     
 }
 -(void)nodeWithId:(NSString *)aNodeId andWithName:(NSString *)name forDelegate:(id)delegate;
+-(void)topicWithNode:(FBSNode *)aNode forDelegate:(id)delegate;
 -(void)nodesWithKeyword:(NSString *)keyword forDelegate:(id)delegate;
 
 @end

@@ -110,10 +110,10 @@ static NSString * FB_INFLUENCED_LABEL         = @"influenced";
     
     if(imageProperty){
         FBSPropertyValue * value = [imageProperty.values objectAtIndex:0];
-        [self  requestImageWithId:value.propertyId forNode:author toTarget:delegate];
+        [self  requestImageWithId:value.propertyId forTopic:author toTarget:delegate];
     }
     else
-        [delegate nodeDidGenerated:author withId:aNodeId];
+        [delegate topicDidGenerated:author withId:aNodeId];
 }
 
 @end
