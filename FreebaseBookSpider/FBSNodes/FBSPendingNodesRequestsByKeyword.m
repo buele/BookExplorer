@@ -30,6 +30,9 @@
 #import "FBSPendingNodesRequestsByKeyword.h"
 
 @implementation FBSPendingNodesRequestsByKeyword
+@synthesize  keyword;
+@synthesize  target;
+@synthesize  action;
 
 -(id)initWithKeyword:(NSString *)aKeyword target:(id)aTarget
 {

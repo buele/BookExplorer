@@ -28,11 +28,13 @@
  *****************************************************************************/
 
 #import <Foundation/Foundation.h>
+#import "FBSNodeManagerActions.h"
 
 @interface FBSPendingNodesRequestsByKeyword : NSObject
 
 @property(nonatomic)NSString * keyword;
 @property(nonatomic)id target;
+@property(nonatomic)FBSNodeManagerActions action;
 
 -(id)initWithKeyword:(NSString *)aKeyword target:(id)aTarget;
 @end

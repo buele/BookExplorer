@@ -63,6 +63,7 @@
 		566A4E7319069D9300400136 /* FBSPendingTopicRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBSPendingTopicRequest.m; path = FBSNodes/FBSPendingTopicRequest.m; sourceTree = "<group>"; };
 		566A4E751906FA7F00400136 /* FBSPendingNodesRequestsByKeyword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBSPendingNodesRequestsByKeyword.h; path = FBSNodes/FBSPendingNodesRequestsByKeyword.h; sourceTree = "<group>"; };
 		566A4E761906FA7F00400136 /* FBSPendingNodesRequestsByKeyword.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBSPendingNodesRequestsByKeyword.m; path = FBSNodes/FBSPendingNodesRequestsByKeyword.m; sourceTree = "<group>"; };
+		566A4E7819071DA500400136 /* FBSNodeManagerActions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FBSNodeManagerActions.h; path = FBSNodes/FBSNodeManagerActions.h; sourceTree = "<group>"; };
 		5682E37E18E5D5B200522958 /* FreebaseBookSpider.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FreebaseBookSpider.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5682E38118E5D5B200522958 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5682E38318E5D5B200522958 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -267,6 +268,7 @@
 				566A4E7319069D9300400136 /* FBSPendingTopicRequest.m */,
 				566A4E751906FA7F00400136 /* FBSPendingNodesRequestsByKeyword.h */,
 				566A4E761906FA7F00400136 /* FBSPendingNodesRequestsByKeyword.m */,
+				566A4E7819071DA500400136 /* FBSNodeManagerActions.h */,
 			);
 			name = FBSNodes;
 			sourceTree = "<group>";

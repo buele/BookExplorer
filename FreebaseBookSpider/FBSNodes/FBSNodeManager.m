@@ -66,7 +66,6 @@
 
 -(void)nodesByKeywordDidReceived:(NSDictionary*)nodes forKey:(NSString *)key
 {
-    //NSLog(@"nodes: %@",nodes);
     NSMutableArray * generatedNodes = [[NSMutableArray alloc]init];
     for (NSDictionary * item in nodes) {
         FBSNode * node = [[FBSNode alloc]initWithId:[item objectForKey:@"id"] lang:[item objectForKey:@"lang"] mid:[item objectForKey:@"mid"] name:[item objectForKey:@"name"] notableId:[[item objectForKey:@"notable"] objectForKey:@"id"] notableName:[[item objectForKey:@"notable"] objectForKey:@"name"]];
@@ -103,8 +102,6 @@
             break;
         case FBSNodeAuthorType:
             [self generateTopicAuthorWithProperties:properties forKey:key];
-            break;
-        default:
             break;
     }
 }

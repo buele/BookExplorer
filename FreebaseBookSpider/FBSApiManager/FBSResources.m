@@ -108,7 +108,6 @@ static NSString *  FREEBASE_QUERY_PARAMETER_KEY                 = @"query";
 
 -(NSString* )getLanguageParameter
 {
-    //return [NSString stringWithFormat: @"&%@=%@",FREEBASE_LANGUAGE_PARAMETER_KEY,[[NSLocale preferredLanguages] objectAtIndex:0]];
     return [NSString stringWithFormat: @"&%@=%@",FREEBASE_LANGUAGE_PARAMETER_KEY,@"en"];
 }
 

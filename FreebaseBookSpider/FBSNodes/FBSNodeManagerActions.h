@@ -1,9 +1,10 @@
 //
-//  BookSpider.m
-//  Freebase interface object to look topics about books
+//  FBSApiActions.h
+//  FreebaseBookSpider
 //
-//  Created by Raffaele Bua on 28/03/14.
-
+//  Created by Raffaele Bua on 01/04/14.
+//  Copyright (c) 2014 Buele. All rights reserved.
+//
 /*****************************************************************************
  The MIT License (MIT)
  
@@ -27,53 +28,12 @@
  THE SOFTWARE.
  *****************************************************************************/
 
+#ifndef FreebaseBookSpider_FBSNodeManagerActions_h
+#define FreebaseBookSpider_FBSNodeManagerActions_h
 
-#import "FBSApiManager.h"
-#import "BookSpider.h"
-#import "FBSNodes/FBSNodeManager.h"
-#import "FBSNode.h"
+typedef enum{
+    FBSNodeManagerNodesByKeywordAction,
+    FBSNodeManagerSuggestionsAction
+}FBSNodeManagerActions;
 
-@implementation BookSpider
-
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        nodeManager = [[FBSNodeManager alloc] init];
-        [self getNodesByKeyword: @"Siddharta"];
-    }
-    return self;
-}
-
-
-
--(void)topicDidGenerated:(FBSTopic *)theNode withId:(NSString *)theNodeId
-{
-    NSLog(@"description: %@",[[theNode.description.values objectAtIndex:0] text] );
-}
-
--(void)nodesByKeywordDidReceived:(NSArray*)nodes forKey:(NSString *)key
-{
-    [self getTopicByNode:[nodes objectAtIndex:0]]; //test
-}
-
-
-
-#pragma mark main interface
--(id)initWithFreebaseApiKey:(NSString *)anApiKey
-{
-    return nil;
-}
--(void)getNodesByKeyword: (NSString * ) aKeyword
-{
-    [nodeManager nodesByKeyword:aKeyword forDelegate:self];
-}
-
--(void)getTopicByNode:(FBSNode *)aNode
-{
-    [nodeManager topicWithNode:aNode forDelegate:self];
-}
-
-
-
-@end
+#endif

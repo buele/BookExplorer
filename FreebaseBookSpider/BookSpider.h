@@ -30,6 +30,13 @@
 #import <Foundation/Foundation.h>
 #import "FBSApiManager.h"
 #import "FBSNodeManager.h"
+#import "FBSNode.h"
+#import "FBSTopic.h"
+
+@protocol FreebaseBookSpiderDelegate
+-(void)nodesDidGenerated:(NSArray *)theNodes forKeyword:(NSString *)keyword;
+-(void)topicDidGenerated:(FBSTopic *)theTopic;
+@end
 
 @interface BookSpider : NSObject
 {
@@ -39,10 +46,8 @@
 -(id)init;
 
 #pragma mark main interface
--(void)getAutocompleteSuggestionsByKeyword:(NSString * ) aKeyword;
--(void)getEntitiesByKeyword: (NSString * ) aKeyword;
--(void)getEntityById:(NSString * ) anId withName:(NSString *)aName;
-
-
+-(id)initWithFreebaseApiKey:(NSString *)anApiKey;
+-(void)getNodesByKeyword: (NSString * ) aKeyword;
+-(void)getTopicByNode:(FBSNode * )aNode;
 
 @end
