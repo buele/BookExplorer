@@ -1,8 +1,8 @@
 //
-//  FBSNode.h
+//  FBSPendingTopicRequest.h
 //  FreebaseBookSpider
 //
-//  Created by Raffaele Bua on 11/04/14.
+//  Created by Raffaele Bua on 22/04/14.
 
 /*****************************************************************************
  The MIT License (MIT)
@@ -28,21 +28,11 @@
  *****************************************************************************/
 
 #import <Foundation/Foundation.h>
-#import "FBSNodeTypes.h"
-#import "FBSProperty.h"
-#import "FBSNode.h"
+#include "FBSNode.h"
 
-@interface FBSTopic : FBSNode
+@interface FBSPendingTopicRequest : NSObject
+@property(nonatomic)FBSNode * node;
+@property(nonatomic)id delegate;
 
-
-@property(nonatomic)FBSProperty * alias;
-@property(nonatomic)FBSProperty * description;
-@property(nonatomic)UIImage     * image;
-@property(nonatomic)FBSNodeTypes  type;
-
-
--(id)initWithId:(NSString *)aTopicId name:(NSString *)aName  image:(UIImage  *)anImage;
--(id)initWithFBSNode:(FBSNode *)aNode;
--(NSArray *)summary;
--(NSArray *)details;
+-(id)initWithNode:(FBSNode *)aNode delegate:(id)aDelegate;
 @end

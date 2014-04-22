@@ -37,4 +37,19 @@
 @synthesize notableId;
 @synthesize notableName;
 
+
+-(id)initWithId:(NSString *)anId lang:(NSString *)aLang mid:(NSString *)aMid name:(NSString *)aName notableId:(NSString *)aNotableId notableName:(NSString *)aNotableName
+{
+    self = [super init];
+    if(self){
+        self.nodeId = anId;
+        self.lang =aLang;
+        self.mid = aMid;
+        self.name = aName;
+        self.notableId = aNotableId;
+        self.notableName = aNotableName;
+    }
+    return self;
+}
+
 @end

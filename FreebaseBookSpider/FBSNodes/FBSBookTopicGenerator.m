@@ -71,12 +71,12 @@ static NSString * FB_INFLUENCED_LABEL                   = @"influenced";
 
 
 
--(void) topicWithId:(NSString *)aNodeId name:(NSString *)aName properties:(NSDictionary *)properties toDelegate:(id)delegate
+//-(void) topicWithId:(NSString *)aNodeId name:(NSString *)aName properties:(NSDictionary *)properties toDelegate:(id)delegate
+-(void)topicWithNode:(FBSNode *)aNode properties:(NSDictionary *)properties toDelegate:(id)aDelegate
 {
 
-    FBSBookTopic * book = [[FBSBookTopic alloc] init];
+    FBSBookTopic * book = [[FBSBookTopic alloc] initWithFBSNode:aNode];
     book.type = FBSNodeBookType;
-    book.nodeId = aNodeId;    
     book.alias  = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_ALIAS_KEY] label:FB_ALIAS_LABEL];
     book.description = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_DESCRIPTION_KEY] label:FB_DESCRIPTION_LABEL];
     book.genre = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_GENRE_KEY] label:FB_GENRE_LABEL];
@@ -99,10 +99,10 @@ static NSString * FB_INFLUENCED_LABEL                   = @"influenced";
     
     if(imageProperty){
         FBSPropertyValue * value = [imageProperty.values objectAtIndex:0];
-        [self  requestImageWithId:value.propertyId forTopic:book toTarget:delegate];
+        [self  requestImageWithId:value.propertyId forTopic:book toTarget:aDelegate];
     }
     else
-        [delegate topicDidGenerated:book withId:aNodeId];
+        [aDelegate topicDidGenerated:book withId:aNode.nodeId];
 }
 
 

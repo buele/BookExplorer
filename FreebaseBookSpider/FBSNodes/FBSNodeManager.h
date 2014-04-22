@@ -37,10 +37,11 @@
 @interface FBSNodeManager : NSObject
 {
     NSMutableDictionary * pendingNodeRequests;
+    NSMutableDictionary * pendingTopicRequests;
     
 }
 -(void)nodeWithId:(NSString *)aNodeId andWithName:(NSString *)name forDelegate:(id)delegate;
--(void)topicWithNode:(FBSNode *)aNode forDelegate:(id)delegate;
+-(void)topicWithNode:(FBSNode *)aNode forDelegate:(id)aDelegate;
 -(void)nodesWithKeyword:(NSString *)keyword forDelegate:(id)delegate;
 
 @end

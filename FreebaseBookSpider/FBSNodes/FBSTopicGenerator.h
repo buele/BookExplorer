@@ -29,6 +29,7 @@
 
 #import <Foundation/Foundation.h>
 #import "FBSTopic.h"
+#import "FBSNode.h"
 @protocol FBSNodeGeneratorDelegate
 -(void)topicDidGenerated:(FBSTopic *)aNode withId:(NSString *)aNodeId;
 @end
@@ -39,6 +40,7 @@
 }
 
 
--(void) topicWithId:(NSString *)aTopicId name:(NSString *)aName properties:(NSDictionary *)properties toDelegate:(id)delegate;
+//-(void) topicWithId:(NSString *)aTopicId name:(NSString *)aName properties:(NSDictionary *)properties toDelegate:(id)delegate;
 -(void)requestImageWithId:(NSString *)anImageId forTopic:(FBSTopic *)aTopic toTarget:(id)aTarget;
+-(void)topicWithNode:(FBSNode *)aNode properties:(NSDictionary *)properties toDelegate:(id)aDelegate;
 @end

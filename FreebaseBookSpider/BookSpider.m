@@ -40,12 +40,27 @@
     if (self) {
         nodeManager = [[FBSNodeManager alloc] init];
 
+        /*
+         {
+            id = "/en/george_orwell";
+            lang = en;
+            mid = "/m/034bs";
+            name = "George Orwell";
+            notable = {
+                id = "/m/02xhgwq";
+                name = Novelist;
+            };
+            score = "60.537212";
+         }
+         */
+        
         //test 1 book
         //[self getEntityById:@"/en/nineteen_eighty-four" withName:@"Nineteen Eighty-Four"];
         // test 2 author
         //[self getEntityById:@"/m/034bs" withName:@"George Orwell"];
         // test 2 author
-        [self getEntityById:@"/m/09b6zr" withName:@"George W. Bush"];
+        FBSNode * node = [[FBSNode alloc]initWithId:@"/en/george_orwell" lang:@"en" mid:@"/m/034bs" name:@"George Orwell" notableId:@"/m/02xhgwq" notableName:@"Novelist"];
+        [self getTopicByNode:node];
         //test 3 entities by keyword
         [self getEntitiesByKeyword: @"George or"];
     }
@@ -54,7 +69,7 @@
 }
 
 
--(void)topicDidGenerated:(FBSTopic *)node withId:(NSString *)nodeId
+-(void)topicDidGenerated:(FBSTopic *)theNode withId:(NSString *)theNodeId
 {
     NSLog(@"test node" );
 }
@@ -68,6 +83,11 @@
 -(void)getAutocompleteSuggestionsByKeyword:(NSString * ) aKeyword
 {
     //TODO: design/develop get autocomplete suggestions by keyword feature classes
+}
+
+-(void)getTopicByNode:(FBSNode *)aNode
+{
+    [nodeManager topicWithNode:aNode forDelegate:self];
 }
 -(void)getEntitiesByKeyword: (NSString * ) aKeyword
 {

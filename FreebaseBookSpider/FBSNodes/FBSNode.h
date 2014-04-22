@@ -38,5 +38,5 @@
 @property(nonatomic)NSString    * notableId;
 @property(nonatomic)NSString    * notableName;
 
-
+-(id)initWithId:(NSString *)anId lang:(NSString *)aLang mid:(NSString *)aMid name:(NSString *)aName notableId:(NSString *)aNotableId notableName:(NSString *)aNotableName;
 @end
