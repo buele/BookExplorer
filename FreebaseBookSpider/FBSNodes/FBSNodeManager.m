@@ -34,6 +34,8 @@
 #import "FBSNodeTypes.h"
 #import "FBSPedingNodeRequest.h"
 #import "FBSPendingTopicRequest.h"
+#import "FBSPendingNodesRequestsByKeyword.h"
+
 @implementation FBSNodeManager
 
 
@@ -43,6 +45,7 @@
     if(self){
         pendingNodeRequests = [[NSMutableDictionary alloc]init];
         pendingTopicRequests = [[NSMutableDictionary alloc]init];
+        pendingNodesRequestsByKeyword = [[NSMutableDictionary alloc]init];
     }
     return self;
 }
@@ -52,6 +55,27 @@
     FBSPedingNodeRequest * nodeRequest = [[FBSPedingNodeRequest alloc]initWithNodeId:aNodeId andNodeName:aNodeName forTarget:delegate];
     [pendingNodeRequests setObject:nodeRequest forKey:aNodeId];
     [[FBSApiManager getSharedInstance] getNodePropertiesById:aNodeId andForDelegate:self];
+}
+
+-(void)nodesByKeyword:(NSString *)aKeyword forDelegate:(id)delegate
+{
+    FBSPendingNodesRequestsByKeyword * nodesRequest = [[FBSPendingNodesRequestsByKeyword alloc]initWithKeyword:aKeyword target:delegate];
+    [pendingNodesRequestsByKeyword setObject:nodesRequest forKey:aKeyword];
+    [[FBSApiManager getSharedInstance] getNodesByKeyword:aKeyword andForDelegate:self];
+}
+
+-(void)nodesByKeywordDidReceived:(NSDictionary*)nodes forKey:(NSString *)key
+{
+    //NSLog(@"nodes: %@",nodes);
+    NSMutableArray * generatedNodes = [[NSMutableArray alloc]init];
+    for (NSDictionary * item in nodes) {
+        FBSNode * node = [[FBSNode alloc]initWithId:[item objectForKey:@"id"] lang:[item objectForKey:@"lang"] mid:[item objectForKey:@"mid"] name:[item objectForKey:@"name"] notableId:[[item objectForKey:@"notable"] objectForKey:@"id"] notableName:[[item objectForKey:@"notable"] objectForKey:@"name"]];
+        [generatedNodes addObject:node];
+    }
+    FBSPendingNodesRequestsByKeyword * nodesRequest = [pendingNodesRequestsByKeyword objectForKey:key];
+    [nodesRequest.target nodesByKeywordDidReceived:generatedNodes forKey:key];
+    [pendingNodesRequestsByKeyword removeObjectForKey:key];
+    
 }
 
 -(void)topicWithNode:(FBSNode *)aNode forDelegate:(id)aDelegate
@@ -67,7 +91,7 @@
 {
     FBSPendingTopicRequest * pendingRequest = [pendingTopicRequests objectForKey:theTopicId];
     [pendingRequest.delegate topicDidGenerated:theTopic withId:theTopicId];
-    [pendingNodeRequests removeObjectForKey:theTopicId];
+    [pendingTopicRequests removeObjectForKey:theTopicId];
 }
 
 -(void)nodePropertiesByIdDidReceived:(NSDictionary*)properties forKey:(NSString *)key
@@ -91,6 +115,7 @@
     FBSAuthorTopicGenerator * authorGenerator = [[FBSAuthorTopicGenerator alloc] init];
     [authorGenerator topicWithNode:pendingRequest.node properties:properties toDelegate:self];
 }
+
 
 -(void)generateTopicBookWithProperties:(NSDictionary *)properties forKey:(NSString *)key
 {

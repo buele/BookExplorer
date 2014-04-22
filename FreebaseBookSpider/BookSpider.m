@@ -59,10 +59,10 @@
         // test 2 author
         //[self getEntityById:@"/m/034bs" withName:@"George Orwell"];
         // test 2 author
-        FBSNode * node = [[FBSNode alloc]initWithId:@"/en/george_orwell" lang:@"en" mid:@"/m/034bs" name:@"George Orwell" notableId:@"/m/02xhgwq" notableName:@"Novelist"];
-        [self getTopicByNode:node];
+       // FBSNode * node = [[FBSNode alloc]initWithId:@"/en/george_orwell" lang:@"en" mid:@"/m/034bs" name:@"George Orwell" notableId:@"/m/02xhgwq" notableName:@"Novelist"];
+        //[self getTopicByNode:node];
         //test 3 entities by keyword
-        [self getEntitiesByKeyword: @"George or"];
+        [self getEntitiesByKeyword: @"George Orwell"];
     }
     
     return self;
@@ -76,7 +76,8 @@
 
 -(void)nodesByKeywordDidReceived:(NSArray*)nodes forKey:(NSString *)key
 {
-    NSLog(@"nodes: %@",nodes);
+    // NSLog(@"nodes: %@",nodes);
+    [self getTopicByNode:[nodes objectAtIndex:0]];
 }
 
 #pragma mark FBSApiManagerDelegate protocol
@@ -92,8 +93,8 @@
 -(void)getEntitiesByKeyword: (NSString * ) aKeyword
 {
     //TODO: design/develop get entities by keyword feature classes
-    
-    [[FBSApiManager getSharedInstance] getNodesByKeyword:aKeyword andForDelegate:self];
+    [nodeManager nodesByKeyword:aKeyword forDelegate:self];
+    //[[FBSApiManager getSharedInstance] getNodesByKeyword:aKeyword andForDelegate:self];
 }
 -(void)getEntityById:(NSString * ) anId withName:(NSString *)aName{
     [nodeManager nodeWithId:anId andWithName:aName forDelegate:self];

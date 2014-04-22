@@ -1,8 +1,8 @@
 //
-//  FBSNodeManager.h
+//  FBSPendingNodesRequestsByKeyword.h
 //  FreebaseBookSpider
 //
-//  Created by Raffaele Bua on 14/04/14.
+//  Created by Raffaele Bua on 22/04/14.
 
 /*****************************************************************************
  The MIT License (MIT)
@@ -28,21 +28,11 @@
  *****************************************************************************/
 
 #import <Foundation/Foundation.h>
-#import "FBSTopic.h"
 
-@protocol FBSNodeManagerDelegate
--(void)nodeDidGenerated:(FBSTopic *)node withId:(NSString *)nodeId;
-@end
+@interface FBSPendingNodesRequestsByKeyword : NSObject
 
-@interface FBSNodeManager : NSObject
-{
-    NSMutableDictionary * pendingNodeRequests;
-    NSMutableDictionary * pendingNodesRequestsByKeyword;
-    NSMutableDictionary * pendingTopicRequests;
-    
-}
--(void)nodeWithId:(NSString *)aNodeId andWithName:(NSString *)name forDelegate:(id)delegate;
--(void)topicWithNode:(FBSNode *)aNode forDelegate:(id)aDelegate;
--(void)nodesByKeyword:(NSString *)aKeyword forDelegate:(id)delegate;
+@property(nonatomic)NSString * keyword;
+@property(nonatomic)id target;
 
+-(id)initWithKeyword:(NSString *)aKeyword target:(id)aTarget;
 @end

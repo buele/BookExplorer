@@ -49,7 +49,6 @@ static NSString *  RESULT_RESPONSE_KEY      = @"result";
 }
 
 #pragma mark FBSApiManagerDelegate protocol implementation
-//-(void)getNodesByKeyword:(NSString*)aKeyword andForDelegate:(id)aDelegate;
 -(void)getNodesByKeyword:(NSString*)aKeyword andForDelegate:(id)aDelegate
 {
     if(!aDelegate) return;
