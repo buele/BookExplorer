@@ -28,7 +28,6 @@
  *****************************************************************************/
 
 
-#import "FBSApiManager.h"
 #import "BookSpider.h"
 #import "FBSNodes/FBSNodeManager.h"
 #import "FBSNode.h"
@@ -40,12 +39,10 @@
     self = [super init];
     if (self) {
         nodeManager = [[FBSNodeManager alloc] init];
-        [self getNodesByKeyword: @"Siddharta"];
+        [self getNodesByKeyword: @"Siddharta" forDelegate:self];
     }
     return self;
 }
-
-
 
 -(void)topicDidGenerated:(FBSTopic *)theNode withId:(NSString *)theNodeId
 {
@@ -54,22 +51,20 @@
 
 -(void)nodesByKeywordDidReceived:(NSArray*)nodes forKey:(NSString *)key
 {
-    [self getTopicByNode:[nodes objectAtIndex:0]]; //test
+    [self getTopicByNode:[nodes objectAtIndex:0] forDelegate:self]; //test
 }
-
-
 
 #pragma mark main interface
 -(id)initWithFreebaseApiKey:(NSString *)anApiKey
 {
     return nil;
 }
--(void)getNodesByKeyword: (NSString * ) aKeyword
+-(void)getNodesByKeyword: (NSString * ) aKeyword forDelegate:(id)aDelegate
 {
     [nodeManager nodesByKeyword:aKeyword forDelegate:self];
 }
 
--(void)getTopicByNode:(FBSNode *)aNode
+-(void)getTopicByNode:(FBSNode *)aNode forDelegate:(id)aDelegate
 {
     [nodeManager topicWithNode:aNode forDelegate:self];
 }

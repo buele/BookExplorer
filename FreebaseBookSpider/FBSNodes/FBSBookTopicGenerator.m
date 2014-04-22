@@ -70,8 +70,6 @@ static NSString * FB_INFLUENCED_KEY                     = @"/influence/influence
 static NSString * FB_INFLUENCED_LABEL                   = @"influenced";
 
 
-
-//-(void) topicWithId:(NSString *)aNodeId name:(NSString *)aName properties:(NSDictionary *)properties toDelegate:(id)delegate
 -(void)topicWithNode:(FBSNode *)aNode properties:(NSDictionary *)properties toDelegate:(id)aDelegate
 {
 

@@ -40,7 +40,6 @@
 }
 
 
-//-(void) topicWithId:(NSString *)aTopicId name:(NSString *)aName properties:(NSDictionary *)properties toDelegate:(id)delegate;
 -(void)requestImageWithId:(NSString *)anImageId forTopic:(FBSTopic *)aTopic toTarget:(id)aTarget;
 -(void)topicWithNode:(FBSNode *)aNode properties:(NSDictionary *)properties toDelegate:(id)aDelegate;
 @end

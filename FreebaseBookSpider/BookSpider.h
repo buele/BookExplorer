@@ -47,7 +47,7 @@
 
 #pragma mark main interface
 -(id)initWithFreebaseApiKey:(NSString *)anApiKey;
--(void)getNodesByKeyword: (NSString * ) aKeyword;
--(void)getTopicByNode:(FBSNode * )aNode;
+-(void)getNodesByKeyword: (NSString * ) aKeyword forDelegate:(id)aDelegate;
+-(void)getTopicByNode:(FBSNode * )aNode forDelegate:(id)aDelegate;
 
 @end

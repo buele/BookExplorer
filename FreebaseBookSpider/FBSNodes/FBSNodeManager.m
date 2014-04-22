@@ -49,7 +49,7 @@
     }
     return self;
 }
-
+#pragma mark main protocol
 -(void)nodeWithId:(NSString *)aNodeId andWithName:(NSString *)aNodeName forDelegate:(id)delegate
 {
     FBSPedingNodeRequest * nodeRequest = [[FBSPedingNodeRequest alloc]initWithNodeId:aNodeId andNodeName:aNodeName forTarget:delegate];
@@ -64,6 +64,14 @@
     [[FBSApiManager getSharedInstance] getNodesByKeyword:aKeyword andForDelegate:self];
 }
 
+-(void)topicWithNode:(FBSNode *)aNode forDelegate:(id)aDelegate
+{
+    FBSPendingTopicRequest * pendingTopicRequest = [[FBSPendingTopicRequest alloc]initWithNode:aNode delegate:aDelegate];
+    [pendingTopicRequests setObject:pendingTopicRequest forKey:aNode.nodeId];
+    [[FBSApiManager getSharedInstance] getNodePropertiesById:aNode.nodeId andForDelegate:self];
+}
+
+#pragma mark FBSApiManager protocol
 -(void)nodesByKeywordDidReceived:(NSDictionary*)nodes forKey:(NSString *)key
 {
     NSMutableArray * generatedNodes = [[NSMutableArray alloc]init];
@@ -76,14 +84,6 @@
     [pendingNodesRequestsByKeyword removeObjectForKey:key];
     
 }
-
--(void)topicWithNode:(FBSNode *)aNode forDelegate:(id)aDelegate
-{
-    FBSPendingTopicRequest * pendingTopicRequest = [[FBSPendingTopicRequest alloc]initWithNode:aNode delegate:aDelegate];
-    [pendingTopicRequests setObject:pendingTopicRequest forKey:aNode.nodeId];
-    [[FBSApiManager getSharedInstance] getNodePropertiesById:aNode.nodeId andForDelegate:self];
-}
-
 
 
 -(void)topicDidGenerated:(FBSTopic *)theTopic withId:theTopicId
@@ -106,6 +106,7 @@
     }
 }
 
+#pragma mark private methods
 -(void)generateTopicAuthorWithProperties:(NSDictionary *)properties forKey:(NSString *)key
 {
     FBSPendingTopicRequest * pendingRequest = [pendingTopicRequests objectForKey:key];

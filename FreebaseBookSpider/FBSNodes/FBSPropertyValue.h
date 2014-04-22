@@ -33,5 +33,6 @@
 @property(nonatomic)NSString * propertyId;
 @property(nonatomic)NSString * lang;
 @property(nonatomic)NSString * text;
+
 -(id)initWithId:(NSString *)aPropertyId lang:(NSString *)aLang text:(NSString *)aText;
 @end
