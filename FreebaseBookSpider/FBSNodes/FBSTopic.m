@@ -40,9 +40,9 @@
 {
     self = [super init];
     if(self){
-        self.nodeId = aTopicId;
-        self.name   = aName;
-        self.image  = anImage;
+        self.nodeId = aTopicId; //FIXME:  remove property accessors in init
+        self.name   = aName; //FIXME:  remove property accessors in init
+        self.image  = anImage; //FIXME:  remove property accessors in init
     }
     return self;
 }

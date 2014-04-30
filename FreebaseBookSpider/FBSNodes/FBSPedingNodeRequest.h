@@ -32,7 +32,7 @@
 
 @property(nonatomic)NSString * nodeId;
 @property(nonatomic)NSString * nodeName;
-@property(nonatomic)id target;
+@property(nonatomic)id target; //FIXME: declare protocol
 
--(id)initWithNodeId:(NSString *) aNodeId andNodeName:(NSString *) aNodeName forTarget:(id)target;
+-(id)initWithNodeId:(NSString *) aNodeId andNodeName:(NSString *) aNodeName forTarget:(id)target; //FIXME: declare the protocol
 @end

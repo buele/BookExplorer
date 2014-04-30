@@ -42,8 +42,9 @@ static NSString *  RESULT_RESPONSE_KEY      = @"result";
 {
     self = [super init];
     if(self){
+        //FIXME: initializate all attributes!
         queue = [[NSOperationQueue alloc] init];
-        resources = [[FBSResources alloc]init];
+        resources = [[FBSResources alloc] init];
     }
     return self;
 }

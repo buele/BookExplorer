@@ -38,8 +38,8 @@
 {
     self = [super init];
     if(self){
-        self.keyword = aKeyword;
-        self.target = aTarget;
+        self.keyword = aKeyword; //FIXME:  remove property accessors in init
+        self.target = aTarget;   //FIXME:  remove property accessors in init
     }
     return self;
 }

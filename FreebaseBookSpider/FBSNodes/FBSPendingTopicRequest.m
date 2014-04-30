@@ -37,8 +37,8 @@
 {
     self = [super init];
     if(self){
-        self.node = aNode;
-        self.delegate = aDelegate;
+        self.node = aNode; //FIXME:  remove property accessors in init
+        self.delegate = aDelegate; //FIXME:  remove property accessors in init
     }
     return self;
 }

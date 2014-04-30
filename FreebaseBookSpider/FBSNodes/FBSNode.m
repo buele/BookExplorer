@@ -42,12 +42,12 @@
 {
     self = [super init];
     if(self){
-        self.nodeId = anId;
-        self.lang =aLang;
-        self.mid = aMid;
-        self.name = aName;
-        self.notableId = aNotableId;
-        self.notableName = aNotableName;
+        self.nodeId = anId; //FIXME:  remove property accessors in init
+        self.lang =aLang; //FIXME:  remove property accessors in init
+        self.mid = aMid; //FIXME:  remove property accessors in init
+        self.name = aName; //FIXME:  remove property accessors in init
+        self.notableId = aNotableId; //FIXME:  remove property accessors in init
+        self.notableName = aNotableName; //FIXME:  remove property accessors in init
     }
     return self;
 }

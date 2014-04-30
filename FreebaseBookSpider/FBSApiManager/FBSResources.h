@@ -48,9 +48,9 @@
 -(NSString* )getRunMqlQueryUrl;
 
 #pragma mark main protocol
--(NSURL *)getBookNodesUrlByKeyword:(NSString * )keyword;
--(NSURL *)getNodePropertiesUrlById:(NSString * )nodeId;
--(NSURL *)getImageUrlById:(NSString * )imageId;
+-(NSURL *)getBookNodesUrlByKeyword:(NSString * )keyword; //FIXME: naming
+-(NSURL *)getNodePropertiesUrlById:(NSString * )nodeId; //FIXME: naming
+-(NSURL *)getImageUrlById:(NSString * )imageId;//FIXME: naming
 
 
 @end

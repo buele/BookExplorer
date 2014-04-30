@@ -44,13 +44,13 @@
     FBSResources* resources;
 }
 
-@property(nonatomic)id<FBSApiManagerDelegate>_delegate;
+@property(nonatomic)id<FBSApiManagerDelegate>_delegate; //FIXME: naming
 + (FBSApiManager *) getSharedInstance;
 
 #pragma mark main protocol
--(void)getNodesByKeyword:(NSString*)aKeyword andForDelegate:(id)aDelegate;
--(void)getNodePropertiesById:(NSString*)aNodeId andForDelegate:(id)aDelegate;
--(void)getImageById:(NSString*)anImageId andForDelegate:(id)aDelegate forRequestId:(NSNumber *)aRequestId;
+-(void)getNodesByKeyword:(NSString*)aKeyword andForDelegate:(id)aDelegate; //FIXME: declare the protocol
+-(void)getNodePropertiesById:(NSString*)aNodeId andForDelegate:(id)aDelegate; //FIXME: declare the protocol
+-(void)getImageById:(NSString*)anImageId andForDelegate:(id)aDelegate forRequestId:(NSNumber *)aRequestId; //FIXME: declare the protocol
 
 @end
 

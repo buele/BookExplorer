@@ -47,7 +47,7 @@
 
 #pragma mark main interface
 -(id)initWithFreebaseApiKey:(NSString *)anApiKey;
--(void)getNodesByKeyword: (NSString * ) aKeyword forDelegate:(id)aDelegate;
--(void)getTopicByNode:(FBSNode * )aNode forDelegate:(id)aDelegate;
+-(void)getNodesByKeyword: (NSString * ) aKeyword forDelegate:(id)aDelegate; //FIXME: declare protocol
+-(void)getTopicByNode:(FBSNode * )aNode forDelegate:(id)aDelegate; //FIXME: declare protocol
 
 @end

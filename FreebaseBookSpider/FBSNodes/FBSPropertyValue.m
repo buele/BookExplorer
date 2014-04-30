@@ -38,9 +38,9 @@
 {
     self = [super init];
     if(self){
-        self.propertyId = aPropertyId;
-        self.lang = aLang;
-        self.text = aText;
+        self.propertyId = aPropertyId; //FIXME:  remove property accessors in init
+        self.lang = aLang; //FIXME:  remove property accessors in init
+        self.text = aText; //FIXME:  remove property accessors in init
     }
     return self;
 }

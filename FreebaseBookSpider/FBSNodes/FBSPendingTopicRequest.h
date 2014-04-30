@@ -32,7 +32,7 @@
 
 @interface FBSPendingTopicRequest : NSObject
 @property(nonatomic)FBSNode * node;
-@property(nonatomic)id delegate;
+@property(nonatomic)id delegate; //FIXME: declare the protocol
 
--(id)initWithNode:(FBSNode *)aNode delegate:(id)aDelegate;
+-(id)initWithNode:(FBSNode *)aNode delegate:(id)aDelegate; //FIXME: declare the protocol
 @end

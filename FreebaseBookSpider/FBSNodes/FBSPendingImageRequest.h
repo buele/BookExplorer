@@ -32,9 +32,9 @@
 
 @interface FBSPendingImageRequest : NSObject
 
-@property(nonatomic)id target;
+@property(nonatomic)id target; //FIXME: declare protocol
 @property(nonatomic)FBSTopic * node;
 
 
--(id)initWithNode:(FBSTopic *)aNode andTarget:(id)target;
+-(id)initWithNode:(FBSTopic *)aNode andTarget:(id)target; //FIXME: declare the protocol
 @end

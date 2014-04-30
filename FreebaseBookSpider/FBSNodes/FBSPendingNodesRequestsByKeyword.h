@@ -33,8 +33,8 @@
 @interface FBSPendingNodesRequestsByKeyword : NSObject
 
 @property(nonatomic)NSString * keyword;
-@property(nonatomic)id target;
+@property(nonatomic)id target; //FIXME: declare the protocol
 @property(nonatomic)FBSNodeManagerActions action;
 
--(id)initWithKeyword:(NSString *)aKeyword target:(id)aTarget;
+-(id)initWithKeyword:(NSString *)aKeyword target:(id)aTarget; //FIXME: declare the protocol
 @end
