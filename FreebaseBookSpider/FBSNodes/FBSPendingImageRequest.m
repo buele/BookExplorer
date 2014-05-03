@@ -36,8 +36,8 @@
 {
     self = [super init];
     if(self){
-        self.node = aNode; //FIXME:  remove property accessors in init
-        self.target = aTarget; //FIXME:  remove property accessors in init
+        _node = aNode;
+        _target = aTarget;
     }
     return self;
 }

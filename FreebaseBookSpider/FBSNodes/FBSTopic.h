@@ -41,7 +41,7 @@
 @property(nonatomic)FBSNodeTypes  type;
 
 
--(id)initWithId:(NSString *)aTopicId name:(NSString *)aName  image:(UIImage  *)anImage;
+
 -(id)initWithFBSNode:(FBSNode *)aNode;
 -(NSArray *)summary;
 -(NSArray *)details;

@@ -44,7 +44,7 @@
     FBSResources* resources;
 }
 
-@property(nonatomic)id<FBSApiManagerDelegate>_delegate; //FIXME: naming
+@property(nonatomic)id<FBSApiManagerDelegate>delegate; //FIXME: naming
 + (FBSApiManager *) getSharedInstance;
 
 #pragma mark main protocol
