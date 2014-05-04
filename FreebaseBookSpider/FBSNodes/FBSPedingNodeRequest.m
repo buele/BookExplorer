@@ -27,10 +27,11 @@
  *****************************************************************************/
 
 #import "FBSPedingNodeRequest.h"
+#import "FBSNodeManager.h"
 
 @implementation FBSPedingNodeRequest
 
--(id)initWithNodeId:(NSString *) aNodeId andNodeName:(NSString *) aNodeName forTarget:(id)target
+-(id)initWithNodeId:(NSString *) aNodeId andNodeName:(NSString *) aNodeName forTarget:(id<FBSNodeManagerDelegate>)target
 {
     self = [super init];
     if(self){

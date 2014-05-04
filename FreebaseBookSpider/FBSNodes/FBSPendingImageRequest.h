@@ -29,12 +29,13 @@
 
 #import <Foundation/Foundation.h>
 #import "FBSTopic.h"
+#import "FBSTopicGenerator.h"
 
 @interface FBSPendingImageRequest : NSObject
 
-@property(nonatomic)id target; //FIXME: declare protocol
+@property(nonatomic)id<FBSNodeGeneratorDelegate>target;
 @property(nonatomic)FBSTopic * node;
 
 
--(id)initWithNode:(FBSTopic *)aNode andTarget:(id)target; //FIXME: declare the protocol
+-(id)initWithNode:(FBSTopic *)aNode andTarget:(id<FBSNodeGeneratorDelegate>) aTarget; 
 @end

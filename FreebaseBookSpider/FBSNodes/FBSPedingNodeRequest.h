@@ -27,12 +27,13 @@
  *****************************************************************************/
 
 #import <Foundation/Foundation.h>
+#import "FBSNodeManager.h"
 
 @interface FBSPedingNodeRequest : NSObject
 
 @property(nonatomic)NSString * nodeId;
 @property(nonatomic)NSString * nodeName;
-@property(nonatomic)id target; //FIXME: declare protocol
+@property(nonatomic)id<FBSNodeManagerDelegate> target;
 
--(id)initWithNodeId:(NSString *) aNodeId andNodeName:(NSString *) aNodeName forTarget:(id)target; //FIXME: declare the protocol
+-(id)initWithNodeId:(NSString *) aNodeId andNodeName:(NSString *) aNodeName forTarget:(id<FBSNodeManagerDelegate>)target;
 @end

@@ -29,10 +29,11 @@
 
 #import <Foundation/Foundation.h>
 #include "FBSNode.h"
+#include "FBSTopicGenerator.h"
 
 @interface FBSPendingTopicRequest : NSObject
 @property(nonatomic)FBSNode * node;
-@property(nonatomic)id delegate; //FIXME: declare the protocol
+@property(nonatomic)id<FBSNodeGeneratorDelegate> delegate;
 
--(id)initWithNode:(FBSNode *)aNode delegate:(id)aDelegate; //FIXME: declare the protocol
+-(id)initWithNode:(FBSNode *)aNode delegate:(id<FBSNodeGeneratorDelegate>)aDelegate;
 @end

@@ -40,6 +40,6 @@
 }
 
 
--(void)requestImageWithId:(NSString *)anImageId forTopic:(FBSTopic *)aTopic toTarget:(id)aTarget; //FIXME: declare the protocol
--(void)topicWithNode:(FBSNode *)aNode properties:(NSDictionary *)properties toDelegate:(id)aDelegate; //FIXME: declare the protocol
+-(void)requestImageWithId:(NSString *)anImageId forTopic:(FBSTopic *)aTopic toTarget:(id<FBSNodeGeneratorDelegate>)aTarget;
+-(void)topicWithNode:(FBSNode *)aNode properties:(NSDictionary *)properties toDelegate:(id<FBSNodeGeneratorDelegate>)aDelegate;
 @end

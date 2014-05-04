@@ -41,8 +41,8 @@
     NSMutableDictionary * pendingTopicRequests;
     
 }
--(void)nodeWithId:(NSString *)aNodeId andWithName:(NSString *)name forDelegate:(id)delegate;//FIXME: naming and declare the protocol
--(void)topicWithNode:(FBSNode *)aNode forDelegate:(id)aDelegate; //FIXME: naming and declare the protocol
--(void)nodesByKeyword:(NSString *)aKeyword forDelegate:(id)delegate; //FIXME: declare the protocol
+-(void)nodeWithId:(NSString *)aNodeId andWithName:(NSString *)name forDelegate:(id<FBSNodeManagerDelegate>)delegate;
+-(void)topicWithNode:(FBSNode *)aNode forDelegate:(id<FBSNodeManagerDelegate>)aDelegate;
+-(void)nodesByKeyword:(NSString *)aKeyword forDelegate:(id<FBSNodeManagerDelegate>)delegate;
 
 @end

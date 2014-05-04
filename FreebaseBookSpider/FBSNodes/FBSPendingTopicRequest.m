@@ -28,17 +28,18 @@
  *****************************************************************************/
 
 #import "FBSPendingTopicRequest.h"
+#import "../BookSpider.h"
 
 @implementation FBSPendingTopicRequest
 @synthesize node;
 @synthesize delegate;
 
--(id)initWithNode:(FBSNode *)aNode delegate:(id)aDelegate
+-(id)initWithNode:(FBSNode *)aNode delegate:(id<FreebaseBookSpiderDelegate>)aDelegate
 {
     self = [super init];
     if(self){
-        node = aNode; //FIXME:  remove property accessors in init
-        delegate = aDelegate; //FIXME:  remove property accessors in init
+        node = aNode;
+        delegate = aDelegate;
     }
     return self;
 }

@@ -50,7 +50,7 @@
     return self;
 }
 #pragma mark main protocol
--(void)nodeWithId:(NSString *)aNodeId andWithName:(NSString *)aNodeName forDelegate:(id)delegate
+-(void)nodeWithId:(NSString *)aNodeId andWithName:(NSString *)aNodeName forDelegate:(id<FBSNodeManagerDelegate>)delegate
 {
     FBSPedingNodeRequest * nodeRequest = [[FBSPedingNodeRequest alloc]initWithNodeId:aNodeId andNodeName:aNodeName forTarget:delegate];
     [pendingNodeRequests setObject:nodeRequest forKey:aNodeId];

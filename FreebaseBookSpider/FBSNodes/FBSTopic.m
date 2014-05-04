@@ -43,4 +43,14 @@
     self = [super initWithId:aNode.nodeId lang:aNode.lang mid:aNode.mid name:aNode.name notableId:aNode.notableId notableName:aNode.notableName];
     return self;
 }
+
+-(NSArray *)summary
+{    
+    return nil;
+}
+-(NSArray *)details
+{
+    return nil;
+}
+
 @end

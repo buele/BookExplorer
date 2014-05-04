@@ -50,7 +50,7 @@ static NSString *  RESULT_RESPONSE_KEY      = @"result";
 }
 
 #pragma mark FBSApiManagerDelegate protocol implementation
--(void)getNodesByKeyword:(NSString*)aKeyword andForDelegate:(id)aDelegate
+-(void)getNodesByKeyword:(NSString*)aKeyword andForDelegate:(id<FBSApiManagerDelegate>)aDelegate
 {
     if(!aDelegate) return;
     if(aKeyword && [aKeyword length] != 0){
@@ -60,7 +60,7 @@ static NSString *  RESULT_RESPONSE_KEY      = @"result";
         [aDelegate nodesByKeywordDidReceived:nil forKey:aKeyword];
 }
 
--(void)getNodePropertiesById:(NSString*)aNodeId andForDelegate:(id)aDelegate
+-(void)getNodePropertiesById:(NSString*)aNodeId andForDelegate:(id<FBSApiManagerDelegate>)aDelegate
 {
     if(!aDelegate) return;
     if(aNodeId && [aNodeId length] != 0){
@@ -70,7 +70,7 @@ static NSString *  RESULT_RESPONSE_KEY      = @"result";
         [aDelegate nodePropertiesByIdDidReceived:nil forKey:aNodeId];
 }
 
--(void)getImageById:(NSString*)anImageId andForDelegate:(id)aDelegate forRequestId:(NSNumber *)aRequestId;
+-(void)getImageById:(NSString*)anImageId andForDelegate:(id<FBSApiManagerDelegate>)aDelegate forRequestId:(NSNumber *)aRequestId;
 {
     if(!aDelegate) return;
     if(anImageId && [anImageId length] != 0){
@@ -93,7 +93,7 @@ static NSString *  RESULT_RESPONSE_KEY      = @"result";
 
 
 #pragma mark requests managers
--(void)sendRequestWithUrl:(NSURL* )url andAction:(FBSApiAction)action andTarget:(id)target forKey:(NSString *)key
+-(void)sendRequestWithUrl:(NSURL* )url andAction:(FBSApiAction)action andTarget:(id<FBSApiManagerDelegate>)target forKey:(NSString *)key
 {
     if(url && action && target && queue)
         [queue addOperation:[[FBSApiOperation alloc]initWithUrl:url  andDelegate:self forAction:action  andTarget:target forKey:key]];
@@ -107,7 +107,7 @@ static NSString *  RESULT_RESPONSE_KEY      = @"result";
 }
 
 #pragma mark switch types of requestes
-- (void) responseDidReceived:(NSData*)response forAction:(FBSApiAction)action ofTarget:(id)target forKey:(NSString *)key
+- (void) responseDidReceived:(NSData*)response forAction:(FBSApiAction)action ofTarget:(id<FBSApiManagerDelegate>)target forKey:(NSString *)key
 {
     if(target && response)
         switch(action){

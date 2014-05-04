@@ -29,12 +29,14 @@
 
 #import <Foundation/Foundation.h>
 #import "FBSNodeManagerActions.h"
+#import "FBSNodeManager.h"
+#import "../FBSApiManager/FBSApiManager.h" 
 
 @interface FBSPendingNodesRequestsByKeyword : NSObject
 
 @property(nonatomic)NSString * keyword;
-@property(nonatomic)id target; //FIXME: declare the protocol
+@property(nonatomic)id<FBSApiManagerDelegate> target; //FIXME: declare the protocol
 @property(nonatomic)FBSNodeManagerActions action;
 
--(id)initWithKeyword:(NSString *)aKeyword target:(id)aTarget; //FIXME: declare the protocol
+-(id)initWithKeyword:(NSString *)aKeyword target:(id<FBSApiManagerDelegate>)aTarget; //FIXME: declare the protocol
 @end
