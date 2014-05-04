@@ -44,7 +44,7 @@
     self = [super init];
     
     if(self){
-        label = aLabel; //FIXME:  remove property accessors in init
+        label = aLabel;
         values = [[NSMutableArray alloc] init];
         for (NSDictionary * item in [aProperty objectForKey:VALUES_KEY]) {
             FBSPropertyValue * value = [[FBSPropertyValue alloc] initWithId:[item objectForKey:FBPROPERTY_ID_KEY] lang:[item objectForKey:FBPROPERTY_LANG_KEY] text:[item objectForKey:FBPROPERTY_TEXT_KEY]];

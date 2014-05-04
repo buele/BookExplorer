@@ -59,19 +59,6 @@
 }
 
 
--(void)topicWithNode:(FBSNode *)aNode properties:(NSDictionary *)properties toDelegate:(id<FBSTopicGeneratorDelegate>)aDelegate
-{
-    
-}
-
--(void)nodesByKeywordDidReceived:(NSArray*)nodes forKey:(NSString *)key
-{
-    
-}
--(void)nodePropertiesByIdDidReceived:(NSDictionary*)properties forKey:(NSString *)key
-{
-    
-}
 
 
 

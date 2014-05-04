@@ -135,8 +135,5 @@
     return (bookPropertiesCounter > authorPropertiesCounter)?FBSNodeBookType:FBSNodeAuthorType;
 }
 
--(void)imageByIdDidReceived:(UIImage*)image forKey:(NSNumber *)key
-{
-    
-}
+
 @end

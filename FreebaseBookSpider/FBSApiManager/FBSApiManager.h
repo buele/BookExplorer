@@ -33,7 +33,7 @@
 #import "FBSResources.h"
 
 
-@protocol FBSApiManagerDelegate
+@protocol FBSNodeRequiring
 -(void)nodesByKeywordDidReceived:(NSArray*)nodes forKey:(NSString *)key;
 -(void)nodePropertiesByIdDidReceived:(NSDictionary*)properties forKey:(NSString *)key;
 -(void)imageByIdDidReceived:(UIImage*)image forKey:(NSNumber *)key;
@@ -44,13 +44,13 @@
     FBSResources* resources;
 }
 
-@property(nonatomic)id<FBSApiManagerDelegate>delegate;
+@property(nonatomic)id<FBSNodeRequiring>delegate;
 + (FBSApiManager *) getSharedInstance;
 
 #pragma mark main protocol
--(void)getNodesByKeyword:(NSString*)aKeyword andForDelegate:(id<FBSApiManagerDelegate>)aDelegate; 
--(void)getNodePropertiesById:(NSString*)aNodeId andForDelegate:(id<FBSApiManagerDelegate>)aDelegate;
--(void)getImageById:(NSString*)anImageId andForDelegate:(id<FBSApiManagerDelegate>)aDelegate forRequestId:(NSNumber *)aRequestId;
+-(void)getNodesByKeyword:(NSString*)aKeyword andForDelegate:(id<FBSNodeRequiring>)aDelegate; 
+-(void)getNodePropertiesById:(NSString*)aNodeId andForDelegate:(id<FBSNodeRequiring>)aDelegate;
+-(void)getImageById:(NSString*)anImageId andForDelegate:(id<FBSNodeRequiring>)aDelegate forRequestId:(NSNumber *)aRequestId;
 
 @end
 

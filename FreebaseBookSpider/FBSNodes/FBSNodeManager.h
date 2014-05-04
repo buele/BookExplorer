@@ -36,7 +36,7 @@
 -(void)nodeDidGenerated:(FBSTopic *)node withId:(NSString *)nodeId;
 @end
 
-@interface FBSNodeManager : NSObject <FBSApiManagerDelegate, FBSTopicGeneratorDelegate>
+@interface FBSNodeManager : NSObject <FBSNodeRequiring,FBSNodeRequiring, FBSTopicGeneratorDelegate>
 {
     NSMutableDictionary * pendingNodeRequests;
     NSMutableDictionary * pendingNodesRequestsByKeyword;

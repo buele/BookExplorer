@@ -35,7 +35,7 @@
 -(void)topicDidGenerated:(FBSTopic *)aNode withId:(NSString *)aNodeId;
 @end
 
-@interface FBSTopicGenerator : NSObject <FBSApiManagerDelegate>
+@interface FBSTopicGenerator : NSObject <FBSNodeRequiring>
 {
     NSMutableArray* pendingImageRequests;
 }

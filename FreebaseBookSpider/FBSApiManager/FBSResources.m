@@ -112,18 +112,18 @@ static NSString *  FREEBASE_QUERY_PARAMETER_KEY                 = @"query";
 }
 
 #pragma mark main protocol
--(NSURL *)getBookNodesUrlByKeyword:(NSString * )keyword 
+-(NSURL *)bookNodesUrlByKeyword:(NSString * )keyword 
 {
     return [[NSURL alloc]initWithString:[NSString stringWithFormat:@"%@%@", nodesByKeywordBaseUrl,[self encodeUrl:[keyword stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]]]];
 }
 
--(NSURL *)getNodePropertiesUrlById:(NSString * )nodeId
+-(NSURL *)nodePropertiesUrlById:(NSString * )nodeId
 {
     static NSString *  FREEBASE_ALL_PROPERTIES_FILTER_PARAMETER_KEY = @"filter=allproperties";
     return [[NSURL alloc]initWithString:[NSString stringWithFormat:@"%@%@?%@", nodePropertiesByIdBaseUrl,[self encodeUrl:nodeId],FREEBASE_ALL_PROPERTIES_FILTER_PARAMETER_KEY  ]];
 }
 
--(NSURL *)getImageUrlById:(NSString * )imageId
+-(NSURL *)imageUrlById:(NSString * )imageId
 {
     return [[NSURL alloc]initWithString:[NSString stringWithFormat:@"%@%@",imageBaseUrl,imageId]];
 }
