@@ -59,17 +59,27 @@
 {
     return nil;
 }
--(void)getNodesByKeyword: (NSString * ) aKeyword forDelegate:(id)aDelegate
+-(void)getNodesByKeyword: (NSString * ) aKeyword forDelegate:(id<FreebaseBookSpiderDelegate>)aDelegate
 {
     [nodeManager nodesByKeyword:aKeyword forDelegate:self];
 }
 
--(void)getTopicByNode:(FBSNode *)aNode forDelegate:(id)aDelegate
+-(void)getTopicByNode:(FBSNode *)aNode forDelegate:(id<FreebaseBookSpiderDelegate>)aDelegate
 {
     [nodeManager topicWithNode:aNode forDelegate:self];
 }
 
 -(void)nodeDidGenerated:(FBSTopic *)node withId:(NSString *)nodeId{
+    
+}
+
+
+-(void)nodesDidGenerated:(NSArray *)theNodes forKeyword:(NSString *)keyword
+{
+    
+}
+-(void)topicDidGenerated:(FBSTopic *)theTopic
+{
     
 }
 

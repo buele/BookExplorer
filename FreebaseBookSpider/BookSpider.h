@@ -38,7 +38,7 @@
 -(void)topicDidGenerated:(FBSTopic *)theTopic;
 @end
 
-@interface BookSpider : NSObject <FBSNodeManagerDelegate>
+@interface BookSpider : NSObject <FBSNodeManagerDelegate,FreebaseBookSpiderDelegate> //TODO: remove FreebaseBookSpiderDelegate after testing
 {
     FBSNodeManager * nodeManager;
 }
@@ -47,7 +47,7 @@
 
 #pragma mark main interface
 -(id)initWithFreebaseApiKey:(NSString *)anApiKey;
--(void)getNodesByKeyword: (NSString * ) aKeyword forDelegate:(id)aDelegate; //FIXME: declare protocol
--(void)getTopicByNode:(FBSNode * )aNode forDelegate:(id)aDelegate; //FIXME: declare protocol
+-(void)getNodesByKeyword: (NSString * ) aKeyword forDelegate:(id<FreebaseBookSpiderDelegate>)aDelegate;
+-(void)getTopicByNode:(FBSNode * )aNode forDelegate:(id<FreebaseBookSpiderDelegate>)aDelegate;
 
 @end

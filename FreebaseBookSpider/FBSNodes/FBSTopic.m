@@ -44,6 +44,17 @@
     return self;
 }
 
+-(id)initWithAlias:(FBSProperty *)anAlias description:(FBSProperty *)aDescription image:(UIImage *)anImage type:(FBSNodeTypes) aType
+{
+    self = [super  init];
+    if(self){
+        alias = anAlias;
+        description = aDescription;
+        image = anImage;
+        type = aType;
+    }
+    return self;
+}
 -(NSArray *)summary
 {    
     return nil;
@@ -52,5 +63,7 @@
 {
     return nil;
 }
+
+
 
 @end

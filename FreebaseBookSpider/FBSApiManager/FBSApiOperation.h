@@ -30,7 +30,7 @@
 #import "FBSApiActions.h"
 
 @protocol FBSApiOperatorDelegate
-- (void) responseDidReceived:(NSData*)response forAction:(FBSApiAction)action ofTarget:(id)target  forKey:(NSString *)key; //FIXME: declare the protocol
+- (void) responseDidReceived:(NSData*)response forAction:(FBSApiAction)action ofTarget:(id)target  forKey:(NSString *)key;
 @end
 
 @interface FBSApiOperation : NSOperation
@@ -42,10 +42,10 @@
     FBSApiAction action;
     NSString * key;
     id<FBSApiOperatorDelegate>delegtae;
-    id target; //FIXME: declare the protocol
+    id target;
 }
 
--(id)initWithUrl:(NSURL * )aUrl andDelegate:(id)aDelegate forAction:(FBSApiAction)anAction andTarget:(id)aTarget forKey:(NSString *)aKey; //FIXME: declare the protocol
+-(id)initWithUrl:(NSURL * )aUrl andDelegate:(id)aDelegate forAction:(FBSApiAction)anAction andTarget:(id)aTarget forKey:(NSString *)aKey; 
 
 
 @end
