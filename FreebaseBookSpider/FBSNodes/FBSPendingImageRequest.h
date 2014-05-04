@@ -29,13 +29,13 @@
 
 #import <Foundation/Foundation.h>
 #import "FBSTopic.h"
-#import "FBSTopicGenerator.h"
+
 
 @interface FBSPendingImageRequest : NSObject
 
-@property(nonatomic)id<FBSTopicGeneratorDelegate>target;
+@property(nonatomic)id target;
 @property(nonatomic)FBSTopic * node;
 
 
--(id)initWithNode:(FBSTopic *)aNode andTarget:(id<FBSTopicGeneratorDelegate>) aTarget; 
+-(id)initWithNode:(FBSTopic *)aNode andTarget:(id) aTarget;
 @end

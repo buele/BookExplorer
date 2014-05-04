@@ -29,7 +29,7 @@
 
 
 #import "BookSpider.h"
-#import "FBSNodes/FBSNodeManager.h"
+#import "FBSNodes/FBSEntityManager.h"
 #import "FBSNode.h"
 
 @implementation BookSpider
@@ -38,7 +38,7 @@
 {
     self = [super init];
     if (self) {
-        nodeManager = [[FBSNodeManager alloc] init];
+        nodeManager = [[FBSEntityManager alloc] init];
         [self getNodesByKeyword: @"Siddharta" forDelegate:self];
     }
     return self;
@@ -54,6 +54,21 @@
     [self getTopicByNode:[nodes objectAtIndex:0] forDelegate:self]; //test
 }
 
+
+// -- debugging
+-(void)nodeDidGenerated:(FBSTopic *)node withId:(NSString *)nodeId
+{
+    
+}
+
+-(void)nodesDidGenerated:(NSArray *)theNodes forKeyword:(NSString *)keyword
+{
+    
+}
+-(void)topicDidGenerated:(FBSTopic *)theTopic
+{
+    
+}
 #pragma mark main interface
 -(id)initWithFreebaseApiKey:(NSString *)anApiKey
 {
@@ -69,19 +84,7 @@
     [nodeManager topicWithNode:aNode forDelegate:self];
 }
 
--(void)nodeDidGenerated:(FBSTopic *)node withId:(NSString *)nodeId{
-    
-}
 
-
--(void)nodesDidGenerated:(NSArray *)theNodes forKeyword:(NSString *)keyword
-{
-    
-}
--(void)topicDidGenerated:(FBSTopic *)theTopic
-{
-    
-}
 
 
 

@@ -27,7 +27,7 @@
  *****************************************************************************/
 
 #import "FBSPedingNodeRequest.h"
-#import "FBSNodeManager.h"
+#import "FBSEntityManager.h"
 
 @implementation FBSPedingNodeRequest
 

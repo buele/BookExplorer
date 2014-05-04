@@ -34,7 +34,7 @@
 @synthesize node;
 @synthesize delegate;
 
--(id)initWithNode:(FBSNode *)aNode delegate:(id<FBSTopicGeneratorDelegate>)aDelegate
+-(id)initWithNode:(FBSNode *)aNode delegate:(id)aDelegate
 {
     self = [super init];
     if(self){

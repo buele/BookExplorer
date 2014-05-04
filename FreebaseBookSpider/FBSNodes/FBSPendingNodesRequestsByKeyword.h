@@ -29,7 +29,7 @@
 
 #import <Foundation/Foundation.h>
 #import "FBSNodeManagerActions.h"
-#import "FBSNodeManager.h"
+#import "FBSEntityManager.h"
 #import "../FBSApiManager/FBSApiManager.h" 
 
 @interface FBSPendingNodesRequestsByKeyword : NSObject

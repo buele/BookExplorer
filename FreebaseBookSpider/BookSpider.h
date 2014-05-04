@@ -29,7 +29,7 @@
 
 #import <Foundation/Foundation.h>
 #import "FBSApiManager.h"
-#import "FBSNodeManager.h"
+#import "FBSEntityManager.h"
 #import "FBSNode.h"
 #import "FBSTopic.h"
 
@@ -40,7 +40,7 @@
 
 @interface BookSpider : NSObject <FBSNodeManagerDelegate,FreebaseBookSpiderDelegate> //TODO: remove FreebaseBookSpiderDelegate after testing
 {
-    FBSNodeManager * nodeManager;
+    FBSEntityManager * nodeManager;
 }
 
 -(id)init;

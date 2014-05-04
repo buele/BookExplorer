@@ -1,8 +1,9 @@
 //
-//  FBSPedingNodeRequest.h
+//  FBSAuthorNode.h
 //  FreebaseBookSpider
 //
-//  Created by Raffaele Bua on 15/04/14.
+//  Created by Raffaele Bua on 11/04/14.
+
 /*****************************************************************************
  The MIT License (MIT)
  
@@ -26,14 +27,30 @@
  THE SOFTWARE.
  *****************************************************************************/
 
-#import <Foundation/Foundation.h>
-#import "FBSEntityManager.h"
+#import "FBSTopic.h"
+#import "FBSProperty.h"
 
-@interface FBSPedingNodeRequest : NSObject
+@interface FBSAuthor : FBSTopic
 
-@property(nonatomic)NSString * nodeId;
-@property(nonatomic)NSString * nodeName;
-@property(nonatomic)id<FBSNodeManagerDelegate> target;
+@property(nonatomic)FBSProperty  * dateOfBirth;
+@property(nonatomic)FBSProperty  * placeOfBirth;
+@property(nonatomic)FBSProperty  * nationality;
+@property(nonatomic)FBSProperty  * gender;
+@property(nonatomic)FBSProperty  * profession;
+@property(nonatomic)FBSProperty  * religion;
+@property(nonatomic)FBSProperty  * parents;
+@property(nonatomic)FBSProperty  * children;
+@property(nonatomic)FBSProperty  * spouseS;
+@property(nonatomic)FBSProperty  * employmentHistory;
+@property(nonatomic)FBSProperty  * education;
+@property(nonatomic)FBSProperty  * quotations;
+@property(nonatomic)FBSProperty  * placesLived;
+@property(nonatomic)FBSProperty  * languages;
+@property(nonatomic)FBSProperty  * dateOfDeath;
+@property(nonatomic)FBSProperty  * placeOfDeath;
+@property(nonatomic)FBSProperty  * causeOfDeath;
+@property(nonatomic)FBSProperty  * worksWritten;
+@property(nonatomic)FBSProperty  * influencedBy;
+@property(nonatomic)FBSProperty  * influenced;
 
--(id)initWithNodeId:(NSString *) aNodeId andNodeName:(NSString *) aNodeName forTarget:(id<FBSNodeManagerDelegate>)target;
 @end

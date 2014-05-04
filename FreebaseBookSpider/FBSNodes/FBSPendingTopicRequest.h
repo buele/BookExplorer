@@ -29,11 +29,11 @@
 
 #import <Foundation/Foundation.h>
 #include "FBSNode.h"
-#include "FBSTopicGenerator.h"
+
 
 @interface FBSPendingTopicRequest : NSObject
 @property(nonatomic)FBSNode * node;
-@property(nonatomic)id<FBSTopicGeneratorDelegate> delegate;
+@property(nonatomic)id delegate;
 
--(id)initWithNode:(FBSNode *)aNode delegate:(id<FBSTopicGeneratorDelegate>)aDelegate;
+-(id)initWithNode:(FBSNode *)aNode delegate:(id)aDelegate;
 @end

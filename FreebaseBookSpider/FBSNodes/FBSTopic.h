@@ -43,6 +43,7 @@
 
 -(id)initWithAlias:(FBSProperty *)anAlias description:(FBSProperty *)aDescription image:(UIImage *)anImage type:(FBSNodeTypes) aType;
 -(id)initWithFBSNode:(FBSNode *)aNode;
++(id)topicWithFBSNode:(FBSNode *) aNode properties:(NSDictionary *)properties;
 -(NSArray *)summary;
 -(NSArray *)details;
 @end

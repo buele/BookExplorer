@@ -64,6 +64,10 @@
     return nil;
 }
 
++(id)topicWithFBSNode:(FBSNode *)aNode properties:(NSDictionary *)properties
+{
+    return nil;
+}
 
 
 @end
