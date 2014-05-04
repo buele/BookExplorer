@@ -1,12 +1,12 @@
 //
-//  FBSNodeManager.h
+//  FreeBaseBookSpider.h
 //  FreebaseBookSpider
 //
-//  Created by Raffaele Bua on 14/04/14.
+//  Created by Raffaele Bua on 28/03/14.
 
 /*****************************************************************************
  The MIT License (MIT)
- 
+
  
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -28,26 +28,28 @@
  *****************************************************************************/
 
 #import <Foundation/Foundation.h>
+#import "FBSApiManager.h"
+#import "FBSEntityManager.h"
+#import "FBSNode.h"
 #import "FBSTopic.h"
-#import "../FBSApiManager/FBSApiManager.h"
-#import "FBSPendingImageRequest.h"
 
-@protocol FBSNodeManagerDelegate
--(void)nodeDidGenerated:(FBSTopic *)node withId:(NSString *)nodeId;
--(void)nodesByKeywordDidReceived:(NSDictionary*)nodes forKey:(NSString *)key;
--(void)topicDidGenerated:(FBSTopic *)aTopic withId:(NSString *)anId;
+@protocol FreebaseBookSpiderDelegate
+-(void)nodesDidGenerated:(NSArray *)theNodes forKeyword:(NSString *)keyword;
+-(void)topicDidGenerated:(FBSTopic *)theTopic;
 @end
 
-@interface FBSEntityManager : NSObject < FBSNodeRequiring>
+@interface FreebaseBookSpider : NSObject <FBSNodeManagerDelegate> //TODO: remove FreebaseBookSpiderDelegate after testing
 {
-    NSMutableDictionary * pendingNodeRequests;
-    NSMutableDictionary * pendingNodesRequestsByKeyword;
-    NSMutableDictionary * pendingTopicRequests;
-    NSMutableDictionary * pendingImageRequests;
-    
+    FBSEntityManager * nodeManager;
+    id<FreebaseBookSpiderDelegate> delegate;
 }
--(void)nodeWithId:(NSString *)aNodeId andWithName:(NSString *)name forDelegate:(id<FBSNodeManagerDelegate>)delegate;
--(void)topicWithNode:(FBSNode *)aNode forDelegate:(id<FBSNodeManagerDelegate>)aDelegate;
--(void)nodesByKeyword:(NSString *)aKeyword forDelegate:(id<FBSNodeManagerDelegate>)delegate;
+
+-(id)init;
+
+#pragma mark main interface
+-(id)initWithFreebaseApiKey:(NSString *)anApiKey;
+-(id)initWithDelegate:(id<FreebaseBookSpiderDelegate>)delegate;
+-(void)getNodesByKeyword: (NSString * ) aKeyword forDelegate:(id<FreebaseBookSpiderDelegate>)aDelegate;
+-(void)getTopicByNode:(FBSNode * )aNode forDelegate:(id<FreebaseBookSpiderDelegate>)aDelegate;
 
 @end

@@ -1,8 +1,8 @@
 //
-//  FBSNodeManager.h
+//  TestClient.h
 //  FreebaseBookSpider
 //
-//  Created by Raffaele Bua on 14/04/14.
+//  Created by Raffaele Bua on 04/05/14.
 
 /*****************************************************************************
  The MIT License (MIT)
@@ -28,26 +28,10 @@
  *****************************************************************************/
 
 #import <Foundation/Foundation.h>
-#import "FBSTopic.h"
-#import "../FBSApiManager/FBSApiManager.h"
-#import "FBSPendingImageRequest.h"
+#import "FreebaseBookSpider.h"
 
-@protocol FBSNodeManagerDelegate
--(void)nodeDidGenerated:(FBSTopic *)node withId:(NSString *)nodeId;
--(void)nodesByKeywordDidReceived:(NSDictionary*)nodes forKey:(NSString *)key;
--(void)topicDidGenerated:(FBSTopic *)aTopic withId:(NSString *)anId;
-@end
-
-@interface FBSEntityManager : NSObject < FBSNodeRequiring>
+@interface TestClient : NSObject <FreebaseBookSpiderDelegate>
 {
-    NSMutableDictionary * pendingNodeRequests;
-    NSMutableDictionary * pendingNodesRequestsByKeyword;
-    NSMutableDictionary * pendingTopicRequests;
-    NSMutableDictionary * pendingImageRequests;
-    
+    FreebaseBookSpider * freebaseBookSpider;
 }
--(void)nodeWithId:(NSString *)aNodeId andWithName:(NSString *)name forDelegate:(id<FBSNodeManagerDelegate>)delegate;
--(void)topicWithNode:(FBSNode *)aNode forDelegate:(id<FBSNodeManagerDelegate>)aDelegate;
--(void)nodesByKeyword:(NSString *)aKeyword forDelegate:(id<FBSNodeManagerDelegate>)delegate;
-
 @end

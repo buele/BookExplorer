@@ -28,7 +28,7 @@
  *****************************************************************************/
 
 #import "AppDelegate.h"
-#import "BookSpider.h"
+#import "TestClient.h"
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -36,12 +36,12 @@
     
     
 
-    BookSpider * bookSpider = [[BookSpider alloc] init];
+    TestClient * client = [TestClient new];
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    NSLog(@"%@", bookSpider);
+    NSLog(@"%@", client);
     return YES;
 }
 
