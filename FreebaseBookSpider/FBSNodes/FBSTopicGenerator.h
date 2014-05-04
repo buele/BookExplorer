@@ -30,16 +30,17 @@
 #import <Foundation/Foundation.h>
 #import "FBSTopic.h"
 #import "FBSNode.h"
-@protocol FBSNodeGeneratorDelegate
+#import "../FBSApiManager/FBSApiManager.h"
+@protocol FBSTopicGeneratorDelegate
 -(void)topicDidGenerated:(FBSTopic *)aNode withId:(NSString *)aNodeId;
 @end
 
-@interface FBSTopicGenerator : NSObject
+@interface FBSTopicGenerator : NSObject <FBSApiManagerDelegate>
 {
     NSMutableArray* pendingImageRequests;
 }
 
 
--(void)requestImageWithId:(NSString *)anImageId forTopic:(FBSTopic *)aTopic toTarget:(id<FBSNodeGeneratorDelegate>)aTarget;
--(void)topicWithNode:(FBSNode *)aNode properties:(NSDictionary *)properties toDelegate:(id<FBSNodeGeneratorDelegate>)aDelegate;
+-(void)requestImageWithId:(NSString *)anImageId forTopic:(FBSTopic *)aTopic toTarget:(id<FBSTopicGeneratorDelegate>)aTarget;
+-(void)topicWithNode:(FBSNode *)aNode properties:(NSDictionary *)properties toDelegate:(id<FBSTopicGeneratorDelegate>)aDelegate;
 @end

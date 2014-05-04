@@ -38,7 +38,7 @@
 -(void)topicDidGenerated:(FBSTopic *)theTopic;
 @end
 
-@interface BookSpider : NSObject
+@interface BookSpider : NSObject <FBSNodeManagerDelegate>
 {
     FBSNodeManager * nodeManager;
 }

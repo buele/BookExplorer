@@ -32,7 +32,7 @@
 @implementation FBSPendingImageRequest
 
 
--(id)initWithNode:(FBSTopic *)aNode andTarget:(id<FBSNodeGeneratorDelegate>)aTarget;
+-(id)initWithNode:(FBSTopic *)aNode andTarget:(id<FBSTopicGeneratorDelegate>)aTarget;
 {
     self = [super init];
     if(self){

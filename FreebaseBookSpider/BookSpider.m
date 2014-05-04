@@ -69,6 +69,10 @@
     [nodeManager topicWithNode:aNode forDelegate:self];
 }
 
+-(void)nodeDidGenerated:(FBSTopic *)node withId:(NSString *)nodeId{
+    
+}
+
 
 
 @end

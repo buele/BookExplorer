@@ -29,12 +29,14 @@
 
 #import <Foundation/Foundation.h>
 #import "FBSTopic.h"
+#import "FBSTopicGenerator.h"
+#import "../FBSApiManager/FBSApiManager.h"
 
 @protocol FBSNodeManagerDelegate
 -(void)nodeDidGenerated:(FBSTopic *)node withId:(NSString *)nodeId;
 @end
 
-@interface FBSNodeManager : NSObject
+@interface FBSNodeManager : NSObject <FBSApiManagerDelegate, FBSTopicGeneratorDelegate>
 {
     NSMutableDictionary * pendingNodeRequests;
     NSMutableDictionary * pendingNodesRequestsByKeyword;

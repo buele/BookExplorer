@@ -34,7 +34,7 @@
 @synthesize node;
 @synthesize delegate;
 
--(id)initWithNode:(FBSNode *)aNode delegate:(id<FreebaseBookSpiderDelegate>)aDelegate
+-(id)initWithNode:(FBSNode *)aNode delegate:(id<FBSTopicGeneratorDelegate>)aDelegate
 {
     self = [super init];
     if(self){

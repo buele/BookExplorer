@@ -33,7 +33,7 @@
 
 @interface FBSPendingTopicRequest : NSObject
 @property(nonatomic)FBSNode * node;
-@property(nonatomic)id<FBSNodeGeneratorDelegate> delegate;
+@property(nonatomic)id<FBSTopicGeneratorDelegate> delegate;
 
--(id)initWithNode:(FBSNode *)aNode delegate:(id<FBSNodeGeneratorDelegate>)aDelegate;
+-(id)initWithNode:(FBSNode *)aNode delegate:(id<FBSTopicGeneratorDelegate>)aDelegate;
 @end

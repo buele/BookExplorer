@@ -42,7 +42,7 @@
     return self;
 }
 
--(void)requestImageWithId:(NSString *)anImageId forTopic:(FBSTopic *)aTopic toTarget:(id<FBSNodeGeneratorDelegate>)aTarget
+-(void)requestImageWithId:(NSString *)anImageId forTopic:(FBSTopic *)aTopic toTarget:(id<FBSTopicGeneratorDelegate>)aTarget
 {
     FBSPendingImageRequest * pendingRequest = [[FBSPendingImageRequest alloc]initWithNode:aTopic andTarget:aTarget];
     [pendingImageRequests addObject:pendingRequest];
@@ -57,5 +57,22 @@
     [pendingRequest.target topicDidGenerated:pendingRequest.node withId:pendingRequest.node.nodeId];
 
 }
+
+
+-(void)topicWithNode:(FBSNode *)aNode properties:(NSDictionary *)properties toDelegate:(id<FBSTopicGeneratorDelegate>)aDelegate
+{
+    
+}
+
+-(void)nodesByKeywordDidReceived:(NSArray*)nodes forKey:(NSString *)key
+{
+    
+}
+-(void)nodePropertiesByIdDidReceived:(NSDictionary*)properties forKey:(NSString *)key
+{
+    
+}
+
+
 
 @end

@@ -78,7 +78,7 @@ static NSString * FB_INFLUENCED_KEY           = @"/influence/influence_node/infl
 static NSString * FB_INFLUENCED_LABEL         = @"influenced";
 
 
--(void)topicWithNode:(FBSNode *)aNode properties:(NSDictionary *)properties toDelegate:(id<FBSNodeGeneratorDelegate>)aDelegate
+-(void)topicWithNode:(FBSNode *)aNode properties:(NSDictionary *)properties toDelegate:(id<FBSTopicGeneratorDelegate>)aDelegate
 {
     FBSAuthorTopic * author = [[FBSAuthorTopic alloc] initWithFBSNode:aNode];
     author.type = FBSNodeAuthorType;
