@@ -39,13 +39,11 @@
 
 @interface FBSEntityManager : NSObject < FBSNodeRequiring>
 {
-    NSMutableDictionary * pendingNodeRequests;
     NSMutableDictionary * pendingNodesRequestsByKeyword;
     NSMutableDictionary * pendingTopicRequests;
     NSMutableDictionary * pendingImageRequests;
-    
 }
--(void)nodeWithId:(NSString *)aNodeId andWithName:(NSString *)name forDelegate:(id<FBSNodeManagerDelegate>)delegate;
+
 -(void)topicWithNode:(FBSNode *)aNode forDelegate:(id<FBSNodeManagerDelegate>)aDelegate;
 -(void)nodesByKeyword:(NSString *)aKeyword forDelegate:(id<FBSNodeManagerDelegate>)delegate;
 

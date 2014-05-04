@@ -35,9 +35,6 @@
 @synthesize image;
 @synthesize type;
 
-
-
-
 -(id)initWithFBSNode:(FBSNode *)aNode
 {
     self = [super initWithId:aNode.nodeId lang:aNode.lang mid:aNode.mid name:aNode.name notableId:aNode.notableId notableName:aNode.notableName];
