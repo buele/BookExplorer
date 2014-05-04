@@ -52,9 +52,13 @@
     return self;
 }
 
--(id)initWithFreebaseApiKey:(NSString *)anApiKey
+-(id)initWithFreebaseApiKey:(NSString *)anApiKey delegate:(id<FreebaseBookSpiderDelegate>) aDelegate
 {
-    return nil;
+    self  = [self initWithDelegate:aDelegate];
+    if(self){
+        [[FBSResources getSharedInstance]setFreebaseApiKey:anApiKey];
+    }
+    return self;
 }
 
 
@@ -74,10 +78,6 @@
 
 #pragma mark FBSNodeManagerDelegate protocol
 
--(void)nodeDidGenerated:(FBSTopic *)node withId:(NSString *)nodeId
-{
-    [delegate topicDidGenerated:node];
-}
 
 -(void)nodesByKeywordDidReceived:(NSArray*)nodes forKey:(NSString *)key
 {

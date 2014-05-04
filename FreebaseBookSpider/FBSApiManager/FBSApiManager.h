@@ -41,7 +41,6 @@
 
 @interface FBSApiManager : NSObject {
     NSOperationQueue * queue;
-    FBSResources* resources;
 }
 
 @property(nonatomic)id<FBSNodeRequiring>delegate;

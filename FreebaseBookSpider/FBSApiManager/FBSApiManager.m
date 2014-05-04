@@ -43,7 +43,6 @@ static NSString *  RESULT_RESPONSE_KEY      = @"result";
     self = [super init];
     if(self){
         queue = [[NSOperationQueue alloc] init];
-        resources = [[FBSResources alloc] init];
     }
     return self;
 }
@@ -53,7 +52,7 @@ static NSString *  RESULT_RESPONSE_KEY      = @"result";
 {
     if(!aDelegate) return;
     if(aKeyword && [aKeyword length] != 0){
-        if(resources) [self sendRequestWithUrl:[resources bookNodesUrlByKeyword:aKeyword]  andAction:FBSApiActionRequestNodesByKeyword andTarget:aDelegate forKey:aKeyword];
+        if([FBSResources getSharedInstance]) [self sendRequestWithUrl:[[FBSResources getSharedInstance] bookNodesUrlByKeyword:aKeyword]  andAction:FBSApiActionRequestNodesByKeyword andTarget:aDelegate forKey:aKeyword];
         else [aDelegate nodesByKeywordDidReceived:nil forKey:aKeyword];
     }else
         [aDelegate nodesByKeywordDidReceived:nil forKey:aKeyword];
@@ -63,7 +62,7 @@ static NSString *  RESULT_RESPONSE_KEY      = @"result";
 {
     if(!aDelegate) return;
     if(aNodeId && [aNodeId length] != 0){
-        if(resources) [self sendRequestWithUrl:[resources nodePropertiesUrlById:aNodeId]  andAction:FBSApiActionRequestNodePropertiesById andTarget:aDelegate forKey:aNodeId];
+        if([FBSResources getSharedInstance]) [self sendRequestWithUrl:[[FBSResources getSharedInstance] nodePropertiesUrlById:aNodeId]  andAction:FBSApiActionRequestNodePropertiesById andTarget:aDelegate forKey:aNodeId];
         else [aDelegate nodePropertiesByIdDidReceived:nil forKey:aNodeId];
     }else
         [aDelegate nodePropertiesByIdDidReceived:nil forKey:aNodeId];
@@ -73,7 +72,7 @@ static NSString *  RESULT_RESPONSE_KEY      = @"result";
 {
     if(!aDelegate) return;
     if(anImageId && [anImageId length] != 0){
-        if(resources) [self sendRequestWithUrl:[resources imageUrlById:anImageId]  andAction:FBSApiActionRequestImageById andTarget:aDelegate forKey:anImageId];
+        if([FBSResources getSharedInstance]) [self sendRequestWithUrl:[[FBSResources getSharedInstance] imageUrlById:anImageId]  andAction:FBSApiActionRequestImageById andTarget:aDelegate forKey:anImageId];
         else [aDelegate imageByIdDidReceived:nil forKey:anImageId];
     }else
         [aDelegate imageByIdDidReceived:nil forKey:anImageId];

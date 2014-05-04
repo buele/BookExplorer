@@ -47,8 +47,9 @@
 -(id)init;
 
 #pragma mark main interface
--(id)initWithFreebaseApiKey:(NSString *)anApiKey;
 -(id)initWithDelegate:(id<FreebaseBookSpiderDelegate>)delegate;
+-(id)initWithFreebaseApiKey:(NSString *)anApiKey delegate:(id<FreebaseBookSpiderDelegate>) aDelegate;
+
 -(void)getNodesByKeyword: (NSString * ) aKeyword forDelegate:(id<FreebaseBookSpiderDelegate>)aDelegate;
 -(void)getTopicByNode:(FBSNode * )aNode forDelegate:(id<FreebaseBookSpiderDelegate>)aDelegate;
 

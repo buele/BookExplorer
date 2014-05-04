@@ -35,7 +35,7 @@
 {
     self = [super init];
     if(self){
-        freebaseBookSpider = [[FreebaseBookSpider alloc] initWithDelegate:self];
+        freebaseBookSpider = [[FreebaseBookSpider alloc] initWithFreebaseApiKey:nil delegate:self];
         [self test];
     }
     return self;

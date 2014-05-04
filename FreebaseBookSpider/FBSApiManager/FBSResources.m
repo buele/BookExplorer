@@ -30,6 +30,9 @@
 
 
 @implementation FBSResources
+
+static FBSResources * sharedResources_  = nil;
+
 static NSString *  FREEBASE_URLS_FILE_NAME                      = @"freebase_urls";
 static NSString *  FREEBASE_URLS_FILE_EXT                       = @"plist";
 static NSString *  MQL_QUERIES_FILE_NAME                        = @"mql_queries";
@@ -45,6 +48,7 @@ static NSString *  FREEBASE_QUERY_PARAMETER_KEY                 = @"query";
 {
     self = [super init];
     if(self){
+        freebaseApiKey = nil;
         [self loadResources];
         [self initUrls];
     }
@@ -126,6 +130,18 @@ static NSString *  FREEBASE_QUERY_PARAMETER_KEY                 = @"query";
 -(NSURL *)imageUrlById:(NSString * )imageId
 {
     return [[NSURL alloc]initWithString:[NSString stringWithFormat:@"%@%@",imageBaseUrl,imageId]];
+}
+
+-(void)setFreebaseApiKey:(NSString *)aFreebaseApiKey
+{
+    freebaseApiKey = aFreebaseApiKey;
+}
+
+#pragma mark static method
++ (FBSResources *) getSharedInstance {
+    if (sharedResources_ == nil)
+        sharedResources_ = [[FBSResources alloc] init];
+    return sharedResources_;
 }
 
 
