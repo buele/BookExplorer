@@ -69,14 +69,14 @@ static NSString *  RESULT_RESPONSE_KEY      = @"result";
         [aDelegate nodePropertiesByIdDidReceived:nil forKey:aNodeId];
 }
 
--(void)getImageById:(NSString*)anImageId andForDelegate:(id<FBSNodeRequiring>)aDelegate forRequestId:(NSNumber *)aRequestId;
+-(void)getImageById:(NSString*)anImageId andForDelegate:(id<FBSNodeRequiring>)aDelegate
 {
     if(!aDelegate) return;
     if(anImageId && [anImageId length] != 0){
-        if(resources) [self sendRequestWithUrl:[resources imageUrlById:anImageId]  andAction:FBSApiActionRequestImageById andTarget:aDelegate forKey:[aRequestId stringValue]];
-        else [aDelegate imageByIdDidReceived:nil forKey:aRequestId];
+        if(resources) [self sendRequestWithUrl:[resources imageUrlById:anImageId]  andAction:FBSApiActionRequestImageById andTarget:aDelegate forKey:anImageId];
+        else [aDelegate imageByIdDidReceived:nil forKey:anImageId];
     }else
-        [aDelegate imageByIdDidReceived:nil forKey:aRequestId];
+        [aDelegate imageByIdDidReceived:nil forKey:anImageId];
 }
 
 #pragma mark utilities
@@ -117,7 +117,7 @@ static NSString *  RESULT_RESPONSE_KEY      = @"result";
                 [target nodePropertiesByIdDidReceived:[[self dataToJson:response] objectForKey:@"property"] forKey:key];
                 break;
             case FBSApiActionRequestImageById:
-                [target imageByIdDidReceived:[UIImage imageWithData:response] forKey:[NSNumber numberWithInt:[key intValue]]];
+                [target imageByIdDidReceived:[UIImage imageWithData:response] forKey:key];
                 break;
             default:
             break;

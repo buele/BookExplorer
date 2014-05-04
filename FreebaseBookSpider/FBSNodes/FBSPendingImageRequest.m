@@ -32,12 +32,12 @@
 @implementation FBSPendingImageRequest
 
 
--(id)initWithNode:(FBSTopic *)aNode andTarget:(id)aTarget;
+-(id)initWithTopic:(FBSTopic *)aTopic delegate:(id)aDelegate;
 {
     self = [super init];
     if(self){
-        _node = aNode;
-        _target = aTarget;
+        _topic = aTopic;
+        _delegate = aDelegate;
     }
     return self;
 }

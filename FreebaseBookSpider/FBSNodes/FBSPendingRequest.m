@@ -1,8 +1,8 @@
 //
-//  FBSNodeManager.h
+//  FBSPendingRequest.m
 //  FreebaseBookSpider
 //
-//  Created by Raffaele Bua on 14/04/14.
+//  Created by Raffaele Bua on 04/05/14.
 
 /*****************************************************************************
  The MIT License (MIT)
@@ -27,25 +27,19 @@
  THE SOFTWARE.
  *****************************************************************************/
 
-#import <Foundation/Foundation.h>
-#import "FBSTopic.h"
-#import "../FBSApiManager/FBSApiManager.h"
-#import "FBSPendingImageRequest.h"
+#import "FBSPendingRequest.h"
 
-@protocol FBSNodeManagerDelegate
--(void)nodeDidGenerated:(FBSTopic *)node withId:(NSString *)nodeId;
-@end
+@implementation FBSPendingRequest
+@synthesize delegate;
+@synthesize node;
 
-@interface FBSEntityManager : NSObject < FBSNodeRequiring>
-{
-    NSMutableDictionary * pendingNodeRequests;
-    NSMutableDictionary * pendingNodesRequestsByKeyword;
-    NSMutableDictionary * pendingTopicRequests;
-    NSMutableDictionary * pendingImageRequests;
+-(id)initWithNode:(FBSNode *)aNode delegate:(id) aDelegate{
+    self = [super init];
+    if(self){
+        node = aNode;
+        delegate = aDelegate;
+    }
     
+    return  self;
 }
--(void)nodeWithId:(NSString *)aNodeId andWithName:(NSString *)name forDelegate:(id<FBSNodeManagerDelegate>)delegate;
--(void)topicWithNode:(FBSNode *)aNode forDelegate:(id<FBSNodeManagerDelegate>)aDelegate;
--(void)nodesByKeyword:(NSString *)aKeyword forDelegate:(id<FBSNodeManagerDelegate>)delegate;
-
 @end

@@ -36,7 +36,7 @@
 @protocol FBSNodeRequiring
 -(void)nodesByKeywordDidReceived:(NSArray*)nodes forKey:(NSString *)key;
 -(void)nodePropertiesByIdDidReceived:(NSDictionary*)properties forKey:(NSString *)key;
--(void)imageByIdDidReceived:(UIImage*)image forKey:(NSNumber *)key;
+-(void)imageByIdDidReceived:(UIImage*)image forKey:(NSString *)key;
 @end
 
 @interface FBSApiManager : NSObject {
@@ -50,7 +50,7 @@
 #pragma mark main protocol
 -(void)getNodesByKeyword:(NSString*)aKeyword andForDelegate:(id<FBSNodeRequiring>)aDelegate; 
 -(void)getNodePropertiesById:(NSString*)aNodeId andForDelegate:(id<FBSNodeRequiring>)aDelegate;
--(void)getImageById:(NSString*)anImageId andForDelegate:(id<FBSNodeRequiring>)aDelegate forRequestId:(NSNumber *)aRequestId;
+-(void)getImageById:(NSString*)anImageId andForDelegate:(id<FBSNodeRequiring>)aDelegate;
 
 @end
 

@@ -33,9 +33,9 @@
 
 @interface FBSPendingImageRequest : NSObject
 
-@property(nonatomic)id target;
-@property(nonatomic)FBSTopic * node;
+@property(nonatomic)id delegate;
+@property(nonatomic)FBSTopic * topic;
 
 
--(id)initWithNode:(FBSTopic *)aNode andTarget:(id) aTarget;
+-(id)initWithTopic:(FBSTopic *)aTopic delegate:(id) aDelegate;
 @end

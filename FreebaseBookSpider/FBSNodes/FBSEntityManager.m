@@ -31,9 +31,8 @@
 #import "../FBSApiManager/FBSApiManager.h"
 #import "FBSNodeTypes.h"
 #import "FBSBook.h"
-#import "FBSPedingNodeRequest.h"
-#import "FBSPendingTopicRequest.h"
-#import "FBSPendingNodesRequestsByKeyword.h"
+
+#import "FBSPendingRequest.h"
 #import "FBSPropertyValue.h"
 #import "FBSAuthor.h"
 
@@ -46,7 +45,7 @@ static NSString * FB_IMAGE_LABEL = @"image";
 {
     self = [super init];
     if(self){
-        pendingImageRequests = [[NSMutableArray alloc]init];
+        pendingImageRequests = [[NSMutableDictionary alloc]init];
         pendingNodeRequests = [[NSMutableDictionary alloc]init];
         pendingTopicRequests = [[NSMutableDictionary alloc]init];
         pendingNodesRequestsByKeyword = [[NSMutableDictionary alloc]init];
@@ -56,26 +55,40 @@ static NSString * FB_IMAGE_LABEL = @"image";
 #pragma mark main protocol
 -(void)nodeWithId:(NSString *)aNodeId andWithName:(NSString *)aNodeName forDelegate:(id<FBSNodeManagerDelegate>)delegate
 {
-    FBSPedingNodeRequest * nodeRequest = [[FBSPedingNodeRequest alloc]initWithNodeId:aNodeId andNodeName:aNodeName forTarget:delegate];
-    [pendingNodeRequests setObject:nodeRequest forKey:aNodeId];
-    [[FBSApiManager getSharedInstance] getNodePropertiesById:aNodeId andForDelegate:self];
+    //TODO: complete!
+   // FBSPedingNodeRequest * nodeRequest = [[FBSPedingNodeRequest alloc]initWithNodeId:aNodeId andNodeName:aNodeName forTarget:delegate];
+   // [pendingNodeRequests setObject:nodeRequest forKey:aNodeId];
+   // [[FBSApiManager getSharedInstance] getNodePropertiesById:aNodeId andForDelegate:self];
 }
 
 -(void)nodesByKeyword:(NSString *)aKeyword forDelegate:(id)delegate
 {
-    FBSPendingNodesRequestsByKeyword * nodesRequest = [[FBSPendingNodesRequestsByKeyword alloc]initWithKeyword:aKeyword target:delegate];
-    [pendingNodesRequestsByKeyword setObject:nodesRequest forKey:aKeyword];
+    [pendingNodesRequestsByKeyword setObject:delegate forKey:aKeyword];
     [[FBSApiManager getSharedInstance] getNodesByKeyword:aKeyword andForDelegate:self];
 }
 
 -(void)topicWithNode:(FBSNode *)aNode forDelegate:(id)aDelegate
 {
-    FBSPendingTopicRequest * pendingTopicRequest = [[FBSPendingTopicRequest alloc]initWithNode:aNode delegate:aDelegate];
+    FBSPendingRequest * pendingTopicRequest = [[FBSPendingRequest alloc]initWithNode:aNode delegate:aDelegate];
     [pendingTopicRequests setObject:pendingTopicRequest forKey:aNode.nodeId];
     [[FBSApiManager getSharedInstance] getNodePropertiesById:aNode.nodeId andForDelegate:self];
 }
 
 #pragma mark FBSApiManager protocol
+
+-(void)nodePropertiesByIdDidReceived:(NSDictionary*)properties forKey:(NSString *)key
+{
+    FBSNodeTypes nodeType = [self determineNodeTypeByProperties:properties];
+    switch (nodeType) {
+        case FBSNodeBookType:
+            [self generateTopicBookWithProperties:properties forKey:key];
+            break;
+        case FBSNodeAuthorType:
+            [self generateTopicAuthorWithProperties:properties forKey:key];
+            break;
+    }
+}
+
 -(void)nodesByKeywordDidReceived:(NSDictionary*)nodes forKey:(NSString *)key
 {
     NSMutableArray * generatedNodes = [[NSMutableArray alloc]init];
@@ -83,37 +96,26 @@ static NSString * FB_IMAGE_LABEL = @"image";
         FBSNode * node = [[FBSNode alloc]initWithId:[item objectForKey:@"id"] lang:[item objectForKey:@"lang"] mid:[item objectForKey:@"mid"] name:[item objectForKey:@"name"] notableId:[[item objectForKey:@"notable"] objectForKey:@"id"] notableName:[[item objectForKey:@"notable"] objectForKey:@"name"]];
         [generatedNodes addObject:node];
     }
-    FBSPendingNodesRequestsByKeyword * nodesRequest = [pendingNodesRequestsByKeyword objectForKey:key];
-    [nodesRequest.target nodesByKeywordDidReceived:generatedNodes forKey:key];
+    [[pendingNodesRequestsByKeyword objectForKey:key] nodesByKeywordDidReceived:generatedNodes forKey:key];
     [pendingNodesRequestsByKeyword removeObjectForKey:key];
     
 }
 
-
--(void)topicDidGenerated:(FBSTopic *)theTopic withId:theTopicId
+-(void)imageByIdDidReceived:(UIImage*)image forKey:(NSString *)key
 {
-    FBSPendingTopicRequest * pendingRequest = [pendingTopicRequests objectForKey:theTopicId];
-    [pendingRequest.delegate topicDidGenerated:theTopic withId:theTopicId];
-    [pendingTopicRequests removeObjectForKey:theTopicId];
+    FBSPendingImageRequest * pendingRequest = [pendingImageRequests objectForKey:key];
+    pendingRequest.topic.image = image;
+    [pendingImageRequests removeObjectForKey:key];
+    [pendingRequest.delegate topicDidGenerated:pendingRequest.topic withId:pendingRequest.topic.nodeId];
+    
 }
 
--(void)nodePropertiesByIdDidReceived:(NSDictionary*)properties forKey:(NSString *)key
-{
-    FBSNodeTypes nodeType = [self determineNodeTypeByProperties:properties];
-    switch (nodeType) {
-        case FBSNodeBookType:
-           [self generateTopicBookWithProperties:properties forKey:key];
-            break;
-        case FBSNodeAuthorType:
-           [self generateTopicAuthorWithProperties:properties forKey:key];
-            break;
-    }
-}
+
 
 #pragma mark private methods
 -(void)generateTopicAuthorWithProperties:(NSDictionary *)properties forKey:(NSString *)key
 {
-    FBSPendingTopicRequest * pendingRequest = [pendingTopicRequests objectForKey:key];
+    FBSPendingRequest * pendingRequest = [pendingTopicRequests objectForKey:key];
     FBSAuthor * author = [FBSAuthor topicWithFBSNode:pendingRequest.node properties:properties];
     FBSProperty * imageProperty = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_IMAGE_KEY] label:FB_IMAGE_LABEL];
     if(imageProperty){
@@ -124,10 +126,17 @@ static NSString * FB_IMAGE_LABEL = @"image";
     }
 }
 
+-(void)topicDidGenerated:(FBSTopic *)theTopic withId:theTopicId
+{
+    FBSPendingRequest * pendingRequest = [pendingTopicRequests objectForKey:theTopicId];
+    [pendingRequest.delegate topicDidGenerated:theTopic withId:theTopicId];
+    [pendingTopicRequests removeObjectForKey:theTopicId];
+}
+
 
 -(void)generateTopicBookWithProperties:(NSDictionary *)properties forKey:(NSString *)key
 {
-    FBSPendingTopicRequest * pendingRequest = [pendingTopicRequests objectForKey:key];
+    FBSPendingRequest * pendingRequest = [pendingTopicRequests objectForKey:key];
     FBSProperty * imageProperty = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_IMAGE_KEY] label:FB_IMAGE_LABEL];  
     FBSBook * book = [FBSBook topicWithFBSNode:pendingRequest.node properties:properties];
     if(imageProperty){
@@ -152,19 +161,13 @@ static NSString * FB_IMAGE_LABEL = @"image";
     return (bookPropertiesCounter > authorPropertiesCounter)?FBSNodeBookType:FBSNodeAuthorType;
 }
 
--(void)imageByIdDidReceived:(UIImage*)image forKey:(NSNumber *)requestIndex
-{
-    FBSPendingImageRequest * pendingRequest = [pendingImageRequests objectAtIndex:[requestIndex intValue]];
-    pendingRequest.node.image = image;
-    [pendingImageRequests removeObjectAtIndex:[requestIndex intValue]];
-    [pendingRequest.target topicDidGenerated:pendingRequest.node withId:pendingRequest.node.nodeId];
-}
+
 
 -(void)requestImageWithId:(NSString *)anImageId forTopic:(FBSTopic *)aTopic toTarget:(id)aTarget
 {
-    FBSPendingImageRequest * pendingRequest = [[FBSPendingImageRequest alloc]initWithNode:aTopic andTarget:aTarget];
-    [pendingImageRequests addObject:pendingRequest];
-    [[FBSApiManager getSharedInstance] getImageById:anImageId andForDelegate:self forRequestId:[NSNumber numberWithInt:[pendingImageRequests count] -1]];
+    FBSPendingImageRequest * pendingRequest = [[FBSPendingImageRequest alloc]initWithTopic:aTopic delegate:aTarget];
+    [pendingImageRequests setObject:pendingRequest forKey:anImageId];
+    [[FBSApiManager getSharedInstance] getImageById:anImageId andForDelegate:self ];
 }
 
 
