@@ -36,9 +36,17 @@
 {
     self = [super init];
     if(self){
-        _topic = aTopic;
-        _delegate = aDelegate;
+        _topic = [aTopic retain];
+        _delegate = [aDelegate retain];
     }
     return self;
 }
+
+-(void)dealloc
+{
+    [_topic release];
+    [_delegate release];
+    [super dealloc];
+}
+
 @end

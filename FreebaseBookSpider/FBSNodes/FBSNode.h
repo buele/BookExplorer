@@ -31,12 +31,13 @@
 
 @interface FBSNode : NSObject
 
-@property(nonatomic)NSString * nodeId;
-@property(nonatomic)NSString * lang;
-@property(nonatomic)NSString * mid;
-@property(nonatomic)NSString * name;
-@property(nonatomic)NSString * notableId;
-@property(nonatomic)NSString * notableName;
+@property(nonatomic, retain)NSString * nodeId;
+@property(nonatomic, retain)NSString * lang;
+@property(nonatomic, retain)NSString * mid;
+@property(nonatomic, retain)NSString * name;
+@property(nonatomic, retain)NSString * notableId;
+@property(nonatomic, retain)NSString * notableName;
 
 -(id)initWithId:(NSString *)anodeId lang:(NSString *)aLang mid:(NSString *)aMid name:(NSString *)aName notableId:(NSString *)aNotableId notableName:(NSString *)aNotableName;
+-(id)initWithId:(NSString *)anodeId name:(NSString *)aName;
 @end

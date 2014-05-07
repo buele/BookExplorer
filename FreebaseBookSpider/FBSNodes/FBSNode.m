@@ -42,14 +42,30 @@
 {
     self = [super init];
     if(self){
-        nodeId = [[NSString alloc] initWithString:anodeId];
-        lang = [[NSString alloc] initWithString:aLang];
-        mid = [[NSString alloc] initWithString:aMid];
-        name = [[NSString alloc] initWithString:aName];
-        notableId = [[NSString alloc] initWithString:aNotableId];
-        notableName = [[NSString alloc] initWithString:aNotableName];
+        nodeId = (anodeId)?[anodeId retain]:@"";
+        lang = (aLang)?[aLang retain]:@"";
+        mid = (aMid)?[aMid retain]:@"";
+        name = (aName)?[aName retain]:@"";
+        notableId = (aNotableId)?[aNotableId retain]:@"";
+        notableName = (aNotableName)?[aNotableName retain]:@"";
     }
     return self;
+}
+
+-(id)initWithId:(NSString *)anodeId name:(NSString *)aName{
+    self = [self initWithId:anodeId lang:nil mid:nil name:aName notableId:nil notableName:nil];
+    return self;
+}
+
+-(void)dealloc
+{
+    [nodeId release];
+    [lang release];
+    [mid release];
+    [name release];
+    [notableId release];
+    [notableName release];
+    [super dealloc];
 }
 
 @end

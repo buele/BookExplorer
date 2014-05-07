@@ -14,7 +14,7 @@
  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  copies of the Software, and to permit persons to whom the Software is
  furnished to do so, subject to the following conditions:
- 
+ i
  The above copyright notice and this permission notice shall be included in
  all copies or substantial portions of the Software.
  
@@ -36,10 +36,17 @@
 -(id)initWithNode:(FBSNode *)aNode delegate:(id) aDelegate{
     self = [super init];
     if(self){
-        node = aNode;
-        delegate = aDelegate;
+        node = [aNode retain];
+        delegate = [aDelegate retain] ;
     }
     
     return  self;
+}
+
+-(void)dealloc
+{
+    [node release];
+    [delegate release];
+    [super dealloc];
 }
 @end

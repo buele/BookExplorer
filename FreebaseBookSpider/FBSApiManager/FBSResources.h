@@ -30,31 +30,29 @@
 
 @interface FBSResources : NSObject
 {
-    NSDictionary * freebaseUrls;
-    NSDictionary * mqlQueries;
-    NSString * nodesByKeywordBaseUrl;
-    NSString * nodePropertiesByIdBaseUrl;
-    NSString * imageBaseUrl;
-    NSString * freebaseApiKey;
+    NSDictionary    * freebaseUrls;
+    NSDictionary    * mqlQueries;
+    NSString        * nodesByKeywordBaseUrl;
+    NSString        * nodePropertiesByIdBaseUrl;
+    NSString        * imageBaseUrl;
+    NSString        * freebaseApiKey;
 }
 
--(void)loadResources;
-+ (FBSResources *) getSharedInstance;
+
++ (FBSResources *)getSharedInstance;
 
 -(void)setFreebaseApiKey:(NSString *)aFreebaseApiKey;
 
-#pragma mark query parameters
--(NSDictionary* )getFreebaseBaseUrls;
--(NSDictionary* )getMQLQueries;
+
 
 #pragma mark urls
--(NSString*) getBaseUrl;
--(NSString* )getRunMqlQueryUrl;
+-(NSString *) getBaseUrl;
+-(NSString *) getRunMqlQueryUrl;
 
 #pragma mark main protocol
--(NSURL *)bookNodesUrlByKeyword:(NSString * )keyword;
--(NSURL *)nodePropertiesUrlById:(NSString * )nodeId;
--(NSURL *)imageUrlById:(NSString * )imageId;
+-(NSURL *)bookNodesUrlByKeyword:(NSString *)keyword;
+-(NSURL *)nodePropertiesUrlById:(NSString *)nodeId;
+-(NSURL *)imageUrlById:(NSString *)imageId;
 
 
 @end

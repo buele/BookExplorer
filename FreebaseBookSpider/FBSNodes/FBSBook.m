@@ -49,8 +49,7 @@ static NSString * FB_ALIAS_KEY                          = @"/common/topic/alias"
 static NSString * FB_ALIAS_LABEL                        = @"alias";
 static NSString * FB_DESCRIPTION_KEY                    = @"/common/topic/description";
 static NSString * FB_DESCRIPTION_LABEL                  = @"description";
-static NSString * FB_IMAGE_KEY                          = @"/common/topic/image";
-static NSString * FB_IMAGE_LABEL                        = @"image";
+
 static NSString * FB_GENRE_KEY                          = @"/book/book/genre";
 static NSString * FB_GENRE_LABEL                        = @"genre";
 static NSString * FB_CHARACTERS_KEY                     = @"/book/book/characters";
@@ -92,24 +91,43 @@ static NSString * FB_INFLUENCED_LABEL                   = @"influenced";
 
 +(id)topicWithFBSNode:(FBSNode *)aNode properties:(NSDictionary *)properties
 {
-    FBSBook * book = [[FBSBook alloc] initWithFBSNode:aNode];
+    FBSBook * book = [[[FBSBook alloc] initWithFBSNode:aNode] autorelease];
     book.type = FBSNodeBookType;
-    book.alias  = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_ALIAS_KEY] label:FB_ALIAS_LABEL];
-    book.description = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_DESCRIPTION_KEY] label:FB_DESCRIPTION_LABEL];
-    book.genre = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_GENRE_KEY] label:FB_GENRE_LABEL];
-    book.characters = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_CHARACTERS_KEY] label:FB_CHARACTERS_LABEL];
-    book.quotations = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_QUOTATIONS_KEY] label:FB_QUOTATIONS_LABEL];
-    book.author  = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_AUTHOR_KEY] label:FB_AUTHOR_LABEL];
-    book.dateWritten = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_DATE_WRITTEN_KEY] label:FB_DATE_WRITTEN_LABEL];
-    book.copyrightDate = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_COPYRIGHT_DATE_KEY] label:FB_COPYRIGHT_DATE_LABEL];
-    book.dateOfFirstPubblication = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_DATE_OF_FIRST_PUBBLICATION_KEY] label:FB_DATE_OF_FIRST_PUBBLICATION_LABEL];
-    book.subjects = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_SUBJECTS_KEY] label:FB_SUBJECTS_LABEL];
-    book.originalLanguage = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_ORIGINAL_LANGUAGE_KEY] label:FB_ORIGINAL_LANGUAGE_KEY];
-    book.previousInSeries = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_PREVIOUS_IN_SERIES_KEY] label:FB_PREVIOUS_IN_SERIES_KEY];
-    book.isfdbId = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_ISFDB_ID_KEY] label:FB_ISFDB_ID_LABEL];
-    book.nextInSeries = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_NEXT_IN_SERIES_KEY] label:FB_NEXT_IN_SERIES_LABEL];
-    book.influencedBy = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_INFLUENCED_BY_KEY] label:FB_INFLUENCED_BY_LABEL];
-    book.influenced = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_INFLUENCED_KEY] label:FB_INFLUENCED_LABEL];
+    book.alias  = [[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_ALIAS_KEY] label:FB_ALIAS_LABEL] autorelease];
+    book.description = [[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_DESCRIPTION_KEY] label:FB_DESCRIPTION_LABEL] autorelease];
+    book.genre = [[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_GENRE_KEY] label:FB_GENRE_LABEL] autorelease];
+    book.characters = [[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_CHARACTERS_KEY] label:FB_CHARACTERS_LABEL] autorelease];
+    book.quotations = [[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_QUOTATIONS_KEY] label:FB_QUOTATIONS_LABEL] autorelease];
+    book.author  = [[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_AUTHOR_KEY] label:FB_AUTHOR_LABEL] autorelease];
+    book.dateWritten = [[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_DATE_WRITTEN_KEY] label:FB_DATE_WRITTEN_LABEL] autorelease];
+    book.copyrightDate = [[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_COPYRIGHT_DATE_KEY] label:FB_COPYRIGHT_DATE_LABEL] autorelease];
+    book.dateOfFirstPubblication = [[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_DATE_OF_FIRST_PUBBLICATION_KEY] label:FB_DATE_OF_FIRST_PUBBLICATION_LABEL] autorelease];
+    book.subjects = [[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_SUBJECTS_KEY] label:FB_SUBJECTS_LABEL] autorelease];
+    book.originalLanguage = [[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_ORIGINAL_LANGUAGE_KEY] label:FB_ORIGINAL_LANGUAGE_LABEL] autorelease];
+    book.previousInSeries = [[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_PREVIOUS_IN_SERIES_KEY] label:FB_PREVIOUS_IN_SERIES_LABEL] autorelease];
+    book.isfdbId = [[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_ISFDB_ID_KEY] label:FB_ISFDB_ID_LABEL] autorelease];
+    book.nextInSeries = [[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_NEXT_IN_SERIES_KEY] label:FB_NEXT_IN_SERIES_LABEL] autorelease];
+    book.influencedBy = [[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_INFLUENCED_BY_KEY] label:FB_INFLUENCED_BY_LABEL] autorelease];
+    book.influenced = [[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_INFLUENCED_KEY] label:FB_INFLUENCED_LABEL] autorelease];
     return book;
+}
+
+-(void)dealloc
+{
+    [genre release];
+    [characters release];
+    [quotations release];
+    [author release];
+    [dateWritten release];
+    [copyrightDate release];
+    [dateOfFirstPubblication release];
+    [subjects release];
+    [originalLanguage release];
+    [previousInSeries release];
+    [isfdbId release];
+    [nextInSeries release];
+    [influencedBy release];
+    [influenced release];
+    [super dealloc];
 }
 @end

@@ -45,6 +45,7 @@
 -(void)test
 {
     [freebaseBookSpider getNodesByKeyword: @"Siddharta" forDelegate:self];
+    [freebaseBookSpider getTopicById:@"/m/034bs" name:@"George Orwell" forDelegate:self];
 }
 
 #pragma mark freebase book spider protocol
@@ -56,12 +57,17 @@
 
 -(void)topicDidGenerated:(FBSTopic *)theTopic
 {
-    NSLog(@"hello");
+    NSLog(@"name: %@", theTopic.name);
+    
 }
 
 
 
-
+-(void)dealloc
+{
+    [FreebaseBookSpider release];
+    [super dealloc];
+}
 
 
 @end

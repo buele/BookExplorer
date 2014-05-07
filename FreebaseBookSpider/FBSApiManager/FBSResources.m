@@ -42,75 +42,50 @@ static NSString *  FREEBASE_RUN_QUERY_URL_KEY                   = @"run_query_ur
 static NSString *  FREEBASE_ENTITIES_BY_KEYWORD_PARAMETERS_KEY  = @"entities_by_keyword_parameters";
 static NSString *  FREEBASE_LANGUAGE_PARAMETER_KEY              = @"lang";
 static NSString *  FREEBASE_QUERY_PARAMETER_KEY                 = @"query";
-
+static NSString *  FREEBASE_SEARCH_PARAMETER_KEY                = @"search";
+static NSString *  FREEBASE_TOPIC_PARAMETER_KEY                 = @"topic";
+static NSString *  FREEBASE_IMAGE_PARAMETER_KEY                 = @"image";
 
 -(id)init
 {
     self = [super init];
     if(self){
         freebaseApiKey = nil;
-        [self loadResources];
-        [self initUrls];
+        // load resources
+        freebaseUrls =  [[NSDictionary alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:FREEBASE_URLS_FILE_NAME ofType:FREEBASE_URLS_FILE_EXT]];
+        mqlQueries =  [[NSDictionary alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:MQL_QUERIES_FILE_NAME ofType:MQL_QUERIES_FILE_EXT]];
+        // init urls
+        nodesByKeywordBaseUrl = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@/%@?%@&%@=",[self getBaseUrl],FREEBASE_SEARCH_PARAMETER_KEY, [self getNodesByKeywordParameters],FREEBASE_QUERY_PARAMETER_KEY] ];
+        nodePropertiesByIdBaseUrl = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@/%@",[self getBaseUrl],FREEBASE_TOPIC_PARAMETER_KEY ]];
+        imageBaseUrl = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@/%@",[self getBaseUrl],FREEBASE_IMAGE_PARAMETER_KEY ]];
     }
     return self;
 }
 
 
--(void) initUrls
-{
-    static NSString *  FREEBASE_SEARCH_PARAMETER_KEY = @"search";
-    static NSString *  FREEBASE_TOPIC_PARAMETER_KEY = @"topic";
-    static NSString *  FREEBASE_IMAGE_PARAMETER_KEY = @"image";
-    
-    nodesByKeywordBaseUrl = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@/%@?%@&%@=",[self getBaseUrl],FREEBASE_SEARCH_PARAMETER_KEY, [self getNodesByKeywordParameters],FREEBASE_QUERY_PARAMETER_KEY] ];
-    nodePropertiesByIdBaseUrl = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@/%@",[self getBaseUrl],FREEBASE_TOPIC_PARAMETER_KEY ]];
-    imageBaseUrl = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@/%@",[self getBaseUrl],FREEBASE_IMAGE_PARAMETER_KEY ]];
-    
-}
-
--(void)loadResources
-{
-    freebaseUrls = [self getFreebaseBaseUrls];
-    mqlQueries = [self getMQLQueries];
-}
-
--(NSDictionary* )getFreebaseBaseUrls
-{
-    NSString* path =  [[NSBundle mainBundle] pathForResource:FREEBASE_URLS_FILE_NAME ofType:FREEBASE_URLS_FILE_EXT];
-    
-    return [[NSDictionary alloc] initWithContentsOfFile:path];
-}
-
--(NSDictionary* )getMQLQueries
-{
-    NSString* path =  [[NSBundle mainBundle] pathForResource:MQL_QUERIES_FILE_NAME ofType:MQL_QUERIES_FILE_EXT];
-    
-    return [[NSDictionary alloc] initWithContentsOfFile:path];
-}
-
--(NSString*) getBaseUrl
+-(NSString *) getBaseUrl
 {
     return [freebaseUrls objectForKey:FREEBASE_API_BASE_URL_KEY];
 }
 
--(NSString* )getRunMqlQueryUrl
+-(NSString *)getRunMqlQueryUrl
 {
     return [NSString stringWithFormat:@"%@%@",
             [self getBaseUrl],
             [freebaseUrls objectForKey:FREEBASE_RUN_QUERY_URL_KEY]];
 }
 
--(NSString* )encodeUrl:(NSString*)url
+-(NSString *)encodeUrl:(NSString*)url
 {
     return [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 }
 
--(NSString* )getNodesByKeywordParameters
+-(NSString *)getNodesByKeywordParameters
 {
     return  [NSString stringWithFormat:@"%@%@",[freebaseUrls objectForKey:FREEBASE_ENTITIES_BY_KEYWORD_PARAMETERS_KEY],[self getLanguageParameter]];
 }
 
--(NSString* )getLanguageParameter
+-(NSString *)getLanguageParameter
 {
     return [NSString stringWithFormat: @"&%@=%@",FREEBASE_LANGUAGE_PARAMETER_KEY,@"en"];
 }
@@ -118,23 +93,31 @@ static NSString *  FREEBASE_QUERY_PARAMETER_KEY                 = @"query";
 #pragma mark main protocol
 -(NSURL *)bookNodesUrlByKeyword:(NSString * )keyword 
 {
-    return [[NSURL alloc]initWithString:[NSString stringWithFormat:@"%@%@", nodesByKeywordBaseUrl,[self encodeUrl:[keyword stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]]]];
+    return [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", nodesByKeywordBaseUrl,[self encodeUrl:[keyword stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]]]];
 }
 
 -(NSURL *)nodePropertiesUrlById:(NSString * )nodeId
 {
     static NSString *  FREEBASE_ALL_PROPERTIES_FILTER_PARAMETER_KEY = @"filter=allproperties";
-    return [[NSURL alloc]initWithString:[NSString stringWithFormat:@"%@%@?%@", nodePropertiesByIdBaseUrl,[self encodeUrl:nodeId],FREEBASE_ALL_PROPERTIES_FILTER_PARAMETER_KEY  ]];
+    return [NSURL URLWithString:[NSString stringWithFormat:@"%@%@?%@", nodePropertiesByIdBaseUrl,[self encodeUrl:nodeId],FREEBASE_ALL_PROPERTIES_FILTER_PARAMETER_KEY  ]];
 }
 
 -(NSURL *)imageUrlById:(NSString * )imageId
 {
-    return [[NSURL alloc]initWithString:[NSString stringWithFormat:@"%@%@",imageBaseUrl,imageId]];
+    return [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",imageBaseUrl,imageId]];
 }
 
 -(void)setFreebaseApiKey:(NSString *)aFreebaseApiKey
 {
-    freebaseApiKey = aFreebaseApiKey;
+    if(aFreebaseApiKey){
+        if(freebaseApiKey){
+            [aFreebaseApiKey retain];
+            [freebaseApiKey release];
+            freebaseApiKey = aFreebaseApiKey;
+        }else{
+            freebaseApiKey = [[NSString alloc]initWithString:aFreebaseApiKey];
+        }
+    }
 }
 
 #pragma mark static method
@@ -144,6 +127,16 @@ static NSString *  FREEBASE_QUERY_PARAMETER_KEY                 = @"query";
     return sharedResources_;
 }
 
-
+-(void)dealloc
+{
+    [freebaseUrls release];
+    [mqlQueries release];
+    [nodesByKeywordBaseUrl release];
+    [nodePropertiesByIdBaseUrl release];
+    [imageBaseUrl release];
+    if(freebaseApiKey)
+        [freebaseApiKey release];
+    [super dealloc];
+}
 
 @end

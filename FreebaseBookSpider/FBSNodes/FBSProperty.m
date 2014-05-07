@@ -42,16 +42,23 @@
     static NSString * FBPROPERTY_TEXT_KEY = @"text";
     
     self = [super init];
-    
     if(self){
-        label = aLabel;
+        label = [aLabel copy];
         values = [[NSMutableArray alloc] init];
         for (NSDictionary * item in [aProperty objectForKey:VALUES_KEY]) {
             FBSPropertyValue * value = [[FBSPropertyValue alloc] initWithId:[item objectForKey:FBPROPERTY_ID_KEY] lang:[item objectForKey:FBPROPERTY_LANG_KEY] text:[item objectForKey:FBPROPERTY_TEXT_KEY]];
             [values addObject:value];
+            [value release];
         }
     }
     
     return self;
+}
+
+-(void)dealloc
+{
+    [label release];
+    [values release];
+    [super dealloc];
 }
 @end

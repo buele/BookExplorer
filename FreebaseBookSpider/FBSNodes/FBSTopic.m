@@ -45,9 +45,9 @@
 {
     self = [super  init];
     if(self){
-        alias = anAlias;
-        description = aDescription;
-        image = anImage;
+        alias = [anAlias retain];
+        description = [aDescription retain];
+        image = [anImage retain];
         type = aType;
     }
     return self;
@@ -61,10 +61,17 @@
     return nil;
 }
 
+// to override by child
 +(id)topicWithFBSNode:(FBSNode *)aNode properties:(NSDictionary *)properties
 {
     return nil;
 }
 
-
+-(void)dealloc
+{
+    [alias release];
+    [description release];
+    [image release];
+    [super dealloc];
+}
 @end

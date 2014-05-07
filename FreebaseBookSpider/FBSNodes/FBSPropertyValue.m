@@ -38,10 +38,18 @@
 {
     self = [super init];
     if(self){
-        propertyId = aPropertyId;
-        lang = aLang;
-        text = aText;
+        propertyId = [aPropertyId retain];
+        lang = [aLang retain];
+        text = [aText retain];
     }
     return self;
+}
+
+-(void)dealloc
+{
+    [propertyId release];
+    [lang release];
+    [text release];
+    [super dealloc];
 }
 @end

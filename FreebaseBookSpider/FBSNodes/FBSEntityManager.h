@@ -33,7 +33,7 @@
 #import "FBSPendingImageRequest.h"
 
 @protocol FBSNodeManagerDelegate
--(void)nodesByKeywordDidReceived:(NSDictionary*)nodes forKey:(NSString *)key;
+-(void)nodesByKeywordDidReceived:(NSArray *)nodes forKey:(NSString *)key;
 -(void)topicDidGenerated:(FBSTopic *)aTopic withId:(NSString *)anId;
 @end
 

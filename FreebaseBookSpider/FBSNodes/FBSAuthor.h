@@ -32,25 +32,25 @@
 
 @interface FBSAuthor : FBSTopic
 
-@property(nonatomic)FBSProperty  * dateOfBirth;
-@property(nonatomic)FBSProperty  * placeOfBirth;
-@property(nonatomic)FBSProperty  * nationality;
-@property(nonatomic)FBSProperty  * gender;
-@property(nonatomic)FBSProperty  * profession;
-@property(nonatomic)FBSProperty  * religion;
-@property(nonatomic)FBSProperty  * parents;
-@property(nonatomic)FBSProperty  * children;
-@property(nonatomic)FBSProperty  * spouseS;
-@property(nonatomic)FBSProperty  * employmentHistory;
-@property(nonatomic)FBSProperty  * education;
-@property(nonatomic)FBSProperty  * quotations;
-@property(nonatomic)FBSProperty  * placesLived;
-@property(nonatomic)FBSProperty  * languages;
-@property(nonatomic)FBSProperty  * dateOfDeath;
-@property(nonatomic)FBSProperty  * placeOfDeath;
-@property(nonatomic)FBSProperty  * causeOfDeath;
-@property(nonatomic)FBSProperty  * worksWritten;
-@property(nonatomic)FBSProperty  * influencedBy;
-@property(nonatomic)FBSProperty  * influenced;
+@property(nonatomic, retain)FBSProperty  * dateOfBirth;
+@property(nonatomic, retain)FBSProperty  * placeOfBirth;
+@property(nonatomic, retain)FBSProperty  * nationality;
+@property(nonatomic, retain)FBSProperty  * gender;
+@property(nonatomic, retain)FBSProperty  * profession;
+@property(nonatomic, retain)FBSProperty  * religion;
+@property(nonatomic, retain)FBSProperty  * parents;
+@property(nonatomic, retain)FBSProperty  * children;
+@property(nonatomic, retain)FBSProperty  * spouseS;
+@property(nonatomic, retain)FBSProperty  * employmentHistory;
+@property(nonatomic, retain)FBSProperty  * education;
+@property(nonatomic, retain)FBSProperty  * quotations;
+@property(nonatomic, retain)FBSProperty  * placesLived;
+@property(nonatomic, retain)FBSProperty  * languages;
+@property(nonatomic, retain)FBSProperty  * dateOfDeath;
+@property(nonatomic, retain)FBSProperty  * placeOfDeath;
+@property(nonatomic, retain)FBSProperty  * causeOfDeath;
+@property(nonatomic, retain)FBSProperty  * worksWritten;
+@property(nonatomic, retain)FBSProperty  * influencedBy;
+@property(nonatomic, retain)FBSProperty  * influenced;
 
 @end

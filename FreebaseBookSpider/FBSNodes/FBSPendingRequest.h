@@ -30,8 +30,8 @@
 #import <Foundation/Foundation.h>
 #import "FBSNode.h"
 @interface FBSPendingRequest : NSObject
-@property(nonatomic)id delegate;
-@property(nonatomic)FBSNode * node;
+@property(nonatomic, retain)id delegate;
+@property(nonatomic, retain)FBSNode * node;
 
 -(id)initWithNode:(FBSNode *)aNode delegate:(id)aDelegate;
 

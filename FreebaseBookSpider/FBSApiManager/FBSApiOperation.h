@@ -37,11 +37,12 @@
 {
     BOOL executing;
     BOOL finished;
+    FBSApiAction action;
+    
     NSMutableData * buffer;
     NSURLConnection * connection;
-    FBSApiAction action;
     NSString * key;
-    id<FBSApiOperatorDelegate>delegtae;
+    id delegate;
     id target;
 }
 

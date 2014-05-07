@@ -30,8 +30,8 @@
 #import <Foundation/Foundation.h>
 
 @interface FBSProperty : NSObject
-@property(nonatomic)NSString * label;
-@property(nonatomic)NSMutableArray * values; //(FBSPropertyValue)
+@property(nonatomic, retain)NSString * label;
+@property(nonatomic, retain)NSMutableArray * values; //(FBSPropertyValue)
 
 -(id)initWithFreebaseProperty:(NSDictionary *)aProperty label:(NSString *)aLabel;
 @end

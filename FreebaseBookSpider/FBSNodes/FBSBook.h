@@ -31,18 +31,18 @@
 #import "FBSProperty.h"
 
 @interface FBSBook : FBSTopic
-@property(nonatomic)FBSProperty  * genre;
-@property(nonatomic)FBSProperty  * characters;
-@property(nonatomic)FBSProperty  * quotations;
-@property(nonatomic)FBSProperty  * author;
-@property(nonatomic)FBSProperty  * dateWritten;
-@property(nonatomic)FBSProperty  * copyrightDate;
-@property(nonatomic)FBSProperty  * dateOfFirstPubblication;
-@property(nonatomic)FBSProperty  * subjects;
-@property(nonatomic)FBSProperty  * originalLanguage;
-@property(nonatomic)FBSProperty  * previousInSeries;
-@property(nonatomic)FBSProperty  * isfdbId;
-@property(nonatomic)FBSProperty  * nextInSeries;
-@property(nonatomic)FBSProperty  * influencedBy;
-@property(nonatomic)FBSProperty  * influenced;
+@property(nonatomic, retain)FBSProperty  * genre;
+@property(nonatomic, retain)FBSProperty  * characters;
+@property(nonatomic, retain)FBSProperty  * quotations;
+@property(nonatomic, retain)FBSProperty  * author;
+@property(nonatomic, retain)FBSProperty  * dateWritten;
+@property(nonatomic, retain)FBSProperty  * copyrightDate;
+@property(nonatomic, retain)FBSProperty  * dateOfFirstPubblication;
+@property(nonatomic, retain)FBSProperty  * subjects;
+@property(nonatomic, retain)FBSProperty  * originalLanguage;
+@property(nonatomic, retain)FBSProperty  * previousInSeries;
+@property(nonatomic, retain)FBSProperty  * isfdbId;
+@property(nonatomic, retain)FBSProperty  * nextInSeries;
+@property(nonatomic, retain)FBSProperty  * influencedBy;
+@property(nonatomic, retain)FBSProperty  * influenced;
 @end

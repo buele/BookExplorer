@@ -41,16 +41,17 @@
 @interface FreebaseBookSpider : NSObject <FBSNodeManagerDelegate> //TODO: remove FreebaseBookSpiderDelegate after testing
 {
     FBSEntityManager * nodeManager;
-    id<FreebaseBookSpiderDelegate> delegate;
+    id delegate;
 }
 
 -(id)init;
 
-#pragma mark main interface
+#pragma mark init
 -(id)initWithDelegate:(id<FreebaseBookSpiderDelegate>)delegate;
 -(id)initWithFreebaseApiKey:(NSString *)anApiKey delegate:(id<FreebaseBookSpiderDelegate>) aDelegate;
 
+#pragma mark main interface
 -(void)getNodesByKeyword: (NSString * ) aKeyword forDelegate:(id<FreebaseBookSpiderDelegate>)aDelegate;
 -(void)getTopicByNode:(FBSNode * )aNode forDelegate:(id<FreebaseBookSpiderDelegate>)aDelegate;
-
+-(void)getTopicById:(NSString *)anId name:(NSString *)aName forDelegate:(id<FreebaseBookSpiderDelegate>) aDelegate;
 @end

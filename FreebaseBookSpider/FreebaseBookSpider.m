@@ -44,10 +44,10 @@
     return self;
 }
 
--(id)initWithDelegate:(id<FreebaseBookSpiderDelegate>)aDelegate{
+-(id)initWithDelegate:(id)aDelegate{
     self = [self init];
     if(self){
-        delegate = aDelegate;
+        delegate = [aDelegate retain] ;
     }
     return self;
 }
@@ -74,6 +74,11 @@
     [nodeManager topicWithNode:aNode forDelegate:self];
 }
 
+-(void)getTopicById:(NSString *)anId name:(NSString *)aName forDelegate:(id<FreebaseBookSpiderDelegate>) aDelegate
+{
+    FBSNode * node = [[FBSNode alloc] initWithId:anId name:aName];
+    [nodeManager topicWithNode:node forDelegate:self];
+}
 
 
 #pragma mark FBSNodeManagerDelegate protocol
@@ -86,6 +91,15 @@
 -(void)topicDidGenerated:(FBSTopic *)aTopic withId:(NSString *)anId
 {
      [delegate topicDidGenerated:aTopic];
+}
+
+-(void)dealloc
+{
+
+    [nodeManager release];
+    if(delegate)
+        [delegate release];
+    [super dealloc];
 }
 
 @end

@@ -32,6 +32,23 @@
 static NSString *  IS_FINISHED_KVO_KEY  = @"isFinished";
 static NSString *  IS_EXECUTING_KVO_KEY = @"isExecuting";
 
+-(id)initWithUrl:(NSURL * )aUrl andDelegate:(id)aDelegate forAction:(FBSApiAction)anAction andTarget:(id)aTarget forKey:(NSString *)aKey
+{
+    self = [super init];
+    if (self){
+        key = aKey;
+        executing = NO;
+        finished = NO;
+        action = anAction;
+        buffer = [[NSMutableData alloc] init];
+        delegate = [aDelegate retain];
+        target = [aTarget retain];
+        connection =[[NSURLConnection alloc] initWithRequest:[NSURLRequest requestWithURL:aUrl]
+                                                    delegate:self
+                                            startImmediately:NO];
+    }
+    return self;
+}
 
 - (void)start {
     if ([self isCancelled]){
@@ -48,23 +65,7 @@ static NSString *  IS_EXECUTING_KVO_KEY = @"isExecuting";
     [self didChangeValueForKey:IS_EXECUTING_KVO_KEY];
 }
 
--(id)initWithUrl:(NSURL * )aUrl andDelegate:(id)aDelegate forAction:(FBSApiAction)anAction andTarget:(id)aTarget forKey:(NSString *)aKey
-{
-    self = [super init];
-    if (self){
-        key = aKey;
-        executing = NO;
-        finished = NO;
-        action = anAction;
-        buffer = [[NSMutableData alloc] init];
-        delegtae = aDelegate;
-        target = aTarget;
-        connection =[[NSURLConnection alloc] initWithRequest:[NSURLRequest requestWithURL:aUrl]
-                                                     delegate:self
-                                             startImmediately:NO];
-    }
-    return self;
-}
+
 
 -(void)connection:(NSURLConnection *)conn didReceiveData:(NSData *)data
 {
@@ -77,7 +78,7 @@ static NSString *  IS_EXECUTING_KVO_KEY = @"isExecuting";
     [self willChangeValueForKey:IS_EXECUTING_KVO_KEY];
     executing = NO;
     finished = YES;
-    [delegtae responseDidReceived:buffer forAction:action ofTarget:target forKey:key];
+    [delegate responseDidReceived:buffer forAction:action ofTarget:target forKey:key];
     [self didChangeValueForKey:IS_FINISHED_KVO_KEY];
     [self didChangeValueForKey:IS_EXECUTING_KVO_KEY];
 }
@@ -95,6 +96,16 @@ static NSString *  IS_EXECUTING_KVO_KEY = @"isExecuting";
 - (BOOL)isFinished
 {
     return finished;
+}
+
+-(void)dealloc
+{
+    [buffer release];
+    [connection release];
+    [key release];
+    [target release];
+    [delegate release];
+    [super dealloc];
 }
 
 @end

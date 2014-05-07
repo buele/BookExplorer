@@ -55,8 +55,6 @@
 
 static NSString * FB_DESCRIPTION_KEY          = @"/common/topic/description";
 static NSString * FB_DESCRIPTION_LABEL        = @"description";
-static NSString * FB_IMAGE_KEY                = @"/common/topic/image";
-static NSString * FB_IMAGE_LABEL              = @"image";
 static NSString * FB_DATE_OF_BIRTH_KEY        = @"/people/person/date_of_birth";
 static NSString * FB_DATE_OF_BIRTH_LABEL      = @"date_of_birth";
 static NSString * FB_PLACE_OF_BIRTH_KEY       = @"/people/person/place_of_birth";
@@ -109,31 +107,56 @@ static NSString * FB_INFLUENCED_LABEL         = @"influenced";
 }
 +(id)topicWithFBSNode:(FBSNode *) aNode properties:(NSDictionary *)properties
 {
-    FBSAuthor * author = [[FBSAuthor alloc] initWithFBSNode:aNode];
+    FBSAuthor * author = [[[FBSAuthor alloc] initWithFBSNode:aNode] autorelease];
     author.type = FBSNodeAuthorType;
-    author.description        = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_DESCRIPTION_KEY] label:FB_DESCRIPTION_LABEL];
-    author.dateOfBirth        = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_DATE_OF_BIRTH_KEY] label:FB_DATE_OF_BIRTH_LABEL];
-    author.placeOfBirth       = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_PLACE_OF_BIRTH_KEY] label:FB_PLACE_OF_BIRTH_LABEL];
-    author.nationality        = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_NATIONALITY_KEY] label:FB_NATIONALITY_LABEL];
-    author.gender             = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_GENDER_KEY] label:FB_GENDER_LABEL];
-    author.profession         = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_PROFESSION_KEY] label:FB_PROFESSION_LABEL];
-    author.religion           = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_REGION_KEY] label:FB_REGION_LABEL];
-    author.parents            = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_PARENTS_KEY] label:FB_PARENTS_LABEL];
-    author.children           = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_CHILDREN_KEY] label:FB_CHILDREN_LABEL];
-    author.spouseS            = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_SPOUSES_KEY] label:FB_SPOUSES_LABEL];
-    author.employmentHistory  = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_EMPLOYMENT_HISTORY_KEY] label:FB_EMPLOYMENT_HISTORY_LABEL];
-    author.education          = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_EDUCATION_KEY] label:FB_EDUCATION_LABEL];
-    author.quotations         = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_QUOTATIONS_KEY] label:FB_QUOTATIONS_LABEL];
-    author.placesLived        = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_PLACES_LIVED_KEY] label:FB_PLACES_LIVED_LABEL];
-    author.languages          = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_LANGUAGES_KEY] label:FB_LANGUAGES_LABEL];
-    author.dateOfDeath        = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_DATE_OF_DEATH_KEY] label:FB_DATE_OF_DEATH_LABEL];
-    author.placeOfDeath       = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_PLACE_OF_DEATH_KEY] label:FB_PLACE_OF_DEATH_LABEL];
-    author.causeOfDeath       = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_CAUSE_OF_DEATH_KEY] label:FB_CAUSE_OF_DEATH_LABEL];
-    author.worksWritten       = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_WORKS_WRITTEN_KEY] label:FB_WORKS_WRITTEN_LABEL];
-    author.influencedBy       = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_INFLUENCED_BY_KEY] label:FB_INFLUENCED_BY_LABEL];
-    author.influenced         = [[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_INFLUENCED_KEY] label:FB_INFLUENCED_LABEL];
+    author.description        = [[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_DESCRIPTION_KEY] label:FB_DESCRIPTION_LABEL] autorelease];
+    author.dateOfBirth        = [[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_DATE_OF_BIRTH_KEY] label:FB_DATE_OF_BIRTH_LABEL] autorelease];
+    author.placeOfBirth       = [[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_PLACE_OF_BIRTH_KEY] label:FB_PLACE_OF_BIRTH_LABEL] autorelease];
+    author.nationality        = [[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_NATIONALITY_KEY] label:FB_NATIONALITY_LABEL] autorelease];
+    author.gender             = [[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_GENDER_KEY] label:FB_GENDER_LABEL] autorelease];
+    author.profession         = [[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_PROFESSION_KEY] label:FB_PROFESSION_LABEL] autorelease];
+    author.religion           = [[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_REGION_KEY] label:FB_REGION_LABEL] autorelease];
+    author.parents            = [[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_PARENTS_KEY] label:FB_PARENTS_LABEL] autorelease];
+    author.children           = [[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_CHILDREN_KEY] label:FB_CHILDREN_LABEL] autorelease];
+    author.spouseS            = [[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_SPOUSES_KEY] label:FB_SPOUSES_LABEL] autorelease];
+    author.employmentHistory  = [[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_EMPLOYMENT_HISTORY_KEY] label:FB_EMPLOYMENT_HISTORY_LABEL] autorelease];
+    author.education          = [[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_EDUCATION_KEY] label:FB_EDUCATION_LABEL] autorelease];
+    author.quotations         = [[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_QUOTATIONS_KEY] label:FB_QUOTATIONS_LABEL] autorelease];
+    author.placesLived        = [[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_PLACES_LIVED_KEY] label:FB_PLACES_LIVED_LABEL] autorelease];
+    author.languages          = [[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_LANGUAGES_KEY] label:FB_LANGUAGES_LABEL] autorelease];
+    author.dateOfDeath        = [[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_DATE_OF_DEATH_KEY] label:FB_DATE_OF_DEATH_LABEL] autorelease];
+    author.placeOfDeath       = [[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_PLACE_OF_DEATH_KEY] label:FB_PLACE_OF_DEATH_LABEL] autorelease];
+    author.causeOfDeath       = [[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_CAUSE_OF_DEATH_KEY] label:FB_CAUSE_OF_DEATH_LABEL] autorelease];
+    author.worksWritten       = [[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_WORKS_WRITTEN_KEY] label:FB_WORKS_WRITTEN_LABEL] autorelease];
+    author.influencedBy       = [[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_INFLUENCED_BY_KEY] label:FB_INFLUENCED_BY_LABEL] autorelease];
+    author.influenced         = [[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_INFLUENCED_KEY] label:FB_INFLUENCED_LABEL] autorelease];
     
     return author;
+}
+-(void)dealloc
+{
+    [dateOfBirth release];
+    [placeOfBirth release];
+    [nationality release];
+    [gender release];
+    [profession release];
+    [religion release];
+    [parents release];
+    [children release];
+    [spouseS release];
+    [employmentHistory release];
+    [education release];
+    [quotations release];
+    [placesLived release];
+    [languages release];
+    [dateOfDeath release];
+    [placeOfDeath release];
+    [causeOfDeath release];
+    [worksWritten release];
+    [influencedBy release];
+    [influenced release];
+    [super dealloc];
+    
 }
 
 

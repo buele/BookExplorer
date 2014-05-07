@@ -30,9 +30,9 @@
 #import <Foundation/Foundation.h>
 
 @interface FBSPropertyValue : NSObject
-@property(nonatomic)NSString * propertyId;
-@property(nonatomic)NSString * lang;
-@property(nonatomic)NSString * text;
+@property(nonatomic, retain)NSString * propertyId;
+@property(nonatomic, retain)NSString * lang;
+@property(nonatomic, retain)NSString * text;
 
 -(id)initWithId:(NSString *)aPropertyId lang:(NSString *)aLang text:(NSString *)aText;
 @end

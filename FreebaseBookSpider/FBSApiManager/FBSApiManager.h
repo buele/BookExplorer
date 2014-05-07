@@ -43,7 +43,6 @@
     NSOperationQueue * queue;
 }
 
-@property(nonatomic)id<FBSNodeRequiring>delegate;
 + (FBSApiManager *) getSharedInstance;
 
 #pragma mark main protocol

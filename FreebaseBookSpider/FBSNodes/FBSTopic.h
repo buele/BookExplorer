@@ -34,10 +34,9 @@
 
 @interface FBSTopic : FBSNode
 
-
-@property(nonatomic)FBSProperty * alias;
-@property(nonatomic)FBSProperty * description;
-@property(nonatomic)UIImage     * image;
+@property(nonatomic, retain)FBSProperty * alias;
+@property(nonatomic, retain)FBSProperty * description;
+@property(nonatomic, retain)UIImage     * image;
 @property(nonatomic)FBSNodeTypes  type;
 
 
