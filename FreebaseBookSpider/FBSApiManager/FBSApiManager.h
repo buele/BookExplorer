@@ -28,7 +28,6 @@
  *****************************************************************************/
 
 #import <Foundation/Foundation.h>
-#import "FBSApiOperation.h"
 #import "FBSApiActions.h"
 #import "FBSResources.h"
 
