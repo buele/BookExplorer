@@ -28,10 +28,13 @@
  THE SOFTWARE.
  *****************************************************************************/
 
-#import "FBSApiOperation.h"
+
+#import "FBSURLConnection.h"
 #import "FBSApiManager.h"
-#import "../FBSNodes/FBSPendingImageRequest.h"
+#import "FBSApiPendingRequest.h"
+
 @implementation FBSApiManager
+@synthesize requestCounter;
 static FBSApiManager *sharedSingleton_      = nil;
 static NSString *  RESULT_RESPONSE_KEY      = @"result";
 static NSString *  PROPERTY_KEY             = @"property";
@@ -40,8 +43,11 @@ static NSString *  PROPERTY_KEY             = @"property";
 {
     self = [super init];
     if(self){
-        queue = [[NSOperationQueue alloc] init];
+        requests = [NSMutableDictionary new];
+        requestCounter = [[NSNumber alloc] initWithInt:0];
     }
+    
+    
     return self;
 }
 
@@ -89,19 +95,31 @@ static NSString *  PROPERTY_KEY             = @"property";
 -(NSDictionary *)dataToJson:(NSData *)data
 {
     NSError* error;
-    NSDictionary * json = [[NSJSONSerialization JSONObjectWithData:data
+    NSDictionary * json = [NSJSONSerialization JSONObjectWithData:data
                                                           options:kNilOptions
-                                                            error:&error] autorelease];
-   // if(error)  NSLog(@"%@", error);
+                                                            error:&error];
+    //if(error)
+      //  NSLog(@"%@", error);
     return json;
 }
 
+-(void)increaseRequestCounter
+{
+    int value = [requestCounter intValue];
+    self.requestCounter = [NSNumber numberWithInt:value + 1];
+}
 
 #pragma mark requests managers
--(void)sendRequestWithUrl:(NSURL* )url andAction:(FBSApiAction)action andTarget:(id<FBSNodeRequiring>)target forKey:(NSString *)key
+-(void)sendRequestWithUrl:(NSURL* )anUrl andAction:(FBSApiAction)anAction andTarget:(id<FBSNodeRequiring>)aTarget forKey:(NSString *)aKey
 {
-    if(url && action && target && queue){
-        [queue addOperation:[[FBSApiOperation alloc]initWithUrl:url  andDelegate:self forAction:action  andTarget:target forKey:key] ]; 
+    if(anUrl && anAction && aTarget && requests){
+        FBSURLConnection * connection = [[FBSURLConnection alloc] initWithUrl:anUrl delegate:self requestId:self.requestCounter];
+        FBSApiPendingRequest * apiRequest = [[FBSApiPendingRequest alloc] initWithURLConnection:connection action:anAction key:aKey delegate:self target:aTarget];
+        [requests setObject:apiRequest forKey:self.requestCounter];
+        [self increaseRequestCounter];
+        [connection start];
+        [connection release];
+        [apiRequest release];
     }
 }
 
@@ -113,27 +131,31 @@ static NSString *  PROPERTY_KEY             = @"property";
 }
 
 #pragma mark switch types of requestes
-- (void) responseDidReceived:(NSData*)response forAction:(FBSApiAction)action ofTarget:(id<FBSNodeRequiring>)target forKey:(NSString *)key
+- (void) responseDidReceived:(NSData *)response forRequest:(NSNumber *) aRequestId
 {
-    if(target && response)
-        switch(action){
+    FBSApiPendingRequest * apiRequest = [requests objectForKey:aRequestId] ;
+  
+    if(apiRequest.target && response)
+        switch(apiRequest.action){
             case FBSApiActionRequestNodesByKeyword:
-                [target nodesByKeywordDidReceived:[[self dataToJson:response] objectForKey:RESULT_RESPONSE_KEY] forKey:key];
+                [apiRequest.target nodesByKeywordDidReceived:[[self dataToJson:response] objectForKey:RESULT_RESPONSE_KEY] forKey:apiRequest.key];
                 break;
             case FBSApiActionRequestNodePropertiesById:
-                [target nodePropertiesByIdDidReceived:[[self dataToJson:response] objectForKey:PROPERTY_KEY] forKey:key];
+                [apiRequest.target nodePropertiesByIdDidReceived:[[self dataToJson:response] objectForKey:PROPERTY_KEY] forKey:apiRequest.key];
                 break;
             case FBSApiActionRequestImageById:
-                [target imageByIdDidReceived:[UIImage imageWithData:response] forKey:key];
+                [apiRequest.target imageByIdDidReceived:[UIImage imageWithData:response] forKey:apiRequest.key];
                 break;
             default:
             break;
         }
+   [requests removeObjectForKey:aRequestId];
 }
 
 -(void)dealloc
 {
-    [queue release];
+    [requestCounter release];
+    [requests release];
     [super dealloc];
 }
 

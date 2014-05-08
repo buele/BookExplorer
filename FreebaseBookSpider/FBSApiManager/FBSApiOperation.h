@@ -37,9 +37,11 @@
 {
     BOOL executing;
     BOOL finished;
-    FBSApiAction action;
+    
     
     NSMutableData * buffer;
+    
+    FBSApiAction action;
     NSURLConnection * connection;
     NSString * key;
     id delegate;

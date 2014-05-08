@@ -1,7 +1,8 @@
 //
-//  FBSPendingRequest.m
+//  FBSApiPendingRequest.m
 //  FreebaseBookSpider
 //
+//  Created by Raffaele Bua on 07/05/14.
 //  Created by Raffaele Bua on 04/05/14.
 
 /*****************************************************************************
@@ -14,7 +15,7 @@
  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  copies of the Software, and to permit persons to whom the Software is
  furnished to do so, subject to the following conditions:
- i
+ 
  The above copyright notice and this permission notice shall be included in
  all copies or substantial portions of the Software.
  
@@ -27,26 +28,31 @@
  THE SOFTWARE.
  *****************************************************************************/
 
-#import "FBSPendingRequest.h"
+#import "FBSApiPendingRequest.h"
 
-@implementation FBSPendingRequest
-@synthesize delegate;
-@synthesize node;
+@implementation FBSApiPendingRequest
 
--(id)initWithNode:(FBSNode *)aNode delegate:(id) aDelegate{
+
+-(id)initWithURLConnection:(NSURLConnection *)aConnection action:(FBSApiAction)anAction key:(NSString *)aKey delegate:(id)aDelegate target:(id)aTarget
+{
     self = [super init];
     if(self){
-        node = [aNode retain];
-        delegate = [aDelegate retain] ;
+        _connection = [aConnection retain];
+        _key = [aKey retain];
+        _delegate = [aDelegate retain];
+        _target = [aTarget retain];
+        _action = anAction;
     }
-    
-    return  self;
+    return self;
 }
 
 -(void)dealloc
 {
-    [node release];
-    [delegate release];
+    [_connection release];
+    [_key release];
+    [_delegate release];
+    [_target release];
     [super dealloc];
 }
+
 @end

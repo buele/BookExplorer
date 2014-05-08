@@ -30,7 +30,6 @@
 #import <Foundation/Foundation.h>
 #import "FBSTopic.h"
 #import "../FBSApiManager/FBSApiManager.h"
-#import "FBSPendingImageRequest.h"
 
 @protocol FBSNodeManagerDelegate
 -(void)nodesByKeywordDidReceived:(NSArray *)nodes forKey:(NSString *)key;
@@ -39,12 +38,13 @@
 
 @interface FBSEntityManager : NSObject < FBSNodeRequiring>
 {
-    NSMutableDictionary * pendingNodesRequestsByKeyword;
-    NSMutableDictionary * pendingTopicRequests;
     NSMutableDictionary * pendingImageRequests;
+    NSMutableDictionary * pendingTopicRequests;
 }
+-(id)initWithDelegate:(id)aDelegate;
 
--(void)topicWithNode:(FBSNode *)aNode forDelegate:(id<FBSNodeManagerDelegate>)aDelegate;
--(void)nodesByKeyword:(NSString *)aKeyword forDelegate:(id<FBSNodeManagerDelegate>)delegate;
+@property(nonatomic, retain)id delegate;
+-(void)topicWithNode:(FBSNode *)aNode;
+-(void)nodesByKeyword:(NSString *)aKeyword;
 
 @end

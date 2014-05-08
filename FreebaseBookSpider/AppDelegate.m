@@ -33,7 +33,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    TestClient * client = [TestClient new];
+    client = [TestClient new];
     _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     _window.backgroundColor = [UIColor whiteColor];
     [_window makeKeyAndVisible];
@@ -43,6 +43,7 @@
 
 -(void)dealloc
 {
+    [client release];
     [_window release];
     [super dealloc];
 }

@@ -1,8 +1,8 @@
 //
-//  FBSPendingImageRequest.h
+//  FBSURLConnection.m
 //  FreebaseBookSpider
 //
-//  Created by Raffaele Bua on 13/04/14.
+//  Created by Raffaele Bua on 07/05/14.
 
 /*****************************************************************************
  The MIT License (MIT)
@@ -27,15 +27,38 @@
  THE SOFTWARE.
  *****************************************************************************/
 
-#import <Foundation/Foundation.h>
-#import "FBSTopic.h"
+
+#import "FBSURLConnection.h"
+
+@implementation FBSURLConnection
 
 
-@interface FBSPendingImageRequest : NSObject
+-(id)initWithUrl:(NSURL *)anUrl delegate:(id)aDelegate requestId:(NSNumber *)aRequestId{
+    self = [self initWithRequest:[NSURLRequest requestWithURL:anUrl]
+                                                delegate:self
+                                        startImmediately:NO];
+    if(self){
+        delegate = [aDelegate retain];
+        requestId = [aRequestId retain];
+        buffer = [[NSMutableData alloc] init];
+    }
+    return self;
+}
 
-@property(nonatomic, retain)id delegate;
-@property(nonatomic, retain)FBSTopic * topic;
+-(void)connection:(NSURLConnection *)conn didReceiveData:(NSData *)data
+{
+    [buffer appendData:data];
+}
 
-
--(id)initWithTopic:(FBSTopic *)aTopic delegate:(id) aDelegate;
+-(void)connectionDidFinishLoading:(NSURLConnection *)conn
+{
+    [delegate responseDidReceived:buffer forRequest:requestId];
+}
+-(void)dealloc
+{
+    [buffer release];
+    [delegate release];
+    [requestId release];
+    [super dealloc];
+}
 @end

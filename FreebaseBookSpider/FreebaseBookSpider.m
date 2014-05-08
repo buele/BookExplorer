@@ -39,7 +39,7 @@
 {
     self = [super init];
     if (self) {
-        nodeManager = [[FBSEntityManager alloc] init];        
+        nodeManager = [[FBSEntityManager alloc] initWithDelegate:self];
     }
     return self;
 }
@@ -66,18 +66,18 @@
 
 -(void)getNodesByKeyword: (NSString * ) aKeyword forDelegate:(id<FreebaseBookSpiderDelegate>)aDelegate
 {
-    [nodeManager nodesByKeyword:aKeyword forDelegate:self];
+    [nodeManager nodesByKeyword:aKeyword ];
 }
 
 -(void)getTopicByNode:(FBSNode *)aNode forDelegate:(id<FreebaseBookSpiderDelegate>)aDelegate
 {
-    [nodeManager topicWithNode:aNode forDelegate:self];
+    [nodeManager topicWithNode:aNode];
 }
 
 -(void)getTopicById:(NSString *)anId name:(NSString *)aName forDelegate:(id<FreebaseBookSpiderDelegate>) aDelegate
 {
-    FBSNode * node = [[FBSNode alloc] initWithId:anId name:aName];
-    [nodeManager topicWithNode:node forDelegate:self];
+    FBSNode * node = [[[FBSNode alloc] initWithId:anId name:aName] autorelease];
+    [nodeManager topicWithNode:node ];
 }
 
 

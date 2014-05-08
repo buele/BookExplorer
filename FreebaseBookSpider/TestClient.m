@@ -52,12 +52,20 @@
 
 -(void)nodesDidGenerated:(NSArray *)theNodes forKeyword:(NSString *)keyword
 {
-    [freebaseBookSpider getTopicByNode:[theNodes objectAtIndex:0] forDelegate:self]; 
+  //  [freebaseBookSpider getTopicByNode:[theNodes objectAtIndex:0] forDelegate:self];
+    NSLog(@"log");
 }
 
 -(void)topicDidGenerated:(FBSTopic *)theTopic
 {
-    NSLog(@"name: %@", theTopic.name);
+   // NSLog(@"name: %@", theTopic.name);
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Author name"
+                                                    message:theTopic.name
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+    [alert release];
     
 }
 
@@ -65,7 +73,7 @@
 
 -(void)dealloc
 {
-    [FreebaseBookSpider release];
+    [freebaseBookSpider release];
     [super dealloc];
 }
 

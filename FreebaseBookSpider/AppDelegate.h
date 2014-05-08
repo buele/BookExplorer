@@ -28,9 +28,13 @@
 
 
 #import <UIKit/UIKit.h>
-
+#import "TestClient.h"
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
-
+{
+    
+    TestClient * client;
+}
 @property ( nonatomic, retain) UIWindow *window;
+
 
 @end

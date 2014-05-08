@@ -40,9 +40,10 @@
 @end
 
 @interface FBSApiManager : NSObject {
-    NSOperationQueue * queue;
-}
+    NSMutableDictionary * requests;
 
+}
+@property(nonatomic,retain)NSNumber * requestCounter;
 + (FBSApiManager *) getSharedInstance;
 
 #pragma mark main protocol

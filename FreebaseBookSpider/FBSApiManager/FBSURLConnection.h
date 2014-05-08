@@ -1,8 +1,8 @@
 //
-//  FBSPendingRequest.h
+//  FBSURLConnection.h
 //  FreebaseBookSpider
 //
-//  Created by Raffaele Bua on 04/05/14.
+//  Created by Raffaele Bua on 07/05/14.
 
 /*****************************************************************************
  The MIT License (MIT)
@@ -28,11 +28,21 @@
  *****************************************************************************/
 
 #import <Foundation/Foundation.h>
-#import "FBSNode.h"
-@interface FBSPendingRequest : NSObject
-@property(nonatomic, retain)id delegate;
-@property(nonatomic, retain)FBSNode * node;
+#import "FBSApiActions.h"
 
--(id)initWithNode:(FBSNode *)aNode delegate:(id)aDelegate;
+@protocol FBSURLConnectionDelegate
+- (void) responseDidReceived:(NSData*)response forRequest:(NSNumber *) aRequestId;
+@end
 
+
+@interface FBSURLConnection : NSURLConnection
+{
+    
+    NSMutableData * buffer;
+    NSNumber * requestId;
+    id delegate;
+
+}
+
+-(id)initWithUrl:(NSURL *)anUrl delegate:(id)aDelegate requestId:(NSNumber *)aRequestId;
 @end

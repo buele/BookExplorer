@@ -1,8 +1,9 @@
 //
-//  FBSPendingImageRequest.m
+//  FBSApiPendingRequest.h
 //  FreebaseBookSpider
 //
-//  Created by Raffaele Bua on 13/04/14.
+//  Created by Raffaele Bua on 07/05/14.
+//  Created by Raffaele Bua on 04/05/14.
 
 /*****************************************************************************
  The MIT License (MIT)
@@ -27,26 +28,16 @@
  THE SOFTWARE.
  *****************************************************************************/
 
-#import "FBSPendingImageRequest.h"
+#import <Foundation/Foundation.h>
+#import "FBSApiActions.h"
 
-@implementation FBSPendingImageRequest
+@interface FBSApiPendingRequest : NSObject
 
+@property(nonatomic, retain)NSURLConnection * connection;
+@property(nonatomic, assign)FBSApiAction action;
+@property(nonatomic, retain)NSString * key;
+@property(nonatomic, retain)id delegate;
+@property(nonatomic, retain)id target;
 
--(id)initWithTopic:(FBSTopic *)aTopic delegate:(id)aDelegate;
-{
-    self = [super init];
-    if(self){
-        _topic = [aTopic retain];
-        _delegate = [aDelegate retain];
-    }
-    return self;
-}
-
--(void)dealloc
-{
-    [_topic release];
-    [_delegate release];
-    [super dealloc];
-}
-
+-(id)initWithURLConnection:(NSURLConnection *)aConnection action:(FBSApiAction)anAction key:(NSString *)aKey delegate:(id)aDelegate target:(id)aTarget;
 @end
