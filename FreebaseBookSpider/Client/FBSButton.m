@@ -1,8 +1,7 @@
 //
-//  AppDelegate.m
-//  FreebaseBookSpider
+//  FBSButton.m
 //
-//  Created by Raffaele Bua on 28/03/14.
+//  Created by Raffaele Bua on 04/05/14.
 
 /*****************************************************************************
  The MIT License (MIT)
@@ -27,31 +26,24 @@
  THE SOFTWARE.
  *****************************************************************************/
 
-#import "AppDelegate.h"
-#import "TestClient.h"
-#import "Client/FBSViewController.h"
-@implementation AppDelegate
+#import "FBSButton.h"
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+@implementation FBSButton
+
+//constants 
+ NSString  *  const BUTTON_LABEL = @"Push";
+
+- (id)initWithFrame:(CGRect)frame
 {
-    _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    FBSViewController * client = [[FBSViewController alloc] init];
-    navigationController = [[UINavigationController alloc] initWithRootViewController:client];
-    [navigationController.navigationBar setTintColor:[UIColor blackColor]];
-    [client release];
-    [_window addSubview:navigationController.view];
-    self.window.rootViewController = self->navigationController;
-
-    [_window makeKeyAndVisible];
-    NSLog(@"%@", client);
-    return YES;
-}
-
--(void)dealloc
-{
-    [navigationController release];
-    [_window release];
-    [super dealloc];
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self setTitleColor:([UIColor whiteColor]) forState:( UIControlStateNormal )];
+		[self setTitle:BUTTON_LABEL forState:UIControlStateNormal];
+        [self setBackgroundColor:([UIColor blackColor])];
+        [self setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin];
+    }
+    
+    return self;
 }
 
 @end

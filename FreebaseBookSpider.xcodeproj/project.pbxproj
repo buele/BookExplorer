@@ -27,6 +27,10 @@
 		5682E3B518E5D80000522958 /* freebase_urls.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5682E3B418E5D80000522958 /* freebase_urls.plist */; };
 		5682E3B718E5DB5400522958 /* mql_queries.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5682E3B618E5DB5400522958 /* mql_queries.plist */; };
 		5695893318E8F72500CBC336 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5695893218E8F72500CBC336 /* README.md */; };
+		56A0D2AC191E498B00620224 /* FBSButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A0D2A5191E498B00620224 /* FBSButton.m */; };
+		56A0D2AD191E498B00620224 /* FBSView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A0D2A7191E498B00620224 /* FBSView.m */; };
+		56A0D2AE191E498B00620224 /* FBSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A0D2A9191E498B00620224 /* FBSViewController.m */; };
+		56A0D2AF191E498B00620224 /* UINavigationControllerCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A0D2AB191E498B00620224 /* UINavigationControllerCategory.m */; };
 		56B069FF18F2DFD700F2C508 /* FBSApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B069FA18F2DFD700F2C508 /* FBSApiManager.m */; };
 		56B06A0118F2DFD700F2C508 /* FBSResources.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B069FE18F2DFD700F2C508 /* FBSResources.m */; };
 		56C3D54E18F803DC00A05BC4 /* FBSTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C3D54D18F803DC00A05BC4 /* FBSTopic.m */; };
@@ -78,6 +82,14 @@
 		5682E3B418E5D80000522958 /* freebase_urls.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = freebase_urls.plist; sourceTree = "<group>"; };
 		5682E3B618E5DB5400522958 /* mql_queries.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = mql_queries.plist; sourceTree = "<group>"; };
 		5695893218E8F72500CBC336 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
+		56A0D2A4191E498B00620224 /* FBSButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBSButton.h; sourceTree = "<group>"; };
+		56A0D2A5191E498B00620224 /* FBSButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBSButton.m; sourceTree = "<group>"; };
+		56A0D2A6191E498B00620224 /* FBSView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBSView.h; sourceTree = "<group>"; };
+		56A0D2A7191E498B00620224 /* FBSView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBSView.m; sourceTree = "<group>"; };
+		56A0D2A8191E498B00620224 /* FBSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBSViewController.h; sourceTree = "<group>"; };
+		56A0D2A9191E498B00620224 /* FBSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBSViewController.m; sourceTree = "<group>"; };
+		56A0D2AA191E498B00620224 /* UINavigationControllerCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UINavigationControllerCategory.h; sourceTree = "<group>"; };
+		56A0D2AB191E498B00620224 /* UINavigationControllerCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UINavigationControllerCategory.m; sourceTree = "<group>"; };
 		56B069F818F2DFD700F2C508 /* FBSApiActions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBSApiActions.h; sourceTree = "<group>"; };
 		56B069F918F2DFD700F2C508 /* FBSApiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBSApiManager.h; sourceTree = "<group>"; };
 		56B069FA18F2DFD700F2C508 /* FBSApiManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBSApiManager.m; sourceTree = "<group>"; };
@@ -156,6 +168,7 @@
 		5682E38718E5D5B200522958 /* FreebaseBookSpider */ = {
 			isa = PBXGroup;
 			children = (
+				56A0D2A3191E48AF00620224 /* Client */,
 				56C3D54818F8038C00A05BC4 /* FBSNodes */,
 				56B069F718F2DFD700F2C508 /* FBSApiManager */,
 				5695893218E8F72500CBC336 /* README.md */,
@@ -207,6 +220,21 @@
 				5682E3B618E5DB5400522958 /* mql_queries.plist */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		56A0D2A3191E48AF00620224 /* Client */ = {
+			isa = PBXGroup;
+			children = (
+				56A0D2A4191E498B00620224 /* FBSButton.h */,
+				56A0D2A5191E498B00620224 /* FBSButton.m */,
+				56A0D2A6191E498B00620224 /* FBSView.h */,
+				56A0D2A7191E498B00620224 /* FBSView.m */,
+				56A0D2A8191E498B00620224 /* FBSViewController.h */,
+				56A0D2A9191E498B00620224 /* FBSViewController.m */,
+				56A0D2AA191E498B00620224 /* UINavigationControllerCategory.h */,
+				56A0D2AB191E498B00620224 /* UINavigationControllerCategory.m */,
+			);
+			path = Client;
 			sourceTree = "<group>";
 		};
 		56B069F718F2DFD700F2C508 /* FBSApiManager */ = {
@@ -350,6 +378,7 @@
 				5682E39218E5D5B200522958 /* AppDelegate.m in Sources */,
 				56C3D55418F804C700A05BC4 /* FBSAuthor.m in Sources */,
 				5682E38E18E5D5B200522958 /* main.m in Sources */,
+				56A0D2AF191E498B00620224 /* UINavigationControllerCategory.m in Sources */,
 				56C3D56318F8081700A05BC4 /* FBSPropertyValue.m in Sources */,
 				56E772F11916C89200CDF2E7 /* TestClient.m in Sources */,
 				5635747E191ADCD600C3AF29 /* FBSURLConnection.m in Sources */,
@@ -357,8 +386,11 @@
 				5682E3B218E5D5D500522958 /* FreebaseBookSpider.m in Sources */,
 				5630304D18FC2B73000699E9 /* FBSEntityManager.m in Sources */,
 				56C3D54E18F803DC00A05BC4 /* FBSTopic.m in Sources */,
+				56A0D2AD191E498B00620224 /* FBSView.m in Sources */,
 				56C3D55718F804DA00A05BC4 /* FBSBook.m in Sources */,
 				56CE273B19004BD700635489 /* FBSProperty.m in Sources */,
+				56A0D2AE191E498B00620224 /* FBSViewController.m in Sources */,
+				56A0D2AC191E498B00620224 /* FBSButton.m in Sources */,
 				56357481191AE3D500C3AF29 /* FBSApiPendingRequest.m in Sources */,
 				566A4E7119055A3600400136 /* FBSNode.m in Sources */,
 			);
@@ -484,6 +516,7 @@
 				GCC_PREFIX_HEADER = "FreebaseBookSpider/FreebaseBookSpider-Prefix.pch";
 				INFOPLIST_FILE = "FreebaseBookSpider/FreebaseBookSpider-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -498,6 +531,7 @@
 				GCC_PREFIX_HEADER = "FreebaseBookSpider/FreebaseBookSpider-Prefix.pch";
 				INFOPLIST_FILE = "FreebaseBookSpider/FreebaseBookSpider-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

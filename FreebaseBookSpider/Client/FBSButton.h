@@ -1,8 +1,8 @@
 //
-//  AppDelegate.m
-//  FreebaseBookSpider
+//  FBSButton.h
 //
-//  Created by Raffaele Bua on 28/03/14.
+//
+//  Created by Raffaele Bua on 04/05/14.
 
 /*****************************************************************************
  The MIT License (MIT)
@@ -27,31 +27,11 @@
  THE SOFTWARE.
  *****************************************************************************/
 
-#import "AppDelegate.h"
-#import "TestClient.h"
-#import "Client/FBSViewController.h"
-@implementation AppDelegate
+#import <UIKit/UIKit.h>
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-    _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    FBSViewController * client = [[FBSViewController alloc] init];
-    navigationController = [[UINavigationController alloc] initWithRootViewController:client];
-    [navigationController.navigationBar setTintColor:[UIColor blackColor]];
-    [client release];
-    [_window addSubview:navigationController.view];
-    self.window.rootViewController = self->navigationController;
+extern  NSString  * const  BUTTON_LABEL;
 
-    [_window makeKeyAndVisible];
-    NSLog(@"%@", client);
-    return YES;
+@interface FBSButton : UIButton{
+   
 }
-
--(void)dealloc
-{
-    [navigationController release];
-    [_window release];
-    [super dealloc];
-}
-
 @end

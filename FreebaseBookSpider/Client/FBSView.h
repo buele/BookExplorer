@@ -1,8 +1,7 @@
 //
-//  AppDelegate.m
-//  FreebaseBookSpider
+//  FBSView.h
 //
-//  Created by Raffaele Bua on 28/03/14.
+//  Created by Raffaele Bua on 04/05/14.
 
 /*****************************************************************************
  The MIT License (MIT)
@@ -27,31 +26,26 @@
  THE SOFTWARE.
  *****************************************************************************/
 
-#import "AppDelegate.h"
-#import "TestClient.h"
-#import "Client/FBSViewController.h"
-@implementation AppDelegate
+#import <UIKit/UIKit.h>
+#import "FBSButton.h"
+extern const double  PUSH_BUTTON_WIDTH;
+extern const double  PUSH_BUTTON_HEIGHT;
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-    _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    FBSViewController * client = [[FBSViewController alloc] init];
-    navigationController = [[UINavigationController alloc] initWithRootViewController:client];
-    [navigationController.navigationBar setTintColor:[UIColor blackColor]];
-    [client release];
-    [_window addSubview:navigationController.view];
-    self.window.rootViewController = self->navigationController;
+@protocol FBSViewDelegate
+-(void)pushButtonDidPressed;
+-(void)testRequestButtonDidPressed;
+@end
 
-    [_window makeKeyAndVisible];
-    NSLog(@"%@", client);
-    return YES;
+@interface FBSView : UIView{
+    FBSButton * pushButton;
+    FBSButton * testRequestButton;
+    id<FBSViewDelegate>delegate;
+    
 }
+-(void)pushButtonDidPressed;
+-(UIColor *)getRandomColor;
+-(void)setPortraitLayout;
 
--(void)dealloc
-{
-    [navigationController release];
-    [_window release];
-    [super dealloc];
-}
 
+@property(nonatomic,assign)id<FBSViewDelegate>delegate;
 @end

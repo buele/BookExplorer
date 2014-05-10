@@ -1,8 +1,7 @@
 //
-//  AppDelegate.m
-//  FreebaseBookSpider
+//  UINavigationControllerCategory.m
 //
-//  Created by Raffaele Bua on 28/03/14.
+//  Created by Raffaele Bua on 04/05/14.
 
 /*****************************************************************************
  The MIT License (MIT)
@@ -27,31 +26,17 @@
  THE SOFTWARE.
  *****************************************************************************/
 
-#import "AppDelegate.h"
-#import "TestClient.h"
-#import "Client/FBSViewController.h"
-@implementation AppDelegate
+#import "UINavigationControllerCategory.h"
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+@implementation UINavigationController (bueleRotationCategory)
+
+-(NSUInteger)supportedInterfaceOrientations
 {
-    _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    FBSViewController * client = [[FBSViewController alloc] init];
-    navigationController = [[UINavigationController alloc] initWithRootViewController:client];
-    [navigationController.navigationBar setTintColor:[UIColor blackColor]];
-    [client release];
-    [_window addSubview:navigationController.view];
-    self.window.rootViewController = self->navigationController;
+    if (self.viewControllers != NULL && [self.viewControllers lastObject] != NULL)
+        return [[self.viewControllers lastObject] supportedInterfaceOrientations];
+    else
+        return UIDeviceOrientationPortrait;
 
-    [_window makeKeyAndVisible];
-    NSLog(@"%@", client);
-    return YES;
-}
-
--(void)dealloc
-{
-    [navigationController release];
-    [_window release];
-    [super dealloc];
 }
 
 @end

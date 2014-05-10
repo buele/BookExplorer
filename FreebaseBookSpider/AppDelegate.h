@@ -31,8 +31,8 @@
 #import "TestClient.h"
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 {
-    
-    TestClient * client;
+    UINavigationController * navigationController;
+    //TestClient * client;
 }
 @property ( nonatomic, retain) UIWindow *window;
 
