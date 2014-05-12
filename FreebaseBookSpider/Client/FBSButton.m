@@ -39,7 +39,9 @@
     if (self) {
         [self setTitleColor:([UIColor whiteColor]) forState:( UIControlStateNormal )];
 		[self setTitle:BUTTON_LABEL forState:UIControlStateNormal];
-        [self setBackgroundColor:([UIColor blackColor])];
+        UIColor *color = [[UIColor alloc] initWithRed:255.0f green:255.0f blue:255.0f alpha:0.5];
+        [self setBackgroundColor:(color)];
+        [color release];        
         [self setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin];
     }
     

@@ -34,11 +34,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
     _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     FBSViewController * client = [[FBSViewController alloc] init];
     navigationController = [[UINavigationController alloc] initWithRootViewController:client];
-    [navigationController.navigationBar setTintColor:[UIColor blackColor]];
+    navigationController.navigationBar.barTintColor = [[UIColor alloc] initWithRed:14.0f/255.0f green:14.0f / 255.0f blue: 14.0f / 255.0f alpha:1.0f];
     [client release];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:NO];
     [_window addSubview:navigationController.view];
     self.window.rootViewController = self->navigationController;
 
