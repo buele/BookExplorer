@@ -37,9 +37,12 @@
 		56C3D55418F804C700A05BC4 /* FBSAuthor.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C3D55318F804C700A05BC4 /* FBSAuthor.m */; };
 		56C3D55718F804DA00A05BC4 /* FBSBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C3D55618F804DA00A05BC4 /* FBSBook.m */; };
 		56C3D56318F8081700A05BC4 /* FBSPropertyValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C3D56218F8081700A05BC4 /* FBSPropertyValue.m */; };
+		56CCA0B519214F2200260075 /* delete_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 56CCA0B419214F2200260075 /* delete_icon.png */; };
 		56CE273B19004BD700635489 /* FBSProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 56CE273A19004BD700635489 /* FBSProperty.m */; };
 		56D83F491920275900507272 /* Jacques_Charles_Luftschiff_landscape_portrait.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 56D83F471920275900507272 /* Jacques_Charles_Luftschiff_landscape_portrait.jpg */; };
 		56D83F4A1920275900507272 /* Jacques_Charles_Luftschiff_landscape.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 56D83F481920275900507272 /* Jacques_Charles_Luftschiff_landscape.jpg */; };
+		56E176A71920FC1A00DA2F2A /* search-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 56E176A61920FC1A00DA2F2A /* search-icon.png */; };
+		56E176AA1920FE2F00DA2F2A /* BESearchBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 56E176A91920FE2F00DA2F2A /* BESearchBox.m */; };
 		56E772F11916C89200CDF2E7 /* TestClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 56E772F01916C89200CDF2E7 /* TestClient.m */; };
 /* End PBXBuildFile section */
 
@@ -105,11 +108,15 @@
 		56C3D55618F804DA00A05BC4 /* FBSBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBSBook.m; path = FBSNodes/FBSBook.m; sourceTree = "<group>"; };
 		56C3D56118F8081700A05BC4 /* FBSPropertyValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBSPropertyValue.h; path = FBSNodes/FBSPropertyValue.h; sourceTree = "<group>"; };
 		56C3D56218F8081700A05BC4 /* FBSPropertyValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBSPropertyValue.m; path = FBSNodes/FBSPropertyValue.m; sourceTree = "<group>"; };
+		56CCA0B419214F2200260075 /* delete_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = delete_icon.png; path = FreebaseBookSpider/Resources/delete_icon.png; sourceTree = "<group>"; };
 		56CE273919004BD700635489 /* FBSProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBSProperty.h; path = FBSNodes/FBSProperty.h; sourceTree = "<group>"; };
 		56CE273A19004BD700635489 /* FBSProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBSProperty.m; path = FBSNodes/FBSProperty.m; sourceTree = "<group>"; };
 		56D384F318FC9D900006C1D8 /* FBSNodeTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FBSNodeTypes.h; path = FBSNodes/FBSNodeTypes.h; sourceTree = "<group>"; };
 		56D83F471920275900507272 /* Jacques_Charles_Luftschiff_landscape_portrait.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Jacques_Charles_Luftschiff_landscape_portrait.jpg; path = FreebaseBookSpider/Resources/Jacques_Charles_Luftschiff_landscape_portrait.jpg; sourceTree = "<group>"; };
 		56D83F481920275900507272 /* Jacques_Charles_Luftschiff_landscape.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Jacques_Charles_Luftschiff_landscape.jpg; path = FreebaseBookSpider/Resources/Jacques_Charles_Luftschiff_landscape.jpg; sourceTree = "<group>"; };
+		56E176A61920FC1A00DA2F2A /* search-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "search-icon.png"; path = "FreebaseBookSpider/Resources/search-icon.png"; sourceTree = "<group>"; };
+		56E176A81920FE2F00DA2F2A /* BESearchBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BESearchBox.h; sourceTree = "<group>"; };
+		56E176A91920FE2F00DA2F2A /* BESearchBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BESearchBox.m; sourceTree = "<group>"; };
 		56E772EF1916C89200CDF2E7 /* TestClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestClient.h; sourceTree = "<group>"; };
 		56E772F01916C89200CDF2E7 /* TestClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestClient.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -220,6 +227,8 @@
 		5682E3B318E5D7E600522958 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				56CCA0B419214F2200260075 /* delete_icon.png */,
+				56E176A61920FC1A00DA2F2A /* search-icon.png */,
 				56D83F471920275900507272 /* Jacques_Charles_Luftschiff_landscape_portrait.jpg */,
 				56D83F481920275900507272 /* Jacques_Charles_Luftschiff_landscape.jpg */,
 				5682E3B418E5D80000522958 /* freebase_urls.plist */,
@@ -239,6 +248,8 @@
 				56A0D2A9191E498B00620224 /* FBSViewController.m */,
 				56A0D2AA191E498B00620224 /* UINavigationControllerCategory.h */,
 				56A0D2AB191E498B00620224 /* UINavigationControllerCategory.m */,
+				56E176A81920FE2F00DA2F2A /* BESearchBox.h */,
+				56E176A91920FE2F00DA2F2A /* BESearchBox.m */,
 			);
 			path = Client;
 			sourceTree = "<group>";
@@ -358,11 +369,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				56D83F491920275900507272 /* Jacques_Charles_Luftschiff_landscape_portrait.jpg in Resources */,
+				56CCA0B519214F2200260075 /* delete_icon.png in Resources */,
 				5682E38C18E5D5B200522958 /* InfoPlist.strings in Resources */,
 				5682E3B518E5D80000522958 /* freebase_urls.plist in Resources */,
 				56D83F4A1920275900507272 /* Jacques_Charles_Luftschiff_landscape.jpg in Resources */,
 				5695893318E8F72500CBC336 /* README.md in Resources */,
 				5682E3B718E5DB5400522958 /* mql_queries.plist in Resources */,
+				56E176A71920FC1A00DA2F2A /* search-icon.png in Resources */,
 				5682E39418E5D5B200522958 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -400,6 +413,7 @@
 				56A0D2AE191E498B00620224 /* FBSViewController.m in Sources */,
 				56A0D2AC191E498B00620224 /* FBSButton.m in Sources */,
 				56357481191AE3D500C3AF29 /* FBSApiPendingRequest.m in Sources */,
+				56E176AA1920FE2F00DA2F2A /* BESearchBox.m in Sources */,
 				566A4E7119055A3600400136 /* FBSNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

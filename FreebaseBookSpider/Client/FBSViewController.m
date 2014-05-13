@@ -31,14 +31,26 @@
 #import "FBSViewController.h"
 
 @implementation FBSViewController
+@synthesize searchResults;
 
 - (id)init {
     self = [super init];
     if (self) {
+        
+        //table view
+        searchResultTableView = [[UITableView alloc] init];
+        [searchResultTableView setDelegate:self];
+        [searchResultTableView setDataSource:self];
+        [searchResultTableView setHidden:YES];
+        [searchResultTableView setSeparatorInset:UIEdgeInsetsZero];
+        
         // manage view
         bookSpider = [[FreebaseBookSpider alloc] initWithDelegate:self];
 		view = [[FBSView alloc] init];
-		[view setDelegate:self];
+        [view setDelegate:self];
+        [view setSearchResultTableView:searchResultTableView];
+        [view.searchBox addSubview:searchResultTableView];
+        [view setSearchResultTableViewFrame];
         
         // manage rotation
         [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
@@ -46,6 +58,23 @@
          addObserver:self selector:@selector(orientationChanged:)
          name:UIDeviceOrientationDidChangeNotification
          object:[UIDevice currentDevice]];
+        
+        // indicator
+        indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        indicator.frame = CGRectMake(0.0, 0.0, 40.0, 40.0);
+        indicator.center = self.view.center;
+        [self.view addSubview:indicator];
+        [indicator bringSubviewToFront:self.view];
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = TRUE;
+        
+        
+
+
+        
+        // searchResult
+        searchResults = nil;
+        
+
     }
     
     return self;
@@ -67,7 +96,21 @@
 -(void)nodesDidGenerated:(NSArray *)theNodes forKeyword:(NSString *)keyword
 {
     //  [freebaseBookSpider getTopicByNode:[theNodes objectAtIndex:0] forDelegate:self];
+    [indicator stopAnimating];
     NSLog(@"log");
+    if(theNodes != nil && [theNodes count]>0){
+        [view expandSearchBox];
+        self.searchResults = theNodes;
+    }else{
+        NSString * alertMessage = [NSString stringWithFormat:@"No results for '%@' entry.",keyword];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
+                                                        message:alertMessage
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        [alert release];
+    }
 }
 
 -(void)topicDidGenerated:(FBSTopic *)theTopic
@@ -116,10 +159,66 @@
 {
 }
 
+- (BOOL)prefersStatusBarHidden {
+    return YES;
+}
+#pragma mark view protocol
+-(void)searchBoxDidCollapsed
+{
+    self.searchResults = @[];
+}
+
+-(void)searchBoxDidExpanded
+{
+    [searchResultTableView reloadData];
+}
+
+#pragma mark TableView protocol
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	NSLog(@"Element selected");
+    FBSNode * node =[searchResults objectAtIndex:indexPath.row];
+    NSLog(@"element selected: id:%@, name:%@, notableId: %@, notableName: %@",node.nodeId, node.name,node.notableId,node.notableName);
+    
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [searchResults count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString * cellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (cell == nil)
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier] autorelease];
+    FBSNode * node =[searchResults objectAtIndex:indexPath.row];
+	[cell.textLabel setText:node.name];
+    [cell.detailTextLabel setText:node.notableName];
+    
+    return cell;
+}
+
+
+#pragma mark FBSearchBoxDelegate
+
+-(void)searchNodesByKeyword:(NSString *)aKeyword
+{
+    NSLog(@"searchNodesByKeysord: %@",aKeyword);
+    [bookSpider getNodesByKeyword:aKeyword forDelegate:self];
+    [indicator startAnimating];
+}
+
+
+#pragma mark dealloc
 - (void)dealloc {
     [bookSpider release];
 	[view release];
+    [indicator release];
+    [searchResults release];
+    [searchResultTableView release];
     [super dealloc];
 }
-
 @end

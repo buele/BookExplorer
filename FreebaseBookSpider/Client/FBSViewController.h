@@ -30,12 +30,16 @@
 #import "FBSView.h"
 #import "../FreebaseBookSpider.h"
 
-@interface FBSViewController : UIViewController <FBSViewDelegate, FreebaseBookSpiderDelegate>{
+@interface FBSViewController : UIViewController <FBSViewDelegate, FreebaseBookSpiderDelegate,UITableViewDelegate,UITableViewDataSource>{
     
 	FBSView * view;
     FreebaseBookSpider * bookSpider;
+    UIActivityIndicatorView *indicator;
+    UITableView * searchResultTableView;
+
 }
 
+@property(nonatomic,retain)NSArray * searchResults;
 -(void)pushButtonDidPressed;
 
 @end

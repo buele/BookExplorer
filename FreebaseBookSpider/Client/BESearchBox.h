@@ -1,7 +1,7 @@
 //
-//  FBSView.h
+//  BESearchBox.h
+//  FreebaseBookSpider
 //
-//  Created by Raffaele Bua on 04/05/14.
 
 /*****************************************************************************
  The MIT License (MIT)
@@ -27,38 +27,16 @@
  *****************************************************************************/
 
 #import <UIKit/UIKit.h>
-#import "FBSButton.h"
-#import "BESearchBox.h"
-
-extern const double  PUSH_BUTTON_WIDTH;
-extern const double  PUSH_BUTTON_HEIGHT;
-
-@protocol FBSViewDelegate
--(void)pushButtonDidPressed;
--(void)testRequestButtonDidPressed;
--(void)searchBoxDidCollapsed;
--(void)searchBoxDidExpanded;
+@protocol BESearchBoxDelegate
 -(void)searchNodesByKeyword:(NSString *)aKeyword;
+-(void)backFromListViewDidPressed;
 @end
 
-@interface FBSView : UIView{
-    FBSButton * pushButton;
-    FBSButton * testRequestButton;
-    
-
-    id<FBSViewDelegate>delegate;
-    
-    
-}
-//-(void)pushButtonDidPressed;
-//-(UIColor *)getRandomColor;
-//-(void)setPortraitLayout;
--(void)setSearchResultTableViewFrame; //TODO: very dirty.. testing to remove
-
--(void)searchNodesByKeyword:(NSString *)aKeyword;
-@property(nonatomic,retain)id<FBSViewDelegate>delegate;
-@property(nonatomic,retain)BESearchBox * searchBox;
-@property(nonatomic, retain)UITableView * searchResultTableView;
+@interface BESearchBox : UIView <UITextFieldDelegate>
 
 
+@property(nonatomic, retain)UITextField * searchTextField;
+@property(nonatomic, retain)UIButton * searchButton;
+@property(nonatomic, retain)id delegate;
+@property(nonatomic, retain)UIButton * backFromListViewButton;
 @end
