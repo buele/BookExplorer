@@ -44,6 +44,8 @@
 		56E176A71920FC1A00DA2F2A /* search-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 56E176A61920FC1A00DA2F2A /* search-icon.png */; };
 		56E176AA1920FE2F00DA2F2A /* BESearchBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 56E176A91920FE2F00DA2F2A /* BESearchBox.m */; };
 		56E772F11916C89200CDF2E7 /* TestClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 56E772F01916C89200CDF2E7 /* TestClient.m */; };
+		56FB3CFA1922428100FA945F /* BETopicDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56FB3CF91922428100FA945F /* BETopicDetailViewController.m */; };
+		56FB3CFD19224AA800FA945F /* AuthorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56FB3CFC19224AA800FA945F /* AuthorView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +121,10 @@
 		56E176A91920FE2F00DA2F2A /* BESearchBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BESearchBox.m; sourceTree = "<group>"; };
 		56E772EF1916C89200CDF2E7 /* TestClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestClient.h; sourceTree = "<group>"; };
 		56E772F01916C89200CDF2E7 /* TestClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestClient.m; sourceTree = "<group>"; };
+		56FB3CF81922428100FA945F /* BETopicDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BETopicDetailViewController.h; sourceTree = "<group>"; };
+		56FB3CF91922428100FA945F /* BETopicDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BETopicDetailViewController.m; sourceTree = "<group>"; };
+		56FB3CFB19224AA800FA945F /* AuthorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorView.h; sourceTree = "<group>"; };
+		56FB3CFC19224AA800FA945F /* AuthorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthorView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,6 +256,10 @@
 				56A0D2AB191E498B00620224 /* UINavigationControllerCategory.m */,
 				56E176A81920FE2F00DA2F2A /* BESearchBox.h */,
 				56E176A91920FE2F00DA2F2A /* BESearchBox.m */,
+				56FB3CF81922428100FA945F /* BETopicDetailViewController.h */,
+				56FB3CF91922428100FA945F /* BETopicDetailViewController.m */,
+				56FB3CFB19224AA800FA945F /* AuthorView.h */,
+				56FB3CFC19224AA800FA945F /* AuthorView.m */,
 			);
 			path = Client;
 			sourceTree = "<group>";
@@ -397,10 +407,12 @@
 			files = (
 				56B06A0118F2DFD700F2C508 /* FBSResources.m in Sources */,
 				5682E39218E5D5B200522958 /* AppDelegate.m in Sources */,
+				56FB3CFA1922428100FA945F /* BETopicDetailViewController.m in Sources */,
 				56C3D55418F804C700A05BC4 /* FBSAuthor.m in Sources */,
 				5682E38E18E5D5B200522958 /* main.m in Sources */,
 				56A0D2AF191E498B00620224 /* UINavigationControllerCategory.m in Sources */,
 				56C3D56318F8081700A05BC4 /* FBSPropertyValue.m in Sources */,
+				56FB3CFD19224AA800FA945F /* AuthorView.m in Sources */,
 				56E772F11916C89200CDF2E7 /* TestClient.m in Sources */,
 				5635747E191ADCD600C3AF29 /* FBSURLConnection.m in Sources */,
 				56B069FF18F2DFD700F2C508 /* FBSApiManager.m in Sources */,

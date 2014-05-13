@@ -98,6 +98,7 @@ static NSString * FB_INFLUENCED_LABEL         = @"influenced";
 
 -(NSArray *)summary
 {
+    NSLog(@"hello from author summary");
     return nil;
 }
 

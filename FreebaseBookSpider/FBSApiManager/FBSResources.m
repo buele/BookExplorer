@@ -94,7 +94,9 @@ static NSString *  FREEBASE_IMAGE_PARAMETER_KEY                 = @"image";
 #pragma mark main protocol
 -(NSURL *)bookNodesUrlByKeyword:(NSString * )keyword 
 {
-    return [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", nodesByKeywordBaseUrl,[self encodeUrl:[keyword stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]]]];
+    NSString * urlString = [NSString stringWithFormat:@"%@%@", nodesByKeywordBaseUrl,[keyword stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
+    NSURL * url = [NSURL URLWithString:[self encodeUrl:urlString]];
+    return url;
 }
 
 -(NSURL *)nodePropertiesUrlById:(NSString * )nodeId

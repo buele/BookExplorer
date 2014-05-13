@@ -29,6 +29,7 @@
 #import "FBSButton.h"
 #import "FBSView.h"
 #import "FBSViewController.h"
+#import "BETopicDetailViewController.h"
 
 @implementation FBSViewController
 @synthesize searchResults;
@@ -115,14 +116,10 @@
 
 -(void)topicDidGenerated:(FBSTopic *)theTopic
 {
-    // NSLog(@"name: %@", theTopic.name);
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Author name"
-                                                    message:theTopic.name
-                                                   delegate:nil
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
-    [alert show];
-    [alert release];
+    [indicator stopAnimating];
+    BETopicDetailViewController * topicDetailViewController = [[BETopicDetailViewController alloc]initWithTopic:theTopic] ;
+	[self.navigationController pushViewController:topicDetailViewController animated:YES];
+	[topicDetailViewController release];
     
 }
 
@@ -180,6 +177,11 @@
 	NSLog(@"Element selected");
     FBSNode * node =[searchResults objectAtIndex:indexPath.row];
     NSLog(@"element selected: id:%@, name:%@, notableId: %@, notableName: %@",node.nodeId, node.name,node.notableId,node.notableName);
+    [bookSpider getTopicById:node.nodeId name:node.name forDelegate:self];
+    [indicator startAnimating];
+    
+    
+    
     
 }
 
