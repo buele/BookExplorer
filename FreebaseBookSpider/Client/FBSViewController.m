@@ -29,7 +29,8 @@
 #import "FBSButton.h"
 #import "FBSView.h"
 #import "FBSViewController.h"
-#import "BETopicDetailViewController.h"
+#import "BETopicViewController.h"
+
 
 @implementation FBSViewController
 @synthesize searchResults;
@@ -93,10 +94,9 @@
     [bookSpider getTopicById:@"/m/034bs" name:@"Orwell" forDelegate:self];
 }
 
-// ----- //
+#pragma  mark FreebaseBookSpiderDelegate protocol
 -(void)nodesDidGenerated:(NSArray *)theNodes forKeyword:(NSString *)keyword
 {
-    //  [freebaseBookSpider getTopicByNode:[theNodes objectAtIndex:0] forDelegate:self];
     [indicator stopAnimating];
     NSLog(@"log");
     if(theNodes != nil && [theNodes count]>0){
@@ -117,13 +117,13 @@
 -(void)topicDidGenerated:(FBSTopic *)theTopic
 {
     [indicator stopAnimating];
-    BETopicDetailViewController * topicDetailViewController = [[BETopicDetailViewController alloc]initWithTopic:theTopic] ;
-	[self.navigationController pushViewController:topicDetailViewController animated:YES];
-	[topicDetailViewController release];
+    BETopicViewController * topicViewController = [[BETopicViewController alloc]initWithTopic:theTopic] ;
+	[self.navigationController pushViewController:topicViewController animated:YES];
+	[topicViewController release];
     
 }
 
-// ----- //
+
 
 
 - (void)loadView {

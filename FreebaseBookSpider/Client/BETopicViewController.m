@@ -1,6 +1,7 @@
 //
-//  AuthorView.m
+//  BETopicDetailViewController.m
 //  FreebaseBookSpider
+//
 
 /*****************************************************************************
  The MIT License (MIT)
@@ -25,29 +26,59 @@
  THE SOFTWARE.
  *****************************************************************************/
 
-#import "AuthorView.h"
+#import "BETopicViewController.h"
 #import "../FBSNodes/FBSTopic.h"
-#import "../FBSNodes/FBSAuthor.h"
+#import "../FBSNodes/FBSPropertyValue.h"
+#import "../FBSNodes/FBSNodeTypes.h"
+#import "BETopicView.h"
+#import "BEAuthorView.h"
 
-@implementation AuthorView
+@interface BETopicViewController ()
 
-- (id)initWithFrame:(CGRect)frame
+@end
+
+@implementation BETopicViewController
+
+
+-(id)initWithTopic:(FBSTopic *)aTopic
 {
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
+    self = [super init];
+    if(self){
+        topic = [aTopic retain];
+        switch (aTopic.type) {
+            case FBSNodeAuthorType:
+                topicView = [[BEAuthorView alloc] initWithTopic:aTopic frame:[[UIScreen mainScreen] bounds]];
+                break;
+            default:
+                break;
+        }
+       // topicView = [[BETopicView alloc]initWithTopic:aTopic frame:[[UIScreen mainScreen] bounds]];
     }
     return self;
 }
 
--(id)initWithAuthor:(FBSAuthor *)anAuthor
+
+
+
+- (void)loadView {
+	[super loadView];
+	[self.view setFrame:[[UIScreen mainScreen] bounds]];
+    [topicView  setFrame:[[UIScreen mainScreen] bounds]];
+    [topicView setBackgroundColor:[UIColor whiteColor]];
+	[self.view addSubview:topicView];
+}
+
+
+- (void)didReceiveMemoryWarning
 {
-    self = [super init];
-    if(self){
-        [self setBackgroundColor:[UIColor greenColor]];
-    }
-    return self;
-    
+    [super didReceiveMemoryWarning];
+}
+
+-(void)dealloc
+{
+    [topicView release];
+    [topic release];
+    [super dealloc];
 }
 
 @end

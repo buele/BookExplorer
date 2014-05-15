@@ -163,7 +163,7 @@ const double PUSH_BUTTON_HEIGHT = 50;
 {
     NSLog(@"expandSearchBoxAnimationFinishe");
     [delegate searchBoxDidExpanded];
-    [searchResultTableView setContentOffset:CGPointZero animated:YES];
+    [searchResultTableView setContentOffset:CGPointZero animated:NO];
     [searchResultTableView reloadData];
     
     [searchResultTableView setHidden:NO];

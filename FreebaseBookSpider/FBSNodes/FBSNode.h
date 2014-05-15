@@ -40,4 +40,5 @@
 
 -(id)initWithId:(NSString *)anodeId lang:(NSString *)aLang mid:(NSString *)aMid name:(NSString *)aName notableId:(NSString *)aNotableId notableName:(NSString *)aNotableName;
 -(id)initWithId:(NSString *)anodeId name:(NSString *)aName;
+-(id)initWithFBSNode:(FBSNode *)aNode;
 @end

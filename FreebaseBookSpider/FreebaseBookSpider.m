@@ -88,10 +88,13 @@
 {
     [delegate nodesDidGenerated:nodes forKeyword:key];
 }
+
 -(void)topicDidGenerated:(FBSTopic *)aTopic withId:(NSString *)anId
 {
      [delegate topicDidGenerated:aTopic];
 }
+
+
 
 -(void)dealloc
 {

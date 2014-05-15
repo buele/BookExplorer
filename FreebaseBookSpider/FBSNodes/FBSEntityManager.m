@@ -104,13 +104,13 @@ static NSString * FB_IMAGE_LABEL = @"image";
 -(void)generateTopicAuthorWithProperties:(NSDictionary *)properties forKey:(NSString *)key
 {
     FBSNode * pendingNode = [pendingTopicRequests objectForKey:key];
-    FBSAuthor * author = [FBSAuthor topicWithFBSNode:pendingNode properties:properties];
+    FBSAuthor * author = [[[FBSAuthor alloc ]initWithFBSNode:pendingNode properties:properties] autorelease];
     FBSProperty * imageProperty = [[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_IMAGE_KEY] label:FB_IMAGE_LABEL] autorelease]; //to check
     if(imageProperty && [imageProperty.values count] >0){
         FBSPropertyValue * value = [imageProperty.values objectAtIndex:0];
         [self  requestImageWithId:value.propertyId forTopic:author toTarget:self];
     }else{
-        [self topicDidGenerated:author withId:key];
+        [delegate topicDidGenerated:author withId:key];
     }
 }
 
@@ -127,12 +127,12 @@ static NSString * FB_IMAGE_LABEL = @"image";
 {
     FBSNode * pendingNode = [pendingTopicRequests objectForKey:key];
     FBSProperty * imageProperty = [[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_IMAGE_KEY] label:FB_IMAGE_LABEL] autorelease] ;
-    FBSBook * book = [FBSBook topicWithFBSNode:pendingNode properties:properties];
+    FBSBook * book = [[[FBSBook alloc ]initWithFBSNode:pendingNode properties:properties] autorelease];
     if(imageProperty && [imageProperty.values count] >0 ){
         FBSPropertyValue * value = [imageProperty.values objectAtIndex:0];
         [self  requestImageWithId:value.propertyId forTopic:book toTarget:self];
     }else{
-        [self topicDidGenerated:book withId:key];
+        [delegate topicDidGenerated:book withId:key];
     }
   
 }

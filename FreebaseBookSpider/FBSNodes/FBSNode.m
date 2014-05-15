@@ -52,6 +52,20 @@
     return self;
 }
 
+-(id)initWithFBSNode:(FBSNode *)aNode
+{
+    self = [super init];
+    if(self){
+        nodeId = [aNode.nodeId retain];
+        lang = (aNode.lang)?[aNode.lang retain]:@"";
+        mid = (aNode.mid)?[aNode.mid retain]:@"";
+        name = (aNode.name)?[aNode.name retain]:@"";
+        notableId = (aNode.notableId)?[aNode.notableId retain]:@"";
+        notableName = (aNode.notableName)?[aNode.notableName retain]:@"";
+    }
+    return self;
+}
+
 -(id)initWithId:(NSString *)anodeId name:(NSString *)aName{
     self = [self initWithId:anodeId lang:nil mid:nil name:aName notableId:nil notableName:nil];
     return self;

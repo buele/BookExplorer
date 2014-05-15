@@ -1,5 +1,5 @@
 //
-//  BETopicDetailViewController.h
+//  BETopicView.h
 //  FreebaseBookSpider
 //
 
@@ -28,10 +28,16 @@
 
 #import <UIKit/UIKit.h>
 #import "FBSTopic.h"
+extern CGFloat const VIEW_PADDING ;
 
-@interface BETopicDetailViewController : UIViewController
+
+@interface BETopicView : UIScrollView
 {
-
+    @protected
+    CGFloat lastY;
+    @protected
+    CGFloat viewWidth;
 }
-- (id)initWithTopic:(FBSTopic *)aTopic;
+-(id)initWithTopic:(FBSTopic *)aTopic frame:(CGRect)aFrame;
+-(UIView *)lineAtY:(CGFloat)y;
 @end

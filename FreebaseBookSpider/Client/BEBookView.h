@@ -1,8 +1,7 @@
 //
-//  FBSPropertyValue.m
+//  BEBookView.h
 //  FreebaseBookSpider
 //
-//  Created by Raffaele Bua on 11/04/14.
 
 /*****************************************************************************
  The MIT License (MIT)
@@ -27,33 +26,8 @@
  THE SOFTWARE.
  *****************************************************************************/
 
-#import "FBSPropertyValue.h"
+#import "BETopicView.h"
 
-@implementation FBSPropertyValue
-@synthesize propertyId;
-@synthesize lang;
-@synthesize text;
-@synthesize value;
+@interface BEBookView : BETopicView
 
--(id)initWithId:(NSString *)aPropertyId lang:(NSString *)aLang text:(NSString *)aText value:(NSString *)aValue
-{
-    self = [super init];
-    if(self){
-        propertyId = [aPropertyId retain];
-        lang = [aLang retain];
-        text = [aText retain];
-        value = [aValue retain];
-        
-    }
-    return self;
-}
-
--(void)dealloc
-{
-    [propertyId release];
-    [lang release];
-    [text release];
-    [value release];
-    [super dealloc];
-}
 @end

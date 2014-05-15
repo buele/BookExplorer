@@ -34,10 +34,29 @@
 @synthesize description;
 @synthesize image;
 @synthesize type;
+//@synthesize summary;
+//@synthesize details;
 
 -(id)initWithFBSNode:(FBSNode *)aNode
 {
     self = [super initWithId:aNode.nodeId lang:aNode.lang mid:aNode.mid name:aNode.name notableId:aNode.notableId notableName:aNode.notableName];
+    if(self){
+        summary = [[NSMutableDictionary alloc] init];
+        details = [[NSMutableDictionary alloc] init];
+    }
+    return self;
+}
+
+-(id)initWithFBSNode:(FBSNode *)aNode type:(FBSNodeTypes)aType description:(FBSProperty *)aDescription
+{
+    self =  [super initWithFBSNode:aNode];
+    if(self){
+        type = aType;
+        description = [aDescription retain];
+        summary = [[NSMutableDictionary alloc] init];
+        details = [[NSMutableDictionary alloc] init];
+        
+    }
     return self;
 }
 
@@ -49,16 +68,20 @@
         description = [aDescription retain];
         image = [anImage retain];
         type = aType;
+        summary = [[NSMutableDictionary alloc] init];
+        details = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
--(NSArray *)summary
+-(NSDictionary *)summary
 {    
-    return nil;
+    NSDictionary * localeSummary = [[[NSDictionary alloc] initWithDictionary:summary] autorelease];
+    return localeSummary;
 }
--(NSArray *)details
+-(NSDictionary *)details
 {
-    return nil;
+    NSDictionary * localeDetails = [[[NSDictionary alloc] initWithDictionary:details] autorelease];
+    return localeDetails;
 }
 
 // to override by child
@@ -66,9 +89,15 @@
 {
     return nil;
 }
+-(id)initWithFBSNode:(FBSNode *)aNode properties:(NSDictionary *)properties
+{
+    return nil;
+}
 
 -(void)dealloc
 {
+    [summary release];
+    [details release];
     [alias release];
     [description release];
     [image release];

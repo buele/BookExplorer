@@ -33,16 +33,24 @@
 #import "FBSNode.h"
 
 @interface FBSTopic : FBSNode
-
+{
+    @protected
+    NSMutableDictionary * summary;
+    NSMutableDictionary * details;
+    
+}
 @property(nonatomic, retain)FBSProperty * alias;
 @property(nonatomic, retain)FBSProperty * description;
 @property(nonatomic, retain)UIImage     * image;
+//@property(nonatomic, retain)NSMutableArray * summary;
+//@property(nonatomic, retain)NSMutableArray * details;
 @property(nonatomic)FBSNodeTypes  type;
 
 
 -(id)initWithAlias:(FBSProperty *)anAlias description:(FBSProperty *)aDescription image:(UIImage *)anImage type:(FBSNodeTypes) aType;
 -(id)initWithFBSNode:(FBSNode *)aNode;
-+(id)topicWithFBSNode:(FBSNode *) aNode properties:(NSDictionary *)properties;
--(NSArray *)summary;
--(NSArray *)details;
+-(id)initWithFBSNode:(FBSNode *)aNode properties:(NSDictionary *)properties;
+-(id)initWithFBSNode:(FBSNode *)aNode type:(FBSNodeTypes)aType description:(FBSProperty *)aDescription;
+-(NSDictionary *)summary;
+-(NSDictionary *)details;
 @end

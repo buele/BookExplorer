@@ -40,13 +40,14 @@
     static NSString * FBPROPERTY_ID_KEY = @"id";
     static NSString * FBPROPERTY_LANG_KEY = @"lang";
     static NSString * FBPROPERTY_TEXT_KEY = @"text";
+    static NSString * FBPROPERTY_VALUE_KEY = @"value";
     
     self = [super init];
     if(self){
         label = [aLabel copy];
         values = [[NSMutableArray alloc] init];
         for (NSDictionary * item in [aProperty objectForKey:VALUES_KEY]) {
-            FBSPropertyValue * value = [[FBSPropertyValue alloc] initWithId:[item objectForKey:FBPROPERTY_ID_KEY] lang:[item objectForKey:FBPROPERTY_LANG_KEY] text:[item objectForKey:FBPROPERTY_TEXT_KEY]];
+            FBSPropertyValue * value = [[FBSPropertyValue alloc] initWithId:[item objectForKey:FBPROPERTY_ID_KEY] lang:[item objectForKey:FBPROPERTY_LANG_KEY] text:[item objectForKey:FBPROPERTY_TEXT_KEY] value:[item objectForKey:FBPROPERTY_VALUE_KEY]];
             [values addObject:value];
             [value release];
         }

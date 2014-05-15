@@ -1,8 +1,7 @@
 //
-//  FBSAuthorNode.h
+//  BEBookView.m
 //  FreebaseBookSpider
 //
-//  Created by Raffaele Bua on 11/04/14.
 
 /*****************************************************************************
  The MIT License (MIT)
@@ -27,30 +26,27 @@
  THE SOFTWARE.
  *****************************************************************************/
 
-#import "FBSTopic.h"
-#import "FBSProperty.h"
+#import "BEBookView.h"
 
-@interface FBSAuthor : FBSTopic
+@implementation BEBookView
 
-@property(nonatomic, retain)FBSProperty  * dateOfBirth;
-@property(nonatomic, retain)FBSProperty  * placeOfBirth;
-@property(nonatomic, retain)FBSProperty  * nationality;
-@property(nonatomic, retain)FBSProperty  * gender;
-@property(nonatomic, retain)FBSProperty  * profession;
-@property(nonatomic, retain)FBSProperty  * religion;
-@property(nonatomic, retain)FBSProperty  * parents;
-@property(nonatomic, retain)FBSProperty  * children;
-@property(nonatomic, retain)FBSProperty  * spouseS;
-@property(nonatomic, retain)FBSProperty  * employmentHistory;
-@property(nonatomic, retain)FBSProperty  * education;
-@property(nonatomic, retain)FBSProperty  * quotations;
-@property(nonatomic, retain)FBSProperty  * placesLived;
-@property(nonatomic, retain)FBSProperty  * languages;
-@property(nonatomic, retain)FBSProperty  * dateOfDeath;
-@property(nonatomic, retain)FBSProperty  * placeOfDeath;
-@property(nonatomic, retain)FBSProperty  * causeOfDeath;
-@property(nonatomic, retain)FBSProperty  * worksWritten;
-@property(nonatomic, retain)FBSProperty  * influencedBy;
-@property(nonatomic, retain)FBSProperty  * influenced;
+-(id)initWithTopic:(FBSTopic *)aTopic frame:(CGRect)aFrame
+{
+    self = [super initWithTopic:aTopic frame:aFrame];
+    if(self){
+        [self populateBookViewWithTopic:aTopic];
+    }
+    return  self;
+}
+
+-(void)populateBookViewWithTopic:(FBSTopic *)aTopic
+{
+//    NSLog(@"POPULATE author view, lastY: %f",lastY);
+    NSDictionary * summary = [[aTopic summary] retain];
+    NSLog(@"");
+    [summary release];
+    [self addSubview:[self lineAtY:lastY + VIEW_PADDING]];
+}
+
 
 @end

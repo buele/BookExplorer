@@ -29,6 +29,8 @@
 
 #import <Foundation/Foundation.h>
 #import "FBSTopic.h"
+#import "FBSAuthor.h"
+#import "FBSBook.h"
 #import "../FBSApiManager/FBSApiManager.h"
 
 @protocol FBSNodeManagerDelegate

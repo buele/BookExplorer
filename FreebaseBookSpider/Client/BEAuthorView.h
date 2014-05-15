@@ -1,6 +1,7 @@
 //
-//  AuthorView.h
+//  BEAuthorView.h
 //  FreebaseBookSpider
+//
 
 /*****************************************************************************
  The MIT License (MIT)
@@ -25,8 +26,8 @@
  THE SOFTWARE.
  *****************************************************************************/
 
-#import <UIKit/UIKit.h>
-#import "../FBSNodes/FBSAuthor.h"
-@interface AuthorView : UIView
--(id)initWithAuthor:(FBSAuthor *)anAuthor;
+#import "BETopicView.h"
+
+@interface BEAuthorView : BETopicView
+
 @end

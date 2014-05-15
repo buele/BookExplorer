@@ -1,8 +1,7 @@
 //
-//  FBSPropertyValue.m
+//  BETopicDetailViewController.h
 //  FreebaseBookSpider
 //
-//  Created by Raffaele Bua on 11/04/14.
 
 /*****************************************************************************
  The MIT License (MIT)
@@ -27,33 +26,17 @@
  THE SOFTWARE.
  *****************************************************************************/
 
-#import "FBSPropertyValue.h"
+#import <UIKit/UIKit.h>
+#import "FBSTopic.h"
+#import "BETopicView.h"
 
-@implementation FBSPropertyValue
-@synthesize propertyId;
-@synthesize lang;
-@synthesize text;
-@synthesize value;
 
--(id)initWithId:(NSString *)aPropertyId lang:(NSString *)aLang text:(NSString *)aText value:(NSString *)aValue
+@interface BETopicViewController : UIViewController
 {
-    self = [super init];
-    if(self){
-        propertyId = [aPropertyId retain];
-        lang = [aLang retain];
-        text = [aText retain];
-        value = [aValue retain];
-        
-    }
-    return self;
+    FBSTopic * topic;
+    BETopicView * topicView;
+    
 }
 
--(void)dealloc
-{
-    [propertyId release];
-    [lang release];
-    [text release];
-    [value release];
-    [super dealloc];
-}
+-(id)initWithTopic:(FBSTopic *)aTopic;
 @end

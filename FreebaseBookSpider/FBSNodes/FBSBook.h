@@ -31,18 +31,5 @@
 #import "FBSProperty.h"
 
 @interface FBSBook : FBSTopic
-@property(nonatomic, retain)FBSProperty  * genre;
-@property(nonatomic, retain)FBSProperty  * characters;
-@property(nonatomic, retain)FBSProperty  * quotations;
-@property(nonatomic, retain)FBSProperty  * author;
-@property(nonatomic, retain)FBSProperty  * dateWritten;
-@property(nonatomic, retain)FBSProperty  * copyrightDate;
-@property(nonatomic, retain)FBSProperty  * dateOfFirstPubblication;
-@property(nonatomic, retain)FBSProperty  * subjects;
-@property(nonatomic, retain)FBSProperty  * originalLanguage;
-@property(nonatomic, retain)FBSProperty  * previousInSeries;
-@property(nonatomic, retain)FBSProperty  * isfdbId;
-@property(nonatomic, retain)FBSProperty  * nextInSeries;
-@property(nonatomic, retain)FBSProperty  * influencedBy;
-@property(nonatomic, retain)FBSProperty  * influenced;
+
 @end

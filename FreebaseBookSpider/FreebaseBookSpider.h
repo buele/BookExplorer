@@ -32,10 +32,14 @@
 #import "FBSEntityManager.h"
 #import "FBSNode.h"
 #import "FBSTopic.h"
+#import "FBSBook.h"
+#import "FBSAuthor.h"
 
 @protocol FreebaseBookSpiderDelegate
 -(void)nodesDidGenerated:(NSArray *)theNodes forKeyword:(NSString *)keyword;
 -(void)topicDidGenerated:(FBSTopic *)theTopic;
+-(void)authorDidGenerated:(FBSAuthor *)anAuthor;
+-(void)bookDidGenerated:(FBSBook *)aBook;
 @end
 
 @interface FreebaseBookSpider : NSObject <FBSNodeManagerDelegate> //TODO: remove FreebaseBookSpiderDelegate after testing
