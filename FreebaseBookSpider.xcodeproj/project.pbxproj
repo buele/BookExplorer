@@ -11,6 +11,8 @@
 		5635391A19238AB40003F462 /* BETopicView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5635391919238AB40003F462 /* BETopicView.m */; };
 		5635747E191ADCD600C3AF29 /* FBSURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5635747D191ADCD600C3AF29 /* FBSURLConnection.m */; };
 		56357481191AE3D500C3AF29 /* FBSApiPendingRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 56357480191AE3D500C3AF29 /* FBSApiPendingRequest.m */; };
+		565C48F6192A976E006DB181 /* BETopicPropertyVerticalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 565C48F5192A976E006DB181 /* BETopicPropertyVerticalView.m */; };
+		565C48F9192AC7CA006DB181 /* BETopicDatePropertyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 565C48F8192AC7CA006DB181 /* BETopicDatePropertyView.m */; };
 		566A4E7119055A3600400136 /* FBSNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 566A4E7019055A3600400136 /* FBSNode.m */; };
 		5682E38218E5D5B200522958 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5682E38118E5D5B200522958 /* Foundation.framework */; };
 		5682E38418E5D5B200522958 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5682E38318E5D5B200522958 /* CoreGraphics.framework */; };
@@ -38,6 +40,7 @@
 		56C3D55418F804C700A05BC4 /* FBSAuthor.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C3D55318F804C700A05BC4 /* FBSAuthor.m */; };
 		56C3D55718F804DA00A05BC4 /* FBSBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C3D55618F804DA00A05BC4 /* FBSBook.m */; };
 		56C3D56318F8081700A05BC4 /* FBSPropertyValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C3D56218F8081700A05BC4 /* FBSPropertyValue.m */; };
+		56C4D00B192A134900FDFD3C /* TopicPropertyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C4D00A192A134900FDFD3C /* TopicPropertyView.m */; };
 		56CCA0B519214F2200260075 /* delete_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 56CCA0B419214F2200260075 /* delete_icon.png */; };
 		56CE273B19004BD700635489 /* FBSProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 56CE273A19004BD700635489 /* FBSProperty.m */; };
 		56CF49BE1923EDEF006E36CC /* BEAuthorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56CF49BD1923EDEF006E36CC /* BEAuthorView.m */; };
@@ -69,6 +72,10 @@
 		5635747D191ADCD600C3AF29 /* FBSURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBSURLConnection.m; sourceTree = "<group>"; };
 		5635747F191AE3D500C3AF29 /* FBSApiPendingRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBSApiPendingRequest.h; sourceTree = "<group>"; };
 		56357480191AE3D500C3AF29 /* FBSApiPendingRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBSApiPendingRequest.m; sourceTree = "<group>"; };
+		565C48F4192A976E006DB181 /* BETopicPropertyVerticalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BETopicPropertyVerticalView.h; sourceTree = "<group>"; };
+		565C48F5192A976E006DB181 /* BETopicPropertyVerticalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BETopicPropertyVerticalView.m; sourceTree = "<group>"; };
+		565C48F7192AC7CA006DB181 /* BETopicDatePropertyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BETopicDatePropertyView.h; sourceTree = "<group>"; };
+		565C48F8192AC7CA006DB181 /* BETopicDatePropertyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BETopicDatePropertyView.m; sourceTree = "<group>"; };
 		566A4E6F19055A3600400136 /* FBSNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBSNode.h; path = FBSNodes/FBSNode.h; sourceTree = "<group>"; };
 		566A4E7019055A3600400136 /* FBSNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBSNode.m; path = FBSNodes/FBSNode.m; sourceTree = "<group>"; };
 		566A4E7819071DA500400136 /* FBSNodeManagerActions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FBSNodeManagerActions.h; path = FBSNodes/FBSNodeManagerActions.h; sourceTree = "<group>"; };
@@ -114,6 +121,8 @@
 		56C3D55618F804DA00A05BC4 /* FBSBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBSBook.m; path = FBSNodes/FBSBook.m; sourceTree = "<group>"; };
 		56C3D56118F8081700A05BC4 /* FBSPropertyValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBSPropertyValue.h; path = FBSNodes/FBSPropertyValue.h; sourceTree = "<group>"; };
 		56C3D56218F8081700A05BC4 /* FBSPropertyValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBSPropertyValue.m; path = FBSNodes/FBSPropertyValue.m; sourceTree = "<group>"; };
+		56C4D009192A134900FDFD3C /* TopicPropertyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicPropertyView.h; sourceTree = "<group>"; };
+		56C4D00A192A134900FDFD3C /* TopicPropertyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicPropertyView.m; sourceTree = "<group>"; };
 		56CCA0B419214F2200260075 /* delete_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = delete_icon.png; path = FreebaseBookSpider/Resources/delete_icon.png; sourceTree = "<group>"; };
 		56CE273919004BD700635489 /* FBSProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBSProperty.h; path = FBSNodes/FBSProperty.h; sourceTree = "<group>"; };
 		56CE273A19004BD700635489 /* FBSProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBSProperty.m; path = FBSNodes/FBSProperty.m; sourceTree = "<group>"; };
@@ -270,6 +279,12 @@
 				56CF49BD1923EDEF006E36CC /* BEAuthorView.m */,
 				56CF49BF1923FE21006E36CC /* BEBookView.h */,
 				56CF49C01923FE21006E36CC /* BEBookView.m */,
+				56C4D009192A134900FDFD3C /* TopicPropertyView.h */,
+				56C4D00A192A134900FDFD3C /* TopicPropertyView.m */,
+				565C48F4192A976E006DB181 /* BETopicPropertyVerticalView.h */,
+				565C48F5192A976E006DB181 /* BETopicPropertyVerticalView.m */,
+				565C48F7192AC7CA006DB181 /* BETopicDatePropertyView.h */,
+				565C48F8192AC7CA006DB181 /* BETopicDatePropertyView.m */,
 			);
 			path = Client;
 			sourceTree = "<group>";
@@ -419,12 +434,15 @@
 				5682E39218E5D5B200522958 /* AppDelegate.m in Sources */,
 				56FB3CFA1922428100FA945F /* BETopicViewController.m in Sources */,
 				56C3D55418F804C700A05BC4 /* FBSAuthor.m in Sources */,
+				565C48F6192A976E006DB181 /* BETopicPropertyVerticalView.m in Sources */,
 				5682E38E18E5D5B200522958 /* main.m in Sources */,
 				56A0D2AF191E498B00620224 /* UINavigationControllerCategory.m in Sources */,
 				56C3D56318F8081700A05BC4 /* FBSPropertyValue.m in Sources */,
 				56CF49BE1923EDEF006E36CC /* BEAuthorView.m in Sources */,
+				56C4D00B192A134900FDFD3C /* TopicPropertyView.m in Sources */,
 				56E772F11916C89200CDF2E7 /* TestClient.m in Sources */,
 				5635747E191ADCD600C3AF29 /* FBSURLConnection.m in Sources */,
+				565C48F9192AC7CA006DB181 /* BETopicDatePropertyView.m in Sources */,
 				56B069FF18F2DFD700F2C508 /* FBSApiManager.m in Sources */,
 				5682E3B218E5D5D500522958 /* FreebaseBookSpider.m in Sources */,
 				56CF49C11923FE21006E36CC /* BEBookView.m in Sources */,

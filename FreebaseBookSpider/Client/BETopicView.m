@@ -36,9 +36,11 @@ CGFloat  const VIEW_PADDING = 40.0f;
 
 
 @implementation BETopicView
+@synthesize topic;
 
 
 static CGFloat NAME_HEIGTH = 32.0f;
+static CGFloat LINE_PADDING = 5.0f;
 static CGFloat NAME_FONT_SIZE = 25.0f;
 static CGFloat TYPE_FONT_SIZE = 15.0f;
 static NSString * NAME_FONT_FAMILY = @"Helvetica";
@@ -52,8 +54,10 @@ static NSString * WIKIPEDIA_SIGNATURE = @"(Wikipedia)";
 {
     self = [super init];
     if(self){
+        topic = [aTopic retain];
         [self setFrame:aFrame];
         lastY = 0.0f;
+        [self setContentSize:CGSizeMake(aFrame.size.width, aFrame.size.height)];
         [self populateViewByTopic:aTopic];
     }
     return  self;
@@ -75,8 +79,8 @@ static NSString * WIKIPEDIA_SIGNATURE = @"(Wikipedia)";
     }
     
     // name
-    CGFloat nameY =  VIEW_PADDING + ((imageHeight)?(imageHeight/2.0f) - NAME_HEIGTH /2.0f : 0.0f);
-    UILabel * name = [[UILabel alloc]initWithFrame:CGRectMake(VIEW_PADDING, nameY, (imageWidth)?self.bounds.size.width - imageWidth - (3 * VIEW_PADDING): self.bounds.size.width - (2 * VIEW_PADDING), NAME_HEIGTH)];
+
+    UILabel * name = [[UILabel alloc]initWithFrame:CGRectMake(VIEW_PADDING, VIEW_PADDING, (imageWidth)?self.bounds.size.width - imageWidth - (3 * VIEW_PADDING): self.bounds.size.width - (2 * VIEW_PADDING), NAME_HEIGTH)];
     [name setText:aTopic.name];
     
     [name setTextColor:textColor];
@@ -85,32 +89,11 @@ static NSString * WIKIPEDIA_SIGNATURE = @"(Wikipedia)";
     [self addSubview:name];
     lastY = name.frame.origin.y + name.frame.size.height;
     [name release];
-    
-    // type
-    CGFloat typeY =  nameY + NAME_HEIGTH + VIEW_PADDING/3.3333f ;
-    UILabel * typeLabel = [[UILabel alloc]initWithFrame:CGRectMake(VIEW_PADDING, typeY, (imageWidth)?self.bounds.size.width - imageWidth - (3 * VIEW_PADDING): self.bounds.size.width - (2 * VIEW_PADDING), NAME_HEIGTH)];
-    switch (aTopic.type) {
-        case FBSNodeAuthorType:
-            [typeLabel setText:@"Author"];
-            break;
-        case FBSNodeBookType:
-            [typeLabel setText:@"Book"];
-            break;
-        default:
-            break;
-    }
-    
-    [typeLabel setTextColor:textColor];
-    
-    [typeLabel setFont:[UIFont fontWithName:TYPE_FONT_FAMILY size:TYPE_FONT_SIZE]];
-    [self addSubview:typeLabel];
-    lastY = typeLabel.frame.origin.y + typeLabel.frame.size.height;
-    [typeLabel release];
+  
     
     // description
     if(aTopic.description && [aTopic.description.values count]>0){
         CGFloat descriptionY = (imageHeight > (VIEW_PADDING + NAME_HEIGTH))?imageHeight + 2 *  VIEW_PADDING: 2 * VIEW_PADDING + NAME_HEIGTH  ;
-       // [self addSubview:[self lineAtY:descriptionY]];
         UITextView * description = [[UITextView alloc] init];
         FBSPropertyValue * mainDescription = [aTopic.description.values objectAtIndex:0 ];
         NSString * mainDescriptionText = [NSString stringWithString:mainDescription.value];
@@ -122,7 +105,7 @@ static NSString * WIKIPEDIA_SIGNATURE = @"(Wikipedia)";
         [description setFont:[UIFont fontWithName:DESCRIPTION_FONT_FAMILY size:DESCRIPTION_FONT_SIZE]];
         [description sizeToFit];
         [self addSubview:description];
-        lastY = description.frame.origin.y + description.frame.size.height;
+        lastY = description.frame.origin.y + description.frame.size.height ;
         [description release];
         
     }
@@ -133,8 +116,17 @@ static NSString * WIKIPEDIA_SIGNATURE = @"(Wikipedia)";
 
 -(UIView *)lineAtY:(CGFloat)y
 {
+    UIColor * lineColor = [[UIColor alloc] initWithRed:213.0f/255.0f green:85.0f / 255.0f blue: 54.0f / 255.0f alpha:1.0f];
     UIView *lineView = [[[UIView alloc] initWithFrame:CGRectMake(VIEW_PADDING, y - LINE_HEIGHT, self.bounds.size.width - 2 * VIEW_PADDING, 1)] autorelease];
-    [lineView setBackgroundColor:[UIColor orangeColor]];
+    [lineView setBackgroundColor: lineColor];
+    lastY += LINE_PADDING;
     return lineView;
+    [lineColor release];
+}
+
+-(void)dealloc
+{
+    [topic release];
+    [super dealloc];
 }
 @end

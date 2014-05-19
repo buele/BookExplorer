@@ -35,9 +35,9 @@
  NSString * const FB_DESCRIPTION_KEY          = @"/common/topic/description";
  NSString * const FB_DESCRIPTION_LABEL        = @"description";
  NSString * const FB_DATE_OF_BIRTH_KEY        = @"/people/person/date_of_birth";
- NSString * const FB_DATE_OF_BIRTH_LABEL      = @"date_of_birth";
+ NSString * const FB_DATE_OF_BIRTH_LABEL      = @"Date of birth";
  NSString * const FB_PLACE_OF_BIRTH_KEY       = @"/people/person/place_of_birth";
- NSString * const FB_PLACE_OF_BIRTH_LABEL     = @"place_of_birth";
+ NSString * const FB_PLACE_OF_BIRTH_LABEL     = @"Place of birth";
  NSString * const FB_NATIONALITY_KEY          = @"/people/person/nationality";
  NSString * const FB_NATIONALITY_LABEL        = @"nationality";
  NSString * const FB_GENDER_KEY               = @"/people/person/gender";
@@ -57,74 +57,74 @@
  NSString * const FB_EDUCATION_KEY            = @"/people/person/education";
  NSString * const FB_EDUCATION_LABEL          = @"education";
  NSString * const FB_QUOTATIONS_KEY           = @"/people/person/quotations";
- NSString * const FB_QUOTATIONS_LABEL         = @"quotations";
+ NSString * const FB_QUOTATIONS_LABEL         = @"Quotations";
  NSString * const FB_PLACES_LIVED_KEY         = @"/people/person/places_lived";
  NSString * const FB_PLACES_LIVED_LABEL       = @"places_lived";
  NSString * const FB_LANGUAGES_KEY            = @"/people/person/languages";
  NSString * const FB_LANGUAGES_LABEL          = @"languages";
  NSString * const FB_DATE_OF_DEATH_KEY        = @"/people/deceased_person/date_of_death";
- NSString * const FB_DATE_OF_DEATH_LABEL      = @"date_of_death";
+ NSString * const FB_DATE_OF_DEATH_LABEL      = @"Date of death";
  NSString * const FB_PLACE_OF_DEATH_KEY       = @"/people/deceased_person/place_of_death";
- NSString * const FB_PLACE_OF_DEATH_LABEL     = @"place_of_death";
+ NSString * const FB_PLACE_OF_DEATH_LABEL     = @"Place of death";
  NSString * const FB_CAUSE_OF_DEATH_KEY       = @"/people/deceased_person/cause_of_death";
  NSString * const FB_CAUSE_OF_DEATH_LABEL     = @"cause_of_death";
  NSString * const FB_WORKS_WRITTEN_KEY        = @"/book/author/works_written";
- NSString * const FB_WORKS_WRITTEN_LABEL      = @"works_written";
+ NSString * const FB_WORKS_WRITTEN_LABEL      = @"Works written";
  NSString * const FB_INFLUENCED_BY_KEY        = @"/influence/influence_node/influenced_by";
- NSString * const FB_INFLUENCED_BY_LABEL      = @"influenced_by";
+ NSString * const FB_INFLUENCED_BY_LABEL      = @"Influenced by";
  NSString * const FB_INFLUENCED_KEY           = @"/influence/influence_node/influenced";
- NSString * const FB_INFLUENCED_LABEL         = @"influenced";
+ NSString * const FB_INFLUENCED_LABEL         = @"Influenced";
 
 @implementation FBSAuthor
 
--(id)initWithFBSNode:(FBSNode *)aNode properties:(NSDictionary *)properties
+-(id)initWithFBSNode:(FBSNode *)aNode properties:(NSDictionary *)theProperties
 {
-    self = [super initWithFBSNode:aNode type:FBSNodeAuthorType description:[[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_DESCRIPTION_KEY] label:FB_DESCRIPTION_LABEL] autorelease]];
+    self = [super initWithFBSNode:aNode type:FBSNodeAuthorType description:[[[FBSProperty alloc] initWithFreebaseProperty:[theProperties objectForKey:FB_DESCRIPTION_KEY] label:FB_DESCRIPTION_LABEL] autorelease]];
     if(self){
         
         // -- summary -- //
         //date of birth
-        [summary setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_DATE_OF_BIRTH_KEY] label:FB_DATE_OF_BIRTH_LABEL] autorelease] forKey:FB_DATE_OF_BIRTH_KEY];
+        [properties setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[theProperties objectForKey:FB_DATE_OF_BIRTH_KEY] label:FB_DATE_OF_BIRTH_LABEL] autorelease] forKey:FB_DATE_OF_BIRTH_KEY];
         // place of birth
-        [summary setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_PLACE_OF_BIRTH_KEY] label:FB_PLACE_OF_BIRTH_LABEL] autorelease] forKey:FB_PLACE_OF_BIRTH_KEY];
+        [properties setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[theProperties objectForKey:FB_PLACE_OF_BIRTH_KEY] label:FB_PLACE_OF_BIRTH_LABEL] autorelease] forKey:FB_PLACE_OF_BIRTH_KEY];
         //date of death
-        [summary setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_DATE_OF_DEATH_KEY] label:FB_DATE_OF_DEATH_LABEL] autorelease] forKey:FB_DATE_OF_DEATH_KEY];
+        [properties setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[theProperties objectForKey:FB_DATE_OF_DEATH_KEY] label:FB_DATE_OF_DEATH_LABEL] autorelease] forKey:FB_DATE_OF_DEATH_KEY];
         // place of death
-        [summary setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_PLACE_OF_DEATH_KEY] label:FB_PLACE_OF_DEATH_LABEL] autorelease] forKey:FB_PLACE_OF_DEATH_KEY];
+        [properties setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[theProperties objectForKey:FB_PLACE_OF_DEATH_KEY] label:FB_PLACE_OF_DEATH_LABEL] autorelease] forKey:FB_PLACE_OF_DEATH_KEY];
         // profession
-        [summary setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_PROFESSION_KEY] label:FB_PROFESSION_LABEL] autorelease] forKey:FB_PROFESSION_KEY];
+        [properties setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[theProperties objectForKey:FB_PROFESSION_KEY] label:FB_PROFESSION_LABEL] autorelease] forKey:FB_PROFESSION_KEY];
         // gender
-        [summary setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_GENDER_KEY] label:FB_GENDER_LABEL] autorelease] forKey:FB_GENDER_KEY];
+        [properties setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[theProperties objectForKey:FB_GENDER_KEY] label:FB_GENDER_LABEL] autorelease] forKey:FB_GENDER_KEY];
         // nationality
-        [summary setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_NATIONALITY_KEY] label:FB_NATIONALITY_LABEL] autorelease] forKey:FB_NATIONALITY_KEY];
+        [properties setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[theProperties objectForKey:FB_NATIONALITY_KEY] label:FB_NATIONALITY_LABEL] autorelease] forKey:FB_NATIONALITY_KEY];
         // works written
-        [summary setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_WORKS_WRITTEN_KEY] label:FB_WORKS_WRITTEN_LABEL] autorelease] forKey:FB_WORKS_WRITTEN_KEY];
+        [properties setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[theProperties objectForKey:FB_WORKS_WRITTEN_KEY] label:FB_WORKS_WRITTEN_LABEL] autorelease] forKey:FB_WORKS_WRITTEN_KEY];
         
         // -- details -- //
         // religion
-        [details setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_REGION_KEY] label:FB_REGION_LABEL] autorelease] forKey:FB_REGION_KEY];
+        [properties setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[theProperties objectForKey:FB_REGION_KEY] label:FB_REGION_LABEL] autorelease] forKey:FB_REGION_KEY];
         // parents
-        [details setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_PARENTS_KEY] label:FB_PARENTS_LABEL] autorelease] forKey:FB_PARENTS_KEY];
+        [properties setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[theProperties objectForKey:FB_PARENTS_KEY] label:FB_PARENTS_LABEL] autorelease] forKey:FB_PARENTS_KEY];
         // children
-        [details setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_CHILDREN_KEY] label:FB_CHILDREN_LABEL] autorelease] forKey:FB_CHILDREN_KEY];
+        [properties setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[theProperties objectForKey:FB_CHILDREN_KEY] label:FB_CHILDREN_LABEL] autorelease] forKey:FB_CHILDREN_KEY];
         // spouses
-        [details setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_SPOUSES_KEY] label:FB_SPOUSES_LABEL] autorelease] forKey:FB_SPOUSES_KEY];
+        [properties setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[theProperties objectForKey:FB_SPOUSES_KEY] label:FB_SPOUSES_LABEL] autorelease] forKey:FB_SPOUSES_KEY];
         // employment history
-        [details setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_EMPLOYMENT_HISTORY_KEY] label:FB_EMPLOYMENT_HISTORY_LABEL] autorelease] forKey:FB_EMPLOYMENT_HISTORY_KEY];
+        [properties setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[theProperties objectForKey:FB_EMPLOYMENT_HISTORY_KEY] label:FB_EMPLOYMENT_HISTORY_LABEL] autorelease] forKey:FB_EMPLOYMENT_HISTORY_KEY];
         // education
-        [details setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_EDUCATION_KEY] label:FB_EDUCATION_LABEL] autorelease] forKey:FB_EDUCATION_KEY];
+        [properties setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[theProperties objectForKey:FB_EDUCATION_KEY] label:FB_EDUCATION_LABEL] autorelease] forKey:FB_EDUCATION_KEY];
         // quotations
-        [details setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_QUOTATIONS_KEY] label:FB_QUOTATIONS_LABEL] autorelease] forKey:FB_QUOTATIONS_KEY];
+        [properties setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[theProperties objectForKey:FB_QUOTATIONS_KEY] label:FB_QUOTATIONS_LABEL] autorelease] forKey:FB_QUOTATIONS_KEY];
         // places lived
-        [details setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_PLACES_LIVED_KEY] label:FB_PLACES_LIVED_LABEL] autorelease] forKey:FB_PLACES_LIVED_KEY];
+        [properties setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[theProperties objectForKey:FB_PLACES_LIVED_KEY] label:FB_PLACES_LIVED_LABEL] autorelease] forKey:FB_PLACES_LIVED_KEY];
         // languages
-        [details setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_LANGUAGES_KEY] label:FB_LANGUAGES_LABEL] autorelease] forKey:FB_LANGUAGES_KEY];
+        [properties setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[theProperties objectForKey:FB_LANGUAGES_KEY] label:FB_LANGUAGES_LABEL] autorelease] forKey:FB_LANGUAGES_KEY];
         // cause of death
-        [details setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_CAUSE_OF_DEATH_KEY] label:FB_CAUSE_OF_DEATH_LABEL] autorelease] forKey:FB_CAUSE_OF_DEATH_KEY];
+        [properties setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[theProperties objectForKey:FB_CAUSE_OF_DEATH_KEY] label:FB_CAUSE_OF_DEATH_LABEL] autorelease] forKey:FB_CAUSE_OF_DEATH_KEY];
         // influenced by
-        [details setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_INFLUENCED_BY_KEY] label:FB_INFLUENCED_BY_LABEL] autorelease] forKey:FB_INFLUENCED_BY_KEY];
+        [properties setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[theProperties objectForKey:FB_INFLUENCED_BY_KEY] label:FB_INFLUENCED_BY_LABEL] autorelease] forKey:FB_INFLUENCED_BY_KEY];
         // influenced
-        [details setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_INFLUENCED_KEY] label:FB_INFLUENCED_LABEL] autorelease] forKey:FB_INFLUENCED_KEY];
+        [properties setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[theProperties objectForKey:FB_INFLUENCED_KEY] label:FB_INFLUENCED_LABEL] autorelease] forKey:FB_INFLUENCED_KEY];
     }
     return self;
 }

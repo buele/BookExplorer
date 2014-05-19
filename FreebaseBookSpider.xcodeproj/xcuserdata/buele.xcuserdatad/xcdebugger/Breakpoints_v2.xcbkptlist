@@ -263,28 +263,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FreebaseBookSpider/Client/BETopicView.m"
-            timestampString = "421804649.648981"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
-            landmarkName = "-populateViewByTopic:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "FreebaseBookSpider/Client/BEAuthorView.m"
-            timestampString = "421806136.876398"
+            timestampString = "422235843.596949"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
             landmarkName = "-populateAuthorViewWithTopic:"
             landmarkType = "5">
          </BreakpointContent>

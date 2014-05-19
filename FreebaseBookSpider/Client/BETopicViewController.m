@@ -44,6 +44,7 @@
 {
     self = [super init];
     if(self){
+        [self.navigationController setToolbarHidden:YES animated:NO];
         topic = [aTopic retain];
         switch (aTopic.type) {
             case FBSNodeAuthorType:
@@ -52,7 +53,6 @@
             default:
                 break;
         }
-       // topicView = [[BETopicView alloc]initWithTopic:aTopic frame:[[UIScreen mainScreen] bounds]];
     }
     return self;
 }

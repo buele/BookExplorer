@@ -37,13 +37,13 @@
     @protected
     NSMutableDictionary * summary;
     NSMutableDictionary * details;
+    NSMutableDictionary * properties;
+    
     
 }
 @property(nonatomic, retain)FBSProperty * alias;
 @property(nonatomic, retain)FBSProperty * description;
 @property(nonatomic, retain)UIImage     * image;
-//@property(nonatomic, retain)NSMutableArray * summary;
-//@property(nonatomic, retain)NSMutableArray * details;
 @property(nonatomic)FBSNodeTypes  type;
 
 
@@ -53,4 +53,8 @@
 -(id)initWithFBSNode:(FBSNode *)aNode type:(FBSNodeTypes)aType description:(FBSProperty *)aDescription;
 -(NSDictionary *)summary;
 -(NSDictionary *)details;
+-(NSDictionary *)properties;
+
+
+
 @end

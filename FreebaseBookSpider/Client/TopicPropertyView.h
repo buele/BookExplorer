@@ -1,5 +1,5 @@
 //
-//  BETopicView.h
+//  TopicPropertyView.h
 //  FreebaseBookSpider
 //
 
@@ -27,19 +27,10 @@
  *****************************************************************************/
 
 #import <UIKit/UIKit.h>
-#import "FBSTopic.h"
-extern CGFloat const VIEW_PADDING ;
+#import "FBSProperty.h"
 
+@interface TopicPropertyView : UIView
 
-@interface BETopicView : UIScrollView
-{
-    @protected
-    CGFloat lastY;
-    CGFloat viewWidth;
-
-}
--(id)initWithTopic:(FBSTopic *)aTopic frame:(CGRect)aFrame;
--(UIView *)lineAtY:(CGFloat)y;
-
-@property(nonatomic,retain,readonly)FBSTopic * topic;
+-(id)initWithFrame:(CGRect )frame FBSProperty:(FBSProperty *)aProperty;
+@property(nonatomic, assign)CGFloat lastY;
 @end

@@ -34,8 +34,7 @@
 @synthesize description;
 @synthesize image;
 @synthesize type;
-//@synthesize summary;
-//@synthesize details;
+
 
 -(id)initWithFBSNode:(FBSNode *)aNode
 {
@@ -55,6 +54,7 @@
         description = [aDescription retain];
         summary = [[NSMutableDictionary alloc] init];
         details = [[NSMutableDictionary alloc] init];
+        properties = [[NSMutableDictionary alloc] init];
         
     }
     return self;
@@ -70,19 +70,24 @@
         type = aType;
         summary = [[NSMutableDictionary alloc] init];
         details = [[NSMutableDictionary alloc] init];
+        properties = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
 -(NSDictionary *)summary
 {    
-    NSDictionary * localeSummary = [[[NSDictionary alloc] initWithDictionary:summary] autorelease];
-    return localeSummary;
+    return summary;
 }
 -(NSDictionary *)details
 {
-    NSDictionary * localeDetails = [[[NSDictionary alloc] initWithDictionary:details] autorelease];
-    return localeDetails;
+    return details;
 }
+-(NSDictionary *)properties
+{
+    return properties;
+}
+
+
 
 // to override by child
 +(id)topicWithFBSNode:(FBSNode *)aNode properties:(NSDictionary *)properties
@@ -98,6 +103,7 @@
 {
     [summary release];
     [details release];
+    [properties release];
     [alias release];
     [description release];
     [image release];

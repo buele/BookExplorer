@@ -118,6 +118,7 @@
 {
     [indicator stopAnimating];
     BETopicViewController * topicViewController = [[BETopicViewController alloc]initWithTopic:theTopic] ;
+    [self.navigationController setToolbarHidden:YES animated:NO];
 	[self.navigationController pushViewController:topicViewController animated:YES];
 	[topicViewController release];
     
