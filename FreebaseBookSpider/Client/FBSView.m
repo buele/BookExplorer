@@ -36,14 +36,10 @@
 @synthesize searchBox;
 @synthesize searchResultTableView;
 
-
-
 const double PUSH_BUTTON_WIDTH = 100;
 const double PUSH_BUTTON_HEIGHT = 50;
 
-
-
--(id)initWithFrame:(CGRect)frame 
+-(id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
@@ -51,7 +47,6 @@ const double PUSH_BUTTON_HEIGHT = 50;
         NSString* imagePath = [ [ NSBundle mainBundle] pathForResource:@"Jacques_Charles_Luftschiff_landscape_portrait" ofType:@"jpg"];
         UIImage * image = [ UIImage imageWithContentsOfFile: imagePath];
         UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:image];
-        //----//
         
         CGFloat screenWidth = [[UIScreen mainScreen] bounds].size.width;
         CGFloat screenHeigth = [[UIScreen mainScreen] bounds].size.height;
@@ -116,16 +111,6 @@ const double PUSH_BUTTON_HEIGHT = 50;
     tableViewFrame.origin.x = 60.0f;
     [searchResultTableView setFrame:tableViewFrame];
 }
-
-//-(void)pushButtonDidPressed
-//{
-//	[delegate pushButtonDidPressed];
-//}
-
-//-(void)testRequestButtonDidPressed
-//{
-//	[delegate testRequestButtonDidPressed];
-//}
 
 
 -(void)setPortraitLayout
