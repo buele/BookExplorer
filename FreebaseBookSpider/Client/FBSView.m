@@ -50,7 +50,7 @@ const double PUSH_BUTTON_HEIGHT = 50;
         CGFloat screenHeigth = [[UIScreen mainScreen] bounds].size.height;
 
         // title
-        UILabel * title = [[UILabel alloc]initWithFrame:CGRectMake(screenWidth * 0.8f + screenWidth  * 0.1f -188, 60, 400.0f, 40.0f)];
+        UILabel * title = [[UILabel alloc]initWithFrame:[self titleFrame]];
         [title setText:@"Book Explorer"];
         UIColor * titleColor =[[UIColor alloc] initWithRed:14.0f/255.0f green:14.0f / 255.0f blue: 14.0f / 255.0f alpha:1.0f];
         [title setTextColor:titleColor];
@@ -82,7 +82,12 @@ const double PUSH_BUTTON_HEIGHT = 50;
 
 -(CGRect)titleFrame
 {
-    
+    CGRect frame;
+    frame.origin.x = [[UIScreen mainScreen] bounds].size.width * 0.8f + [[UIScreen mainScreen] bounds].size.height  * 0.1f -188;
+    frame.origin.y = 60;
+    frame.size.width = 400.0f;
+    frame.size.height = 40.0f;
+    return frame;
 }
 
 -(void)setSearchResultTableViewFrame
