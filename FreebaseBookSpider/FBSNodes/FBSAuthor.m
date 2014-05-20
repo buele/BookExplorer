@@ -32,8 +32,7 @@
 #import "FBSProperty.h"
 
 
- NSString * const FB_DESCRIPTION_KEY          = @"/common/topic/description";
- NSString * const FB_DESCRIPTION_LABEL        = @"Description";
+
  NSString * const FB_DATE_OF_BIRTH_KEY        = @"/people/person/date_of_birth";
  NSString * const FB_DATE_OF_BIRTH_LABEL      = @"Date of birth";
  NSString * const FB_PLACE_OF_BIRTH_KEY       = @"/people/person/place_of_birth";
@@ -56,8 +55,6 @@
  NSString * const FB_EMPLOYMENT_HISTORY_LABEL = @"Employment history";
  NSString * const FB_EDUCATION_KEY            = @"/people/person/education";
  NSString * const FB_EDUCATION_LABEL          = @"Education";
- NSString * const FB_QUOTATIONS_KEY           = @"/people/person/quotations";
- NSString * const FB_QUOTATIONS_LABEL         = @"Quotations";
  NSString * const FB_PLACES_LIVED_KEY         = @"/people/person/places_lived";
  NSString * const FB_PLACES_LIVED_LABEL       = @"Places lived";
  NSString * const FB_LANGUAGES_KEY            = @"/people/person/languages";
@@ -70,10 +67,7 @@
  NSString * const FB_CAUSE_OF_DEATH_LABEL     = @"Cause of death";
  NSString * const FB_WORKS_WRITTEN_KEY        = @"/book/author/works_written";
  NSString * const FB_WORKS_WRITTEN_LABEL      = @"Works written";
- NSString * const FB_INFLUENCED_BY_KEY        = @"/influence/influence_node/influenced_by";
- NSString * const FB_INFLUENCED_BY_LABEL      = @"Influenced by";
- NSString * const FB_INFLUENCED_KEY           = @"/influence/influence_node/influenced";
- NSString * const FB_INFLUENCED_LABEL         = @"Influenced";
+
 
 @implementation FBSAuthor
 

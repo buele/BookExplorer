@@ -28,17 +28,11 @@
  *****************************************************************************/
 
 #import "FBSBook.h"
-#import "FBSAuthor.h"
-
- //NSString * const FB_DESCRIPTION_KEY                    = @"/common/topic/description";
- //NSString * const FB_DESCRIPTION_LABEL                  = @"Description";
 
  NSString * const FB_GENRE_KEY                          = @"/book/book/genre";
  NSString * const FB_GENRE_LABEL                        = @"Genre";
  NSString * const FB_CHARACTERS_KEY                     = @"/book/book/characters";
  NSString * const FB_CHARACTERS_LABEL                   = @"Characters";
-// NSString * const FB_QUOTATIONS_KEY                     = @"/media_common/quotation_source/quotations";
-// NSString * const FB_QUOTATIONS_LABEL                   = @"Quotations";
  NSString * const FB_AUTHOR_KEY                         = @"/book/written_work/author";
  NSString * const FB_AUTHOR_LABEL                       = @"Author";
  NSString * const FB_DATE_WRITTEN_KEY                   = @"/book/written_work/date_written";
@@ -57,10 +51,7 @@
  NSString * const FB_ISFDB_ID_LABEL                   	= @"isfdb_id";
  NSString * const FB_NEXT_IN_SERIES_KEY             	= @"/book/written_work/next_in_series";
  NSString * const FB_NEXT_IN_SERIES_LABEL               = @"Next in series";
- //NSString * const FB_INFLUENCED_BY_KEY                  = @"/influence/influence_node/influenced_by";
- //NSString * const FB_INFLUENCED_BY_LABEL              	= @"Influenced by";
- //NSString * const FB_INFLUENCED_KEY                     = @"/influence/influence_node/influenced";
- //NSString * const FB_INFLUENCED_LABEL                   = @"Influenced";
+
 
 @implementation FBSBook
 

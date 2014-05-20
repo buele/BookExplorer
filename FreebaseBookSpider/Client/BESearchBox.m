@@ -155,7 +155,6 @@ static NSString * SEARCH_BUTTON_IMAGE_TYPE = @"png";
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 
 {
-    NSLog(@"by enter: %@",self.searchTextField.text);
     [self.searchTextField resignFirstResponder];
     if(self.searchTextField.text != nil && [self.searchTextField.text length]> 0){
         [delegate searchNodesByKeyword:self.searchTextField.text];
@@ -166,16 +165,14 @@ static NSString * SEARCH_BUTTON_IMAGE_TYPE = @"png";
 #pragma button protocol
 -(void)searchButtonDidPressed
 {
-    NSLog(@"%@", self.searchTextField.text);
     [self.searchTextField resignFirstResponder];
     if(self.searchTextField.text != nil && [self.searchTextField.text length]> 0){
         [delegate searchNodesByKeyword:self.searchTextField.text];
     }
-    
 }
+
 -(void)backFromListViewDidPressed
 {
-    NSLog(@"backFromListViewDidPressed");
     [delegate collapseSearchBox];
 }
 -(void)dealloc

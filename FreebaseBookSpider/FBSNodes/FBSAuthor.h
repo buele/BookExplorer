@@ -30,8 +30,7 @@
 #import "FBSTopic.h"
 #import "FBSProperty.h"
 
-extern NSString * const FB_DESCRIPTION_KEY;
-extern NSString * const FB_DESCRIPTION_LABEL;
+
 extern NSString * const FB_DATE_OF_BIRTH_KEY;
 extern NSString * const FB_DATE_OF_BIRTH_LABEL;
 extern NSString * const FB_PLACE_OF_BIRTH_KEY;
@@ -54,8 +53,6 @@ extern NSString * const FB_EMPLOYMENT_HISTORY_KEY;
 extern NSString * const FB_EMPLOYMENT_HISTORY_LABEL;
 extern NSString * const FB_EDUCATION_KEY;
 extern NSString * const FB_EDUCATION_LABEL;
-extern NSString * const FB_QUOTATIONS_KEY;
-extern NSString * const FB_QUOTATIONS_LABEL;
 extern NSString * const FB_PLACES_LIVED_KEY;
 extern NSString * const FB_PLACES_LIVED_LABEL;
 extern NSString * const FB_LANGUAGES_KEY;
@@ -68,10 +65,7 @@ extern NSString * const FB_CAUSE_OF_DEATH_KEY;
 extern NSString * const FB_CAUSE_OF_DEATH_LABEL;
 extern NSString * const FB_WORKS_WRITTEN_KEY;
 extern NSString * const FB_WORKS_WRITTEN_LABEL;
-extern NSString * const FB_INFLUENCED_BY_KEY;
-extern NSString * const FB_INFLUENCED_BY_LABEL;
-extern NSString * const FB_INFLUENCED_KEY;
-extern NSString * const FB_INFLUENCED_LABEL;
+
 
 @interface FBSAuthor : FBSTopic
 

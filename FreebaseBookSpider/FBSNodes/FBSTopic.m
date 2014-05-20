@@ -29,6 +29,15 @@
 
 #import "FBSTopic.h"
 
+NSString * const FB_DESCRIPTION_KEY          = @"/common/topic/description";
+NSString * const FB_DESCRIPTION_LABEL        = @"Description";
+NSString * const FB_QUOTATIONS_KEY           = @"/people/person/quotations";
+NSString * const FB_QUOTATIONS_LABEL         = @"Quotations";
+NSString * const FB_INFLUENCED_BY_KEY        = @"/influence/influence_node/influenced_by";
+NSString * const FB_INFLUENCED_BY_LABEL      = @"Influenced by";
+NSString * const FB_INFLUENCED_KEY           = @"/influence/influence_node/influenced";
+NSString * const FB_INFLUENCED_LABEL         = @"Influenced";
+
 @implementation FBSTopic
 @synthesize alias;
 @synthesize description;
@@ -38,12 +47,7 @@
 
 -(id)initWithFBSNode:(FBSNode *)aNode
 {
-    self = [super initWithId:aNode.nodeId lang:aNode.lang mid:aNode.mid name:aNode.name notableId:aNode.notableId notableName:aNode.notableName];
-    if(self){
-        summary = [[NSMutableDictionary alloc] init];
-        details = [[NSMutableDictionary alloc] init];
-    }
-    return self;
+    return [super initWithId:aNode.nodeId lang:aNode.lang mid:aNode.mid name:aNode.name notableId:aNode.notableId notableName:aNode.notableName];
 }
 
 -(id)initWithFBSNode:(FBSNode *)aNode type:(FBSNodeTypes)aType description:(FBSProperty *)aDescription
@@ -52,10 +56,7 @@
     if(self){
         type = aType;
         description = [aDescription retain];
-        summary = [[NSMutableDictionary alloc] init];
-        details = [[NSMutableDictionary alloc] init];
         properties = [[NSMutableDictionary alloc] init];
-        
     }
     return self;
 }
@@ -68,32 +69,17 @@
         description = [aDescription retain];
         image = [anImage retain];
         type = aType;
-        summary = [[NSMutableDictionary alloc] init];
-        details = [[NSMutableDictionary alloc] init];
         properties = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
--(NSDictionary *)summary
-{    
-    return summary;
-}
--(NSDictionary *)details
-{
-    return details;
-}
+
 -(NSDictionary *)properties
 {
     return properties;
 }
 
 
-
-// to override by child
-+(id)topicWithFBSNode:(FBSNode *)aNode properties:(NSDictionary *)properties
-{
-    return nil;
-}
 -(id)initWithFBSNode:(FBSNode *)aNode properties:(NSDictionary *)properties
 {
     return nil;
@@ -101,8 +87,6 @@
 
 -(void)dealloc
 {
-    [summary release];
-    [details release];
     [properties release];
     [alias release];
     [description release];

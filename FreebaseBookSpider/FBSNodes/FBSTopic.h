@@ -32,14 +32,19 @@
 #import "FBSProperty.h"
 #import "FBSNode.h"
 
+extern NSString * const FB_DESCRIPTION_KEY;
+extern NSString * const FB_DESCRIPTION_LABEL;
+extern NSString * const FB_QUOTATIONS_KEY;
+extern NSString * const FB_QUOTATIONS_LABEL;
+extern NSString * const FB_INFLUENCED_BY_KEY;
+extern NSString * const FB_INFLUENCED_BY_LABEL;
+extern NSString * const FB_INFLUENCED_KEY;
+extern NSString * const FB_INFLUENCED_LABEL;
+
 @interface FBSTopic : FBSNode
 {
     @protected
-    NSMutableDictionary * summary;
-    NSMutableDictionary * details;
     NSMutableDictionary * properties;
-    
-    
 }
 @property(nonatomic, retain)FBSProperty * alias;
 @property(nonatomic, retain)FBSProperty * description;
@@ -51,10 +56,6 @@
 -(id)initWithFBSNode:(FBSNode *)aNode;
 -(id)initWithFBSNode:(FBSNode *)aNode properties:(NSDictionary *)properties;
 -(id)initWithFBSNode:(FBSNode *)aNode type:(FBSNodeTypes)aType description:(FBSProperty *)aDescription;
--(NSDictionary *)summary;
--(NSDictionary *)details;
 -(NSDictionary *)properties;
-
-
 
 @end
