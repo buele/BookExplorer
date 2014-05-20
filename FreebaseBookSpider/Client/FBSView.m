@@ -42,7 +42,7 @@ const double PUSH_BUTTON_HEIGHT = 50;
 -(id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
-    if (self) {        
+    if (self) {
         NSString* imagePath = [ [ NSBundle mainBundle] pathForResource:@"Jacques_Charles_Luftschiff_landscape_portrait" ofType:@"jpg"];
         UIImage * image = [ UIImage imageWithContentsOfFile: imagePath];
         UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:image];
@@ -78,6 +78,11 @@ const double PUSH_BUTTON_HEIGHT = 50;
     }
     
     return self;
+}
+
+-(CGRect)titleFrame
+{
+    
 }
 
 -(void)setSearchResultTableViewFrame
