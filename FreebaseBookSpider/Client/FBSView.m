@@ -36,146 +36,171 @@
 @synthesize searchBox;
 @synthesize searchResultTableView;
 
-const double PUSH_BUTTON_WIDTH = 100;
-const double PUSH_BUTTON_HEIGHT = 50;
+static CGFloat TITLE_Y = 60.0f;
+static CGFloat SEARCH_BOX_PADDING_RATIO = 0.1f;
+static CGFloat SEARCH_BOX_WIDTH_RATIO = 0.90f;
+static CGFloat SEARCH_BOX_HEIGHT = 200.0f;
+static CGFloat TITLE_FONT_SIZE = 30.0f;
+static CGFloat TITLE_WIDTH = 188.0f;
+static CGFloat TITLE_HEIGHT  = 40.0f;
+static CGFloat SUGGESTION_PADDING = 50.0f;
+static NSString * TITLE_TEXT = @"Book Explorer";
+static NSString * BACKGROUND_IMAGE_NAME = @"Jacques_Charles_Luftschiff_landscape_portrait";
+static NSString * BACKGROUND_IMAGE_TYPE = @"jpg";
+
 
 -(id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        NSString* imagePath = [ [ NSBundle mainBundle] pathForResource:@"Jacques_Charles_Luftschiff_landscape_portrait" ofType:@"jpg"];
-        UIImage * image = [ UIImage imageWithContentsOfFile: imagePath];
-        UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:image];
-        CGFloat screenWidth = [[UIScreen mainScreen] bounds].size.width;
-        CGFloat screenHeigth = [[UIScreen mainScreen] bounds].size.height;
-
+        
         // title
         UILabel * title = [[UILabel alloc]initWithFrame:[self titleFrame]];
-        [title setText:@"Book Explorer"];
-        UIColor * titleColor =[[UIColor alloc] initWithRed:14.0f/255.0f green:14.0f / 255.0f blue: 14.0f / 255.0f alpha:1.0f];
-        [title setTextColor:titleColor];
-        [title setFont:[UIFont systemFontOfSize:30]];
-        [titleColor release];
-        
+        [title setText:TITLE_TEXT];
+        [title setTextColor:[self titleColor]];
+        [title setFont:[UIFont systemFontOfSize:TITLE_FONT_SIZE]];
         
         // search box
-        CGFloat searchBoxWidth = screenWidth  * 0.8f;
-        CGFloat searchBoxHeigth = 200.00f;
-        CGFloat searchBoxX = screenWidth  * 0.1f;
-        CGFloat searchBoxY = screenHeigth * 0.5f - searchBoxHeigth * 0.9f ;
-        searchBox = [[BESearchBox alloc] initWithFrame:CGRectMake(searchBoxX, searchBoxY , searchBoxWidth, searchBoxHeigth)];
+        searchBox = [[BESearchBox alloc] initWithFrame:[self searchBoxFrame]];
         [searchBox setDelegate:self];
         [self setPortraitLayout];
-        [backgroundImage setFrame:[self bounds]];
-        [self addSubview:backgroundImage];
+        UIImageView * backgroundImageView = [[UIImageView alloc] initWithImage:[self backgroundImage]] ;
+        [backgroundImageView setFrame:[self bounds]];
+        [self addSubview:backgroundImageView];
+        [backgroundImageView release];
         [self setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
         [self addSubview:searchBox];
         [self addSubview:title];
         [title release];
         [searchBox release];
-        [backgroundImage release];
-
     }
-    
     return self;
 }
+
+-(UIImage *)backgroundImage
+{
+    NSString* imagePath = [ [ NSBundle mainBundle] pathForResource:BACKGROUND_IMAGE_NAME ofType:BACKGROUND_IMAGE_TYPE];
+    return [UIImage imageWithContentsOfFile: imagePath];
+}
+
+-(UIColor *)titleColor
+{
+    return [[[UIColor alloc] initWithRed:14.0f/255.0f green:14.0f / 255.0f blue: 14.0f / 255.0f alpha:1.0f] autorelease];
+}
+
 
 -(CGRect)titleFrame
 {
     CGRect frame;
-    frame.origin.x = [[UIScreen mainScreen] bounds].size.width * 0.8f + [[UIScreen mainScreen] bounds].size.height  * 0.1f -188;
-    frame.origin.y = 60;
-    frame.size.width = 400.0f;
-    frame.size.height = 40.0f;
+    frame.origin.x = [self screenWidth] * SEARCH_BOX_WIDTH_RATIO + [self screenWidth] * SEARCH_BOX_PADDING_RATIO / 2.0f - TITLE_WIDTH;
+    frame.origin.y = TITLE_Y;
+    frame.size.width = TITLE_WIDTH;
+    frame.size.height = TITLE_HEIGHT;
     return frame;
+}
+
+-(CGRect)searchBoxFrame
+{
+    CGRect frame;
+    frame.origin.x = [self screenWidth] * SEARCH_BOX_PADDING_RATIO / 2.0f;
+    frame.origin.y = [self screenHeight] / 2.0f - SEARCH_BOX_HEIGHT ;
+    frame.size.width = [self screenWidth] * SEARCH_BOX_WIDTH_RATIO;
+    frame.size.height = SEARCH_BOX_HEIGHT;
+    return frame;
+}
+
+-(CGFloat)searchBoxPadding
+{
+    return [self screenWidth] * SEARCH_BOX_PADDING_RATIO;
+}
+
+-(CGFloat)screenWidth
+{
+    return [[UIScreen mainScreen] bounds].size.width;
+}
+
+-(CGFloat)screenHeight
+{
+    return [[UIScreen mainScreen] bounds].size.height;
 }
 
 -(void)setSearchResultTableViewFrame
 {
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
-    CGRect tableViewFrame = self.searchBox.frame;
-    tableViewFrame.size.width = tableViewFrame.size.width -120.0f;
-    tableViewFrame.size.height = screenRect.size.height -270.0f;
-    tableViewFrame.origin.y = 60.0f;
-    tableViewFrame.origin.x = 60.0f;
-    [searchResultTableView setFrame:tableViewFrame];
+    CGRect frame;
+    frame.origin.x = [self screenWidth] * SEARCH_BOX_PADDING_RATIO / 2.0f + SUGGESTION_PADDING;
+    frame.origin.y = TITLE_Y +  TITLE_HEIGHT + SUGGESTION_PADDING;
+    frame.size.width = [self screenWidth] * SEARCH_BOX_WIDTH_RATIO - SUGGESTION_PADDING * 2.0f;
+    frame.size.height = [self screenHeight] - TITLE_Y - TITLE_HEIGHT - SUGGESTION_PADDING * 3.0f;
+    [searchResultTableView setFrame:frame];
 }
 
+-(void)expandSearchBox
+{
+    static CGFloat animationDuration = 1.0f;
+    static CGFloat searchButtonAlpha = 0.0f;
+    static CGFloat searchTextFieldAlpha = 0.0f;
+    static CGFloat backFromListViewButtonAlpha = 0.6f;
+    
+    CGRect frame = [self searchBoxFrame];
+    frame.size.height = [self screenHeight] - TITLE_Y - TITLE_HEIGHT - SUGGESTION_PADDING;
+    frame.origin.y = TITLE_Y + TITLE_HEIGHT;
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:animationDuration];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+    [searchBox setFrame:frame];
+    searchBox.searchButton.alpha = searchButtonAlpha;
+    searchBox.searchTextField.alpha = searchTextFieldAlpha;
+    searchBox.backFromListViewButton.alpha = backFromListViewButtonAlpha;
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(expandSearchBoxAnimationStopped:finished:context:)];
+    [UIView commitAnimations];
+}
+
+-(void)collapseSearchBox
+{
+    static CGFloat animationDuration = 1.0f;
+    static CGFloat searchButtonAlpha = 1.0f;
+    static CGFloat searchTextFieldAlpha = 1.0f;
+    static CGFloat backFromListViewButtonAlpha = 0.0f;
+    
+    [searchResultTableView setHidden:YES];
+    [searchBox.searchTextField setText:@""];
+    
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:animationDuration];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+    [UIView setAnimationDidStopSelector:@selector(collapseSearchBoxAnimationStopped:finished:context:)];
+    [searchBox setFrame:[self searchBoxFrame]];
+    searchBox.searchButton.alpha = searchButtonAlpha;
+    searchBox.searchTextField.alpha = searchTextFieldAlpha;
+    searchBox.backFromListViewButton.alpha = backFromListViewButtonAlpha;
+    [UIView commitAnimations];
+}
 
 -(void)setPortraitLayout
 {
     [self setFrame:[[UIScreen mainScreen] bounds]];
-    [pushButton setFrame:CGRectMake(([[UIScreen mainScreen] bounds].size.width/2) - PUSH_BUTTON_WIDTH/2, ([[UIScreen mainScreen] bounds].size.height/2 +200), PUSH_BUTTON_WIDTH, PUSH_BUTTON_HEIGHT)];
-    [testRequestButton setFrame:CGRectMake(([[UIScreen mainScreen] bounds].size.width/2) - PUSH_BUTTON_WIDTH/2,
-                                            ([[UIScreen mainScreen] bounds].size.height/2 - PUSH_BUTTON_HEIGHT/2 + 400),
-                                            PUSH_BUTTON_WIDTH,
-                                            PUSH_BUTTON_HEIGHT)]; 
 }
 
 -(void)searchNodesByKeyword:(NSString *)aKeyword{
     [delegate searchNodesByKeyword:aKeyword];
 }
 
--(void)expandSearchBox
-{
-    CGRect newFrame = searchBox.frame;
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
-    newFrame.size.height = screenRect.size.height -150.0f;
-    newFrame.origin.y = 100.0f;
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:1.5f];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
-    [searchBox setFrame:newFrame];
-    searchBox.searchButton.alpha = 0.0f;
-    searchBox.searchTextField.alpha = 0.0f;
-    searchBox.backFromListViewButton.alpha = 0.6f;
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationDidStopSelector:@selector(expandSearchBoxAnimationStopped:finished:context:)];
-    [UIView commitAnimations];
-}
+
 -(void)expandSearchBoxAnimationStopped:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context
 {
-    NSLog(@"expandSearchBoxAnimationFinishe");
     [delegate searchBoxDidExpanded];
     [searchResultTableView setContentOffset:CGPointZero animated:NO];
     [searchResultTableView reloadData];
-    
     [searchResultTableView setHidden:NO];
 }
 
 -(void)collapseSearchBoxAnimationStopped:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context
 {
-    NSLog(@"collapseSearchBoxAnimationFinished");
     [delegate searchBoxDidCollapsed];
 }
 
--(void)collapseSearchBox
-{
-    [searchResultTableView setHidden:YES]; //TODO: clean it
-    CGFloat screenWidth = [[UIScreen mainScreen] bounds].size.width;
-    CGFloat screenHeigth = [[UIScreen mainScreen] bounds].size.height;
-    CGFloat searchBoxWidth = screenWidth  * 0.8f;
-    CGFloat searchBoxHeigth = 200.00f;
-    CGFloat searchBoxX = screenWidth  * 0.1f;
-    CGFloat searchBoxY = screenHeigth * 0.5f - searchBoxHeigth * 0.9f ;
-    
-    [searchBox.searchTextField setText:@""];
-    CGRect newFrame = searchBox.frame;
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
-    newFrame.size.height = screenRect.size.height -150.0f;
-    newFrame.origin.y = 100.0f;
-    
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:1.5f];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
-     [UIView setAnimationDidStopSelector:@selector(collapseSearchBoxAnimationStopped:finished:context:)];
-    [searchBox setFrame:CGRectMake(searchBoxX, searchBoxY , searchBoxWidth, searchBoxHeigth)];
-    searchBox.searchButton.alpha = 1.0f;
-    searchBox.searchTextField.alpha = 1.0f;
-    searchBox.backFromListViewButton.alpha = 0.0f;
-    
-    [UIView commitAnimations];
-}
+
 - (void)dealloc {
     [delegate release];
     [searchResultTableView release];

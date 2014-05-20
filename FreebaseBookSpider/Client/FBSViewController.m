@@ -52,7 +52,7 @@
 		view = [[FBSView alloc] init];
         [view setDelegate:self];
         [view setSearchResultTableView:searchResultTableView];
-        [view.searchBox addSubview:searchResultTableView];
+        [view addSubview:searchResultTableView];
         [view setSearchResultTableViewFrame];
         
         // manage rotation
@@ -70,30 +70,13 @@
         [indicator bringSubviewToFront:self.view];
         [UIApplication sharedApplication].networkActivityIndicatorVisible = TRUE;
         
-        
-
-
-        
         // searchResult
         searchResults = nil;
-        
-
     }
     
     return self;
 }
 
--(void)pushButtonDidPressed
-{
-	FBSViewController * viewController = [[FBSViewController alloc]init] ;
-	[self.navigationController pushViewController:viewController animated:YES];
-	[viewController release];
-	
-}
--(void)testRequestButtonDidPressed
-{
-    [bookSpider getTopicById:@"/m/034bs" name:@"Orwell" forDelegate:self];
-}
 
 #pragma  mark FreebaseBookSpiderDelegate protocol
 -(void)nodesDidGenerated:(NSArray *)theNodes forKeyword:(NSString *)keyword
@@ -123,11 +106,7 @@
 	[self.navigationController pushViewController:topicViewController animated:YES];
 	[topicViewController release];
     self.enableSelectTopic = YES;
-    
 }
-
-
-
 
 - (void)loadView {
 	[super loadView];

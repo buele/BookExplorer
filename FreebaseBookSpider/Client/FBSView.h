@@ -30,8 +30,7 @@
 #import "FBSButton.h"
 #import "BESearchBox.h"
 
-extern const double  PUSH_BUTTON_WIDTH;
-extern const double  PUSH_BUTTON_HEIGHT;
+
 
 @protocol FBSViewDelegate
 -(void)pushButtonDidPressed;
@@ -44,15 +43,11 @@ extern const double  PUSH_BUTTON_HEIGHT;
 @interface FBSView : UIView{
     FBSButton * pushButton;
     FBSButton * testRequestButton;
-    
-
-    id<FBSViewDelegate>delegate;
+    id delegate;
     
     
 }
-//-(void)pushButtonDidPressed;
-//-(UIColor *)getRandomColor;
-//-(void)setPortraitLayout;
+
 -(void)setSearchResultTableViewFrame; //TODO: very dirty.. testing to remove
 
 -(void)searchNodesByKeyword:(NSString *)aKeyword;
