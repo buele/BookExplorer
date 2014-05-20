@@ -30,6 +30,38 @@
 #import "FBSTopic.h"
 #import "FBSProperty.h"
 
+//extern NSString * const FB_DESCRIPTION_KEY;
+//extern NSString * const FB_DESCRIPTION_LABEL;
+
+extern NSString * const FB_GENRE_KEY;
+extern NSString * const FB_GENRE_LABEL;
+extern NSString * const FB_CHARACTERS_KEY;
+extern NSString * const FB_CHARACTERS_LABEL;
+//extern NSString * const FB_QUOTATIONS_KEY;
+//extern NSString * const FB_QUOTATIONS_LABEL;
+extern NSString * const FB_AUTHOR_KEY;
+extern NSString * const FB_AUTHOR_LABEL;
+extern NSString * const FB_DATE_WRITTEN_KEY;
+extern NSString * const FB_DATE_WRITTEN_LABEL;
+extern NSString * const FB_COPYRIGHT_DATE_KEY;
+extern NSString * const FB_COPYRIGHT_DATE_LABEL;
+extern NSString * const FB_DATE_OF_FIRST_PUBBLICATION_KEY;
+extern NSString * const FB_DATE_OF_FIRST_PUBBLICATION_LABEL;
+extern NSString * const FB_SUBJECTS_KEY;
+extern NSString * const FB_SUBJECTS_LABEL;
+extern NSString * const FB_ORIGINAL_LANGUAGE_KEY;
+extern NSString * const FB_ORIGINAL_LANGUAGE_LABEL;
+extern NSString * const FB_PREVIOUS_IN_SERIES_KEY;
+extern NSString * const FB_PREVIOUS_IN_SERIES_LABEL;
+extern NSString * const FB_ISFDB_ID_KEY;
+extern NSString * const FB_ISFDB_ID_LABEL;
+extern NSString * const FB_NEXT_IN_SERIES_KEY;
+extern NSString * const FB_NEXT_IN_SERIES_LABEL;
+//extern NSString * const FB_INFLUENCED_BY_KEY;
+//extern NSString * const FB_INFLUENCED_BY_LABEL;
+//extern NSString * const FB_INFLUENCED_KEY;
+//extern NSString * const FB_INFLUENCED_LABEL;
+
 @interface FBSBook : FBSTopic
 
 @end

@@ -147,7 +147,8 @@ static NSString * FB_IMAGE_LABEL = @"image";
     for (NSString * key in bookProperties)if([properties objectForKey:key]) bookPropertiesCounter++;
     for (NSString * key in authorProperties)if([properties objectForKey:key]) authorPropertiesCounter++;
     
-    return (bookPropertiesCounter > authorPropertiesCounter)?FBSNodeBookType:FBSNodeAuthorType;
+    FBSNodeTypes type =  (bookPropertiesCounter > authorPropertiesCounter)?FBSNodeBookType:FBSNodeAuthorType;
+    return type;
 }
 
 -(void)requestImageWithId:(NSString *)anImageId forTopic:(FBSTopic *)aTopic toTarget:(id)aTarget

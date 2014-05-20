@@ -32,6 +32,7 @@
 #import "../FBSNodes/FBSNodeTypes.h"
 #import "BETopicView.h"
 #import "BEAuthorView.h"
+#import "BEBookView.h"
 
 @interface BETopicViewController ()
 
@@ -49,6 +50,9 @@
         switch (aTopic.type) {
             case FBSNodeAuthorType:
                 topicView = [[BEAuthorView alloc] initWithTopic:aTopic frame:[[UIScreen mainScreen] bounds]];
+                break;
+            case FBSNodeBookType:
+                topicView = [[BEBookView alloc] initWithTopic:aTopic frame:[[UIScreen mainScreen] bounds]];
                 break;
             default:
                 break;

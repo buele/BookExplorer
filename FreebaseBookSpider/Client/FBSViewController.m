@@ -34,11 +34,12 @@
 
 @implementation FBSViewController
 @synthesize searchResults;
+@synthesize enableSelectTopic;
 
 - (id)init {
     self = [super init];
     if (self) {
-        
+        enableSelectTopic = YES;
         //table view
         searchResultTableView = [[UITableView alloc] init];
         [searchResultTableView setDelegate:self];
@@ -121,6 +122,7 @@
     [self.navigationController setToolbarHidden:YES animated:NO];
 	[self.navigationController pushViewController:topicViewController animated:YES];
 	[topicViewController release];
+    self.enableSelectTopic = YES;
     
 }
 
@@ -164,6 +166,7 @@
 -(void)searchBoxDidCollapsed
 {
     self.searchResults = @[];
+    self.enableSelectTopic = YES;
 }
 
 -(void)searchBoxDidExpanded
@@ -175,15 +178,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	NSLog(@"Element selected");
-    FBSNode * node =[searchResults objectAtIndex:indexPath.row];
-    NSLog(@"element selected: id:%@, name:%@, notableId: %@, notableName: %@",node.nodeId, node.name,node.notableId,node.notableName);
-    [bookSpider getTopicById:node.nodeId name:node.name forDelegate:self];
-    [indicator startAnimating];
-    
-    
-    
-    
+    if(enableSelectTopic){
+        self.enableSelectTopic = NO;
+        NSLog(@"Element selected");
+        FBSNode * node =[searchResults objectAtIndex:indexPath.row];
+        NSLog(@"element selected: id:%@, name:%@, notableId: %@, notableName: %@",node.nodeId, node.name,node.notableId,node.notableName);
+        [bookSpider getTopicById:node.nodeId name:node.name forDelegate:self];
+        [indicator startAnimating];
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

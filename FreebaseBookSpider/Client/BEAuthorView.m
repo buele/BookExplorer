@@ -34,7 +34,7 @@
 #import "BETopicPropertyVerticalView.h"
 #import "BETopicDatePropertyView.h"
 
-static CGFloat PROPERTY_PADDING = 5.0f;
+
 
 @implementation BEAuthorView
 
@@ -47,140 +47,69 @@ static CGFloat PROPERTY_PADDING = 5.0f;
     return  self;
 }
 
--(void)addTopicPropertyViewByPropertyKey:(NSString * )aPropertyKey withLine:(BOOL)line
-{
-    FBSProperty * property = [[self.topic properties] objectForKey:aPropertyKey];
-    if(property && [property.values count] > 0 ){
-        if(line) [self addLine];
-        CGRect frame = CGRectMake(VIEW_PADDING, lastY, self.bounds.size.width - 2 * VIEW_PADDING, 0);
-        TopicPropertyView * topicPropertyView = [[TopicPropertyView alloc] initWithFrame:frame
-                                                                             FBSProperty:property];
-        [self addSubview:topicPropertyView];
-        lastY += topicPropertyView.lastY + PROPERTY_PADDING;
-        [topicPropertyView release];
-    }
-}
-
--(void)addTopicDatePropertyViewByPropertyKey:(NSString * )aPropertyKey withLine:(BOOL)line
-{
-    FBSProperty * property = [[self.topic properties] objectForKey:aPropertyKey];
-    if(property && [property.values count] > 0 ){
-        if(line) [self addLine];
-        CGRect frame = CGRectMake(VIEW_PADDING, lastY, self.bounds.size.width - 2 * VIEW_PADDING, 0);
-        BETopicDatePropertyView * topicPropertyView = [[BETopicDatePropertyView alloc] initWithFrame:frame
-                                                                             FBSProperty:property];
-        [self addSubview:topicPropertyView];
-        lastY += topicPropertyView.lastY + PROPERTY_PADDING;
-        [topicPropertyView release];
-    }
-}
-
--(void)addTopicPropertyVerticalViewByPropertyKey:(NSString * )aPropertyKey withLine:(BOOL)line
-{
-    FBSProperty * property = [[self.topic properties] objectForKey:aPropertyKey];
-    if(property && [property.values count] > 0 ){
-        if(line) [self addLine];
-        CGRect frame = CGRectMake(VIEW_PADDING, lastY, self.bounds.size.width - 2 * VIEW_PADDING, 0);
-        BETopicPropertyVerticalView * topicPropertyView = [[BETopicPropertyVerticalView alloc] initWithFrame:frame
-                                                                             FBSProperty:property];
-        [self addSubview:topicPropertyView];
-        lastY += topicPropertyView.lastY + PROPERTY_PADDING;
-        [topicPropertyView release];
-    }
-}
-
--(void)addLine
-{
-    lastY += VIEW_PADDING;
-    [self addSubview:[self lineAtY:lastY]];
-}
 
 
 
 -(void)populateAuthorViewWithTopic:(FBSTopic *)aTopic
 {
-    
+    // ** DATES ** //
     // date of birth
-    [self addTopicDatePropertyViewByPropertyKey:FB_DATE_OF_BIRTH_KEY withLine:YES];
+    [self addDatePropertyViewByKey:FB_DATE_OF_BIRTH_KEY withLine:YES];
     // place of birth
-    [self addTopicPropertyViewByPropertyKey:FB_PLACE_OF_BIRTH_KEY withLine:NO];
+    [self addPropertyViewByKey:FB_PLACE_OF_BIRTH_KEY withLine:NO];
     // date of birth
-    [self addTopicDatePropertyViewByPropertyKey:FB_DATE_OF_DEATH_KEY withLine:NO];
+    [self addDatePropertyViewByKey:FB_DATE_OF_DEATH_KEY withLine:NO];
     // place of birth
-    [self addTopicPropertyViewByPropertyKey:FB_PLACE_OF_DEATH_KEY withLine:NO];
+    [self addPropertyViewByKey:FB_PLACE_OF_DEATH_KEY withLine:NO];
     
-    // quotations
-    [self addTopicPropertyVerticalViewByPropertyKey:FB_QUOTATIONS_KEY withLine:YES];
+    // ** GENERAL INFORMATIONS ** //
+    // cause of death
+    [self addPropertyViewByKey:FB_CAUSE_OF_DEATH_KEY withLine:YES];
+    // nationality
+    [self addPropertyViewByKey:FB_NATIONALITY_KEY withLine:NO];
+    // gender
+    [self addPropertyViewByKey:FB_GENDER_KEY withLine:NO];
+    // languages
+    [self addPropertyViewByKey:FB_LANGUAGES_KEY withLine:NO];
+    // places lived
+    //[self addVerticalPropertyListViewByKey:FB_PLACES_LIVED_KEY withLine:NO];
+    
+    // ** WORKS WRITTEN ** //
+    [self addPropertyViewByKey:FB_WORKS_WRITTEN_KEY withLine:YES];
 
-    // works written
-    [self addTopicPropertyViewByPropertyKey:FB_WORKS_WRITTEN_KEY withLine:YES];
-    
+    // ** QUOTATIONS ** //
+    [self addVerticalPropertyListViewByKey:FB_QUOTATIONS_KEY withLine:YES];
+
+    // ** INFLUENCES ** //
     // influenced by
-    [self addTopicPropertyViewByPropertyKey:FB_INFLUENCED_BY_KEY withLine:YES];
-    
+    [self addPropertyViewByKey:FB_INFLUENCED_BY_KEY withLine:YES];
     // influenced
-    [self addTopicPropertyViewByPropertyKey:FB_INFLUENCED_KEY withLine:NO];
+    [self addPropertyViewByKey:FB_INFLUENCED_KEY withLine:NO];
 
+    // ** EXPERIENCES AND LANGUAGES **//
+    // employment history
+    //[self addVerticalPropertyListViewByKey:FB_EMPLOYMENT_HISTORY_KEY withLine:YES];
+    // education
+    //[self addVerticalPropertyListViewByKey:FB_EDUCATION_KEY withLine:YES];
+   
     
+    // ** PROFESSIONS AND RELIGION ** //
+    // professions
+    [self addPropertyViewByKey:FB_PROFESSION_KEY withLine:YES];
+    // religions
+    [self addPropertyViewByKey:FB_REGION_KEY withLine:NO];
     
-    /*
-    FBSProperty * dateOfDeath = [summary objectForKey:FB_DATE_OF_DEATH_KEY];
-    if(dateOfDeath && [dateOfDeath.values count] > 0){
-        FBSPropertyValue * dateOfDeathFirstItem =[dateOfDeath.values objectAtIndex:0];
-        NSDateFormatter *  deathDateFormatter= [[[NSDateFormatter alloc] init] autorelease];
-        [deathDateFormatter setDateFormat:@"yyyy-MM-dd"];
-        NSDate * deathDate = [deathDateFormatter dateFromString:dateOfDeathFirstItem.text];
-        NSDateFormatter * testFormatter = [[[NSDateFormatter alloc]init]autorelease];
-        [testFormatter setDateFormat:@"dd MMMM yyyy"];
-        
-        [self addSubview:[self lineAtY:lastY + VIEW_PADDING]];
-        lastY += VIEW_PADDING + CONTENT_SPACER;
-        
-        // date of death
-        UILabel * deathDateLabel = [[UILabel alloc] initWithFrame:CGRectMake(VIEW_PADDING, lastY, DEATH_DATE_LABEL_WIDTH, PROPERTY_HEIGTH)];
-        [deathDateLabel setText:DEATH_DATE_LABEL];
-        [deathDateLabel setFont:[UIFont boldSystemFontOfSize:PROPERTY_LABEL_FONT_SIZE]];
-        [self addSubview:deathDateLabel];
-        [deathDateLabel release];
-        
-        UILabel * deathDateValue = [[UILabel alloc] initWithFrame:CGRectMake(DEATH_DATE_LABEL_WIDTH + PROPERTY_SPACER, lastY + 2, (viewWidth / 4.0f), PROPERTY_HEIGTH)];
-        [deathDateValue setText:[testFormatter stringFromDate:deathDate]];
-        [deathDateValue setFont:[UIFont fontWithName:DEFAULT_FONT_FAMILY size:PROPERTY_VALUE_FONT_SIZE]];
-        [self addSubview:deathDateValue];
-        [deathDateValue release];
-    }
-     */
+    // ** FAMILY ** //
+    // parents
+    [self addPropertyViewByKey:FB_PARENTS_KEY withLine:YES];
+    // children
+    [self addPropertyViewByKey:FB_CHILDREN_KEY withLine:NO];
+    // spouses
+    //[self addVerticalPropertyListViewByKey:FB_SPOUSES_KEY withLine:NO];
     
-    
-    
-    
-    //--
-    // place of death
-    /*
-     FBSProperty * placeOfDeath = [summary objectForKey:FB_PLACE_OF_DEATH_KEY];
-    if(placeOfDeath && [placeOfDeath.values count] > 0){
-        static NSString *  DEATH_PLACE_LABEL = @"Place of death:";
-        static CGFloat DEATH_PLACE_LABEL_WIDTH = 150.0f;
-        FBSPropertyValue * placeOfDeathFirstItem =[placeOfDeath.values objectAtIndex:0];
-        
-        UILabel * placeOfDeathLabel = [[UILabel alloc] initWithFrame:CGRectMake(VIEW_PADDING + viewWidth / 2.0f, lastY, DEATH_PLACE_LABEL_WIDTH, PROPERTY_HEIGTH)];
-        [placeOfDeathLabel setText:DEATH_PLACE_LABEL];
-        [placeOfDeathLabel setFont:[UIFont boldSystemFontOfSize:PROPERTY_LABEL_FONT_SIZE]];
-        [self addSubview:placeOfDeathLabel];
-        [placeOfDeathLabel release];
-    
-        UILabel * deathDateValue = [[UILabel alloc] initWithFrame:CGRectMake(VIEW_PADDING + viewWidth / 2.0f + DEATH_PLACE_LABEL_WIDTH + PROPERTY_SPACER, lastY + 2, (viewWidth / 4.0f), PROPERTY_HEIGTH)];
-        [deathDateValue setText:placeOfDeathFirstItem.text]; // place
-        [deathDateValue setFont:[UIFont fontWithName:DEFAULT_FONT_FAMILY size:PROPERTY_VALUE_FONT_SIZE]];
-        [self addSubview:deathDateValue];
-        [deathDateValue release];
-    }
-    */
+    // define content scroll view content size
     [self setContentSize:CGSizeMake(self.frame.size.width, lastY + VIEW_PADDING)];
 
-    
-    
-    
 }
 
 @end

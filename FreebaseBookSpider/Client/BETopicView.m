@@ -30,10 +30,12 @@
 #import "FBSTopic.h"
 #import "FBSProperty.h"
 #import "FBSPropertyValue.h"
-
+#import "TopicPropertyView.h"
+#import "BETopicDatePropertyView.h"
+#import "BETopicPropertyVerticalView.h"
 
 CGFloat  const VIEW_PADDING = 40.0f;
-
+static CGFloat PROPERTY_PADDING = 5.0f;
 
 @implementation BETopicView
 @synthesize topic;
@@ -122,6 +124,55 @@ static NSString * WIKIPEDIA_SIGNATURE = @"(Wikipedia)";
     lastY += LINE_PADDING;
     return lineView;
     [lineColor release];
+}
+
+
+-(void)addPropertyViewByKey:(NSString * )aPropertyKey withLine:(BOOL)line
+{
+    FBSProperty * property = [[self.topic properties] objectForKey:aPropertyKey];
+    if(property && [property.values count] > 0 ){
+        if(line) [self addLine];
+        CGRect frame = CGRectMake(VIEW_PADDING, lastY, self.bounds.size.width - 2 * VIEW_PADDING, 0);
+        TopicPropertyView * topicPropertyView = [[TopicPropertyView alloc] initWithFrame:frame
+                                                                             FBSProperty:property];
+        [self addSubview:topicPropertyView];
+        lastY += topicPropertyView.lastY + PROPERTY_PADDING;
+        [topicPropertyView release];
+    }
+}
+
+-(void)addDatePropertyViewByKey:(NSString * )aPropertyKey withLine:(BOOL)line
+{
+    FBSProperty * property = [[self.topic properties] objectForKey:aPropertyKey];
+    if(property && [property.values count] > 0 ){
+        if(line) [self addLine];
+        CGRect frame = CGRectMake(VIEW_PADDING, lastY, self.bounds.size.width - 2 * VIEW_PADDING, 0);
+        BETopicDatePropertyView * topicPropertyView = [[BETopicDatePropertyView alloc] initWithFrame:frame
+                                                                                         FBSProperty:property];
+        [self addSubview:topicPropertyView];
+        lastY += topicPropertyView.lastY + PROPERTY_PADDING;
+        [topicPropertyView release];
+    }
+}
+
+-(void)addVerticalPropertyListViewByKey:(NSString * )aPropertyKey withLine:(BOOL)line
+{
+    FBSProperty * property = [[self.topic properties] objectForKey:aPropertyKey];
+    if(property && [property.values count] > 0 ){
+        if(line) [self addLine];
+        CGRect frame = CGRectMake(VIEW_PADDING, lastY, self.bounds.size.width - 2 * VIEW_PADDING, 0);
+        BETopicPropertyVerticalView * topicPropertyView = [[BETopicPropertyVerticalView alloc] initWithFrame:frame
+                                                                                                 FBSProperty:property];
+        [self addSubview:topicPropertyView];
+        lastY += topicPropertyView.lastY + PROPERTY_PADDING;
+        [topicPropertyView release];
+    }
+}
+
+-(void)addLine
+{
+    lastY += VIEW_PADDING;
+    [self addSubview:[self lineAtY:lastY]];
 }
 
 -(void)dealloc

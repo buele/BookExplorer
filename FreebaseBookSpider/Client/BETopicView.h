@@ -40,6 +40,9 @@ extern CGFloat const VIEW_PADDING ;
 }
 -(id)initWithTopic:(FBSTopic *)aTopic frame:(CGRect)aFrame;
 -(UIView *)lineAtY:(CGFloat)y;
+-(void)addVerticalPropertyListViewByKey:(NSString * )aPropertyKey withLine:(BOOL)line;
+-(void)addDatePropertyViewByKey:(NSString * )aPropertyKey withLine:(BOOL)line;
+-(void)addPropertyViewByKey:(NSString * )aPropertyKey withLine:(BOOL)line;
 
 @property(nonatomic,retain,readonly)FBSTopic * topic;
 @end

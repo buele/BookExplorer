@@ -33,41 +33,41 @@
 
 
  NSString * const FB_DESCRIPTION_KEY          = @"/common/topic/description";
- NSString * const FB_DESCRIPTION_LABEL        = @"description";
+ NSString * const FB_DESCRIPTION_LABEL        = @"Description";
  NSString * const FB_DATE_OF_BIRTH_KEY        = @"/people/person/date_of_birth";
  NSString * const FB_DATE_OF_BIRTH_LABEL      = @"Date of birth";
  NSString * const FB_PLACE_OF_BIRTH_KEY       = @"/people/person/place_of_birth";
  NSString * const FB_PLACE_OF_BIRTH_LABEL     = @"Place of birth";
  NSString * const FB_NATIONALITY_KEY          = @"/people/person/nationality";
- NSString * const FB_NATIONALITY_LABEL        = @"nationality";
+ NSString * const FB_NATIONALITY_LABEL        = @"Nationality";
  NSString * const FB_GENDER_KEY               = @"/people/person/gender";
- NSString * const FB_GENDER_LABEL             = @"gender";
+ NSString * const FB_GENDER_LABEL             = @"Gender";
  NSString * const FB_PROFESSION_KEY           = @"/people/person/profession";
- NSString * const FB_PROFESSION_LABEL         = @"profession";
+ NSString * const FB_PROFESSION_LABEL         = @"Profession";
  NSString * const FB_REGION_KEY               = @"/people/person/religion";
- NSString * const FB_REGION_LABEL             = @"religion";
+ NSString * const FB_REGION_LABEL             = @"Religion";
  NSString * const FB_PARENTS_KEY              = @"/people/person/parents";
- NSString * const FB_PARENTS_LABEL            = @"parents";
+ NSString * const FB_PARENTS_LABEL            = @"Parents";
  NSString * const FB_CHILDREN_KEY             = @"/people/person/children";
- NSString * const FB_CHILDREN_LABEL           = @"children";
+ NSString * const FB_CHILDREN_LABEL           = @"Children";
  NSString * const FB_SPOUSES_KEY              = @"/people/person/spouse_s";
- NSString * const FB_SPOUSES_LABEL            = @"spouse_s";
+ NSString * const FB_SPOUSES_LABEL            = @"Spouses";
  NSString * const FB_EMPLOYMENT_HISTORY_KEY   = @"/people/person/employment_history";
- NSString * const FB_EMPLOYMENT_HISTORY_LABEL = @"employment_history";
+ NSString * const FB_EMPLOYMENT_HISTORY_LABEL = @"Employment history";
  NSString * const FB_EDUCATION_KEY            = @"/people/person/education";
- NSString * const FB_EDUCATION_LABEL          = @"education";
+ NSString * const FB_EDUCATION_LABEL          = @"Education";
  NSString * const FB_QUOTATIONS_KEY           = @"/people/person/quotations";
  NSString * const FB_QUOTATIONS_LABEL         = @"Quotations";
  NSString * const FB_PLACES_LIVED_KEY         = @"/people/person/places_lived";
- NSString * const FB_PLACES_LIVED_LABEL       = @"places_lived";
+ NSString * const FB_PLACES_LIVED_LABEL       = @"Places lived";
  NSString * const FB_LANGUAGES_KEY            = @"/people/person/languages";
- NSString * const FB_LANGUAGES_LABEL          = @"languages";
+ NSString * const FB_LANGUAGES_LABEL          = @"Languages";
  NSString * const FB_DATE_OF_DEATH_KEY        = @"/people/deceased_person/date_of_death";
  NSString * const FB_DATE_OF_DEATH_LABEL      = @"Date of death";
  NSString * const FB_PLACE_OF_DEATH_KEY       = @"/people/deceased_person/place_of_death";
  NSString * const FB_PLACE_OF_DEATH_LABEL     = @"Place of death";
  NSString * const FB_CAUSE_OF_DEATH_KEY       = @"/people/deceased_person/cause_of_death";
- NSString * const FB_CAUSE_OF_DEATH_LABEL     = @"cause_of_death";
+ NSString * const FB_CAUSE_OF_DEATH_LABEL     = @"Cause of death";
  NSString * const FB_WORKS_WRITTEN_KEY        = @"/book/author/works_written";
  NSString * const FB_WORKS_WRITTEN_LABEL      = @"Works written";
  NSString * const FB_INFLUENCED_BY_KEY        = @"/influence/influence_node/influenced_by";
@@ -81,6 +81,7 @@
 {
     self = [super initWithFBSNode:aNode type:FBSNodeAuthorType description:[[[FBSProperty alloc] initWithFreebaseProperty:[theProperties objectForKey:FB_DESCRIPTION_KEY] label:FB_DESCRIPTION_LABEL] autorelease]];
     if(self){
+        
         
         // -- summary -- //
         //date of birth

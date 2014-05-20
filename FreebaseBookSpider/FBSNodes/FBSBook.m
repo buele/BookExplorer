@@ -28,80 +28,79 @@
  *****************************************************************************/
 
 #import "FBSBook.h"
+#import "FBSAuthor.h"
+
+ //NSString * const FB_DESCRIPTION_KEY                    = @"/common/topic/description";
+ //NSString * const FB_DESCRIPTION_LABEL                  = @"Description";
+
+ NSString * const FB_GENRE_KEY                          = @"/book/book/genre";
+ NSString * const FB_GENRE_LABEL                        = @"Genre";
+ NSString * const FB_CHARACTERS_KEY                     = @"/book/book/characters";
+ NSString * const FB_CHARACTERS_LABEL                   = @"Characters";
+// NSString * const FB_QUOTATIONS_KEY                     = @"/media_common/quotation_source/quotations";
+// NSString * const FB_QUOTATIONS_LABEL                   = @"Quotations";
+ NSString * const FB_AUTHOR_KEY                         = @"/book/written_work/author";
+ NSString * const FB_AUTHOR_LABEL                       = @"Author";
+ NSString * const FB_DATE_WRITTEN_KEY                   = @"/book/written_work/date_written";
+ NSString * const FB_DATE_WRITTEN_LABEL                 = @"Date written";
+ NSString * const FB_COPYRIGHT_DATE_KEY                 = @"/book/written_work/copyright_date";
+ NSString * const FB_COPYRIGHT_DATE_LABEL               = @"Copyright date";
+ NSString * const FB_DATE_OF_FIRST_PUBBLICATION_KEY     = @"/book/written_work/date_of_first_pubblication";
+ NSString * const FB_DATE_OF_FIRST_PUBBLICATION_LABEL   = @"Date of first pubblication";
+ NSString * const FB_SUBJECTS_KEY                       = @"/book/written_work/subjects";
+ NSString * const FB_SUBJECTS_LABEL                     = @"Subjects";
+ NSString * const FB_ORIGINAL_LANGUAGE_KEY              = @"/book/written_work/original_language";
+ NSString * const FB_ORIGINAL_LANGUAGE_LABEL            = @"Original language";
+ NSString * const FB_PREVIOUS_IN_SERIES_KEY             = @"/book/written_work/previous_in_series";
+ NSString * const FB_PREVIOUS_IN_SERIES_LABEL        	= @"Previous in series";
+ NSString * const FB_ISFDB_ID_KEY                   	= @"/book/written_work/isfdb_id";
+ NSString * const FB_ISFDB_ID_LABEL                   	= @"isfdb_id";
+ NSString * const FB_NEXT_IN_SERIES_KEY             	= @"/book/written_work/next_in_series";
+ NSString * const FB_NEXT_IN_SERIES_LABEL               = @"Next in series";
+ //NSString * const FB_INFLUENCED_BY_KEY                  = @"/influence/influence_node/influenced_by";
+ //NSString * const FB_INFLUENCED_BY_LABEL              	= @"Influenced by";
+ //NSString * const FB_INFLUENCED_KEY                     = @"/influence/influence_node/influenced";
+ //NSString * const FB_INFLUENCED_LABEL                   = @"Influenced";
 
 @implementation FBSBook
 
-static NSString * FB_ALIAS_KEY                          = @"/common/topic/alias";
-static NSString * FB_ALIAS_LABEL                        = @"alias";
-static NSString * FB_DESCRIPTION_KEY                    = @"/common/topic/description";
-static NSString * FB_DESCRIPTION_LABEL                  = @"description";
-
-static NSString * FB_GENRE_KEY                          = @"/book/book/genre";
-static NSString * FB_GENRE_LABEL                        = @"genre";
-static NSString * FB_CHARACTERS_KEY                     = @"/book/book/characters";
-static NSString * FB_CHARACTERS_LABEL                   = @"characters";
-static NSString * FB_QUOTATIONS_KEY                     = @"/media_common/quotation_source/quotations";
-static NSString * FB_QUOTATIONS_LABEL                   = @"quotations";
-static NSString * FB_AUTHOR_KEY                         = @"/book/written_work/author";
-static NSString * FB_AUTHOR_LABEL                       = @"author";
-static NSString * FB_DATE_WRITTEN_KEY                   = @"/book/written_work/date_written";
-static NSString * FB_DATE_WRITTEN_LABEL                 = @"date_written";
-static NSString * FB_COPYRIGHT_DATE_KEY                 = @"/book/written_work/copyright_date";
-static NSString * FB_COPYRIGHT_DATE_LABEL               = @"copyright_date";
-static NSString * FB_DATE_OF_FIRST_PUBBLICATION_KEY     = @"/book/written_work/date_of_first_pubblication";
-static NSString * FB_DATE_OF_FIRST_PUBBLICATION_LABEL   = @"date_of_first_pubblication";
-static NSString * FB_SUBJECTS_KEY                       = @"/book/written_work/subjects";
-static NSString * FB_SUBJECTS_LABEL                     = @"subjects";
-static NSString * FB_ORIGINAL_LANGUAGE_KEY              = @"/book/written_work/original_language";
-static NSString * FB_ORIGINAL_LANGUAGE_LABEL            = @"original_language";
-static NSString * FB_PREVIOUS_IN_SERIES_KEY             = @"/book/written_work/previous_in_series";
-static NSString * FB_PREVIOUS_IN_SERIES_LABEL        	= @"previous_in_series";
-static NSString * FB_ISFDB_ID_KEY                   	= @"/book/written_work/isfdb_id";
-static NSString * FB_ISFDB_ID_LABEL                   	= @"isfdb_id";
-static NSString * FB_NEXT_IN_SERIES_KEY             	= @"/book/written_work/next_in_series";
-static NSString * FB_NEXT_IN_SERIES_LABEL               = @"next_in_series";
-static NSString * FB_INFLUENCED_BY_KEY                  = @"/influence/influence_node/influenced_by";
-static NSString * FB_INFLUENCED_BY_LABEL              	= @"influenced_by";
-static NSString * FB_INFLUENCED_KEY                     = @"/influence/influence_node/influenced";
-static NSString * FB_INFLUENCED_LABEL                   = @"influenced";
 
 
 
--(id)initWithFBSNode:(FBSNode *)aNode properties:(NSDictionary *)properties
+
+
+-(id)initWithFBSNode:(FBSNode *)aNode properties:(NSDictionary *)theProperties
 {
-    self = [super initWithFBSNode:aNode type:FBSNodeAuthorType description:[[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_DESCRIPTION_KEY] label:FB_DESCRIPTION_LABEL] autorelease]];
+    self = [super initWithFBSNode:aNode type:FBSNodeBookType description:[[[FBSProperty alloc] initWithFreebaseProperty:[theProperties objectForKey:FB_DESCRIPTION_KEY] label:FB_DESCRIPTION_LABEL] autorelease]];
     if(self){
-        // -- summary -- //
         // genre
-        [summary setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_GENRE_KEY] label:FB_GENRE_LABEL] autorelease] forKey:FB_GENRE_KEY];
+        [properties setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[theProperties objectForKey:FB_GENRE_KEY] label:FB_GENRE_LABEL] autorelease] forKey:FB_GENRE_KEY];
         // author
-        [summary setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_AUTHOR_KEY] label:FB_AUTHOR_LABEL] autorelease] forKey:FB_AUTHOR_KEY];
+        [properties setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[theProperties objectForKey:FB_AUTHOR_KEY] label:FB_AUTHOR_LABEL] autorelease] forKey:FB_AUTHOR_KEY];
         // subjects
-        [summary setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_SUBJECTS_KEY] label:FB_SUBJECTS_LABEL] autorelease] forKey:FB_SUBJECTS_KEY];
+        [properties setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[theProperties objectForKey:FB_SUBJECTS_KEY] label:FB_SUBJECTS_LABEL] autorelease] forKey:FB_SUBJECTS_KEY];
         // date written
-        [summary setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_DATE_WRITTEN_KEY] label:FB_DATE_WRITTEN_LABEL] autorelease] forKey:FB_DATE_WRITTEN_KEY];
+        [properties setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[theProperties objectForKey:FB_DATE_WRITTEN_KEY] label:FB_DATE_WRITTEN_LABEL] autorelease] forKey:FB_DATE_WRITTEN_KEY];
         // copyright date
-        [summary setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_COPYRIGHT_DATE_KEY] label:FB_COPYRIGHT_DATE_LABEL] autorelease] forKey:FB_COPYRIGHT_DATE_KEY];
+        [properties setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[theProperties objectForKey:FB_COPYRIGHT_DATE_KEY] label:FB_COPYRIGHT_DATE_LABEL] autorelease] forKey:FB_COPYRIGHT_DATE_KEY];
         // date of first pubblication
-        [summary setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_DATE_OF_FIRST_PUBBLICATION_KEY] label:FB_DATE_OF_FIRST_PUBBLICATION_LABEL] autorelease] forKey:FB_DATE_OF_FIRST_PUBBLICATION_KEY];
+        [properties setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[theProperties objectForKey:FB_DATE_OF_FIRST_PUBBLICATION_KEY] label:FB_DATE_OF_FIRST_PUBBLICATION_LABEL] autorelease] forKey:FB_DATE_OF_FIRST_PUBBLICATION_KEY];
         // quotations
-         [summary setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_QUOTATIONS_KEY] label:FB_QUOTATIONS_LABEL] autorelease] forKey:FB_QUOTATIONS_KEY];
-        
-        // -- details -- //
+         [properties setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[theProperties objectForKey:FB_QUOTATIONS_KEY] label:FB_QUOTATIONS_LABEL] autorelease] forKey:FB_QUOTATIONS_KEY];
         // characters
-        [details setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_CHARACTERS_KEY] label:FB_CHARACTERS_LABEL] autorelease] forKey:FB_CHARACTERS_KEY];
+        [properties setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[theProperties objectForKey:FB_CHARACTERS_KEY] label:FB_CHARACTERS_LABEL] autorelease] forKey:FB_CHARACTERS_KEY];
         // original language
-        [details setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_ORIGINAL_LANGUAGE_KEY] label:FB_ORIGINAL_LANGUAGE_LABEL] autorelease] forKey:FB_ORIGINAL_LANGUAGE_KEY];
+        [properties setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[theProperties objectForKey:FB_ORIGINAL_LANGUAGE_KEY] label:FB_ORIGINAL_LANGUAGE_LABEL] autorelease] forKey:FB_ORIGINAL_LANGUAGE_KEY];
         // previous in series
-        [details setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_PREVIOUS_IN_SERIES_KEY] label:FB_PREVIOUS_IN_SERIES_LABEL] autorelease] forKey:FB_PREVIOUS_IN_SERIES_KEY];
+        [properties setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[theProperties objectForKey:FB_PREVIOUS_IN_SERIES_KEY] label:FB_PREVIOUS_IN_SERIES_LABEL] autorelease] forKey:FB_PREVIOUS_IN_SERIES_KEY];
         // next in series
-        [details setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_NEXT_IN_SERIES_KEY] label:FB_NEXT_IN_SERIES_LABEL] autorelease] forKey:FB_NEXT_IN_SERIES_KEY];
+        [properties setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[theProperties objectForKey:FB_NEXT_IN_SERIES_KEY] label:FB_NEXT_IN_SERIES_LABEL] autorelease] forKey:FB_NEXT_IN_SERIES_KEY];
         // influenced by
-        [details setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_INFLUENCED_BY_KEY] label:FB_INFLUENCED_BY_LABEL] autorelease] forKey:FB_INFLUENCED_BY_KEY];
+        [properties setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[theProperties objectForKey:FB_INFLUENCED_BY_KEY] label:FB_INFLUENCED_BY_LABEL] autorelease] forKey:FB_INFLUENCED_BY_KEY];
         // influenced
-        [details setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_INFLUENCED_KEY] label:FB_INFLUENCED_LABEL] autorelease] forKey:FB_INFLUENCED_KEY];
+        [properties setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[theProperties objectForKey:FB_INFLUENCED_KEY] label:FB_INFLUENCED_LABEL] autorelease] forKey:FB_INFLUENCED_KEY];
         // isfdbid
-        [details setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[properties objectForKey:FB_ISFDB_ID_KEY] label:FB_ISFDB_ID_LABEL] autorelease] forKey:FB_ISFDB_ID_KEY];
+        [properties setObject:[[[FBSProperty alloc] initWithFreebaseProperty:[theProperties objectForKey:FB_ISFDB_ID_KEY] label:FB_ISFDB_ID_LABEL] autorelease] forKey:FB_ISFDB_ID_KEY];
         
     }
     return self;

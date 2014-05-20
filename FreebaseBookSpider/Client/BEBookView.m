@@ -27,7 +27,9 @@
  *****************************************************************************/
 
 #import "BEBookView.h"
-
+#import "FBSTopic.h"
+#import "FBSBook.h"
+#import "FBSAuthor.h"
 @implementation BEBookView
 
 -(id)initWithTopic:(FBSTopic *)aTopic frame:(CGRect)aFrame
@@ -41,11 +43,47 @@
 
 -(void)populateBookViewWithTopic:(FBSTopic *)aTopic
 {
-//    NSLog(@"POPULATE author view, lastY: %f",lastY);
-    NSDictionary * summary = [[aTopic summary] retain];
-    NSLog(@"");
-    [summary release];
-    [self addSubview:[self lineAtY:lastY + VIEW_PADDING]];
+
+    // ** GENERAL INFORMATIONS ** //
+    // author
+    [self addPropertyViewByKey:FB_AUTHOR_KEY withLine:YES];
+    // genre
+    [self addPropertyViewByKey:FB_GENRE_KEY withLine:NO];
+    //subjects
+    [self addPropertyViewByKey:FB_SUBJECTS_KEY withLine:NO];
+    
+    // ** DATES ** //
+    // first pubblication
+    [self addDatePropertyViewByKey:FB_DATE_OF_FIRST_PUBBLICATION_KEY withLine:YES];
+    // date written
+    [self addDatePropertyViewByKey:FB_DATE_WRITTEN_KEY withLine:NO];
+    // copyright date
+    [self addDatePropertyViewByKey:FB_COPYRIGHT_DATE_KEY withLine:NO];
+    
+    // ** QUOTATIONS ** //
+    [self addVerticalPropertyListViewByKey:FB_QUOTATIONS_KEY withLine:YES];
+    
+    // ** CHARACTERS AND LANGUAGES ** //
+    // characters
+    [self addPropertyViewByKey:FB_CHARACTERS_KEY withLine:YES];
+    // original language
+    [self addPropertyViewByKey:FB_ORIGINAL_LANGUAGE_KEY withLine:NO];
+    
+    // ** NEXT AND PREVIOUS IN SERIES ** //
+    // previous in series
+    [self addPropertyViewByKey:FB_PREVIOUS_IN_SERIES_KEY withLine:YES];
+    // next in series
+    [self addPropertyViewByKey:FB_NEXT_IN_SERIES_KEY withLine:NO];
+    
+    // ** INFLUENCES ** //
+    // influenced by
+    [self addPropertyViewByKey:FB_INFLUENCED_BY_KEY withLine:YES];
+    // influenced
+    [self addPropertyViewByKey:FB_INFLUENCED_KEY withLine:NO];
+    
+    
+    // define content scroll view content size
+    [self setContentSize:CGSizeMake(self.frame.size.width, lastY + VIEW_PADDING)];
 }
 
 
