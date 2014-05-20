@@ -42,16 +42,14 @@ const double PUSH_BUTTON_HEIGHT = 50;
 -(id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
-    if (self) {
-        
+    if (self) {        
         NSString* imagePath = [ [ NSBundle mainBundle] pathForResource:@"Jacques_Charles_Luftschiff_landscape_portrait" ofType:@"jpg"];
         UIImage * image = [ UIImage imageWithContentsOfFile: imagePath];
         UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:image];
-        
         CGFloat screenWidth = [[UIScreen mainScreen] bounds].size.width;
         CGFloat screenHeigth = [[UIScreen mainScreen] bounds].size.height;
 
-        // ** title
+        // title
         UILabel * title = [[UILabel alloc]initWithFrame:CGRectMake(screenWidth * 0.8f + screenWidth  * 0.1f -188, 60, 400.0f, 40.0f)];
         [title setText:@"Book Explorer"];
         UIColor * titleColor =[[UIColor alloc] initWithRed:14.0f/255.0f green:14.0f / 255.0f blue: 14.0f / 255.0f alpha:1.0f];
@@ -60,40 +58,21 @@ const double PUSH_BUTTON_HEIGHT = 50;
         [titleColor release];
         
         
-        // ** search box
+        // search box
         CGFloat searchBoxWidth = screenWidth  * 0.8f;
         CGFloat searchBoxHeigth = 200.00f;
         CGFloat searchBoxX = screenWidth  * 0.1f;
         CGFloat searchBoxY = screenHeigth * 0.5f - searchBoxHeigth * 0.9f ;
         searchBox = [[BESearchBox alloc] initWithFrame:CGRectMake(searchBoxX, searchBoxY , searchBoxWidth, searchBoxHeigth)];
-        
-        
         [searchBox setDelegate:self];
-        // add text field
-        
-        // TODO: for padding subclass text field
-        
-        
-       
-        
-       // pushButton = [[FBSButton buttonWithType:UIButtonTypeRoundedRect ]retain];
-        //testRequestButton = [[FBSButton buttonWithType:UIButtonTypeRoundedRect ]retain];
-        //[pushButton addTarget:self action:@selector(pushButtonDidPressed) forControlEvents:UIControlEventTouchUpInside];
-        //[testRequestButton addTarget:self action:@selector(testRequestButtonDidPressed) forControlEvents:UIControlEventTouchUpInside];
-        //[testRequestButton setTitle:@"orwell request" forState:UIControlStateNormal]; // TODO: remove this workaround
         [self setPortraitLayout];
         [backgroundImage setFrame:[self bounds]];
         [self addSubview:backgroundImage];
-		//[self addSubview:pushButton];
-        //[self addSubview:testRequestButton];
         [self setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
-        //
         [self addSubview:searchBox];
         [self addSubview:title];
-        
         [title release];
         [searchBox release];
-        //
         [backgroundImage release];
 
     }
