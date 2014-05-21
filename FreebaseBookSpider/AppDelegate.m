@@ -39,8 +39,8 @@
     FBSViewController * client = [[FBSViewController alloc] init];
     navigationController = [[UINavigationController alloc] initWithRootViewController:client];
     navigationController.navigationBar.barTintColor = [[UIColor alloc] initWithRed:14.0f/255.0f green:14.0f / 255.0f blue: 14.0f / 255.0f alpha:1.0f];
+    navigationController.navigationBar.tintColor = [UIColor whiteColor];
     [navigationController setToolbarHidden:YES animated:NO];
-   // navigationController.toolbarHidden = YES;
     [client release];
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:NO];
     [_window addSubview:navigationController.view];
