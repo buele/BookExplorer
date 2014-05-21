@@ -34,6 +34,9 @@
 
 static FBSResources * sharedResources_  = nil;
 
+static NSString *  GOOGLE_API_KEY_FILE_NAME                      = @"api_key";
+static NSString *  GOOGLE_API_KEY_FILE_EXT                       = @"plist";
+static NSString *  GOOGLE_API_KEY_KEY                           = @"google_api_key";
 static NSString *  FREEBASE_URLS_FILE_NAME                      = @"freebase_urls";
 static NSString *  FREEBASE_URLS_FILE_EXT                       = @"plist";
 static NSString *  MQL_QUERIES_FILE_NAME                        = @"mql_queries";
@@ -46,17 +49,32 @@ static NSString *  FREEBASE_QUERY_PARAMETER_KEY                 = @"query";
 static NSString *  FREEBASE_SEARCH_PARAMETER_KEY                = @"search";
 static NSString *  FREEBASE_TOPIC_PARAMETER_KEY                 = @"topic";
 static NSString *  FREEBASE_IMAGE_PARAMETER_KEY                 = @"image";
+static NSString *  FREEBASE_API_KEY_PARAMETER_KEY               = @"key";
 
 -(id)init
 {
     self = [super init];
     if(self){
-        freebaseApiKey = nil;
-        // load resources
+        NSDictionary * apiKey = [[NSDictionary alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:GOOGLE_API_KEY_FILE_NAME ofType:GOOGLE_API_KEY_FILE_EXT]];
+        if(apiKey) freebaseApiKey = [[apiKey objectForKey:GOOGLE_API_KEY_KEY] retain];
+        else freebaseApiKey = nil;
+        [apiKey release];
+
         freebaseUrls =  [[NSDictionary alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:FREEBASE_URLS_FILE_NAME ofType:FREEBASE_URLS_FILE_EXT]];
         mqlQueries =  [[NSDictionary alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:MQL_QUERIES_FILE_NAME ofType:MQL_QUERIES_FILE_EXT]];
-        // init urls
-        nodesByKeywordBaseUrl = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@/%@?%@&%@=",[self getBaseUrl],FREEBASE_SEARCH_PARAMETER_KEY, [self getNodesByKeywordParameters],FREEBASE_QUERY_PARAMETER_KEY] ];
+ 
+        if(freebaseApiKey)
+            nodesByKeywordBaseUrl = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@/%@?%@=%@%@&%@=",[self getBaseUrl],
+                                                                      FREEBASE_SEARCH_PARAMETER_KEY,
+                                                                      FREEBASE_API_KEY_PARAMETER_KEY,
+                                                                      freebaseApiKey,
+                                                                      [self getNodesByKeywordParameters],
+                                                                      FREEBASE_QUERY_PARAMETER_KEY]];
+        else
+            nodesByKeywordBaseUrl = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@/%@?%@&%@=",[self getBaseUrl],
+                                                                      FREEBASE_SEARCH_PARAMETER_KEY,
+                                                                      [self getNodesByKeywordParameters],
+                                                                      FREEBASE_QUERY_PARAMETER_KEY]];
         nodePropertiesByIdBaseUrl = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@/%@",[self getBaseUrl],FREEBASE_TOPIC_PARAMETER_KEY ]];
         imageBaseUrl = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@/%@",[self getBaseUrl],FREEBASE_IMAGE_PARAMETER_KEY ]];
     }
@@ -69,7 +87,7 @@ static NSString *  FREEBASE_IMAGE_PARAMETER_KEY                 = @"image";
     return [freebaseUrls objectForKey:FREEBASE_API_BASE_URL_KEY];
 }
 
--(NSString *)getRunMqlQueryUrl
+-(NSString *)getRunMqlQueryUrl//
 {
     return [NSString stringWithFormat:@"%@%@",
             [self getBaseUrl],
@@ -92,36 +110,39 @@ static NSString *  FREEBASE_IMAGE_PARAMETER_KEY                 = @"image";
 }
 
 #pragma mark main protocol
--(NSURL *)bookNodesUrlByKeyword:(NSString * )keyword 
+-(NSURL *)bookNodesUrlByKeyword:(NSString * )keyword
 {
     NSString * urlString = [NSString stringWithFormat:@"%@%@", nodesByKeywordBaseUrl,[keyword stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
-    NSURL * url = [NSURL URLWithString:[self encodeUrl:urlString]];
+    NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"%@",[self encodeUrl:urlString]]];
     return url;
 }
 
 -(NSURL *)nodePropertiesUrlById:(NSString * )nodeId
 {
     static NSString *  FREEBASE_ALL_PROPERTIES_FILTER_PARAMETER_KEY = @"filter=allproperties";
-    return [NSURL URLWithString:[NSString stringWithFormat:@"%@%@?%@", nodePropertiesByIdBaseUrl,[self encodeUrl:nodeId],FREEBASE_ALL_PROPERTIES_FILTER_PARAMETER_KEY  ]];
+    NSString * urlString;
+    if(freebaseApiKey)
+        urlString = [NSString stringWithFormat:@"%@%@?%@=%@&%@",
+                     nodePropertiesByIdBaseUrl,
+                     [self encodeUrl:nodeId],
+                     FREEBASE_API_KEY_PARAMETER_KEY,
+                     freebaseApiKey,
+                     FREEBASE_ALL_PROPERTIES_FILTER_PARAMETER_KEY ];
+    else
+        urlString = [NSString stringWithFormat:@"%@%@?%@", nodePropertiesByIdBaseUrl,nodeId,FREEBASE_ALL_PROPERTIES_FILTER_PARAMETER_KEY  ];
+    return [NSURL URLWithString:[self encodeUrl:urlString]];
 }
 
 -(NSURL *)imageUrlById:(NSString * )imageId
 {
-    return [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",imageBaseUrl,imageId]];
+    NSString * urlString;
+    if(freebaseApiKey)
+        urlString= [NSString stringWithFormat:@"%@%@?%@=%@",imageBaseUrl,imageId,FREEBASE_API_KEY_PARAMETER_KEY,freebaseApiKey];
+    else
+        urlString= [NSString stringWithFormat:@"%@%@",imageBaseUrl,imageId];
+    return [NSURL URLWithString:urlString];
 }
 
--(void)setFreebaseApiKey:(NSString *)aFreebaseApiKey
-{
-    if(aFreebaseApiKey){
-        if(freebaseApiKey){
-            [aFreebaseApiKey retain];
-            [freebaseApiKey release];
-            freebaseApiKey = aFreebaseApiKey;
-        }else{
-            freebaseApiKey = [[NSString alloc]initWithString:aFreebaseApiKey];
-        }
-    }
-}
 
 #pragma mark static method
 + (FBSResources *) getSharedInstance {

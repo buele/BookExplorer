@@ -82,7 +82,6 @@
 -(void)nodesDidGenerated:(NSArray *)theNodes forKeyword:(NSString *)keyword
 {
     [indicator stopAnimating];
-    NSLog(@"log");
     if(theNodes != nil && [theNodes count]>0){
         [view expandSearchBox];
         self.searchResults = theNodes;
@@ -159,9 +158,7 @@
 {
     if(enableSelectTopic){
         self.enableSelectTopic = NO;
-        NSLog(@"Element selected");
         FBSNode * node =[searchResults objectAtIndex:indexPath.row];
-        NSLog(@"element selected: id:%@, name:%@, notableId: %@, notableName: %@",node.nodeId, node.name,node.notableId,node.notableName);
         [bookSpider getTopicById:node.nodeId name:node.name forDelegate:self];
         [indicator startAnimating];
     }
@@ -190,7 +187,6 @@
 
 -(void)searchNodesByKeyword:(NSString *)aKeyword
 {
-    NSLog(@"searchNodesByKeysord: %@",aKeyword);
     [bookSpider getNodesByKeyword:aKeyword forDelegate:self];
     [indicator startAnimating];
 }

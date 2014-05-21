@@ -53,7 +53,7 @@
 -(void)nodesDidGenerated:(NSArray *)theNodes forKeyword:(NSString *)keyword
 {
   //  [freebaseBookSpider getTopicByNode:[theNodes objectAtIndex:0] forDelegate:self];
-    NSLog(@"log");
+
 }
 
 -(void)topicDidGenerated:(FBSTopic *)theTopic

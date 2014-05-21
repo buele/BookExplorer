@@ -14,6 +14,7 @@
 		565C48F6192A976E006DB181 /* BETopicPropertyVerticalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 565C48F5192A976E006DB181 /* BETopicPropertyVerticalView.m */; };
 		565C48F9192AC7CA006DB181 /* BETopicDatePropertyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 565C48F8192AC7CA006DB181 /* BETopicDatePropertyView.m */; };
 		566A4E7119055A3600400136 /* FBSNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 566A4E7019055A3600400136 /* FBSNode.m */; };
+		567F6680192D5F5000E33262 /* api_key.plist in Resources */ = {isa = PBXBuildFile; fileRef = 567F667F192D5F5000E33262 /* api_key.plist */; };
 		5682E38218E5D5B200522958 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5682E38118E5D5B200522958 /* Foundation.framework */; };
 		5682E38418E5D5B200522958 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5682E38318E5D5B200522958 /* CoreGraphics.framework */; };
 		5682E38618E5D5B200522958 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5682E38518E5D5B200522958 /* UIKit.framework */; };
@@ -34,6 +35,8 @@
 		56A0D2AD191E498B00620224 /* FBSView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A0D2A7191E498B00620224 /* FBSView.m */; };
 		56A0D2AE191E498B00620224 /* FBSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A0D2A9191E498B00620224 /* FBSViewController.m */; };
 		56A0D2AF191E498B00620224 /* UINavigationControllerCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A0D2AB191E498B00620224 /* UINavigationControllerCategory.m */; };
+		56A51729192CBBD6000BF738 /* api_key.plist.example.plist in Resources */ = {isa = PBXBuildFile; fileRef = 56A51728192CBBD6000BF738 /* api_key.plist.example.plist */; };
+		56A5172B192CD6C9000BF738 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 56A5172A192CD6C9000BF738 /* .gitignore */; };
 		56B069FF18F2DFD700F2C508 /* FBSApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B069FA18F2DFD700F2C508 /* FBSApiManager.m */; };
 		56B06A0118F2DFD700F2C508 /* FBSResources.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B069FE18F2DFD700F2C508 /* FBSResources.m */; };
 		56C3D54E18F803DC00A05BC4 /* FBSTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C3D54D18F803DC00A05BC4 /* FBSTopic.m */; };
@@ -79,6 +82,7 @@
 		566A4E6F19055A3600400136 /* FBSNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBSNode.h; path = FBSNodes/FBSNode.h; sourceTree = "<group>"; };
 		566A4E7019055A3600400136 /* FBSNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBSNode.m; path = FBSNodes/FBSNode.m; sourceTree = "<group>"; };
 		566A4E7819071DA500400136 /* FBSNodeManagerActions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FBSNodeManagerActions.h; path = FBSNodes/FBSNodeManagerActions.h; sourceTree = "<group>"; };
+		567F667F192D5F5000E33262 /* api_key.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = api_key.plist; sourceTree = "<group>"; };
 		5682E37E18E5D5B200522958 /* FreebaseBookSpider.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FreebaseBookSpider.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5682E38118E5D5B200522958 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5682E38318E5D5B200522958 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -108,6 +112,8 @@
 		56A0D2A9191E498B00620224 /* FBSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBSViewController.m; sourceTree = "<group>"; };
 		56A0D2AA191E498B00620224 /* UINavigationControllerCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UINavigationControllerCategory.h; sourceTree = "<group>"; };
 		56A0D2AB191E498B00620224 /* UINavigationControllerCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UINavigationControllerCategory.m; sourceTree = "<group>"; };
+		56A51728192CBBD6000BF738 /* api_key.plist.example.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = api_key.plist.example.plist; sourceTree = "<group>"; };
+		56A5172A192CD6C9000BF738 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		56B069F818F2DFD700F2C508 /* FBSApiActions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBSApiActions.h; sourceTree = "<group>"; };
 		56B069F918F2DFD700F2C508 /* FBSApiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBSApiManager.h; sourceTree = "<group>"; };
 		56B069FA18F2DFD700F2C508 /* FBSApiManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBSApiManager.m; sourceTree = "<group>"; };
@@ -169,6 +175,7 @@
 		5682E37518E5D5B200522958 = {
 			isa = PBXGroup;
 			children = (
+				56A5172A192CD6C9000BF738 /* .gitignore */,
 				5682E3B318E5D7E600522958 /* Resources */,
 				5682E38718E5D5B200522958 /* FreebaseBookSpider */,
 				5682E3A018E5D5B300522958 /* FreebaseBookSpiderTests */,
@@ -248,12 +255,14 @@
 		5682E3B318E5D7E600522958 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				567F667F192D5F5000E33262 /* api_key.plist */,
 				56CCA0B419214F2200260075 /* delete_icon.png */,
 				56E176A61920FC1A00DA2F2A /* search-icon.png */,
 				56D83F471920275900507272 /* Jacques_Charles_Luftschiff_landscape_portrait.jpg */,
 				56D83F481920275900507272 /* Jacques_Charles_Luftschiff_landscape.jpg */,
 				5682E3B418E5D80000522958 /* freebase_urls.plist */,
 				5682E3B618E5DB5400522958 /* mql_queries.plist */,
+				56A51728192CBBD6000BF738 /* api_key.plist.example.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -406,6 +415,9 @@
 				56D83F491920275900507272 /* Jacques_Charles_Luftschiff_landscape_portrait.jpg in Resources */,
 				56CCA0B519214F2200260075 /* delete_icon.png in Resources */,
 				5682E38C18E5D5B200522958 /* InfoPlist.strings in Resources */,
+				56A51729192CBBD6000BF738 /* api_key.plist.example.plist in Resources */,
+				56A5172B192CD6C9000BF738 /* .gitignore in Resources */,
+				567F6680192D5F5000E33262 /* api_key.plist in Resources */,
 				5682E3B518E5D80000522958 /* freebase_urls.plist in Resources */,
 				56D83F4A1920275900507272 /* Jacques_Charles_Luftschiff_landscape.jpg in Resources */,
 				5695893318E8F72500CBC336 /* README.md in Resources */,
@@ -576,6 +588,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FreebaseBookSpider/FreebaseBookSpider-Prefix.pch";
 				INFOPLIST_FILE = "FreebaseBookSpider/FreebaseBookSpider-Info.plist";
@@ -591,6 +604,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FreebaseBookSpider/FreebaseBookSpider-Prefix.pch";
 				INFOPLIST_FILE = "FreebaseBookSpider/FreebaseBookSpider-Info.plist";

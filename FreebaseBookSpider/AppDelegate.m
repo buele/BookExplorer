@@ -47,7 +47,6 @@
     self.window.rootViewController = self->navigationController;
 
     [_window makeKeyAndVisible];
-    NSLog(@"%@", client);
     return YES;
 }
 
