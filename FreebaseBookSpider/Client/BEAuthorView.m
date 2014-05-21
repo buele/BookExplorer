@@ -107,6 +107,8 @@
     // spouses
     //[self addVerticalPropertyListViewByKey:FB_SPOUSES_KEY withLine:NO];
     
+    [self addFreebaseTopicLinkWithNodeId:aTopic.nodeId];
+    
     // define content scroll view content size
     [self setContentSize:CGSizeMake(self.frame.size.width, lastY + VIEW_PADDING)];
 

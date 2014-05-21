@@ -36,6 +36,7 @@
 
 CGFloat  const VIEW_PADDING = 40.0f;
 static CGFloat PROPERTY_PADDING = 5.0f;
+static CGFloat POLICY_FONT_SIZE = 20.0f;
 
 @implementation BETopicView
 @synthesize topic;
@@ -45,6 +46,9 @@ static CGFloat NAME_HEIGTH = 32.0f;
 static CGFloat LINE_PADDING = 5.0f;
 static CGFloat NAME_FONT_SIZE = 25.0f;
 static NSString * NAME_FONT_FAMILY = @"Helvetica";
+static NSString * POLICY_LABEL = @"Topic link: ";
+static NSString * TOPIC_BASE_URL = @"http://www.freebase.com%@";
+
 static CGFloat DESCRIPTION_FONT_SIZE = 20.0f;
 static CGFloat LINE_HEIGHT = 1.0f;
 static NSString * DESCRIPTION_FONT_FAMILY = @"Helvetica";
@@ -159,6 +163,31 @@ static NSString * WIKIPEDIA_SIGNATURE = @"(Wikipedia)";
         [topicPropertyView release];
     }
 }
+
+-(void)addFreebaseTopicLinkWithNodeId:(NSString *)aNodeId
+{
+    [self addLine];
+    // label
+    UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(VIEW_PADDING, lastY, self.frame.size.width, 0)];
+    [label setText:POLICY_LABEL];
+    [label setFont:[UIFont boldSystemFontOfSize:POLICY_FONT_SIZE]];
+    [label sizeToFit];
+    [self addSubview:label];
+    
+    // value
+    UILabel * value = [[UILabel alloc] initWithFrame:CGRectMake(label.frame.size.width + VIEW_PADDING , lastY + 1, self.frame.size.width, 0)];
+    [value setText:[NSString stringWithFormat:TOPIC_BASE_URL,aNodeId]];
+    [value setFont:[UIFont systemFontOfSize:POLICY_FONT_SIZE]];
+    [value sizeToFit];
+    [self addSubview:value];
+    lastY += label.frame.size.height;
+    
+    
+    [label release];
+    [value release];
+    
+}
+
 
 -(void)addLine
 {

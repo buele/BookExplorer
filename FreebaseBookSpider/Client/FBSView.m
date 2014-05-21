@@ -47,6 +47,11 @@ static CGFloat SUGGESTION_PADDING = 50.0f;
 static NSString * TITLE_TEXT = @"Book Explorer";
 static NSString * BACKGROUND_IMAGE_NAME = @"Jacques_Charles_Luftschiff_landscape_portrait";
 static NSString * BACKGROUND_IMAGE_TYPE = @"jpg";
+static NSString * POLICIES_TEXT = @"Powered by www.freebase.com";
+static CGFloat POLICIES_FONT_SIZE = 20.0f;
+static CGFloat POLICIES_WIDTH = 300.0f;
+static CGFloat POLICIES_HEIGHT  = 30.0f;
+static CGFloat POLICIES_BOTTOM  = 15.0f;
 
 
 -(id)initWithFrame:(CGRect)frame
@@ -73,6 +78,16 @@ static NSString * BACKGROUND_IMAGE_TYPE = @"jpg";
         [self addSubview:title];
         [title release];
         [searchBox release];
+        
+        // freebase policies
+        UILabel * policies = [[UILabel alloc]initWithFrame:[self policiesFrame]];
+        [policies setText:POLICIES_TEXT];
+        [policies setTextColor:[self titleColor]];
+        [policies setFont:[UIFont systemFontOfSize:POLICIES_FONT_SIZE]];
+        [self addSubview:policies];
+        [policies release];
+        
+        
     }
     return self;
 }
@@ -88,6 +103,15 @@ static NSString * BACKGROUND_IMAGE_TYPE = @"jpg";
     return [[[UIColor alloc] initWithRed:14.0f/255.0f green:14.0f / 255.0f blue: 14.0f / 255.0f alpha:1.0f] autorelease];
 }
 
+-(CGRect)policiesFrame
+{
+    CGRect frame;
+    frame.origin.x = [self screenWidth] * SEARCH_BOX_WIDTH_RATIO + [self screenWidth] * SEARCH_BOX_PADDING_RATIO / 2.0f - POLICIES_WIDTH;
+    frame.origin.y = [self screenHeight] - POLICIES_HEIGHT - POLICIES_BOTTOM  - [self screenWidth] * SEARCH_BOX_PADDING_RATIO / 2.0f;
+    frame.size.width = POLICIES_WIDTH;
+    frame.size.height = POLICIES_HEIGHT;
+    return frame;
+}
 
 -(CGRect)titleFrame
 {
