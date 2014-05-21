@@ -39,10 +39,10 @@
 {
     self = [super init];
     if(self){
-        propertyId = [aPropertyId retain];
-        lang = [aLang retain];
-        text = [aText retain];
-        value = [aValue retain];
+        propertyId = (aPropertyId)?[aPropertyId retain]: nil;
+        lang = (aLang)?[aLang retain]:nil;
+        text = (aText)?[aText retain]:nil;
+        value = (aValue)?[aValue retain]:nil;
         
     }
     return self;
@@ -50,10 +50,10 @@
 
 -(void)dealloc
 {
-    [propertyId release];
-    [lang release];
-    [text release];
-    [value release];
+    if(propertyId)[propertyId release];
+    if(lang)[lang release];
+    if(text)[text release];
+    if(value)[value release];
     [super dealloc];
 }
 @end
