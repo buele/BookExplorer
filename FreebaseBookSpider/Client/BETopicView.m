@@ -120,8 +120,9 @@ static NSString * WIKIPEDIA_SIGNATURE = @"(Wikipedia)";
     UIView *lineView = [[[UIView alloc] initWithFrame:CGRectMake(VIEW_PADDING, y - LINE_HEIGHT, self.bounds.size.width - 2 * VIEW_PADDING, 1)] autorelease];
     [lineView setBackgroundColor: lineColor];
     lastY += LINE_PADDING;
-    return lineView;
     [lineColor release];
+    return lineView;
+    
 }
 
 
