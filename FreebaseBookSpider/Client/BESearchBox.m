@@ -59,6 +59,10 @@ static NSString * SEARCH_BUTTON_IMAGE_TYPE = @"png";
         [searchTextField setBackgroundColor:[UIColor whiteColor]];
         [searchTextField setClearButtonMode:UITextFieldViewModeWhileEditing];
         [searchTextField setDelegate:self];
+        UIView *spacerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
+        [searchTextField setLeftViewMode:UITextFieldViewModeAlways];
+        [searchTextField setLeftView:spacerView];
+        [spacerView release];
         
         // search button
         searchButton = [[UIButton alloc]initWithFrame:[self searchButtonFrame]];
