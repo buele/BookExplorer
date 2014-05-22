@@ -41,6 +41,6 @@
 
 @property(nonatomic,retain)NSArray * searchResults;
 @property(atomic,assign)BOOL enableSelectTopic;
--(void)pushButtonDidPressed;
+
 
 @end

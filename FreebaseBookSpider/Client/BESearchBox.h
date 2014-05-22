@@ -29,7 +29,8 @@
 #import <UIKit/UIKit.h>
 @protocol BESearchBoxDelegate
 -(void)searchNodesByKeyword:(NSString *)aKeyword;
--(void)backFromListViewDidPressed;
+-(void)expandSearchBox;
+-(void)collapseSearchBox;
 @end
 
 @interface BESearchBox : UIView <UITextFieldDelegate>
@@ -37,6 +38,6 @@
 
 @property(nonatomic, retain)UITextField * searchTextField;
 @property(nonatomic, retain)UIButton * searchButton;
-@property(nonatomic, retain)id delegate;
+@property(nonatomic, retain)id<BESearchBoxDelegate, NSObject> delegate;
 @property(nonatomic, retain)UIButton * backFromListViewButton;
 @end

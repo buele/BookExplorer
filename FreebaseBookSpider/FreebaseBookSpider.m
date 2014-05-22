@@ -52,14 +52,7 @@
     return self;
 }
 
--(id)initWithFreebaseApiKey:(NSString *)anApiKey delegate:(id<FreebaseBookSpiderDelegate>) aDelegate
-{
-    self  = [self initWithDelegate:aDelegate];
-    if(self){
-        [[FBSResources getSharedInstance]setFreebaseApiKey:anApiKey];
-    }
-    return self;
-}
+
 
 
 #pragma mark main interface

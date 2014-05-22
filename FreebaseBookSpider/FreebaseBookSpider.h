@@ -38,8 +38,7 @@
 @protocol FreebaseBookSpiderDelegate
 -(void)nodesDidGenerated:(NSArray *)theNodes forKeyword:(NSString *)keyword;
 -(void)topicDidGenerated:(FBSTopic *)theTopic;
--(void)authorDidGenerated:(FBSAuthor *)anAuthor;
--(void)bookDidGenerated:(FBSBook *)aBook;
+
 @end
 
 @interface FreebaseBookSpider : NSObject <FBSNodeManagerDelegate> //TODO: remove FreebaseBookSpiderDelegate after testing
@@ -52,7 +51,6 @@
 
 #pragma mark init
 -(id)initWithDelegate:(id<FreebaseBookSpiderDelegate>)delegate;
--(id)initWithFreebaseApiKey:(NSString *)anApiKey delegate:(id<FreebaseBookSpiderDelegate>) aDelegate;
 
 #pragma mark main interface
 -(void)getNodesByKeyword: (NSString * ) aKeyword forDelegate:(id<FreebaseBookSpiderDelegate>)aDelegate;

@@ -42,7 +42,7 @@
 
 + (FBSResources *)getSharedInstance;
 
--(void)setFreebaseApiKey:(NSString *)aFreebaseApiKey;
+
 
 
 

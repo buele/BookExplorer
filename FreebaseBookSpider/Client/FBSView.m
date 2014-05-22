@@ -48,8 +48,10 @@ static NSString * TITLE_TEXT = @"Book Explorer";
 static NSString * BACKGROUND_IMAGE_NAME = @"Jacques_Charles_Luftschiff_landscape_portrait";
 static NSString * BACKGROUND_IMAGE_TYPE = @"jpg";
 static NSString * POLICIES_TEXT = @"Powered by www.freebase.com";
+static NSString * DEVELOER_TEXT = @"Developed by Raffaele Bua";
+static CGFloat  POLICY_SPACER = 5.0f;
 static CGFloat POLICIES_FONT_SIZE = 20.0f;
-static CGFloat POLICIES_WIDTH = 300.0f;
+static CGFloat POLICIES_WIDTH = 280.0f;
 static CGFloat POLICIES_HEIGHT  = 30.0f;
 static CGFloat POLICIES_BOTTOM  = 15.0f;
 
@@ -58,7 +60,6 @@ static CGFloat POLICIES_BOTTOM  = 15.0f;
 {
     self = [super initWithFrame:frame];
     if (self) {
-        
         // title
         UILabel * title = [[UILabel alloc]initWithFrame:[self titleFrame]];
         [title setText:TITLE_TEXT];
@@ -87,7 +88,13 @@ static CGFloat POLICIES_BOTTOM  = 15.0f;
         [self addSubview:policies];
         [policies release];
         
-        
+        // developer
+        UILabel * developer = [[UILabel alloc]initWithFrame:[self developerFrame]];
+        [developer setText:DEVELOER_TEXT];
+        [developer setTextColor:[self titleColor]];
+        [developer setFont:[UIFont systemFontOfSize:POLICIES_FONT_SIZE]];
+        [self addSubview:developer];
+        [developer release];
     }
     return self;
 }
@@ -106,7 +113,17 @@ static CGFloat POLICIES_BOTTOM  = 15.0f;
 -(CGRect)policiesFrame
 {
     CGRect frame;
-    frame.origin.x = [self screenWidth] * SEARCH_BOX_WIDTH_RATIO + [self screenWidth] * SEARCH_BOX_PADDING_RATIO / 2.0f - POLICIES_WIDTH;
+    frame.origin.x = [self screenWidth] * SEARCH_BOX_WIDTH_RATIO + [self screenWidth] * SEARCH_BOX_PADDING_RATIO / 2.0f - POLICIES_WIDTH - POLICY_SPACER;
+    frame.origin.y = [self screenHeight] - POLICIES_HEIGHT - POLICIES_BOTTOM  - [self screenWidth] * SEARCH_BOX_PADDING_RATIO / 2.0f;
+    frame.size.width = POLICIES_WIDTH;
+    frame.size.height = POLICIES_HEIGHT;
+    return frame;
+}
+
+-(CGRect)developerFrame
+{
+    CGRect frame;
+    frame.origin.x =  [self screenWidth] * SEARCH_BOX_PADDING_RATIO / 2.0f + POLICY_SPACER;
     frame.origin.y = [self screenHeight] - POLICIES_HEIGHT - POLICIES_BOTTOM  - [self screenWidth] * SEARCH_BOX_PADDING_RATIO / 2.0f;
     frame.size.width = POLICIES_WIDTH;
     frame.size.height = POLICIES_HEIGHT;
@@ -223,7 +240,6 @@ static CGFloat POLICIES_BOTTOM  = 15.0f;
 {
     [delegate searchBoxDidCollapsed];
 }
-
 
 - (void)dealloc {
     [delegate release];

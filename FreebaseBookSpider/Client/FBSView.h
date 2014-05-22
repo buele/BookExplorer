@@ -33,19 +33,16 @@
 
 
 @protocol FBSViewDelegate
--(void)pushButtonDidPressed;
--(void)testRequestButtonDidPressed;
 -(void)searchBoxDidCollapsed;
 -(void)searchBoxDidExpanded;
 -(void)searchNodesByKeyword:(NSString *)aKeyword;
 @end
 
-@interface FBSView : UIView{
+@interface FBSView : UIView <BESearchBoxDelegate>
+{
     FBSButton * pushButton;
     FBSButton * testRequestButton;
     id delegate;
-    
-    
 }
 
 -(void)setSearchResultTableViewFrame; //TODO: very dirty.. testing to remove

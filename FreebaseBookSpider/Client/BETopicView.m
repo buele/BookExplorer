@@ -47,10 +47,13 @@ static CGFloat LINE_PADDING = 5.0f;
 static CGFloat NAME_FONT_SIZE = 25.0f;
 static NSString * NAME_FONT_FAMILY = @"Helvetica";
 static NSString * POLICY_LABEL = @"Topic link: ";
+static NSString * POLICY_TOPIC_ID_LABEL = @"Topic ID: ";
 static NSString * TOPIC_BASE_URL = @"http://www.freebase.com%@";
 
 static CGFloat DESCRIPTION_FONT_SIZE = 20.0f;
 static CGFloat LINE_HEIGHT = 1.0f;
+static CGFloat FREEBASE_LINK_HEIGHT = 40.0f;
+
 static NSString * DESCRIPTION_FONT_FAMILY = @"Helvetica";
 static NSString * WIKIPEDIA_SIGNATURE = @"(Wikipedia)";
 
@@ -173,18 +176,36 @@ static NSString * WIKIPEDIA_SIGNATURE = @"(Wikipedia)";
     [label setFont:[UIFont boldSystemFontOfSize:POLICY_FONT_SIZE]];
     [label sizeToFit];
     [self addSubview:label];
-    
-    // value
-    UILabel * value = [[UILabel alloc] initWithFrame:CGRectMake(label.frame.size.width + VIEW_PADDING , lastY + 1, self.frame.size.width, 0)];
-    [value setText:[NSString stringWithFormat:TOPIC_BASE_URL,aNodeId]];
-    [value setFont:[UIFont systemFontOfSize:POLICY_FONT_SIZE]];
-    [value sizeToFit];
-    [self addSubview:value];
     lastY += label.frame.size.height;
     
+    // value
+    UILabel * value = [[UILabel alloc] initWithFrame:CGRectMake(VIEW_PADDING , lastY , self.frame.size.width - VIEW_PADDING * 2.0f, FREEBASE_LINK_HEIGHT)];
+    [value setText:[NSString stringWithFormat:TOPIC_BASE_URL,aNodeId]];
+    [value setFont:[UIFont systemFontOfSize:POLICY_FONT_SIZE]];
+    //[value sizeToFit];
+    [self addSubview:value];
+    lastY += value.frame.size.height;
     
-    [label release];
+    // label
+    UILabel * topicLabel = [[UILabel alloc] initWithFrame:CGRectMake(VIEW_PADDING, lastY, self.frame.size.width, 0)];
+    [topicLabel setText:POLICY_TOPIC_ID_LABEL];
+    [topicLabel setFont:[UIFont boldSystemFontOfSize:POLICY_FONT_SIZE]];
+    [topicLabel sizeToFit];
+    [self addSubview:topicLabel];
+    lastY += topicLabel.frame.size.height;
+    
+    // value
+    UILabel * topicValue = [[UILabel alloc] initWithFrame:CGRectMake(VIEW_PADDING , lastY , self.frame.size.width - VIEW_PADDING * 2.0f, FREEBASE_LINK_HEIGHT)];
+    [topicValue setText:aNodeId];
+    [topicValue setFont:[UIFont systemFontOfSize:POLICY_FONT_SIZE]];
+    //[value sizeToFit];
+    [self addSubview:topicValue];
+    lastY += topicValue.frame.size.height;
+    
     [value release];
+    [label release];
+    [topicLabel release];
+    [topicValue release];
     
 }
 

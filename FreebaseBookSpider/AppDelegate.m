@@ -28,7 +28,7 @@
  *****************************************************************************/
 
 #import "AppDelegate.h"
-#import "TestClient.h"
+
 #import "Client/FBSViewController.h"
 @implementation AppDelegate
 

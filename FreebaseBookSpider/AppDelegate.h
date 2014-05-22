@@ -28,7 +28,7 @@
 
 
 #import <UIKit/UIKit.h>
-#import "TestClient.h"
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 {
     UINavigationController * navigationController;
