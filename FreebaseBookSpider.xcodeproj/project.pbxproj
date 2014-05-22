@@ -15,7 +15,7 @@
 		56181CD8192D7C8000FC940F /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56181CD5192D7C8000FC940F /* Icon-Small@2x.png */; };
 		56181CDA192D7CA400FC940F /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 56181CD9192D7CA400FC940F /* Icon-Small.png */; };
 		5630304D18FC2B73000699E9 /* FBSEntityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5630304C18FC2B73000699E9 /* FBSEntityManager.m */; };
-		5635391A19238AB40003F462 /* BETopicView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5635391919238AB40003F462 /* BETopicView.m */; };
+		5635391A19238AB40003F462 /* FBSTopicView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5635391919238AB40003F462 /* FBSTopicView.m */; };
 		5635747E191ADCD600C3AF29 /* FBSURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5635747D191ADCD600C3AF29 /* FBSURLConnection.m */; };
 		56357481191AE3D500C3AF29 /* FBSApiPendingRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 56357480191AE3D500C3AF29 /* FBSApiPendingRequest.m */; };
 		565C48F6192A976E006DB181 /* BETopicPropertyVerticalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 565C48F5192A976E006DB181 /* BETopicPropertyVerticalView.m */; };
@@ -50,16 +50,16 @@
 		56C3D55418F804C700A05BC4 /* FBSAuthor.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C3D55318F804C700A05BC4 /* FBSAuthor.m */; };
 		56C3D55718F804DA00A05BC4 /* FBSBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C3D55618F804DA00A05BC4 /* FBSBook.m */; };
 		56C3D56318F8081700A05BC4 /* FBSPropertyValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C3D56218F8081700A05BC4 /* FBSPropertyValue.m */; };
-		56C4D00B192A134900FDFD3C /* TopicPropertyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C4D00A192A134900FDFD3C /* TopicPropertyView.m */; };
+		56C4D00B192A134900FDFD3C /* FBSTopicPropertyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C4D00A192A134900FDFD3C /* FBSTopicPropertyView.m */; };
 		56CCA0B519214F2200260075 /* delete_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 56CCA0B419214F2200260075 /* delete_icon.png */; };
 		56CE273B19004BD700635489 /* FBSProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 56CE273A19004BD700635489 /* FBSProperty.m */; };
-		56CF49BE1923EDEF006E36CC /* BEAuthorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56CF49BD1923EDEF006E36CC /* BEAuthorView.m */; };
-		56CF49C11923FE21006E36CC /* BEBookView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56CF49C01923FE21006E36CC /* BEBookView.m */; };
+		56CF49BE1923EDEF006E36CC /* FBSAuthorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56CF49BD1923EDEF006E36CC /* FBSAuthorView.m */; };
+		56CF49C11923FE21006E36CC /* FBSBookView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56CF49C01923FE21006E36CC /* FBSBookView.m */; };
 		56D83F491920275900507272 /* Jacques_Charles_Luftschiff_landscape_portrait.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 56D83F471920275900507272 /* Jacques_Charles_Luftschiff_landscape_portrait.jpg */; };
 		56D83F4A1920275900507272 /* Jacques_Charles_Luftschiff_landscape.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 56D83F481920275900507272 /* Jacques_Charles_Luftschiff_landscape.jpg */; };
 		56E176A71920FC1A00DA2F2A /* search-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 56E176A61920FC1A00DA2F2A /* search-icon.png */; };
-		56E176AA1920FE2F00DA2F2A /* BESearchBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 56E176A91920FE2F00DA2F2A /* BESearchBox.m */; };
-		56FB3CFA1922428100FA945F /* BETopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56FB3CF91922428100FA945F /* BETopicViewController.m */; };
+		56E176AA1920FE2F00DA2F2A /* FBSSearchBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 56E176A91920FE2F00DA2F2A /* FBSSearchBox.m */; };
+		56FB3CFA1922428100FA945F /* FBSTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56FB3CF91922428100FA945F /* FBSTopicViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,8 +82,8 @@
 		56181CD9192D7CA400FC940F /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
 		5630304B18FC2B73000699E9 /* FBSEntityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBSEntityManager.h; path = FBSNodes/FBSEntityManager.h; sourceTree = "<group>"; };
 		5630304C18FC2B73000699E9 /* FBSEntityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBSEntityManager.m; path = FBSNodes/FBSEntityManager.m; sourceTree = "<group>"; };
-		5635391819238AB40003F462 /* BETopicView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BETopicView.h; sourceTree = "<group>"; };
-		5635391919238AB40003F462 /* BETopicView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BETopicView.m; sourceTree = "<group>"; };
+		5635391819238AB40003F462 /* FBSTopicView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBSTopicView.h; sourceTree = "<group>"; };
+		5635391919238AB40003F462 /* FBSTopicView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBSTopicView.m; sourceTree = "<group>"; };
 		5635747C191ADCD600C3AF29 /* FBSURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBSURLConnection.h; sourceTree = "<group>"; };
 		5635747D191ADCD600C3AF29 /* FBSURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBSURLConnection.m; sourceTree = "<group>"; };
 		5635747F191AE3D500C3AF29 /* FBSApiPendingRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBSApiPendingRequest.h; sourceTree = "<group>"; };
@@ -140,23 +140,23 @@
 		56C3D55618F804DA00A05BC4 /* FBSBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBSBook.m; path = FBSNodes/FBSBook.m; sourceTree = "<group>"; };
 		56C3D56118F8081700A05BC4 /* FBSPropertyValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBSPropertyValue.h; path = FBSNodes/FBSPropertyValue.h; sourceTree = "<group>"; };
 		56C3D56218F8081700A05BC4 /* FBSPropertyValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBSPropertyValue.m; path = FBSNodes/FBSPropertyValue.m; sourceTree = "<group>"; };
-		56C4D009192A134900FDFD3C /* TopicPropertyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicPropertyView.h; sourceTree = "<group>"; };
-		56C4D00A192A134900FDFD3C /* TopicPropertyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicPropertyView.m; sourceTree = "<group>"; };
+		56C4D009192A134900FDFD3C /* FBSTopicPropertyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBSTopicPropertyView.h; sourceTree = "<group>"; };
+		56C4D00A192A134900FDFD3C /* FBSTopicPropertyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBSTopicPropertyView.m; sourceTree = "<group>"; };
 		56CCA0B419214F2200260075 /* delete_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = delete_icon.png; path = FreebaseBookSpider/Resources/delete_icon.png; sourceTree = "<group>"; };
 		56CE273919004BD700635489 /* FBSProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBSProperty.h; path = FBSNodes/FBSProperty.h; sourceTree = "<group>"; };
 		56CE273A19004BD700635489 /* FBSProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBSProperty.m; path = FBSNodes/FBSProperty.m; sourceTree = "<group>"; };
-		56CF49BC1923EDEF006E36CC /* BEAuthorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEAuthorView.h; sourceTree = "<group>"; };
-		56CF49BD1923EDEF006E36CC /* BEAuthorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEAuthorView.m; sourceTree = "<group>"; };
-		56CF49BF1923FE21006E36CC /* BEBookView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEBookView.h; sourceTree = "<group>"; };
-		56CF49C01923FE21006E36CC /* BEBookView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEBookView.m; sourceTree = "<group>"; };
+		56CF49BC1923EDEF006E36CC /* FBSAuthorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBSAuthorView.h; sourceTree = "<group>"; };
+		56CF49BD1923EDEF006E36CC /* FBSAuthorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBSAuthorView.m; sourceTree = "<group>"; };
+		56CF49BF1923FE21006E36CC /* FBSBookView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBSBookView.h; sourceTree = "<group>"; };
+		56CF49C01923FE21006E36CC /* FBSBookView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBSBookView.m; sourceTree = "<group>"; };
 		56D384F318FC9D900006C1D8 /* FBSNodeTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FBSNodeTypes.h; path = FBSNodes/FBSNodeTypes.h; sourceTree = "<group>"; };
 		56D83F471920275900507272 /* Jacques_Charles_Luftschiff_landscape_portrait.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Jacques_Charles_Luftschiff_landscape_portrait.jpg; path = FreebaseBookSpider/Resources/Jacques_Charles_Luftschiff_landscape_portrait.jpg; sourceTree = "<group>"; };
 		56D83F481920275900507272 /* Jacques_Charles_Luftschiff_landscape.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Jacques_Charles_Luftschiff_landscape.jpg; path = FreebaseBookSpider/Resources/Jacques_Charles_Luftschiff_landscape.jpg; sourceTree = "<group>"; };
 		56E176A61920FC1A00DA2F2A /* search-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "search-icon.png"; path = "FreebaseBookSpider/Resources/search-icon.png"; sourceTree = "<group>"; };
-		56E176A81920FE2F00DA2F2A /* BESearchBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BESearchBox.h; sourceTree = "<group>"; };
-		56E176A91920FE2F00DA2F2A /* BESearchBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BESearchBox.m; sourceTree = "<group>"; };
-		56FB3CF81922428100FA945F /* BETopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BETopicViewController.h; sourceTree = "<group>"; };
-		56FB3CF91922428100FA945F /* BETopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BETopicViewController.m; sourceTree = "<group>"; };
+		56E176A81920FE2F00DA2F2A /* FBSSearchBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBSSearchBox.h; sourceTree = "<group>"; };
+		56E176A91920FE2F00DA2F2A /* FBSSearchBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBSSearchBox.m; sourceTree = "<group>"; };
+		56FB3CF81922428100FA945F /* FBSTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBSTopicViewController.h; sourceTree = "<group>"; };
+		56FB3CF91922428100FA945F /* FBSTopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBSTopicViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -294,18 +294,18 @@
 				56A0D2A9191E498B00620224 /* FBSViewController.m */,
 				56A0D2AA191E498B00620224 /* UINavigationControllerCategory.h */,
 				56A0D2AB191E498B00620224 /* UINavigationControllerCategory.m */,
-				56E176A81920FE2F00DA2F2A /* BESearchBox.h */,
-				56E176A91920FE2F00DA2F2A /* BESearchBox.m */,
-				56FB3CF81922428100FA945F /* BETopicViewController.h */,
-				56FB3CF91922428100FA945F /* BETopicViewController.m */,
-				5635391819238AB40003F462 /* BETopicView.h */,
-				5635391919238AB40003F462 /* BETopicView.m */,
-				56CF49BC1923EDEF006E36CC /* BEAuthorView.h */,
-				56CF49BD1923EDEF006E36CC /* BEAuthorView.m */,
-				56CF49BF1923FE21006E36CC /* BEBookView.h */,
-				56CF49C01923FE21006E36CC /* BEBookView.m */,
-				56C4D009192A134900FDFD3C /* TopicPropertyView.h */,
-				56C4D00A192A134900FDFD3C /* TopicPropertyView.m */,
+				56E176A81920FE2F00DA2F2A /* FBSSearchBox.h */,
+				56E176A91920FE2F00DA2F2A /* FBSSearchBox.m */,
+				56FB3CF81922428100FA945F /* FBSTopicViewController.h */,
+				56FB3CF91922428100FA945F /* FBSTopicViewController.m */,
+				5635391819238AB40003F462 /* FBSTopicView.h */,
+				5635391919238AB40003F462 /* FBSTopicView.m */,
+				56CF49BC1923EDEF006E36CC /* FBSAuthorView.h */,
+				56CF49BD1923EDEF006E36CC /* FBSAuthorView.m */,
+				56CF49BF1923FE21006E36CC /* FBSBookView.h */,
+				56CF49C01923FE21006E36CC /* FBSBookView.m */,
+				56C4D009192A134900FDFD3C /* FBSTopicPropertyView.h */,
+				56C4D00A192A134900FDFD3C /* FBSTopicPropertyView.m */,
 				565C48F4192A976E006DB181 /* BETopicPropertyVerticalView.h */,
 				565C48F5192A976E006DB181 /* BETopicPropertyVerticalView.m */,
 				565C48F7192AC7CA006DB181 /* BETopicDatePropertyView.h */,
@@ -467,19 +467,19 @@
 			files = (
 				56B06A0118F2DFD700F2C508 /* FBSResources.m in Sources */,
 				5682E39218E5D5B200522958 /* AppDelegate.m in Sources */,
-				56FB3CFA1922428100FA945F /* BETopicViewController.m in Sources */,
+				56FB3CFA1922428100FA945F /* FBSTopicViewController.m in Sources */,
 				56C3D55418F804C700A05BC4 /* FBSAuthor.m in Sources */,
 				565C48F6192A976E006DB181 /* BETopicPropertyVerticalView.m in Sources */,
 				5682E38E18E5D5B200522958 /* main.m in Sources */,
 				56A0D2AF191E498B00620224 /* UINavigationControllerCategory.m in Sources */,
 				56C3D56318F8081700A05BC4 /* FBSPropertyValue.m in Sources */,
-				56CF49BE1923EDEF006E36CC /* BEAuthorView.m in Sources */,
-				56C4D00B192A134900FDFD3C /* TopicPropertyView.m in Sources */,
+				56CF49BE1923EDEF006E36CC /* FBSAuthorView.m in Sources */,
+				56C4D00B192A134900FDFD3C /* FBSTopicPropertyView.m in Sources */,
 				5635747E191ADCD600C3AF29 /* FBSURLConnection.m in Sources */,
 				565C48F9192AC7CA006DB181 /* BETopicDatePropertyView.m in Sources */,
 				56B069FF18F2DFD700F2C508 /* FBSApiManager.m in Sources */,
 				5682E3B218E5D5D500522958 /* FreebaseBookSpider.m in Sources */,
-				56CF49C11923FE21006E36CC /* BEBookView.m in Sources */,
+				56CF49C11923FE21006E36CC /* FBSBookView.m in Sources */,
 				5630304D18FC2B73000699E9 /* FBSEntityManager.m in Sources */,
 				56C3D54E18F803DC00A05BC4 /* FBSTopic.m in Sources */,
 				56A0D2AD191E498B00620224 /* FBSView.m in Sources */,
@@ -488,8 +488,8 @@
 				56A0D2AE191E498B00620224 /* FBSViewController.m in Sources */,
 				56A0D2AC191E498B00620224 /* FBSButton.m in Sources */,
 				56357481191AE3D500C3AF29 /* FBSApiPendingRequest.m in Sources */,
-				5635391A19238AB40003F462 /* BETopicView.m in Sources */,
-				56E176AA1920FE2F00DA2F2A /* BESearchBox.m in Sources */,
+				5635391A19238AB40003F462 /* FBSTopicView.m in Sources */,
+				56E176AA1920FE2F00DA2F2A /* FBSSearchBox.m in Sources */,
 				566A4E7119055A3600400136 /* FBSNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

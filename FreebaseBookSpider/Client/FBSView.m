@@ -28,7 +28,7 @@
 
 #import "FBSButton.h"
 #import "FBSView.h"
-#import "BESearchBox.h"
+#import "FBSSearchBox.h"
 
 
 @implementation FBSView

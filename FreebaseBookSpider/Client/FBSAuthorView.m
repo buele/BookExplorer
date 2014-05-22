@@ -26,17 +26,17 @@
  THE SOFTWARE.
  *****************************************************************************/
 
-#import "BEAuthorView.h"
+#import "FBSAuthorView.h"
 #import "FBSAuthor.h"
 #import "FBSProperty.h"
 #import "FBSPropertyValue.h"
-#import "TopicPropertyView.h"
+#import "FBSTopicPropertyView.h"
 #import "BETopicPropertyVerticalView.h"
 #import "BETopicDatePropertyView.h"
 
 
 
-@implementation BEAuthorView
+@implementation FBSAuthorView
 
 -(id)initWithTopic:(FBSTopic *)aTopic frame:(CGRect)aFrame 
 {

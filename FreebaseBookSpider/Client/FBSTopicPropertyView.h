@@ -1,5 +1,5 @@
 //
-//  BEAuthorView.h
+//  TopicPropertyView.h
 //  FreebaseBookSpider
 //
 
@@ -26,8 +26,11 @@
  THE SOFTWARE.
  *****************************************************************************/
 
-#import "BETopicView.h"
+#import <UIKit/UIKit.h>
+#import "FBSProperty.h"
 
-@interface BEAuthorView : BETopicView
+@interface FBSTopicPropertyView : UIView
 
+-(id)initWithFrame:(CGRect )frame FBSProperty:(FBSProperty *)aProperty;
+@property(nonatomic, assign)CGFloat lastY;
 @end

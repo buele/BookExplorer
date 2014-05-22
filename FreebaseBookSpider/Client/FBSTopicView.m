@@ -26,11 +26,11 @@
  THE SOFTWARE.
  *****************************************************************************/
 
-#import "BETopicView.h"
+#import "FBSTopicView.h"
 #import "FBSTopic.h"
 #import "FBSProperty.h"
 #import "FBSPropertyValue.h"
-#import "TopicPropertyView.h"
+#import "FBSTopicPropertyView.h"
 #import "BETopicDatePropertyView.h"
 #import "BETopicPropertyVerticalView.h"
 
@@ -38,7 +38,7 @@ CGFloat  const VIEW_PADDING = 40.0f;
 static CGFloat PROPERTY_PADDING = 5.0f;
 static CGFloat POLICY_FONT_SIZE = 20.0f;
 
-@implementation BETopicView
+@implementation FBSTopicView
 @synthesize topic;
 
 
@@ -132,7 +132,7 @@ static NSString * WIKIPEDIA_SIGNATURE = @"(Wikipedia)";
     if(property && [property.values count] > 0 ){
         if(line) [self addLine];
         CGRect frame = CGRectMake(VIEW_PADDING, lastY, self.bounds.size.width - 2 * VIEW_PADDING, 0);
-        TopicPropertyView * topicPropertyView = [[TopicPropertyView alloc] initWithFrame:frame
+        FBSTopicPropertyView * topicPropertyView = [[FBSTopicPropertyView alloc] initWithFrame:frame
                                                                              FBSProperty:property];
         [self addSubview:topicPropertyView];
         lastY += topicPropertyView.lastY + PROPERTY_PADDING;

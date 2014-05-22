@@ -26,19 +26,19 @@
  THE SOFTWARE.
  *****************************************************************************/
 
-#import "BETopicViewController.h"
+#import "FBSTopicViewController.h"
 #import "../FBSNodes/FBSTopic.h"
 #import "../FBSNodes/FBSPropertyValue.h"
 #import "../FBSNodes/FBSNodeTypes.h"
-#import "BETopicView.h"
-#import "BEAuthorView.h"
-#import "BEBookView.h"
+#import "FBSTopicView.h"
+#import "FBSAuthorView.h"
+#import "FBSBookView.h"
 
-@interface BETopicViewController ()
+@interface FBSTopicViewController ()
 
 @end
 
-@implementation BETopicViewController
+@implementation FBSTopicViewController
 
 
 -(id)initWithTopic:(FBSTopic *)aTopic
@@ -49,10 +49,10 @@
         topic = [aTopic retain];
         switch (aTopic.type) {
             case FBSNodeAuthorType:
-                topicView = [[BEAuthorView alloc] initWithTopic:aTopic frame:[[UIScreen mainScreen] bounds]];
+                topicView = [[FBSAuthorView alloc] initWithTopic:aTopic frame:[[UIScreen mainScreen] bounds]];
                 break;
             case FBSNodeBookType:
-                topicView = [[BEBookView alloc] initWithTopic:aTopic frame:[[UIScreen mainScreen] bounds]];
+                topicView = [[FBSBookView alloc] initWithTopic:aTopic frame:[[UIScreen mainScreen] bounds]];
                 break;
             default:
                 break;

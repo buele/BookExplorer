@@ -26,11 +26,11 @@
  THE SOFTWARE.
  *****************************************************************************/
 
-#import "BEBookView.h"
+#import "FBSBookView.h"
 #import "FBSTopic.h"
 #import "FBSBook.h"
 #import "FBSAuthor.h"
-@implementation BEBookView
+@implementation FBSBookView
 
 -(id)initWithTopic:(FBSTopic *)aTopic frame:(CGRect)aFrame
 {

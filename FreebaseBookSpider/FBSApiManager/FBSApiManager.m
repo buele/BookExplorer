@@ -95,9 +95,6 @@ static NSString *  PROPERTY_KEY             = @"property";
 -(NSDictionary *)dataToJson:(NSData *)data
 {
     NSError* error;
-    // debug
-    //NSString * response = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]autorelease];
-    //NSLog(@"*** REQUEST RESPONSE: %@", response);
     NSDictionary * json = [NSJSONSerialization JSONObjectWithData:data
                                                           options:kNilOptions
                                                             error:&error];
@@ -115,7 +112,6 @@ static NSString *  PROPERTY_KEY             = @"property";
 #pragma mark requests managers
 -(void)sendRequestWithUrl:(NSURL* )anUrl andAction:(FBSApiAction)anAction andTarget:(id<FBSNodeRequiring>)aTarget forKey:(NSString *)aKey
 {
-    NSLog(@"sendRequestWithUrl: %@",anUrl);
     if(anUrl && anAction && aTarget && requests){
         FBSURLConnection * connection = [[FBSURLConnection alloc] initWithUrl:anUrl delegate:self requestId:self.requestCounter];
         FBSApiPendingRequest * apiRequest = [[FBSApiPendingRequest alloc] initWithURLConnection:connection action:anAction key:aKey delegate:self target:aTarget];

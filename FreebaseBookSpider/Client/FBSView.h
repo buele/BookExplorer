@@ -28,7 +28,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FBSButton.h"
-#import "BESearchBox.h"
+#import "FBSSearchBox.h"
 
 
 
@@ -38,7 +38,7 @@
 -(void)searchNodesByKeyword:(NSString *)aKeyword;
 @end
 
-@interface FBSView : UIView <BESearchBoxDelegate>
+@interface FBSView : UIView <FBSSearchBoxDelegate>
 {
     FBSButton * pushButton;
     FBSButton * testRequestButton;

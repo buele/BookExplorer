@@ -26,11 +26,11 @@
  THE SOFTWARE.
  *****************************************************************************/
 
-#import "TopicPropertyView.h"
+#import "FBSTopicPropertyView.h"
 #import "FBSProperty.h"
 #import "FBSPropertyValue.h"
 
-@implementation TopicPropertyView
+@implementation FBSTopicPropertyView
 @synthesize lastY;
 static CGFloat LABEL_FONT_SIZE = 20.0f;
 static CGFloat VALUE_FONT_SIZE = 20.0f;

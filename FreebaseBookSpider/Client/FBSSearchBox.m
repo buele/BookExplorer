@@ -25,7 +25,7 @@
  THE SOFTWARE.
  *****************************************************************************/
 
-#import "BESearchBox.h"
+#import "FBSSearchBox.h"
 
 @implementation BESearchBox
 @synthesize searchTextField;

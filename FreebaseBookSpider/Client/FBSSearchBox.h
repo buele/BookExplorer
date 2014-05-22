@@ -1,5 +1,5 @@
 //
-//  BEBookView.h
+//  BESearchBox.h
 //  FreebaseBookSpider
 //
 
@@ -26,8 +26,18 @@
  THE SOFTWARE.
  *****************************************************************************/
 
-#import "BETopicView.h"
+#import <UIKit/UIKit.h>
+@protocol FBSSearchBoxDelegate
+-(void)searchNodesByKeyword:(NSString *)aKeyword;
+-(void)expandSearchBox;
+-(void)collapseSearchBox;
+@end
 
-@interface BEBookView : BETopicView
+@interface BESearchBox : UIView <UITextFieldDelegate>
 
+
+@property(nonatomic, retain)UITextField * searchTextField;
+@property(nonatomic, retain)UIButton * searchButton;
+@property(nonatomic, retain)id<FBSSearchBoxDelegate, NSObject> delegate;
+@property(nonatomic, retain)UIButton * backFromListViewButton;
 @end

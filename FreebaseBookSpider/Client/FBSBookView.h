@@ -1,5 +1,5 @@
 //
-//  TopicPropertyView.h
+//  BEBookView.h
 //  FreebaseBookSpider
 //
 
@@ -26,11 +26,8 @@
  THE SOFTWARE.
  *****************************************************************************/
 
-#import <UIKit/UIKit.h>
-#import "FBSProperty.h"
+#import "FBSTopicView.h"
 
-@interface TopicPropertyView : UIView
+@interface FBSBookView : FBSTopicView
 
--(id)initWithFrame:(CGRect )frame FBSProperty:(FBSProperty *)aProperty;
-@property(nonatomic, assign)CGFloat lastY;
 @end

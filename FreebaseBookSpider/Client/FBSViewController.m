@@ -29,7 +29,7 @@
 #import "FBSButton.h"
 #import "FBSView.h"
 #import "FBSViewController.h"
-#import "BETopicViewController.h"
+#import "FBSTopicViewController.h"
 
 
 @implementation FBSViewController
@@ -100,7 +100,7 @@
 -(void)topicDidGenerated:(FBSTopic *)theTopic
 {
     [indicator stopAnimating];
-    BETopicViewController * topicViewController = [[BETopicViewController alloc]initWithTopic:theTopic] ;
+    FBSTopicViewController * topicViewController = [[FBSTopicViewController alloc]initWithTopic:theTopic] ;
     [self.navigationController setToolbarHidden:YES animated:NO];
 	[self.navigationController pushViewController:topicViewController animated:YES];
 	[topicViewController release];
