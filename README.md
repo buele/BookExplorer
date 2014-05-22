@@ -1,4 +1,4 @@
-# Freebase api wrapper for book domain
+# Book Explorer
 Book Explorer is an open source iOS App to discover books and authors, using google freebase api.
 
 ## Project status
