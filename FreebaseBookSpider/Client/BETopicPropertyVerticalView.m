@@ -64,7 +64,6 @@ static NSString * VALUE_FONT_FAMILY = @"Helvetica";
             lastY = quotation.frame.origin.y + quotation.frame.size.height;
             [quotation release];
         }
-        //lastY += label.frame.size.height;
         [textColor release];
         [label release];
         

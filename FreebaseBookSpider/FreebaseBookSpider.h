@@ -41,7 +41,7 @@
 
 @end
 
-@interface FreebaseBookSpider : NSObject <FBSNodeManagerDelegate> //TODO: remove FreebaseBookSpiderDelegate after testing
+@interface FreebaseBookSpider : NSObject <FBSNodeManagerDelegate>
 {
     FBSEntityManager * nodeManager;
     id delegate;

@@ -98,8 +98,6 @@ static NSString *  PROPERTY_KEY             = @"property";
     NSDictionary * json = [NSJSONSerialization JSONObjectWithData:data
                                                           options:kNilOptions
                                                             error:&error];
-    //if(error)
-      //  NSLog(@"%@", error);
     return json;
 }
 
