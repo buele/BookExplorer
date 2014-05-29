@@ -59,7 +59,7 @@ static NSString * SEARCH_BUTTON_IMAGE_TYPE = @"png";
         [searchTextField setBackgroundColor:[UIColor whiteColor]];
         [searchTextField setClearButtonMode:UITextFieldViewModeWhileEditing];
         [searchTextField setDelegate:self];
-        UIView *spacerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
+        UIView *spacerView = [[UIView alloc] initWithFrame:[self spacerFrame]];
         [searchTextField setLeftViewMode:UITextFieldViewModeAlways];
         [searchTextField setLeftView:spacerView];
         [spacerView release];
@@ -98,6 +98,15 @@ static NSString * SEARCH_BUTTON_IMAGE_TYPE = @"png";
     return frame;
 }
 
+-(CGRect)spacerFrame
+{
+    CGRect frame;
+    frame.origin.x = 0.0f;
+    frame.origin.y = 0.0f;
+    frame.size.width = 10.0f;
+    frame.size.height = 10.0f;
+    return frame;
+}
 -(CGRect)searchTextFieldFrame
 {
     CGRect frame;
