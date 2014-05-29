@@ -52,7 +52,7 @@ static NSString *  PROPERTY_KEY             = @"property";
 }
 
 #pragma mark FBSApiManagerDelegate protocol implementation
-//
+
 -(void)getNodesByKeyword:(NSString*)aKeyword andForDelegate:(id<FBSNodeRequiring>)aDelegate
 {
     if(!aDelegate) return;
@@ -65,7 +65,7 @@ static NSString *  PROPERTY_KEY             = @"property";
         [aDelegate nodesByKeywordDidReceived:nil forKey:aKeyword];
 }
 
-//
+
 -(void)getNodePropertiesById:(NSString*)aNodeId andForDelegate:(id<FBSNodeRequiring>)aDelegate
 {
     if(!aDelegate) return;
@@ -78,7 +78,7 @@ static NSString *  PROPERTY_KEY             = @"property";
         [aDelegate nodePropertiesByIdDidReceived:nil forKey:aNodeId];
 }
 
-//
+
 -(void)getImageById:(NSString*)anImageId andForDelegate:(id<FBSNodeRequiring>)aDelegate
 {
     if(!aDelegate) return;
@@ -94,11 +94,39 @@ static NSString *  PROPERTY_KEY             = @"property";
 #pragma mark utilities
 -(NSDictionary *)dataToJson:(NSData *)data
 {
-    NSError* error;
+    
+    static NSString * keyInvalidReason = @"keyInvalid";
+    NSError* jsonError;
     NSDictionary * json = [NSJSONSerialization JSONObjectWithData:data
                                                           options:kNilOptions
-                                                            error:&error];
+                                                            error:&jsonError];
+    //NSLog(@"result: %@",json);
+    NSDictionary * error = [json objectForKey:@"error"];
+    if(error){
+        NSArray * errors = [error objectForKey:@"errors"];
+        NSString * reason = nil;
+        if(errors && [errors count] > 0)
+            reason = [[self firstErrorWithErrors:errors] objectForKey:@"reason"];
+        switch ([[error objectForKey:@"code"] intValue]) {
+            case BadRequestHttpStatus:
+                if(reason && [reason isEqual:keyInvalidReason]){
+                    // debug:
+                    NSLog(@"Freebase apikey invalid");
+                }
+                break;
+            case InternalServerErrorHttpStatus:
+                
+                break;
+            default:
+                break;
+        }
+    }
     return json;
+}
+
+-(NSDictionary *)firstErrorWithErrors:(NSArray *)errors
+{
+    return [errors objectAtIndex:0];
 }
 
 -(void)increaseRequestCounter

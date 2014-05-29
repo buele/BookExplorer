@@ -31,6 +31,10 @@
 #import "FBSApiActions.h"
 #import "FBSResources.h"
 
+typedef enum {
+    BadRequestHttpStatus = 400,
+    InternalServerErrorHttpStatus = 500
+}HttpStatus;
 
 @protocol FBSNodeRequiring
 -(void)nodesByKeywordDidReceived:(NSArray*)nodes forKey:(NSString *)key;

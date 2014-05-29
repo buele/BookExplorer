@@ -2,7 +2,7 @@
 Book Explorer is an open source iOS App to discover books and authors, using google freebase api.
 
 ## Project status
-Alpha version.
+Beta version.
 
 > To see project status go to [kanban board](https://trello.com/b/JI2pa4oW)
 
