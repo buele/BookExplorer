@@ -156,6 +156,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    [cell.textLabel setTextColor:[UIColor yellowColor]];
     if(enableSelectTopic){
         self.enableSelectTopic = NO;
         FBSNode * node =[searchResults objectAtIndex:indexPath.row];
@@ -175,6 +177,9 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil)
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier] autorelease];
+    UILabel * label = [[UILabel alloc] init];
+    [label setText:@"Hello my dear"];
+    [cell addSubview:label];
     FBSNode * node =[searchResults objectAtIndex:indexPath.row];
 	[cell.textLabel setText:node.name];
     [cell.detailTextLabel setText:node.notableName];
